@@ -1,0 +1,71 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    <section class="Main-Hero-Section">
+        <div class="Hero-Section-image">
+            <img class="" src="{% static 'images/Hero-Section-Image.jpg' %}" alt="">
+            <div class="image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Hero-Section-Image-Content-Heading content">
+                    <h2>YOUR TRUSTED CAR<br>RENTAL COMPANION</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Hero-Section-Image-Content-Description content">
+                    <p>This hero title implies that the car rental website is your ultimate <br> guide and ally for lal your car rental needs.</p>
+                </div><!-- /.Hero-Section-Image-Content-Description -->
+                <div class="Hero-Section-Image-Content-Modal-Box content">
+                    <a href=""><h4>PLAY DEMO</h4></a>
+                </div><!-- /.Hero-Section-Image-Content-Modal-Box -->
+                <div class="Hero-Section-Image-Content-Book-A-Car">
+                    <div class="heading">
+                        <h4>BOOK A CAR</h4>
+                    </div><!-- /.heading -->
+                    <div class="Booking-Schedule-Content">
+                        <form class="car-rent-form">
+                            <input type="text" name="car_name" placeholder="Your Name">
+                            <select name="car_name_dropdown" class="select-placeholder">
+                                <option value="" disabled selected style=>Choose a Car</option>
+                                <option value="car1">SUV</option>                               
+                                <option value="car2">Sedan</option>
+                                <option value="car2">Sport</option>
+                                <option value="car2">Van</option>
+                            </select>
+                            <input type="text" name="pickup_date" placeholder="Pickup Date" class="date-input" onclick="showDatepicker(this)">
+                            <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">
+                            <button type="submit" style="display: flex; justify-content: center; align-items: center;">BOOK NOW</button>
+                        </form>
+                    </div><!-- /.Booking-Schedule-Content -->
+                </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Driving-excellence-owl-carousel">
+    
+    </div><!-- /.Driving-excellence-owl-carousel -->
+
+    <div class="container why-choose-us-container">
+        <div class="row">
+            <div class="col-6">
+            
+                <div class="award-image">
+                    <img src="{% static 'images/award.png' %}" alt="" >               
+                </div>
+            </div>      
+            <div class="col-6">        
+                <h2>WHY CHOOSE US</h2>
+                <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt cras dapibus Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula porttitor eu consequat vitae.</p>
+                <div class="features">
+                    <div class="feature"><b>AFFORDABLE PRICE</b></div>
+                    <div class="feature"><b>24/7 SUPPORT</b></div>
+                    <div class="feature"><b>EASY TO BOOKING</b></div>
+                    <div class="feature"><b>TRUSTED</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}
