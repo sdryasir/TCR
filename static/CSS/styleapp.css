@@ -114,9 +114,17 @@ header .main-navbar .logo img{
   padding-right: 0 !important;
 }
 
-.navbar-links > a.dropdown{
-  padding: 20px 10px;
+
+a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
+  color: white;
 }
+
+
+
+
+
+
+
 
 
 
