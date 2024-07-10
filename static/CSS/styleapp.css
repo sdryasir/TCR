@@ -757,8 +757,12 @@ a.footer-social-links{
 
 
 /* WHY CHOOSE US SECTION */
-.why-choose-us-container {
+.why-choose-us-background-image{
   background-image: url('/static/images/backgroundimg.png');
+
+
+}
+.why-choose-us-container {
   color: #fff;
   padding: 40px;
   width: 100%;
