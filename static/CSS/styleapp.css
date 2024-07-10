@@ -8,6 +8,7 @@
   --white-color: rgb(255, 255, 255);
   --black-color: rgb(0, 0, 0);
   --grey-color: rgb(105,105,105);
+  --button-color: rgba(85,107,253,255);
   --footer-background-color-1: rgba(32,32,30,255);
   --footer-background-color-2:    rgba(22,22,22,255);
 
@@ -197,10 +198,6 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 /* dropdown */
 /* Style for dropdown menu */
-a.dropdown:hover{
-
-}
-
 
 
 
@@ -410,12 +407,12 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity here */
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
 }
 
 .Hero-Section-Image-Content{
   position: absolute;
-  top: 25%;
+  top: 20%;
 }
 
 .Hero-Section-Image-Content .content{
@@ -439,22 +436,38 @@ a:hover {
 
 }
 
-.Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box h4{
+
+.Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box{
+  display: flex;
+  align-items: center;
+}
+.Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box a i{
+  font-size: 40px;
+  color: var(--white-color);
+}
+
+.Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box a{
   font-size: 20px;
   color: var(--white-color);
   font-family: var(--main-font);
+  margin: 0 10px;
+}
+.Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box a.play-button-no-margin{
+  margin-left: 0;
 }
 
 
 
+
 .Hero-Section-Image-Content-Book-A-Car{
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .Hero-Section-Image-Content-Book-A-Car .heading h4{
   font-family: var(--main-font);
   font-size: 25px;
   color: var(--white-color);
+  padding-bottom: 10px;
 }
 
 
@@ -500,8 +513,17 @@ a:hover {
 
 
 .car-rent-form button {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  background-color: var(--button-color); 
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  color: var(--white-color);
+  border: none;
   flex: 0 0 auto; /* Let the button grow or shrink as needed */
   min-width: auto; /* Reset minimum width for button */
+
 }
 
 
@@ -535,7 +557,25 @@ a:hover {
 }
 
 
+.Hero-Section-Image-Content-Price{
+  display: flex; 
+  justify-content: center; 
+  padding-top: 30px;
+}
 
+.Hero-Section-Image-Content-Price h5{
+  font-family: var(--secondary-font);
+  font-weight: lighter;
+  font-size: 18px;
+  color: var(--white-color);
+}
+
+.Hero-Section-Image-Content-Price h5 span{
+  font-family: var(--secondary-font);
+  font-size: 35px;
+  color: var(--white-color);
+
+}
 
 
 
