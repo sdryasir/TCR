@@ -737,6 +737,48 @@ a.car-rent-form-responsive  {
 
 
 
+/* WHY CHOOSE US SECTION */
+.why-choose-us-background-image{
+  background-image: url('/static/images/backgroundimg.png');
+
+
+}
+.why-choose-us-container {
+  color: #fff;
+  padding: 40px;
+  width: 100%;
+   
+}
+
+
+.award-image img {
+  width: 100%;
+}
+
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -906,16 +948,6 @@ a.car-rent-form-responsive  {
 a.footer-social-links{
   padding-left: 0;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
