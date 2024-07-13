@@ -11,11 +11,12 @@
   --button-color: rgba(85,107,253,255);
   --footer-background-color-1: rgba(32,32,30,255);
   --footer-background-color-2:    rgba(22,22,22,255);
-
+  --buttons-and-icons-color1:rgba(66,77,255,255);
 
 /* Main-Fonts */
   --main-font:"Axion RX 14 W01 Regular";
-  --secondary-font: "Oswald", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+
 
 
 
@@ -25,13 +26,6 @@
 
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -50,6 +44,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  padding: 20px 0;
   position: fixed;
   z-index: 1000; /* Ensure navbar stays on top */
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth animation for transform and background-color */
@@ -66,10 +61,6 @@
   padding: 30px 0;
 
 }
-
-
-
-
 
 
 
@@ -150,7 +141,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 
 
-
+/* Nav Links Media Query*/
 
 @media(max-width:1050px) {
   .nav-chlab {
@@ -166,7 +157,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   }
   .navbar-links, .navbar-links > a {
     display: block;
-    width: 40%;
+    width: 30%;
   }
   .navbar-links {
     position: absolute;
@@ -203,36 +194,20 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   }
 }
 
+@media(max-width:750px){
+  .navbar-links, .navbar-links > a {
+    display: block;
+    width: 45%;
+  }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-/* dropdown */
-/* Style for dropdown menu */
-
-
-
-
-
-
-
-/* Style for dropdown menu */
-
-
-
-
-
-
-
+@media(max-width:490px){
+  .navbar-links, .navbar-links > a {
+    display: block;
+    width: 60%;
+  }
+}
 
 
 
@@ -241,6 +216,20 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 
 /* Side Navigation */
+
+.side-navigation .Login-button-and-side-navigation{
+  display: flex; 
+  align-items: center;
+}
+.side-navigation .Login-button{
+  padding-right: 30px; 
+  padding-left: 75px;
+}
+
+.side-navigation .Login-button a i{
+  color: var(--buttons-and-icons-color1);
+  font-size: 25px; 
+}
 
 
 .sidebar {
@@ -454,6 +443,8 @@ a:hover {
   font-family: var(--secondary-font);
   font-size: 20px;
   color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
 
 }
 
@@ -600,13 +591,16 @@ a.car-rent-form-responsive  {
 
 .Hero-Section-Image-Content-Price h5{
   font-family: var(--secondary-font);
-  font-weight: lighter;
+  font-weight: 400;
+  font-style: normal;
   font-size: 18px;
   color: var(--white-color);
 }
 
 .Hero-Section-Image-Content-Price h5 span{
   font-family: var(--secondary-font);
+  font-weight: 700;
+  font-style: normal;
   font-size: 35px;
   color: var(--white-color);
 
@@ -710,20 +704,214 @@ a.car-rent-form-responsive  {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*Driving Excellence Owl Carousel Section*/
+.overlay-carousel-cell {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 29, 51, 0.8)), to(rgba(14, 29, 51, 0.2)));
+  background: linear-gradient(to bottom, rgba(14, 29, 51, 0.8), rgba(14, 29, 51, 0.2));
+}
 
+.hero-slider {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero-slider .carousel-cell {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero-slider .carousel-cell .inner {
+  position: relative;
+  top: 7%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: white;
+  text-align: center;
+}
+.hero-slider .carousel-cell .inner .subtitle {
+  font-size: 2.2rem;
+  line-height: 1.2em;
+  font-weight: 200;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 5px;
+}
+.hero-slider .carousel-cell .inner .title {
+  font-family: var(--main-font);
+  font-size: 3rem;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+.hero-slider .carousel-cell .inner .btn {
+  border: 1px solid #fff;
+  padding: 14px 18px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+.hero-slider .carousel-cell .inner .btn:hover {
+  background: #fff;
+  color: #000;
+}
+.hero-slider .flickity-prev-next-button { width: 80px;
+  height: 80px;
+  background: transparent;
+}
+.hero-slider .flickity-prev-next-button:hover {
+  background: transparent;
+}
+.hero-slider .flickity-prev-next-button .arrow {
+  fill: white;
+}
+.hero-slider .flickity-page-dots {
+  bottom: 30px;
+}
+.hero-slider .flickity-page-dots .dot {
+  width: 30px;
+  height: 4px;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0 solid white;
+  border-radius: 0;
+}
+.hero-slider .flickity-page-dots .dot.is-selected {
+  background: var(--buttons-and-icons-color1);
+  border: 0 solid var(--buttons-and-icons-color1);
+}
+
+
+/* Counter Section */
+.driving-excellence-counter-section{
+  margin-top: 100px;
+}
+
+
+.driving-excellence-counter-section .content .About-us-link {
+  padding-top: 30px;
+  
+}
+
+
+.driving-excellence-counter-section .content .About-us-link a{
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--buttons-and-icons-color1);
+  border-bottom: 1px solid;
+  border-color: var(--buttons-and-icons-color1);
+  
+
+}
+
+
+.driving-excellence-counter-section .content .About-us-link a span{
+  padding-left: 20px;
+  color: var(--buttons-and-icons-color1);
+
+
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Counter Section (Counter Animation) */
+
+
+
+
+
+.Counter-animation{
+  display: flex; 
+
+}
+
+
+.Counter-animation .counter-box{
+  display: flex; 
+  align-items: center;
+}
+
+.counterapp-col{
+  padding: 0 50px;
+}
+.counterapp-col-no-padding{
+  padding-left: 0;
+}
+
+
+.counterapp-col h2{
+  font-family: var(--main-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.counterapp-col span{
+  padding-left: 10px;
+  font-family: var(--main-font);
+  color: var(--buttons-and-icons-color1);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.counterapp-col h4{
+  padding-top: 15px;
+  font-family: var(--secondary-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+/* Counter Section (Counter Animation) Media Query*/
+
+
+@media (max-width: 700px) {
+  .Counter-animation{
+    display: block; 
+  
+  }
+  .counterapp-col{
+    padding: 0;
+  }
+  .counterapp-col-no-padding{
+    padding: 0;
+  }
+
+  
+
+
+}
 
 
 
@@ -744,9 +932,10 @@ a.car-rent-form-responsive  {
 
 }
 .why-choose-us-container {
-  color: #fff;
-  padding: 40px;
+  color: var(--white-color);
   width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
    
 }
 
@@ -756,23 +945,49 @@ a.car-rent-form-responsive  {
 }
 
 
+.why-choose-us-background-image h2{
+  font-family: var(--main-font);
+}
+
+
+.why-choose-us-background-image p{
+  font-family: var(--secondary-font);
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+}
+
+
+.why-choose-us-background-image .padding-item{
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+.why-choose-us-background-image .features .feature span{
+  padding-left: 20px;
+  font-family: var(--main-font);
+  color: var(--white-color);
+}
+
+.why-choose-us-background-image .features .feature .why-choose-us-icons{
+  font-size: 25px;
+  color: var(--buttons-and-icons-color1);
+}
+
 .features {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
 .feature {
   display: flex;
   align-items: center;
+
   width: 50%;
-  margin-bottom: 10px;
+
 }
-
-
-
-
-
+.why-choose-us-background-image .features .padding-top{
+  padding-top: 30px;
+}
 
 
 
