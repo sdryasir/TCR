@@ -11,8 +11,7 @@
   --button-color: rgba(85,107,253,255);
   --footer-background-color-1: rgba(32,32,30,255);
   --footer-background-color-2:    rgba(22,22,22,255);
-  --buttons-and-icons-color1:rgba(89,113,254,1);
-
+  --buttons-and-icons-color1:rgba(66,77,255,255);
 
 /* Main-Fonts */
   --main-font:"Axion RX 14 W01 Regular";
@@ -45,6 +44,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  padding: 20px 0;
   position: fixed;
   z-index: 1000; /* Ensure navbar stays on top */
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth animation for transform and background-color */
@@ -157,7 +157,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   }
   .navbar-links, .navbar-links > a {
     display: block;
-    width: 40%;
+    width: 30%;
   }
   .navbar-links {
     position: absolute;
@@ -194,12 +194,42 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   }
 }
 
+@media(max-width:750px){
+  .navbar-links, .navbar-links > a {
+    display: block;
+    width: 45%;
+  }
+}
+
+
+@media(max-width:490px){
+  .navbar-links, .navbar-links > a {
+    display: block;
+    width: 60%;
+  }
+}
+
+
 
 
 
 
 
 /* Side Navigation */
+
+.side-navigation .Login-button-and-side-navigation{
+  display: flex; 
+  align-items: center;
+}
+.side-navigation .Login-button{
+  padding-right: 30px; 
+  padding-left: 75px;
+}
+
+.side-navigation .Login-button a i{
+  color: var(--buttons-and-icons-color1);
+  font-size: 25px; 
+}
 
 
 .sidebar {
@@ -561,7 +591,7 @@ a.car-rent-form-responsive  {
 
 .Hero-Section-Image-Content-Price h5{
   font-family: var(--secondary-font);
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
   font-size: 18px;
   color: var(--white-color);
@@ -766,6 +796,124 @@ a.car-rent-form-responsive  {
 }
 
 
+/* Counter Section */
+.driving-excellence-counter-section{
+  margin-top: 100px;
+}
+
+
+.driving-excellence-counter-section .content .About-us-link {
+  padding-top: 30px;
+  
+}
+
+
+.driving-excellence-counter-section .content .About-us-link a{
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--buttons-and-icons-color1);
+  border-bottom: 1px solid;
+  border-color: var(--buttons-and-icons-color1);
+  
+
+}
+
+
+.driving-excellence-counter-section .content .About-us-link a span{
+  padding-left: 20px;
+  color: var(--buttons-and-icons-color1);
+
+
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Counter Section (Counter Animation) */
+
+
+
+
+
+.Counter-animation{
+  display: flex; 
+
+}
+
+
+.Counter-animation .counter-box{
+  display: flex; 
+  align-items: center;
+}
+
+.counterapp-col{
+  padding: 0 50px;
+}
+.counterapp-col-no-padding{
+  padding-left: 0;
+}
+
+
+.counterapp-col h2{
+  font-family: var(--main-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.counterapp-col span{
+  padding-left: 10px;
+  font-family: var(--main-font);
+  color: var(--buttons-and-icons-color1);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.counterapp-col h4{
+  padding-top: 15px;
+  font-family: var(--secondary-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+/* Counter Section (Counter Animation) Media Query*/
+
+
+@media (max-width: 700px) {
+  .Counter-animation{
+    display: block; 
+  
+  }
+  .counterapp-col{
+    padding: 0;
+  }
+  .counterapp-col-no-padding{
+    padding: 0;
+  }
+
+  
+
+
+}
+
+
 
 
 
@@ -784,9 +932,10 @@ a.car-rent-form-responsive  {
 
 }
 .why-choose-us-container {
-  color: #fff;
-  padding: 40px;
+  color: var(--white-color);
   width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
    
 }
 
@@ -836,8 +985,8 @@ a.car-rent-form-responsive  {
   width: 50%;
 
 }
-.why-choose-us-background-image .col-6 .features .padding-top{
-  padding-top: 40px;
+.why-choose-us-background-image .features .padding-top{
+  padding-top: 30px;
 }
 
 

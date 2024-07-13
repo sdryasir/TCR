@@ -111,3 +111,13 @@ flkty.on('scroll', function () {
 setInterval(function() {
   flkty.next();
 }, 6000); // 3000 milliseconds = 3 seconds
+
+
+
+// 5) Counter
+
+$('.counter').counterUp({
+    delay: 10,
+    time: 2000
+  });
+  $('h3').addClass('animated fadeIn');
