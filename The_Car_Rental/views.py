@@ -10,3 +10,8 @@ def homePage(request):
 
 def aboutPage(request):
     return render(request, 'about.html') 
+
+
+
+def loginPage(request):
+    return render(request, 'login.html') 
