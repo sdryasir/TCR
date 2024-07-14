@@ -1437,29 +1437,26 @@ a:hover {
 
 
 /* OUR LATEST BLOG & ARTICLES SECTION */
+.Our-Latest-Blog-Articles-Section{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
 
-
-.Our-Featured-Cars-Heading{
+.Our-Latest-Blog-Articles-Heading{
   font-family: var(--main-font);
   font-size: 40px;
   font-weight: 700;
   font-style: normal;
   color: var(--black-color);
 }
-
 /* Our Latest Blog & Articles Section Cards */
-
 .product-info {
   padding: 40px 0;
 }
-
-
 .product-img{
   position: relative;
   overflow: hidden;
 }
-
-
 .product-img span{
   font-family: var(--secondary-font);
   font-size: 15px;
@@ -1470,7 +1467,6 @@ a:hover {
 .btns{
   font-size: 15px;
   font-weight: 300;
-
 }
 .btns a{
   background-color: transparent;
@@ -1490,7 +1486,6 @@ a:hover {
 .product-img:hover .btns{
   bottom: 0;
 }
-
 .Save{
   position: absolute;
   width: 30%;
@@ -1502,7 +1497,6 @@ a:hover {
   text-align: center;
 
 }
-
 .product-type{
   font-size: 13px;
   opacity: 0.8;
