@@ -22,14 +22,7 @@
 
 
 
-
-
-
-
-
-
 }
-
 
 
 
@@ -68,9 +61,6 @@
 
 
 
-
-
-
 .header .main-navbar .container-fluid{
   display:flex;  
   align-items: center;
@@ -78,8 +68,6 @@
 
 
 }
-
-
 
 
 header .main-navbar .logo img{
@@ -138,19 +126,13 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 
 
-
-
-
-
-
-
 /* Nav Links Media Query*/
 
 @media(max-width:1050px) {
   .nav-chlab {
     display: inline-block;
     font-size: 28px;
-    padding: 0px 10px;
+    padding: 0 10px;
     color: white;
   }
   .nav-chlab:hover, #nav-check:checked ~ .nav-chlab {
@@ -177,8 +159,10 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
     height: calc(100vh);
     overflow-y: hidden;
   }
-  .side-navigation {
+  .menu-button {
     display: none;
+    
+
   }
 
   .navbar-links img{
@@ -393,8 +377,12 @@ a:hover {
 }
 
 @media(max-width:887px) {
-  .side-navigation {
+  .menu-button {
     display: none;
+  }
+  .side-navigation .Login-button{
+    padding-right: 30px; 
+    padding-left: 0;
   }
 
 
@@ -783,6 +771,23 @@ a:hover {
 }
 
 
+@media (max-width: 750px) {
+  .hero-slider .carousel-cell .inner {
+    top: 20%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-slider .carousel-cell .inner .title {
+    font-size: 2.3rem;
+    line-height: 1.2em;
+  }
+}
+
+
+
+
 /* Counter Section */
 .driving-excellence-counter-section{
   margin-top: 100px;
@@ -814,17 +819,10 @@ a:hover {
   color: var(--buttons-and-icons-color1);
 
 
-  
-
 }
 
 
-
-
-
 /* Counter Section (Counter Animation) */
-
-
 
 
 
@@ -956,7 +954,6 @@ a:hover {
 .why-choose-us-background-image .features .padding-top{
   padding-top: 30px;
 }
-
 
 
 
@@ -1104,9 +1101,6 @@ a:hover {
 
 
 
-
-
-
 /* Rating */
 .rating {
   display: inline-block;
@@ -1179,9 +1173,9 @@ a:hover {
 
 
 
+
+
 /* Testimonial Section */
-
-
 
 .Testimonial-Section-heading{
   display: flex;
@@ -1301,8 +1295,6 @@ a:hover {
 
 
 
-
-
  .owl-theme .owl-controls{
    margin-top: 10px;
    position: absolute;
@@ -1355,7 +1347,6 @@ a:hover {
 .owl-carousel-2 .owl-dots .owl-dot.active span, .owl-theme .owl-dots{
   margin-top: 30px;
 }
-
 
 
 
@@ -1442,33 +1433,36 @@ a:hover {
   margin-bottom: 100px;
 }
 
+.product-item{
+  height: 100%;
+}
+
 .Our-Latest-Blog-Articles-Heading{
   font-family: var(--main-font);
   font-size: 40px;
   font-weight: 700;
   font-style: normal;
   color: var(--black-color);
+  margin-bottom: 70px;
 }
 /* Our Latest Blog & Articles Section Cards */
-.product-info {
-  padding: 40px 0;
-}
-.product-img{
+
+.Our-Latest-Blog-Articles-Section .product-img{
   position: relative;
   overflow: hidden;
 }
-.product-img span{
+.Our-Latest-Blog-Articles-Section .product-img span{
   font-family: var(--secondary-font);
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   color: var(--white-color);
 }
-.btns{
+.Our-Latest-Blog-Articles-Section .btns{
   font-size: 15px;
   font-weight: 300;
 }
-.btns a{
+.Our-Latest-Blog-Articles-Section .btns a{
   background-color: transparent;
   border: 1px solid black;
   color: var(--white-color);
@@ -1479,14 +1473,14 @@ a:hover {
   font-size: 15px;
   font-style: normal;
 }
-.btns a:hover{
+.Our-Latest-Blog-Articles-Section .btns a:hover{
   color: #FFFFFF;
   background-color: #000000;
 }
-.product-img:hover .btns{
+.Our-Latest-Blog-Articles-Section .product-img:hover .btns{
   bottom: 0;
 }
-.Save{
+.Our-Latest-Blog-Articles-Section .Save{
   position: absolute;
   width: 30%;
   top: 16px;
@@ -1497,48 +1491,22 @@ a:hover {
   text-align: center;
 
 }
-.product-type{
+.Our-Latest-Blog-Articles-Section .product-type{
   font-size: 13px;
   opacity: 0.8;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.Our-Latest-Blog-Articles-Section .product-item{
+  width: 100%;
+  padding: 0;
+  box-shadow: none
+}
 
 
 
 
 /* Frequently Asked Questions Section */
-
 
 .Frequently-Asked-Questions-Section{
   margin-bottom: 100px;

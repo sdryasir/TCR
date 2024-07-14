@@ -178,12 +178,10 @@ $('.owl-carousel-2').owlCarousel({
 
 
 
-
-
 // 9 OUR LATEST BLOG & ARTICLES)
 
 $('.owl-carousel-3').owlCarousel({
-  loop: true,
+  loop: false,
   nav:false,
   margin:20,
   autoplay: false,
@@ -199,18 +197,6 @@ $('.owl-carousel-3').owlCarousel({
       }
   }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
