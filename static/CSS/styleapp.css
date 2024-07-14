@@ -12,6 +12,9 @@
   --footer-background-color-1: rgba(32,32,30,255);
   --footer-background-color-2:    rgba(22,22,22,255);
   --buttons-and-icons-color1:rgba(66,77,255,255);
+  --ratings-color: 	rgb(255,165,0) ;
+  --ratings-input-color:	  rgb(255,223,0) ;
+
 
 /* Main-Fonts */
   --main-font:"Axion RX 14 W01 Regular";
@@ -227,7 +230,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 }
 
 .side-navigation .Login-button a i{
-  color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
   font-size: 25px; 
 }
 
@@ -529,7 +532,7 @@ a:hover {
 .car-rent-form button {
   display: flex; 
   justify-content: center; 
-  align-items: center; 
+  text-align: center;
   background: linear-gradient(79deg, rgba(78,96,254,1) 0%, rgba(89,113,254,1) 99%);
   font-family: var(--secondary-font);
   font-size: 18px;
@@ -537,18 +540,6 @@ a:hover {
   border: none;
   flex: 0 0 auto; /* Let the button grow or shrink as needed */
   min-width: auto; /* Reset minimum width for button */
-
-}
-
-a.car-rent-form-responsive  {
-  display: none; 
-  justify-content: center; 
-  align-items: center; 
-  background: linear-gradient(79deg, rgba(78,96,254,1) 0%, rgba(89,113,254,1) 99%);
-  font-family: var(--secondary-font);
-  font-size: 18px;
-  color: var(--white-color);
-  border: none;
 
 }
 
@@ -700,10 +691,6 @@ a.car-rent-form-responsive  {
 
 
 
-
-
-
-
 /*Driving Excellence Owl Carousel Section*/
 .overlay-carousel-cell {
   position: absolute;
@@ -835,13 +822,6 @@ a.car-rent-form-responsive  {
 
 
 
-
-
-
-
-
-
-
 /* Counter Section (Counter Animation) */
 
 
@@ -908,26 +888,14 @@ a.car-rent-form-responsive  {
     padding: 0;
   }
 
-  
-
 
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* WHY CHOOSE US SECTION */
 .why-choose-us-background-image{
-  background-image: url('/static/images/backgroundimg.png');
+  background-image: url('/static/images/why-choose-us-section-background-img.png');
 
 
 }
@@ -1002,7 +970,7 @@ a.car-rent-form-responsive  {
   margin-top: 50px;
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-  background: black;
+  background: var(--buttons-and-icons-color1);
 }
 
 
@@ -1129,7 +1097,348 @@ a.car-rent-form-responsive  {
 
 .product-item{
   width: 100%;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 6px 0 rgba(0, 0, 0, 0.1);
+
 }
+
+
+
+
+
+
+/* Rating */
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  font-size: 20px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: var(--ratings-color);
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: var(--ratings-input-color);
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px;
+}
+
+
+
+
+
+
+/* Testimonial Section */
+
+
+
+.Testimonial-Section-heading{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.Testimonial-Section{
+  margin-bottom: 100px;
+}
+
+.Testimonial-Section-heading h2{
+  font-family: var(--main-font);
+  color: var(--black-color);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  
+}
+
+
+.testimonial-bg{
+  background-color:var(--footer-background-color-1);
+    font-family: 'Raleway', sans-serif;
+   padding: 35px 70px;
+   text-align: center;
+   position: relative;
+}
+.testimonial-bg:before{
+   content: "\f10d";
+   font-family: "fontawesome";
+   width: 60px;
+   height: 60px;
+  border: 3px solid;
+  border-color: var(--buttons-and-icons-color1);
+   line-height: 75px;
+   background: #fff;
+   text-align: center;
+   font-size: 40px;
+   color: var(--footer-background-color-2);
+   position: absolute;
+   top: -30px;
+   left: 2%;
+}
+.testimonial{
+   padding: 0 15px;
+}
+.testimonial .description{
+  font-family: var(--secondary-font);
+   font-size: 20px;
+   font-weight:400;
+   color: var(--white-color);
+   line-height: 30px;
+   padding-bottom: 25px;
+   margin-bottom: 15px;
+   position: relative;
+}
+.testimonial .description:before{
+   content: "";
+   width: 75%;
+   border-top: 1px solid;
+   border-color: var(--white-color);
+   margin: 0 auto;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}
+.testimonial .description:after{
+   content: "";
+   width: 20px;
+   height: 20px;
+   background: var(--footer-background-color-1);
+   position: absolute;
+   bottom: -10px;
+   left: 50%;
+   border-color: var(--white-color);
+   border-bottom: 1px solid ;
+   border-right: 1px solid;
+   transform: translateX(-50%) rotate(45deg);
+}
+.testimonial .pic{
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   margin: 25px auto;
+   overflow: hidden;
+}
+.testimonial .pic img{
+   width: 100%;
+   height: auto;
+}
+.testimonial .title{
+  font-family: var(--main-font);
+   display: inline-block;
+   font-size: 17px;
+   font-weight: 100;
+   color: var(--white-color);
+   text-transform: capitalize;
+   margin: 0;
+}
+.testimonial .post{
+   display: block;
+   font-family: var(--secondary-font);
+   font-weight: 400;
+   font-size: 16px;
+   color: var(--buttons-and-icons-color1);
+}
+
+
+.testimonial .rating-icon{
+   font-size: 22px;
+   color: var(--ratings-color);
+}
+
+
+
+
+
+ .owl-theme .owl-controls{
+   margin-top: 10px;
+   position: absolute;
+   bottom: -20%;
+   right: 0;
+}
+.owl-theme .owl-controls .owl-buttons div{
+   width: 50px;
+   height: 50px;
+   line-height: 50px;
+   background: #34363b;
+   opacity: 1;
+   padding: 0;
+  display:inline-block;
+  margin:0 10px; 
+}
+.owl-prev:before,
+.owl-next:before{
+   content: "\f104";
+   font-family: "fontawesome";
+   font-size: 23px;
+   font-weight: 700;
+   color: #fff;
+}
+.owl-next:before{
+   content:"\f105";
+}
+@media only screen and (max-width:767px){
+   .testimonial-bg{ padding: 50px 40px; }
+   .owl-theme .owl-controls{ bottom: -22%; }
+}
+@media only screen and (max-width:480px){
+   .testimonial-bg:before{
+       width: 55px;
+       height: 55px;
+       line-height: 55px;
+       font-size: 40px;
+   }
+   .testimonial-bg{ padding: 30px 10px; }
+   .owl-theme .owl-controls{ bottom: -15%; }
+}
+@media only screen and (max-width:360px){
+   .testimonial .title,
+   .testimonial .post{
+       font-size: 16px;
+   }
+   .owl-theme .owl-controls{ bottom: -12%; }
+}
+
+.owl-carousel-2 .owl-dots .owl-dot.active span, .owl-theme .owl-dots{
+  margin-top: 30px;
+}
+
+
+
+
+
+
+/* Background Video Section */
+
+/* video background */
+#background-video {
+  height: 700px;
+  width: 100%;
+  object-fit: cover;
+
+}
+
+/* video background text */
+.Background-Video-Section {
+  position: relative;
+  height: 700px; /* Set the height of the section */
+}
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire container */
+}
+
+.text-overlay {
+  padding:  100px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.text-white {
+  color: var(--white-color); 
+}
+
+.text-white h2{
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 50px;
+  color: var(--white-color);
+}
+
+.text-white p{
+  margin-top: 30px;
+  margin-bottom: 50px;
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 300;
+
+}
+
+
+.Get-now-button{
+  color: var(--white-color);
+  border: 2px solid;
+  border-color: var(--footer-background-color-2);
+  padding: 10px 20px;
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 17px;
+}
+
+
+.Get-now-button:hover{
+  border-color: var(--white-color);
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -1225,7 +1534,8 @@ a.car-rent-form-responsive  {
 
 .newsletter input[type="email"] {
   padding: 10px;
-  border: 1px solid #444;
+  border: 1px solid;
+  border-color: var(--black-color);
   border-radius: 3px 0 0 3px;
   outline: none;
   width: 200px;
@@ -1234,15 +1544,19 @@ a.car-rent-form-responsive  {
 .newsletter button {
   padding: 10px 20px;
   border: none;
-  background-color: #3f51b5;
-  color: #fff;
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
   cursor: pointer;
   border-radius: 0 3px 3px 0;
   margin-left: 20px;
 }
 
 .newsletter button:hover {
-  background-color: #303f9f;
+  background-color: var(--black-color);
 }
 
 .footer-bottom {
