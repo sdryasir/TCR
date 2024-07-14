@@ -182,6 +182,23 @@ $('.owl-carousel-2').owlCarousel({
 
 // 9 OUR LATEST BLOG & ARTICLES)
 
+$('.owl-carousel-3').owlCarousel({
+  loop: true,
+  nav:false,
+  margin:20,
+  autoplay: false,
+  responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:2
+      },
+      1000:{
+          items:3
+      }
+  }
+})
 
 
 
