@@ -156,7 +156,8 @@ $(':radio').change(function() {
 
 
 
-// 8)
+// 8 what customers say about carent )
+
 $('.owl-carousel-2').owlCarousel({
   loop: true,
   nav:false,
@@ -177,5 +178,41 @@ $('.owl-carousel-2').owlCarousel({
 
 
 
-// 9)
 
+
+// 9 OUR LATEST BLOG & ARTICLES)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 10 GENERAL QUESTIONS)
+
+const items = document.querySelectorAll(".accordion button");
+
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
+  
+  for (i = 0; i < items.length; i++) {
+    items[i].setAttribute('aria-expanded', 'false');
+  }
+  
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+  }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
