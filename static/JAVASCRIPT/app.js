@@ -144,3 +144,38 @@ $('.owl-carousel-1').owlCarousel({
       }
   }
 })
+
+
+
+
+
+// 7) Rating
+$(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+
+
+
+// 8)
+$('.owl-carousel-2').owlCarousel({
+  loop: true,
+  nav:false,
+  margin:20,
+  autoplay: true,
+  responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:1
+      },
+      1000:{
+          items:1
+      }
+  }
+})
+
+
+
+// 9)
+
