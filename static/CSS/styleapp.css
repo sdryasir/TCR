@@ -219,15 +219,44 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   display: flex; 
   align-items: center;
 }
+
+.side-navigation .Login-button-and-side-navigation .Username a{
+  font-family: var(--secondary-font);
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white-color);
+  pointer-events: none;
+}
+
+
 .side-navigation .Login-button{
   padding-right: 30px; 
-  padding-left: 75px;
+  padding-left: 37px;
+}
+
+.side-navigation .Login-button a {
+  display: flex; 
+  align-items: center;
 }
 
 .side-navigation .Login-button a i{
   color: var(--white-color);
   font-size: 25px; 
 }
+
+.side-navigation .Login-button a span{
+  font-family: var(--secondary-font);
+  letter-spacing: 2px;
+  font-size: 15px;
+  margin-left: 5px;
+  color: var(--white-color);
+}
+
+
+
+
+
 
 
 .sidebar {
@@ -522,13 +551,15 @@ a:hover {
 .car-rent-form input[type="date"],
 .car-rent-form button {
   flex: 1; /* Equal width distribution */
-  min-width: 25px; /* Minimum width */
-  height: 40px; /* Adjust height as needed */
+  width: 200px; /* Minimum width */
+  min-width: 30px;
+  height: 50px; /* Adjust height as needed */
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  outline: none;
   box-sizing: border-box; /* Ensure padding doesn't affect width */
   cursor: pointer;
+
 
 }
 
@@ -536,9 +567,10 @@ a:hover {
 
 
 
+
+
 .car-rent-form button {
-  display: flex; 
-  justify-content: center; 
+  line-height: 2;
   text-align: center;
   background: linear-gradient(79deg, rgba(78,96,254,1) 0%, rgba(89,113,254,1) 99%);
   font-family: var(--secondary-font);
@@ -552,15 +584,11 @@ a:hover {
 
 
 ::placeholder {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-
-
-.select-placeholder option {
-  padding: 10px; /* Adjust padding as needed */
-  font-size: 20px; /* Increase perceived font size (not guaranteed to work universally) */
-  line-height: 20px; /* Ensure proper line height for readability */
+select.select-placeholder{
+  color: var(--grey-color);
 }
 
 

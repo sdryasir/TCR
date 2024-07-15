@@ -63,8 +63,11 @@
                 </div><!-- /.nav-links -->
                 <div class="side-navigation main-navbar-item">
                   <div class="Login-button-and-side-navigation">
+                    <div class="Username" style="display: none;">
+                      <a href="">Hi, Username</a>
+                    </div><!-- /.Username -->
                     <div class="Login-button">
-                      <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i></a>
+                      <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
                     </div>
                     <div class="menu-button" onclick="menuAnimation(this)">
                       <div class="bar1"></div>
