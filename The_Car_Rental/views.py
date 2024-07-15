@@ -15,3 +15,8 @@ def aboutPage(request):
 
 def loginPage(request):
     return render(request, 'login.html') 
+
+
+
+def faqPage(request):
+    return render(request, 'faq.html') 

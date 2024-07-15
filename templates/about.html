@@ -1,6 +1,21 @@
 {% load static %}
 {% include 'header/header.html' %}
 <main class="main-content">
-    <h1>ABOUT PAGE</h1>
+    <section class="About-Main-Hero-Section">
+        <div class="About-Hero-Section-image">
+            <img class="" src="{% static 'images/Default-Hero-Section-Image.jpg' %}" alt="">
+            <div class="About-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="About-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="About-Hero-Section-Image-Content-Heading content">
+                    <h2>DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="About-Hero-Section-Image-Content-Description content">
+                    <p>It emphasizes the idea that you have the power to choose the ideal<br>car that suits your preferences and needs.</p>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
 </main><!-- /.main-content -->
 {% include 'footer/footer.html' %}
