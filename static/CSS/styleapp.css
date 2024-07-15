@@ -26,10 +26,21 @@
 
 
 
+
+
+
+
+
+
+
+
 *{
   margin: 0;
   padding: 0;
 }
+
+
+
 
 
 
@@ -387,6 +398,14 @@ a:hover {
 
 
 }
+
+
+
+
+/* 1) HOME PAGE */
+
+
+
 
 
 /* Main-Hero-Section */
@@ -1211,8 +1230,6 @@ a:hover {
    font-family: "fontawesome";
    width: 60px;
    height: 60px;
-  border: 3px solid;
-  border-color: var(--buttons-and-icons-color1);
    line-height: 75px;
    background: #fff;
    text-align: center;
@@ -1633,6 +1650,474 @@ a:hover {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+/* 2) ABOUT PAGE */
+
+
+/* About-Hero-Section */
+
+
+
+.About-Hero-Section-image {
+  position: relative;
+
+}
+
+.About-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.About-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.About-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.About-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.About-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+}
+
+.About-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .About-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+@media (max-width: 1800px) {
+  .About-Hero-Section-Image-Content{
+    top: 16%;   
+  }
+
+}
+@media (max-width: 1690px) {
+  .About-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .About-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .About-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .About-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .About-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .About-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .About-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .About-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .About-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .About-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .About-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .About-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .About-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .About-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+    text-align: left;
+  
+  }
+
+}
+
+
+
+
+
+
+/* 3) LOGIN PAGE */
+
+
+/* LOGIN-Hero-Section */
+
+.Login-Hero-Section-image {
+  position: relative;
+
+}
+
+.Login-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.Login-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.Login-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.Login-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.Login-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+}
+
+
+
+
+@media (max-width: 2000px) {
+  .Login-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+@media (max-width: 1800px) {
+  .Login-Hero-Section-Image-Content{
+    top: 16%;   
+  }
+
+}
+@media (max-width: 1690px) {
+  .Login-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .Login-Hero-Section-Image-Content h2{
+    font-size: 60px;
+  }
+
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .Login-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+
+
+}
+
+@media (max-width: 1300px) {
+  .Login-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .Login-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+
+
+}
+
+@media (max-width: 1050px) {
+  .Login-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .Login-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+
+
+}
+
+@media (max-width: 950px) {
+  .Login-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .Login-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 4) FAQ PAGE */
+
+
+/* FAQ-Hero-Section */
+
+
+.FAQ-Hero-Section-image {
+  position: relative;
+
+}
+
+.FAQ-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.FAQ-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.FAQ-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.FAQ-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+.FAQ-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+}
+
+.FAQ-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .FAQ-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+@media (max-width: 1800px) {
+  .FAQ-Hero-Section-Image-Content{
+    top: 16%;   
+  }
+
+}
+@media (max-width: 1690px) {
+  .FAQ-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .FAQ-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .FAQ-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .FAQ-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .FAQ-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .FAQ-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .FAQ-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .FAQ-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .FAQ-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .FAQ-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .FAQ-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .FAQ-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .FAQ-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .FAQ-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+    text-align: left;
+  
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
