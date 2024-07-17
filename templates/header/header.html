@@ -64,7 +64,14 @@
                 <div class="side-navigation main-navbar-item">
                   <div class="Login-button-and-side-navigation">
                     <div class="Username" style="display: none;">
-                      <a href="">Hi, Username</a>
+                      <div class="dropdown Logout-button">
+                        <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Hi, Username
+                        </a>             
+                        <ul class="dropdown-menu logout-dropdown">
+                          <li><a class="dropdown-item" href="#">Logout <span><i class="fi fi-rs-exit"></i></span></a></li>
+                        </ul>
+                      </div>
                     </div><!-- /.Username -->
                     <div class="Login-button">
                       <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
