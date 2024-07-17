@@ -1,0 +1,37 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+
+<main class="main-content">
+    <section class="Create-Account-Main-Hero-Section">
+        <div class="Create-Account-Hero-Section-image">
+            <img class="" src="{% static 'images/Default-Hero-Section-Image.jpg' %}" alt="">
+            <div class="Create-Account-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Create-Account-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Create-Account-Hero-Section-Image-Content-Heading content">
+                    <h2>CREATE YOUR ACCOUNT</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Create-your-account" style="margin: 100px 0;">
+        <div class="container">
+            <div class="row" style="display: flex; justify-content: center;">
+                <div class="col-sm-12 col-lg-6">
+                    <form class="sign-up">
+                        <h2 class="sign-up-title">CREATE YOUR ACCOUNT</h2>
+                        <input type="text" class="sign-up-input" placeholder="Enter Username" autofocus>
+                        <input type="email" class="sign-up-input" placeholder="Enter Email" autofocus>
+                        <input type="password" class="sign-up-input" placeholder="Enter Password">
+                        <input type="submit" value="Create Account" class="sign-up-button">
+                    </form>
+                </div><!-- /.col-6 -->
+            </div><!-- /.row -->           
+        </div><!-- /.container -->
+    </div><!-- /.Create-your-account -->
+</main><!-- /.main-content -->
+
+
+{% include 'footer/footer.html' %}

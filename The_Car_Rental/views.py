@@ -18,5 +18,10 @@ def loginPage(request):
 
 
 
+def Create_accountPage(request):
+    return render(request, 'create_account.html') 
+
+
+
 def faqPage(request):
     return render(request, 'faq.html') 
