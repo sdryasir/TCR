@@ -473,7 +473,7 @@ a:hover {
 .Hero-Section-Image-Content{
   position: absolute;
   top: 20%;
-  
+
 }
 
 .Hero-Section-Image-Content .content{
@@ -739,6 +739,24 @@ select.select-placeholder{
 
 
 /*Driving Excellence Owl Carousel Section*/
+.Driving-Excellence-Heading{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+
+.Driving-Excellence-Heading h2{   
+font-family: var(--main-font);
+font-weight: 700;
+font-size: 40px;
+font-style: normal;
+color: var(--black-color);
+
+}
+
+
+
 .overlay-carousel-cell {
   position: absolute;
   width: 100%;
@@ -753,7 +771,7 @@ select.select-placeholder{
 
 .hero-slider {
   width: 100%;
-  height: 100vh;
+  height: 600px;
   overflow: hidden;
 }
 .hero-slider .carousel-cell {
@@ -762,6 +780,8 @@ select.select-placeholder{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 .hero-slider .carousel-cell .inner {
   position: relative;
   top: 7%;
@@ -779,14 +799,14 @@ select.select-placeholder{
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 5px;
 }
-.hero-slider .carousel-cell .inner .title {
+/*.hero-slider .carousel-cell .inner .title {
   font-family: var(--main-font);
   font-size: 3rem;
   line-height: 1.2em;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 40px;
-}
+}*/
 .hero-slider .carousel-cell .inner .btn {
   border: 1px solid #fff;
   padding: 14px 18px;
@@ -814,34 +834,20 @@ select.select-placeholder{
   fill: white;
 }
 .hero-slider .flickity-page-dots {
-  bottom: 30px;
+  bottom: 20px;
+
 }
 .hero-slider .flickity-page-dots .dot {
-  width: 30px;
-  height: 4px;
+  width: 10px;
+  height: 10px;
   opacity: 1;
   background: rgba(255, 255, 255, 0.5);
   border: 0 solid white;
-  border-radius: 0;
+  border-radius: 50%;
 }
 .hero-slider .flickity-page-dots .dot.is-selected {
   background: var(--buttons-and-icons-color1);
   border: 0 solid var(--buttons-and-icons-color1);
-}
-
-
-@media (max-width: 750px) {
-  .hero-slider .carousel-cell .inner {
-    top: 20%;
-    text-align: left;
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-slider .carousel-cell .inner .title {
-    font-size: 2.3rem;
-    line-height: 1.2em;
-  }
 }
 
 
