@@ -25,6 +25,6 @@ urlpatterns = [
     path('about/', views.aboutPage, name='about'),
     path('login/', views.loginPage, name='login'),
     path('create-new-account/', views.Create_accountPage, name='create_account'),
-
+    path('car-detail/', views.Car_detailPage, name='car_detail'),
     path('faq/', views.faqPage, name='faq'),
 ]
