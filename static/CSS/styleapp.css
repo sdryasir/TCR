@@ -2478,6 +2478,181 @@ color: var(--black-color);
 
 
 
+/* 5) OUR CARS PAGE */
+
+
+/* OUR-CARS-Hero-Section */
+
+
+.Our-Cars-Hero-Section-image {
+  position: relative;
+
+}
+
+.Our-Cars-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.Our-Cars-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.Our-Cars-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.Our-Cars-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.Our-Cars-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+  text-align: center;
+}
+
+.Our-Cars-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+
+@media (max-width: 1870px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 50px;
+  }
+  
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 20px;
+  }
+  
+
+}
+@media (max-width: 1800px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 16%;   
+  } 
+
+}
+
+@media (max-width: 1690px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+@media (max-width: 1414px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+    text-align: center;
+  
+  }
+
+}
+
+
+/* OUR-CARS-Section-1 */
+
+
+
+
 
 
 
