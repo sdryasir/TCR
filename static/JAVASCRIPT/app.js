@@ -315,7 +315,7 @@ $('.owl-carousel-7').owlCarousel({
 
 
 
-
+// Page CONTACT)
 
 $(document).ready(function(){
 
