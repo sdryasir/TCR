@@ -3079,12 +3079,353 @@ color: var(--black-color);
 
 
 
+/* 6) CAR DETAIL PAGE */
+
+/* About-Hero-Section */
+
+
+
+.Car-Detail-Hero-Section-image {
+  position: relative;
+
+}
+
+.Car-Detail-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.Car-Detail-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.Car-Detail-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.Car-Detail-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.Car-Detail-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+  text-align: center;
+}
+
+.Car-Detail-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+@media (max-width: 1800px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    top: 16%;   
+  }
+
+}
+@media (max-width: 1690px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .Car-Detail-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .Car-Detail-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .Car-Detail-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Car-Detail-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .Car-Detail-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .Car-Detail-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .Car-Detail-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .Car-Detail-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .Car-Detail-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .Car-Detail-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .Car-Detail-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+  
+  }
+
+}
+
+
+
+
+/* Car-Detail-Section */
+
+
+.Car-Detail-Section{
+  margin: 100px 0;
+}
+
+.Car-Detail-Section .Car-Detail-Heading{
+  background-color: var(--black-color); 
+  margin: 0; color: var(--white-color); 
+  font-family: var(--main-font);
+  font-size: 20px;
+  padding: 20px;
+}
+
+.Car-Detail-Section .Car-Details-Rows{
+  background-color: var(--off-white-color); 
+  padding: 30px;
+}
+
+.Car-Detail-Section .Car-Details-Rows h4 i{
+  margin-right: 10px;
+  color: var(--buttons-and-icons-color1);
+  font-size: 20px;
+}
+
+/* First-Row */
+
+.Car-Detail-Section .Car-Details-Rows .first-row{
+  display: flex; 
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.Car-Detail-Section .Car-Details-Rows .first-row h4{
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--black-color);
+}
+
+/* Second-Row */
+
+.Car-Detail-Section .Car-Details-Rows .second-row{
+  display: flex; 
+  justify-content: space-between;
+}
+
+.Car-Detail-Section .Car-Details-Rows .second-row h4{
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--black-color);
+}
+
+
+
+.More-Car-List .Car-List .list-group .heading{
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+  font-family: var(--main-font);
+  font-size: 20px;
+}
+
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 15px 30px;
+  color: var(--white-color);
+  text-decoration: none;
+  background-color: var(--black-color);
+  border: none;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.list-group-item:hover {
+  color: var(--buttons-and-icons-color1);
+  background-color: var(--black-color);
+}
+
+
+
+
+.list-group-item:first-child {
+  border-radius: 0;
+
+}
+
+.list-group-item:last-child {
+  border-radius: 0;
+}
+
+
+/* Car-Inside-Carousel */
+
+.Car-Inside-Carousel{
+  margin: 30px 0;
+
+}
+
+.Car-Inside-Carousel .product-item{
+  box-shadow: none;
+  padding: 0;
+}
+
+
+/* Rating-Price */
+
+.Rating-Price .Rating h5{
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
+.Rating-Price .Rating h5 .padding-left{
+  padding-left: 50px;
+}
+
+
+.Rating-Price .Price h3{
+  font-family: var(--secondary-font);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--black-color);
+}
+
+
+.Rating-Price .Price h3 .light-font{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--grey-color);
+}
 
 
 
 
 
+/* Car-Information */
 
+
+.Car-Information .Car-Name{
+  margin: 20px 0;
+}
+
+.Car-Information .Car-Name h3{
+  font-family: var(--main-font);
+  font-size: 40px;
+  color: var(--black-color);
+}
+
+.Car-Information .Car-Info{
+  margin-bottom: 30px;
+}
+
+.Car-Information .Car-Info p{
+  font-family: var(--secondary-font);
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--black-color);
+}
+
+
+
+.Car-Information .Car-Features{
+  display: flex; 
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+
+.Car-Information .Car-Features p{
+  display: flex; 
+  align-items: center;
+}
+
+.Car-Information .Car-Features p .material-symbols-outlined{
+  color: var(--buttons-and-icons-color1);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+
+
+.Car-Information .Book-Now-button a{
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+  padding: 10px 20px;
+  font-family: var(--secondary-font);
+  font-size: 18px;
+}
+
+.Car-Information .Book-Now-button a:hover{
+  background-color: var(--black-color);
+}
 
 
 
