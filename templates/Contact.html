@@ -1,0 +1,97 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    <section class="Contact-Main-Hero-Section">
+        <div class="Contact-Hero-Section-image">
+            <img class="" src="{% static 'images/Default-Hero-Section-Image.jpg' %}" alt="">
+            <div class="Contact-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Contact-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Contact-Hero-Section-Image-Content-Heading content">
+                    <h2>GET IN TOUCH WITH US</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Contact-Hero-Section-Image-Content-Description content">
+                    <p>Our friendly team would love to hear from you.</p>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Contact-Form">
+        <div class="Contact-Form-Heading">
+            <h2>CONTACT US</h2>
+        </div><!-- /.Contact-Form-Heading -->
+        <div id="section">
+            <section class="contact-wrap">
+              <form action="" class="contact-form">
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="">First Name</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="">Last Name</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="">Message Subject</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block textarea">
+                    <label for="">Drop your message here</label>
+                    <textarea rows="3" type="text" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <button class="square-button">SEND MESSAGE</button>
+                </div>
+              </form>
+            </section>
+        </div>
+    </div><!-- /.Contact-Form -->
+    <div class="General-Questions-Section">
+        <div class="container">
+            <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
+            <div class="accordion">
+              <div class="accordion-item">
+                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">HOW OLD DO I NEED TO BE TO RENT A CAR?</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
+                <div class="accordion-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">WHAT DOCUMENTS DO I NEED TO RENT A CAR?</span><span class="icon" aria-hidden="true"></span></button>
+                <div class="accordion-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">DO I NEED INSURANCE WHEN RENTING A CAR?</span><span class="icon" aria-hidden="true"></span></button>
+                <div class="accordion-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">WHAT IS THE FUEL POLICY FOR RENTAL CARS?</span><span class="icon" aria-hidden="true"></span></button>
+                <div class="accordion-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div><!-- /.General-Questions-Section -->
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}

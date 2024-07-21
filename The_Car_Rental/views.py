@@ -34,3 +34,7 @@ def Our_carsPage(request):
 def Car_detailPage(request):
     return render(request, 'Car_Details.html') 
 
+
+def contactPage(request):
+    return render(request, 'Contact.html') 
+

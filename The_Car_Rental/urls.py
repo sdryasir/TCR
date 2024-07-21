@@ -28,4 +28,5 @@ urlpatterns = [
     path('our-cars/', views.Our_carsPage, name='our_cars'),
     path('car-detail/', views.Car_detailPage, name='car_detail'),
     path('faq/', views.faqPage, name='faq'),
+    path('contact/', views.contactPage, name='contact'),
 ]
