@@ -14,7 +14,7 @@
   --buttons-and-icons-color1:rgba(66,77,255,255);
   --ratings-color: 	rgb(255,165,0) ;
   --ratings-input-color:	  rgb(255,223,0) ;
-
+  --off-white-color:   rgba(235,235,235,255);
 
 /* Main-Fonts */
   --main-font:"Axion RX 14 W01 Regular";
@@ -473,7 +473,7 @@ a:hover {
 .Hero-Section-Image-Content{
   position: absolute;
   top: 20%;
-  
+
 }
 
 .Hero-Section-Image-Content .content{
@@ -739,6 +739,24 @@ select.select-placeholder{
 
 
 /*Driving Excellence Owl Carousel Section*/
+.Driving-Excellence-Heading{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+
+.Driving-Excellence-Heading h2{   
+font-family: var(--main-font);
+font-weight: 700;
+font-size: 40px;
+font-style: normal;
+color: var(--black-color);
+
+}
+
+
+
 .overlay-carousel-cell {
   position: absolute;
   width: 100%;
@@ -753,7 +771,7 @@ select.select-placeholder{
 
 .hero-slider {
   width: 100%;
-  height: 100vh;
+  height: 600px;
   overflow: hidden;
 }
 .hero-slider .carousel-cell {
@@ -762,6 +780,8 @@ select.select-placeholder{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 .hero-slider .carousel-cell .inner {
   position: relative;
   top: 7%;
@@ -779,14 +799,14 @@ select.select-placeholder{
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 5px;
 }
-.hero-slider .carousel-cell .inner .title {
+/*.hero-slider .carousel-cell .inner .title {
   font-family: var(--main-font);
   font-size: 3rem;
   line-height: 1.2em;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 40px;
-}
+}*/
 .hero-slider .carousel-cell .inner .btn {
   border: 1px solid #fff;
   padding: 14px 18px;
@@ -814,34 +834,20 @@ select.select-placeholder{
   fill: white;
 }
 .hero-slider .flickity-page-dots {
-  bottom: 30px;
+  bottom: 20px;
+
 }
 .hero-slider .flickity-page-dots .dot {
-  width: 30px;
-  height: 4px;
+  width: 10px;
+  height: 10px;
   opacity: 1;
   background: rgba(255, 255, 255, 0.5);
   border: 0 solid white;
-  border-radius: 0;
+  border-radius: 50%;
 }
 .hero-slider .flickity-page-dots .dot.is-selected {
   background: var(--buttons-and-icons-color1);
   border: 0 solid var(--buttons-and-icons-color1);
-}
-
-
-@media (max-width: 750px) {
-  .hero-slider .carousel-cell .inner {
-    top: 20%;
-    text-align: left;
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-slider .carousel-cell .inner .title {
-    font-size: 2.3rem;
-    line-height: 1.2em;
-  }
 }
 
 
@@ -2472,12 +2478,604 @@ select.select-placeholder{
 
 
 
+/* 5) OUR CARS PAGE */
+
+
+/* OUR-CARS-Hero-Section */
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section{
+  margin-top: 100px;
+}
+
+
+.Our-Cars-Hero-Section-image {
+  position: relative;
+
+}
+
+.Our-Cars-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.Our-Cars-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.Our-Cars-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.Our-Cars-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.Our-Cars-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+  text-align: center;
+}
+
+.Our-Cars-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+
+@media (max-width: 1870px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 50px;
+  }
+  
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 20px;
+  }
+  
+
+}
+@media (max-width: 1800px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 16%;   
+  } 
+
+}
+
+@media (max-width: 1690px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+@media (max-width: 1414px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .Our-Cars-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .Our-Cars-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .Our-Cars-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+    text-align: center;
+  
+  }
+
+}
+
+
+/* OUR-CARS-Section-1 */
 
 
 
 
 
 
+
+
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2{
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+
+/* UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section Cards */
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-info {
+  padding: 40px 0;
+}
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-img{
+  position: relative;
+  overflow: hidden;
+}
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-img span{
+  font-family: var(--secondary-font);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--white-color);
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .btns{
+  font-size: 15px;
+  font-weight: 300;
+
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .btns a{
+  background-color: transparent;
+  border: 1px solid black;
+  color: var(--white-color);
+  background-color: var(--buttons-and-icons-color1);
+  transition: all 0.3s ease-in-out;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 15px;
+  font-style: normal;
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .btns a:hover{
+  color: #FFFFFF;
+  background-color: #000000;
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-img:hover .btns{
+  bottom: 0;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .Save{
+  position: absolute;
+  width: 30%;
+  top: 16px;
+  right: 15px;
+  font-size: 15px;
+  color: white;
+  background-color: black;
+  text-align: center;
+
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-type{
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-type h2{
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--black-color);
+}
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-name{
+  transition: all 0.3s ease-in-out;
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-name:hover{
+  color: #fcb941!important;
+}
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-price{
+  color: var(--black-color);
+  font-weight: 500;
+  font-weight: normal;
+  font-size: 25px;
+  font-family: var(--main-font);
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-price .light-font{
+  font-weight: 300;
+  font-weight: normal;
+  font-size: 15px;
+  font-family: var(--secondary-font);
+}
+
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating{
+  font-size: 13px;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .reviews-padding{
+  padding-left: 40px;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-item{
+  width: 100%;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 6px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+/* Rating */
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating {
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  font-size: 20px;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:last-child {
+  position: static;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2 .rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label:last-child .icon {
+  color: var(--ratings-color);
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating:not(:hover) label input:checked ~ .icon,
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating:hover label:hover input ~ .icon {
+  color: var(--ratings-input-color);
+}
+
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px;
+}
+
+
+
+
+
+/* OUR-CARS-Section-3 */
+
+.Select-Cars-Booking-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Select-Cars-Booking-section  .container {
+  background-color: var(--off-white-color);
+
+}
+
+.Select-Cars-Booking-section  .All-Step {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 40px;
+}
+
+
+
+.Select-Cars-Booking-section  .step {
+  text-align: left;
+  width: 30%;
+  transition: all 0.3s ease;
+}
+
+
+
+.Select-Cars-Booking-section  .Select-Cars-Booking-heading{
+  display: flex; 
+  line-height: 2;
+
+}
+
+.Select-Cars-Booking-section  .Select-Cars-Booking-heading i{
+  color: var(--buttons-and-icons-color1); 
+  font-size: 25px; 
+  padding-right: 30px;
+
+}
+
+.Select-Cars-Booking-section  .Select-Cars-Booking-heading h3 {
+  font-family: var(--main-font);
+  color: var(--black-color);
+  font-size: 1.2em;
+  margin: 10px 0;
+  margin-bottom: 20px;
+
+}
+
+.Select-Cars-Booking-section  .Select-Cars-Booking-paragraph {
+  font-family: var(--secondary-font);
+  font-weight: 300;
+  color: var(--black-color);
+  font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+  .Select-Cars-Booking-section  .All-Step {
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+  }
+
+  .Select-Cars-Booking-section  .step {
+      width: 80%;
+      margin: 10px 0;
+  }
+
+  .Select-Cars-Booking-section  .Select-Cars-Booking-heading  h3{
+      font-size: 1em;
+  }
+
+  .Select-Cars-Booking-section  .Select-Cars-Booking-pragraph p{
+      font-size: 0.8em;
+  }
+}
+
+
+
+
+
+/* Our-Cars-video background */
+.Background-Video-Our-Car-Section {
+  margin-top: 150px;
+  position: relative;
+  height: 700px; /* Set the height of the section */
+}
+
+#background-video-Cars-Section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire container */
+}
+
+.Background-Video-Our-Car-Section  .text-overlay {
+  padding:  100px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.Background-Video-Our-Car-Section  .text-white {
+  color: var(--white-color); 
+}
+
+.Background-Video-Our-Car-Section  .text-white h2{
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 50px;
+  color: var(--white-color);
+}
+
+.Background-Video-Our-Car-Section  .text-white p{
+  margin-top: 30px;
+  margin-bottom: 50px;
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 300;
+
+}
+
+
+.Background-Video-Our-Car-Section  .Get-now-button{
+  color: var(--white-color);
+  border: 2px solid;
+  border-color: var(--black-color);
+  background-color: var(--footer-background-color-2);
+  padding: 10px 20px;
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 17px;
+}
+
+
+.Background-Video-Our-Car-Section  .Get-now-button:hover{
+  border-color: var(--white-color);
+
+}
+
+
+
+
+
+/* OUR CARS AND LATEST BLOG & ARTICLES SECTION */
+.Our-Cars-And-Latest-Blog-Articles-Section{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.Our-Cars-And-Latest-Blog-Articles-Section  .product-item{
+  height: 100%;
+}
+
+.Our-Cars-And-Latest-Blog-Articles-Heading{
+  font-family: var(--main-font);
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--black-color);
+  margin-bottom: 70px;
+}
+/* OUR CARS AND Latest Blog & Articles Section Cards */
+
+.Our-Cars-And-Latest-Blog-Articles-Section .product-img{
+  position: relative;
+  overflow: hidden;
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .product-img span{
+  font-family: var(--secondary-font);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--white-color);
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .btns{
+  font-size: 15px;
+  font-weight: 300;
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .btns a{
+  background-color: transparent;
+  border: 1px solid black;
+  color: var(--white-color);
+  background-color: var(--buttons-and-icons-color1);
+  transition: all 0.3s ease-in-out;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 15px;
+  font-style: normal;
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .btns a:hover{
+  color: #FFFFFF;
+  background-color: #000000;
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .product-img:hover .btns{
+  bottom: 0;
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .Save{
+  position: absolute;
+  width: 30%;
+  top: 16px;
+  right: 15px;
+  font-size: 15px;
+  color: white;
+  background-color: black;
+  text-align: center;
+
+}
+.Our-Cars-And-Latest-Blog-Articles-Section .product-type{
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+
+.Our-Cars-And-Latest-Blog-Articles-Section .product-item{
+  width: 100%;
+  padding: 0;
+  box-shadow: none
+} 
 
 
 

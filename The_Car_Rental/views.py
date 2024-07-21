@@ -25,3 +25,12 @@ def Create_accountPage(request):
 
 def faqPage(request):
     return render(request, 'faq.html') 
+
+
+def Our_carsPage(request):
+    return render(request, 'Our_Cars.html') 
+
+
+def Car_detailPage(request):
+    return render(request, 'Car_Details.html') 
+

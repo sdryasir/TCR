@@ -1,143 +1,27 @@
 {% load static %}
 {% include 'header/header.html' %}
+
+
 <main class="main-content">
-    <section class="Main-Hero-Section">
-        <div class="Hero-Section-image">
-            <img class="" src="{% static 'images/Hero-Section-Image.jpg' %}" alt="">
-            <div class="image-overlay"></div>
+    <section class="Our-Cars-Main-Hero-Section">
+        <div class="Our-Cars-Hero-Section-image">
+            <img class="" src="{% static 'images/Default-Hero-Section-Image.jpg' %}" alt="">
+            <div class="Our-Cars-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
-        <div class="Hero-Section-Image-Content">
+        <div class="Our-Cars-Hero-Section-Image-Content">
             <div class="container">
-                <div class="Hero-Section-Image-Content-Heading content">
-                    <h2>YOUR TRUSTED CAR<br>RENTAL COMPANION</h2>
+                <div class="Our-Cars-Hero-Section-Image-Content-Heading content">
+                    <h2>UNVEILING EXCELLENCE:<br>OUR FEATURED CAR</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
-                <div class="Hero-Section-Image-Content-Description content">
-                    <p>This hero title implies that the car rental website is your ultimate <br> guide and ally for lal your car rental needs.</p>
-                </div><!-- /.Hero-Section-Image-Content-Description -->
-                <div class="Hero-Section-Image-Content-Modal-Box content">
-                    <a href="" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
-                    <a href="">PLAY DEMO</a>
-                </div><!-- /.Hero-Section-Image-Content-Modal-Box -->
-                <div class="Hero-Section-Image-Content-Book-A-Car">
-                    <div class="heading">
-                        <h4>BOOK A CAR</h4>
-                    </div><!-- /.heading -->
-                    <div class="Booking-Schedule-Content">
-                        <div class="Booking-Schedule-Content-Form">
-                            <form class="car-rent-form">
-                                <input type="text" name="car_name" placeholder="Your Name">
-                                <select name="car_name_dropdown" class="select-placeholder">
-                                    <option value="" disabled selected>Choose a Car</option>
-                                    <option value="car1">SUV</option>                               
-                                    <option value="car2">Sedan</option>
-                                    <option value="car2">Sport</option>
-                                    <option value="car2">Van</option>
-                                </select>
-                                <input type="text" name="pickup_date" placeholder="Pickup Date" class="date-input" onclick="showDatepicker(this)">
-                                <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">
-                                <button type="submit">BOOK NOW</button>
-                            </form>
-                        </div><!-- /.Booking-Schedule-Content-Form -->
-                    </div><!-- /.Booking-Schedule-Content -->
-                    <div class="Hero-Section-Image-Content-Price">
-                        <h5>Starting at <span>$40.00</span> / Hours</h5>
-                    </div><!-- /.Hero-Section-Image-Content-Price -->
-                </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
+                <div class="Our-Cars-Hero-Section-Image-Content-Description content">
+                    <p>This prestigious spotlight shines on a remarkable vehicle carefully<br>selected for its exceptional performance, style, and innovation.</p>
+                </div>
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->
-    <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
-        <div class="container-fluid">
-            <div class="Driving-Excellence-Heading">
-                <h2>DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
-            </div><!-- /.Driving-Excellence-Heading -->
-            <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-1.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-2.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-3.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              </div>
-        </div><!-- /.container-fluid -->
-    </div><!-- /.Driving-excellence-owl-carousel -->
-    <div class="driving-excellence-counter-section">
+    <div class="UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12	  col-md-12	  col-lg-12  col-xl-5">
-                    <div class="content">
-                        <p>Quisque rutrum aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui etiam rhoncus. Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
-                        <div class="About-us-link">
-                            <a href="">ABOUT US <span><i class="fi fi-rs-arrow-right"></i></span></a>
-                        </div>
-                    </div><!-- /.content -->
-                </div><!-- /.col-5 -->
-                <div class="col-1"></div><!-- /.col-1 -->
-                <div class="col-sm-12	 col-md-12	  col-lg-12   col-xl-6 ">
-                    <div class="Counter-animation">        
-                        <div class=" counterapp-col counterapp-col-no-padding">
-                            <div class="counter-box">
-                                <h2 class="counter">10</h2><span class="counterapp-span">+</span>
-                            </div>
-                            <h4>Years experience</h4>
-                        </div>
-                        <div class=" counterapp-col">
-                            <div class="counter-box">
-                                <h2 class="counter">62</h2><span class="counterapp-span">+</span>
-                            </div>
-                            <h4>Number of Cars</h4>
-                            </div>
-                        <div class="counterapp-col">
-                            <div class="counter-box">
-                                <h2 class="counter">97</h2><span class="counterapp-span">%</span>
-                            </div>
-                            <h4>Satisfaction Rate</h4>
-                        </div>                  
-                    </div><!-- /.Counter-animation -->
-                </div><!-- /.col-6 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div><!-- /.driving-excellence-counter -->
-    <div class="why-choose-us-background-image" style="margin-top: 100px;">
-      <div class="container why-choose-us-container">
-        <div class="row" style="display: flex; align-items: center;">
-            <div class="col-sm-12	  col-md-12	  col-lg-5"> 
-                <div class="award-image">
-                    <img src="{% static 'images/why-choose-us-section-award-img.png' %}" alt="" >               
-                </div>
-            </div>    
-            <div class="col-1 col-md-0"></div><!-- /.col-1 -->  
-            <div class="col-sm-12	  col-md-12  col-lg-6">        
-                <h2 class="padding-item">WHY CHOOSE US</h2>
-                <p class="padding-item">Nullam dictum felis eu pede mollis pretium. Integer tincidunt cras dapibus Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula porttitor eu consequat vitae.</p>
-                <div class="features padding-item">
-                    <div class="feature"><i class="fi fi-rs-label why-choose-us-icons"></i><span>AFFORDABLE PRICE</span></div>
-                    <div class="feature"><i class="fi fi-rs-clock-five why-choose-us-icons"></i><span>24/7 SUPPORT</span></div>
-                    <div class="feature padding-top"><i class="fi fi-rs-calendar-lines-pen why-choose-us-icons"></i><span>EASY TO BOOKING</span></div>
-                    <div class="feature padding-top"><i class="fi fi-rs-shield-trust why-choose-us-icons"></i><span>TRUSTED</span></div>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div><!-- /.why-choose-us-background-image -->
-    <div class="Our-Featured-Cars-Section">
-        <div class="container">
-            <div class = "row">
-                <h3 class = "text-center Our-Featured-Cars-Heading">OUR FEATURED CARS</h3>
-            </div>
-            <div class = "row owl-carousel-1 owl-carousel owl-theme">    
+            <div class = "row owl-carousel-4 owl-carousel owl-theme">    
                 <div class = "col-4 product-item">
                     <div class = "product-img">
                         <img src ="{% static 'images/Our-Featured-Cars-pic-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
@@ -332,55 +216,225 @@
                 </div>
             </div>
         </div><!-- /.container -->
-    </div><!-- /.Our-Featured-Cars-Section -->
-    <div class="Testimonial-Section-heading">
-        <h2>WHAT CUSTOMER SAY <br>ABOUT CARENT</h2>
-    </div><!-- /.Testimonial-Section-heading -->
-    <div class="Testimonial-Section">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="testimonial-bg">
-                        <div id="testimonial-slider" class="owl-carousel owl-carousel-2 owl-theme">
-                            <div class="testimonial">
-                                <p class="description">
-                                    "Carent made my recent trip a breeze! The booking process was a snap, and I got an awesome car that was clean and ready to hit the road. Their customer service team was also incredibly helpful."
-                                </p>
-                                <div class="pic">
-                                    <img src="{% static 'images/testimonial-pic-1.jpg' %}" alt="">
-                                </div>
-                                <h3 class="title">KEVIN DOE</h3>
-                                <span class="post">Influencer</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                            </div>
-         
-                            <div class="testimonial">
-                                <p class="description">
-                                    "I've rented cars from various companies, but Carent stands out. The cars are in fantastic condition, and their prices are unbeatable. Plus, the pickup and drop-off process couldn't be easier. Highly recommended!"
-                                </p>
-                                <div class="pic">
-                                    <img src="{% static 'images/testimonial-pic-2.jpg' %}" alt="">
-                                </div>
-                                <h3 class="title">MELLISA CHRIST</h3>
-                                <span class="post">Business Owner</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                            </div>
+    </div><!-- /.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section -->
+    <div class="UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2">
+        <div class="container">
+            <div class = "row owl-carousel-5 owl-carousel owl-theme">    
+                <div class = "col-4 product-item">
+                    <div class = "product-img">
+                        <img src ="{% static 'images/Our-Featured-Cars-pic-5.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save"></span>
+                    </div>  
+                    <div class = "product-info">
+                        <span class = "product-type"><h2>HONDA CIVIC RS</h2></span>
+                        <span class = "product-type"><h6>4 Passengers</h6></span>
+                        <span class = "product-price">$20 <span class="light-font"> / Hours</span></span>
+                        <div class = "rating d-flex mt-1">
+                            <form class="rating">
+                                <label>
+                                  <input type="radio" name="stars" value="1" />
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="2" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="3" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>   
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="4" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="5" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                            </form>
                         </div>
-                    </div>
+                    </div> 
+                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
+                    </div>     
+                </div>
+                <div class = "col-4 product-item">
+                    <div class = "product-img">
+                        <img src ="{% static 'images/Our-Featured-Cars-pic-6.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save"></span>
+                    </div>  
+                    <div class = "product-info">
+                        <span class = "product-type"><h2>BMX 1 GTR</h2></span>
+                        <span class = "product-type"><h6>4 Passengers</h6></span>
+                        <span class = "product-price">$35 <span class="light-font"> / Hours</span></span>
+                        <div class = "rating d-flex mt-1">
+                            <form class="rating">
+                                <label>
+                                  <input type="radio" name="stars" value="1" />
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="2" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="3" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>   
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="4" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="5" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                            </form>
+                        </div>
+                    </div> 
+                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
+                    </div>     
+                </div>
+                <div class = "col-4 product-item">
+                    <div class = "product-img">
+                        <img src ="{% static 'images/Our-Featured-Cars-pic-7.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save"></span>
+                    </div>  
+                    <div class = "product-info">
+                        <span class = "product-type"><h2>FORD RAPTOR SUV</h2></span>
+                        <span class = "product-type"><h6>4 Passengers</h6></span>
+                        <span class = "product-price">$30 <span class="light-font"> / Hours</span></span>
+                        <div class = "rating d-flex mt-1">
+                            <form class="rating">
+                                <label>
+                                  <input type="radio" name="stars" value="1" />
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="2" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="3" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>   
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="4" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="5" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                            </form>
+                        </div>
+                    </div> 
+                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
+                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
+                    </div>     
+                </div>
+                <div class = "col-4 product-item">
+                    <div class = "product-img">
+                        <img src ="{% static 'images/Our-Featured-Cars-pic-7.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save"></span>
+                    </div>  
+                    <div class = "product-info">
+                        <span class = "product-type"><h2>FORD RAPTOR SUV</h2></span>
+                        <span class = "product-type"><h6>4 Passengers</h6></span>
+                        <span class = "product-price">$30 <span class="light-font"> / Hours</span></span>
+                        <div class = "rating d-flex mt-1">
+                            <form class="rating">
+                                <label>
+                                  <input type="radio" name="stars" value="1" />
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="2" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="3" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>   
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="4" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                                <label>
+                                  <input type="radio" name="stars" value="5" />
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                  <span class="icon">★</span>
+                                </label>
+                            </form>
+                        </div>
+                    </div> 
+                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
+                        <a href=""  class = "col-6 py-2">RENT NOW</a>
+                    </div>     
                 </div>
             </div>
+        </div><!-- /.container -->
+    </div><!-- /.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2 -->
+    <div class="Select-Cars-Booking-section">
+        <div class="container">
+            <div class="All-Step">
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-checkbox"></i><h3>SELECT YOUR CAR</h3></i></a>
+                <p class="Select-Cars-Booking-paragraph">Phasellus viverra nulla ut metus varius laoreet quisque rutrum.</p>
+            </div>
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-calendar-clock"></i><h3>DEFINE YOUR BOOKING</h3></a>
+                <p class="Select-Cars-Booking-paragraph">Maecenas tempus, tellus eget rhoncus sem quam semper libero.</p>
+            </div>
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-wallet-arrow"></i><h3>PAY THE PAYMENT</h3></a>
+                <p class="Select-Cars-Booking-paragraph">Donec vitae sapien ut libero faucibus nullam quis ante.</p>
+            </div>
+            </div>
         </div>
-    </div><!-- /.Testimonial-Section -->
-    <div class="Background-Video-Section" style="margin-bottom: 100px;">
-        <video id="background-video" autoplay loop muted preload="none">
+    </div><!-- /Select-Cars-Booking-section -->
+    <div class="Background-Video-Our-Car-Section" style="margin-bottom: 100px;">
+        <video id="background-video-Cars-Section" autoplay loop muted preload="none">
             <source src="{% static 'videos/Background-Video-1.mp4' %}" type="video/mp4">
         </video>    
         <div class="text-overlay">
@@ -394,13 +448,18 @@
                 </div>
             </div>
         </div>
-    </div><!-- /.Background-Video-Section --> 
-    <div class="Our-Latest-Blog-Articles-Section">
+    </div><!-- /Background-Video-Our-Car-Section --> 
+
+
+
+
+
+    <div class="Our-Cars-And-Latest-Blog-Articles-Section">
         <div class="container">
             <div class = "row">
-                <h3 class = "text-center Our-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
+                <h3 class = "text-center Our-Cars-And-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
             </div>
-            <div class = "row owl-carousel-3 owl-carousel owl-theme">    
+            <div class = "row owl-carousel-6 owl-carousel owl-theme">    
                 <div class = "col-4 product-item">
                     <div class = "product-img">
                         <img src ="{% static 'images/Our Latest Blog & Articles 1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
@@ -457,37 +516,8 @@
             </div>
         </div><!-- /.container -->
     </div><!-- /.Our-Latest-Blog-Articles-Section -->
-    <div class="Frequently-Asked-Questions-Section">
-        <div class="container">
-            <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
-            <div class="accordion">
-              <div class="accordion-item">
-                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">HOW OLD DO I NEED TO BE TO RENT A CAR?</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">WHAT DOCUMENTS DO I NEED TO RENT A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">DO I NEED INSURANCE WHEN RENTING A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">WHAT IS THE FUEL POLICY FOR RENTAL CARS?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div><!-- /.Frequently-Asked-Questions-Section -->
-</main><!-- /.main-content -->
 
-{% include 'footer/footer.html' %}
+
+
+
+    {% include 'footer/footer.html' %}
