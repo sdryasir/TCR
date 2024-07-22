@@ -2677,7 +2677,7 @@ color: var(--black-color);
 
 
 .UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2{
-  margin-top: 50px;
+  margin-top: 150px;
   margin-bottom: 100px;
 }
 
@@ -2782,8 +2782,12 @@ color: var(--black-color);
   padding-left: 40px;
 }
 
+.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .col-lg-4{
+  margin-bottom: 50px;
+
+}
+
 .UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .product-item{
-  width: 100%;
   padding: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 6px 0 rgba(0, 0, 0, 0.1);
 
@@ -2856,6 +2860,19 @@ color: var(--black-color);
 .UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2  .rating label input:focus:not(:checked) ~ .icon:last-child {
   color: #000;
   text-shadow: 0 0 5px;
+}
+
+
+/* Pagination */
+
+.Our-Cars-Pagination .Pagination{
+  display: flex; 
+  justify-content: right;
+}
+
+.page-link {
+  color: var(--white-color);
+  background-color: var(--black-color);
 }
 
 
