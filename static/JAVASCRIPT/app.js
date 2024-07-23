@@ -229,43 +229,6 @@ items.forEach(item => item.addEventListener('click', toggleAccordion));
 // 1) Card Slider)
 
 
-$('.owl-carousel-4').owlCarousel({
-  loop: false,
-  nav:false,
-  margin:20,
-  autoplay: false,
-  responsive:{
-      0:{
-          items:1
-      },
-      600:{
-          items:2
-      },
-      1000:{
-          items:3
-      }
-  }
-})
-
-
-
-$('.owl-carousel-5').owlCarousel({
-  loop: false,
-  nav:false,
-  margin:20,
-  autoplay: false,
-  responsive:{
-      0:{
-          items:1
-      },
-      600:{
-          items:2
-      },
-      1000:{
-          items:3
-      }
-  }
-})
 
 
 $('.owl-carousel-6').owlCarousel({
@@ -311,3 +274,39 @@ $('.owl-carousel-7').owlCarousel({
 })
 
 
+
+
+
+
+// Page CONTACT)
+
+$(document).ready(function(){
+
+	//material contact form
+	$('.contact-form').find('.form-control').each(function() {
+	  var targetItem = $(this).parent();
+	  if ($(this).val()) {
+		$(targetItem).find('label').css({
+		  'top': '10px',
+		  'fontSize': '14px'
+		});
+	  }
+	})
+	$('.contact-form').find('.form-control').focus(function() {
+	  $(this).parent('.input-block').addClass('focus');
+	  $(this).parent().find('label').animate({
+		'top': '10px',
+		'fontSize': '14px'
+	  }, 300);
+	})
+	$('.contact-form').find('.form-control').blur(function() {
+	  if ($(this).val().length == 0) {
+		$(this).parent('.input-block').removeClass('focus');
+		$(this).parent().find('label').animate({
+		  'top': '25px',
+		  'fontSize': '18px'
+		}, 300);
+	  }
+	})
+	
+});
