@@ -2485,6 +2485,10 @@ color: var(--black-color);
 }
 
 
+
+
+
+
 @media (max-width: 2000px) {
   .FAQ-Hero-Section-Image-Content{
     top: 18%;   
@@ -3894,6 +3898,177 @@ textarea {
 
 
 
+/* 8) Our Team PAGE */
+
+
+/* OUR-TEAM-Hero-Section */
+
+
+/* OUR-TEAM-Cards-Section */
+
+
+
+
+/* 9) BLOG PAGE */
+
+
+/* BLOG-Hero-Section */
+.Blog-Hero-Section-image {
+  position: relative;
+
+}
+
+.Blog-Hero-Section-image img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.Blog-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity here */
+}
+
+.Blog-Hero-Section-Image-Content{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.Blog-Hero-Section-Image-Content .content{
+  padding: 10px 0;
+
+}
+
+
+
+
+.Blog-Hero-Section-Image-Content h2{
+  font-family: var(--main-font);
+  font-size: 60px;
+  color: var(--white-color);
+  text-align: center;
+}
+
+.Blog-Hero-Section-Image-Content p{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--white-color);
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+
+}
+
+
+@media (max-width: 2000px) {
+  .Blog-Hero-Section-Image-Content{
+    top: 18%;   
+  }
+
+}
+
+@media (max-width: 1800px) {
+  .Blog-Hero-Section-Image-Content{
+    top: 16%;   
+  }
+
+}
+@media (max-width: 1690px) {
+  .Blog-Hero-Section-Image-Content{
+    top: 14%;   
+  }
+  .Blog-Hero-Section-Image-Content h2{
+    font-size: 45px;
+  }
+  .Blog-Hero-Section-Image-Content p{
+    font-size: 15px;
+  }
+
+
+}
+
+
+@media (max-width: 1350px) {
+  .Blog-Hero-Section-Image-Content h2{
+    font-size: 35px;
+  }
+  .Blog-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .Blog-Hero-Section-Image-Content{
+    top: 12%;   
+  }
+
+  .Blog-Hero-Section-Image-Content h2{
+    font-size: 30px;
+  }
+  .Blog-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .Blog-Hero-Section-Image-Content{
+    top: 10%;   
+  }
+
+  .Blog-Hero-Section-Image-Content h2{
+    font-size: 25px;
+  }
+  .Blog-Hero-Section-Image-Content p{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 950px) {
+  .Blog-Hero-Section-Image-Content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .Blog-Hero-Section-Image-Content h2{
+    font-size: 40px;
+    color: var(--black-color);
+  }
+  
+  .Blog-Hero-Section-Image-Content p{
+    font-size: 18px;
+    color: var(--black-color);
+  
+  }
+
+}
+
+/* BLOG-Cards-Section */
+
+
+
+/* Blog Pagination */
+
+.Blog-Pagination .Pagination{
+  display: flex;
+  justify-content: right;
+}
+
+
+
+
+
+
+
 
 
 
@@ -4067,10 +4242,17 @@ textarea {
   padding: 0 10px;
   font-size: 30px;
 }
-a.footer-social-links{
-  padding-left: 0;
+
+.footer-social-links:hover{
+  color: var(--buttons-and-icons-color1);
 }
 
+
+
+a.footer-social-links{
+  padding-left: 0;
+
+}
 
 
 

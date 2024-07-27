@@ -38,3 +38,15 @@ def Car_detailPage(request):
 def contactPage(request):
     return render(request, 'Contact.html') 
 
+
+def Our_teamPage(request):
+    return render(request, 'Our_Team.html') 
+
+
+def blogPage(request):
+    return render(request, 'Blog.html') 
+
+
+def Single_postPage(request):
+    return render(request, 'Single_Post.html') 
+
