@@ -29,4 +29,7 @@ urlpatterns = [
     path('car-detail/', views.Car_detailPage, name='car_detail'),
     path('faq/', views.faqPage, name='faq'),
     path('contact/', views.contactPage, name='contact'),
+    path('our-team/', views.Our_teamPage, name='our_team'),
+    path('blog/', views.blogPage, name='blog'),
+    path('single-post/', views.Single_postPage, name='single_post'),
 ]
