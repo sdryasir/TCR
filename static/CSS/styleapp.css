@@ -159,6 +159,14 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
     padding: 0 10px;
     color: white;
   }
+
+  .logo img{
+    width: 150px !important;
+  }
+
+
+
+
   .nav-chlab:hover, #nav-check:checked ~ .nav-chlab {
     color: #424DFFEB;
 
