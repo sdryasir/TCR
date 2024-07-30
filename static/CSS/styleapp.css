@@ -3949,6 +3949,7 @@ textarea {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  cursor: default;
 }
 .Our-Team-Cards .container .card .content {
 	position: absolute;
