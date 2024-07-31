@@ -3949,6 +3949,7 @@ textarea {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  cursor: default;
 }
 .Our-Team-Cards .container .card .content {
 	position: absolute;
@@ -3960,11 +3961,11 @@ textarea {
 	align-items: center;
 	z-index: 10;
 	flex-direction: column;
-	backdrop-filter: blur(50px);
-	box-shadow: 0 -10 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px); /* Apply blur effect */
+  background-color: rgba(255, 255, 255, 0.3); /* White overlay with 50% opacity */
 	border: 0;
-	transition: bottom 0.5s;
-	transition-delay: 0.8s;
+	transition: bottom 0.3s;
+	transition-delay: 0.4s;
 }
 
 
@@ -3992,7 +3993,7 @@ textarea {
 	transform: translateY(0px);
 }
 .Our-Team-Cards .container .card .content .contentBox h3 span {
-  color: var(--white-color);
+  color: var(--buttons-and-icons-color1);
   font-family: var(--secondary-font);
 	font-size: 18px;
 	font-weight: 400;
@@ -4023,13 +4024,53 @@ textarea {
 }
 
 .Our-Team-Cards .container .card .content .sci li a {
-	color: var(--black-color);
-	font-size: 25px;
+	color: var(--white-color);
+	font-size: 20px;
+  border: 2px solid;
+  border-color: var(--white-color);
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Example size */
+  height: 40px; /* Example size */
 }
 
 .Our-Team-Cards .container .card .content .sci li a:hover {
-	color: var(--white-color);
+	color: var(--buttons-and-icons-color1);
+  background-color: var(--white-color);
+
+  
 }
+
+.Our-Team-Cards .container .card .content .sci li a:hover i{
+  display: inline-block;
+  transition: transform 0.3s ease;
+  animation: bounce 0.2s ease forwards; /* Apply the bounce animation */
+
+  
+}
+
+
+
+@keyframes bounce {
+  0% {
+      transform: translateY(0); /* Start at the original position */
+  }
+  25% {
+      transform: translateY(10px); /* Move down */
+
+  }
+  50% {
+      transform: translateY(-10px); /* Move back to the original position */
+
+  }
+  100% {
+      transform: translateY(0); /* Move back to the original position */
+  }
+}
+
+
 
 /* OUR-TEAM-Background-Video-Section*/
 
