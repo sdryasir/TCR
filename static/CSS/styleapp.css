@@ -1960,6 +1960,250 @@ color: var(--black-color);
 
 
 
+
+
+/* About-Counter Section */
+.driving-excellence-About-counter-section{
+  margin-top: 100px;
+}
+
+
+.driving-excellence-About-counter-section .content .About-us-link {
+  padding-top: 30px;
+  
+}
+
+
+.driving-excellence-About-counter-section .content .About-us-link a{
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--buttons-and-icons-color1);
+  border-bottom: 1px solid;
+  border-color: var(--buttons-and-icons-color1);
+  
+
+}
+
+
+.driving-excellence-About-counter-section .content .About-us-link a span{
+  padding-left: 20px;
+  color: var(--buttons-and-icons-color1);
+
+
+}
+
+
+/* Counter Section (Counter Animation) */
+
+
+ 
+.About-Counter-animation{
+  display: flex; 
+
+} 
+
+
+.About-Counter-animation .About-counter-box{
+  display: flex; 
+  align-items: center;
+}
+
+.About-counterapp-col{
+  padding: 0 50px;
+}
+.About-counterapp-col-no-padding{
+  padding-left: 0;
+}
+
+
+.About-counterapp-col h2{
+  font-family: var(--main-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.About-counterapp-col span{
+  padding-left: 10px;
+  font-family: var(--main-font);
+  color: var(--buttons-and-icons-color1);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.About-counterapp-col h4{
+  padding-top: 15px;
+  font-family: var(--secondary-font);
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+} 
+
+/* Counter Section (Counter Animation) Media Query*/
+
+
+@media (max-width: 700px) {
+  .About-Counter-animation{
+    display: block; 
+  
+  }
+  .About-counterapp-col{
+    padding: 0;
+  }
+  .About-counterapp-col-no-padding{
+    padding: 0;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* About-Hero-Section */
+
+/*About-Heading*/
+.About-Heading{
+  margin: 100px 0;
+}
+
+.About-Heading .container{
+  display: flex;
+  justify-content: center;
+}
+
+
+.About-Heading h2{
+  font-family: var(--main-font);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--black-color);
+  text-align: center;
+}
+/* About-Cards-Section */
+
+.About-Cards .col-xl-4{
+  display: flex;
+  justify-content: center;
+}
+
+.About-Cards .container .About-card {
+	position: relative;
+	width: 400px;
+	height: 600px;
+	margin: 5px;
+  margin-bottom: 80px;
+	overflow: hidden;
+  border: 0;
+  background-color: var(--off-white-color);
+	border-radius: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.About-Cards .container .About-card .About-content {
+	position: absolute;
+	bottom: -160px;
+	width: 100%;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	flex-direction: column;
+	backdrop-filter: blur(50px);
+	box-shadow: 0 -10 10px rgba(0, 0, 0, 0.1);
+	border: 0;
+	transition: bottom 0.5s;
+	transition-delay: 0.8s;
+}
+
+
+.About-Cards .container .About-card:hover .About-content {
+	bottom: 0px;
+	transition-delay: 0s;
+}
+.About-Cards .container .About-card .About-content .About-contentBox h3 {
+	color: var(--black-color);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+  font-family: var(--main-font);
+	font-weight: 500;
+	font-size: 25px;
+	text-align: center;
+	margin: 20px 0 15px;
+	line-height: 1.1em;
+	transition: 0.5s;
+	opacity: 0;
+	transform: translate(20px, 30px);
+	transition-delay: 0.6s;
+}
+.About-Cards .container .About-card:hover .About-content .About-contentBox h3 {
+	opacity: 1;
+	transform: translateY(0px);
+}
+.About-Cards .container .About-card .About-content .About-contentBox h3 span {
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: initial;
+}
+.About-Cards .container .About-card .About-content .About-sci {
+	position: relative;
+	bottom: 10px;
+	display: flex;
+}
+
+.About-Cards .container .About-card .About-content .About-sci ol, ul {
+  padding-left: 0;
+}
+
+
+.About-Cards .container .About-card .About-content .About-sci li {
+	list-style: none;
+	margin: 0 10px;
+	transform: translateY(40px);
+	transition: 0.5s;
+	opacity: 0;
+	transition-delay: calc(0.2s * var(--i));
+}
+.About-Cards .container .About-card:hover .About-content .About-sci li {
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.About-Cards .container .About-card .About-content .About-sci li a {
+	color: var(--black-color);
+	font-size: 25px;
+}
+
+.About-Cards .container .About-card .About-content .About-sci li a:hover {
+	color: var(--white-color);
+}
+
+
+
+
+
+
+
+
+
+
 /* 3) LOGIN PAGE */
 
 
