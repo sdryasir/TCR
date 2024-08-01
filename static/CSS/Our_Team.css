@@ -1,0 +1,168 @@
+/* 9) Our Team PAGE */
+
+
+/* OUR-TEAM-Hero-Section */
+
+/*Our-Team-Heading*/
+.Our-Team-Heading{
+    margin: 100px 0;
+  }
+  
+  .Our-Team-Heading .container{
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .Our-Team-Heading h2{
+    font-family: var(--main-font);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--black-color);
+    text-align: center;
+  }
+  /* OUR-TEAM-Cards-Section */
+  
+  .Our-Team-Cards .col-xl-4{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .Our-Team-Cards .container .card {
+      position: relative;
+      width: 400px;
+      height: 600px;
+      margin: 5px;
+    margin-bottom: 80px;
+      overflow: hidden;
+    border: 0;
+    background-color: var(--off-white-color);
+      border-radius: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    cursor: default;
+  }
+  .Our-Team-Cards .container .card .content {
+      position: absolute;
+      bottom: -160px;
+      width: 100%;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      flex-direction: column;
+    backdrop-filter: blur(50px); /* Apply blur effect */
+    background-color: rgba(255, 255, 255, 0.3); /* White overlay with 50% opacity */
+      border: 0;
+      transition: bottom 0.3s;
+      transition-delay: 0.4s;
+  }
+  
+  
+  .Our-Team-Cards .container .card:hover .content {
+      bottom: 0px;
+      transition-delay: 0s;
+  }
+  .Our-Team-Cards .container .card .content .contentBox h3 {
+      color: var(--black-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    font-family: var(--main-font);
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      margin: 20px 0 15px;
+      line-height: 1.1em;
+      transition: 0.5s;
+      opacity: 0;
+      transform: translate(20px, 30px);
+      transition-delay: 0.6s;
+  }
+  .Our-Team-Cards .container .card:hover .content .contentBox h3 {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+  .Our-Team-Cards .container .card .content .contentBox h3 span {
+    color: var(--buttons-and-icons-color1);
+    font-family: var(--secondary-font);
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: initial;
+  }
+  .Our-Team-Cards .container .card .content .sci {
+      position: relative;
+      bottom: 10px;
+      display: flex;
+  }
+  
+  .Our-Team-Cards .container .card .content .sci ol, ul {
+    padding-left: 0;
+  }
+  
+  
+  .Our-Team-Cards .container .card .content .sci li {
+      list-style: none;
+      margin: 0 10px;
+      transform: translateY(40px);
+      transition: 0.5s;
+      opacity: 0;
+      transition-delay: calc(0.2s * var(--i));
+  }
+  .Our-Team-Cards .container .card:hover .content .sci li {
+      transform: translateY(0px);
+      opacity: 1;
+  }
+  
+  .Our-Team-Cards .container .card .content .sci li a {
+      color: var(--white-color);
+      font-size: 20px;
+    border: 2px solid;
+    border-color: var(--white-color);
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Example size */
+    height: 40px; /* Example size */
+  }
+  
+  .Our-Team-Cards .container .card .content .sci li a:hover {
+      color: var(--buttons-and-icons-color1);
+    background-color: var(--white-color);
+  
+    
+  }
+  
+  .Our-Team-Cards .container .card .content .sci li a:hover i{
+    display: inline-block;
+    transition: transform 0.3s ease;
+    animation: bounce 0.2s ease forwards; /* Apply the bounce animation */
+  
+    
+  }
+  
+  
+  
+  @keyframes bounce {
+    0% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    25% {
+        transform: translateY(10px); /* Move down */
+  
+    }
+    50% {
+        transform: translateY(-10px); /* Move back to the original position */
+  
+    }
+    100% {
+        transform: translateY(0); /* Move back to the original position */
+    }
+  }
+  
+  
+  
+  /* OUR-TEAM-Background-Video-Section*/
+  
