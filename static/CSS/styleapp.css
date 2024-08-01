@@ -880,13 +880,13 @@ color: var(--black-color);
 }
 
 
-.driving-excellence-counter-section .content .About-us-link {
+.driving-excellence-About-counter-section .content .Our-Cars-link {
   padding-top: 30px;
   
 }
 
 
-.driving-excellence-counter-section .content .About-us-link a{
+.driving-excellence-About-counter-section .content .Our-Cars-link a{
   text-align: center;
   font-family: var(--secondary-font);
   font-weight: 400;
@@ -900,7 +900,7 @@ color: var(--black-color);
 }
 
 
-.driving-excellence-counter-section .content .About-us-link a span{
+.driving-excellence-About-counter-section .content .Our-Cars-link a span{
   padding-left: 20px;
   color: var(--buttons-and-icons-color1);
 
@@ -1831,6 +1831,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Login-image-overlay {
@@ -2035,6 +2036,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Create-Account-image-overlay {
@@ -2308,6 +2310,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .FAQ-image-overlay {
@@ -2462,6 +2465,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Our-Cars-image-overlay {
@@ -3076,6 +3080,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Car-Detail-image-overlay {
@@ -3427,6 +3432,7 @@ color: var(--black-color);
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Contact-image-overlay {
@@ -3778,6 +3784,7 @@ textarea {
   width: 100%;
   object-fit: cover;
   height: 100%;
+  background-color: var(--black-color);
 }
 
 .Blog-image-overlay {
