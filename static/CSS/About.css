@@ -1,3 +1,26 @@
+:root {
+  /* Main-Colors */
+    --white-color: rgb(255, 255, 255);
+    --black-color: rgb(0, 0, 0);
+    --grey-color: rgb(105,105,105);
+    --button-color: rgba(85,107,253,255);
+    --footer-background-color-1: rgba(32,32,30,255);
+    --footer-background-color-2:    rgba(22,22,22,255);
+    --buttons-and-icons-color1:rgba(66,77,255,255);
+    --ratings-color: 	rgb(255,165,0) ;
+    --ratings-input-color:	  rgb(255,223,0) ;
+    --off-white-color:   rgba(235,235,235,255);
+  
+  /* Main-Fonts */
+    --main-font:"Axion RX 14 W01 Regular";
+    --secondary-font: "Roboto", sans-serif;
+  
+  
+  
+  }
+  
+
+
 
 /* 2) ABOUT PAGE */
 
@@ -15,6 +38,7 @@
     width: 100%;
     object-fit: cover;
     height: 100%;
+    background-color: var(--black-color);
   }
   
   .About-image-overlay {
@@ -164,7 +188,7 @@
   }
   
   
-  .driving-excellence-About-counter-section .content .About-us-link a{
+  .driving-excellence-counter-section .content .About-us-link a{
     text-align: center;
     font-family: var(--secondary-font);
     font-weight: 400;
@@ -178,13 +202,40 @@
   }
   
   
-  .driving-excellence-About-counter-section .content .About-us-link a span{
+  .driving-excellence-counter-section .content .About-us-link a span{
     padding-left: 20px;
     color: var(--buttons-and-icons-color1);
   
   
   }
-  
+
+
+
+.driving-excellence-About-counter-section .content p{
+  color: var(--black-color);
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   /* Counter Section (Counter Animation) */
   
@@ -252,20 +303,98 @@
   
   
   }
+
+  
+  /* Book-Your-Adventure-Section */
+
+  .Book-your-drive-section{
+    margin-top: 100px;
+    background-image: url('/static/images/Default-Hero-Section-Image.png');
+    background-color: var(--black-color);
+  }
+  
+  .Book-your-drive-section .content{
+    padding: 100px 0;
+    text-align: center;
+  }
   
   
+  .Book-your-drive-section h2{
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    color: var(--white-color);
+    font-size: 50px;
+  }
+  
+
+  .Book-your-drive-section p{
+    padding-top: 30px;
+    font-family: var(--secondary-font);
+    color: var(--white-color);
+    font-size: 20px;
+  }
+
+  .Book-your-drive-section .Book-Now-button{
+    padding-top: 30px;
+  }
+  .Book-your-drive-section .Book-Now-button a{
+    font-family: var(--secondary-font);
+    color: var(--white-color);
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: var(--buttons-and-icons-color1);
+    padding: 10px;
+    font-weight: 400;
+  }
+  
+  .Book-your-drive-section .Book-Now-button a:hover{
+    color: var(--buttons-and-icons-color1);
+    background-color: var(--white-color);
+  }
   
   
+
+  @media (max-width: 1120px) {
+    .Book-your-drive-section{
+      background-image: url('/static/images/black-background.jpg');
+    }
+  }
+
+  @media (max-width: 970px) {
+    .Book-your-drive-section h2{
+      font-size: 30px;
+    }
+    .Book-your-drive-section p{
+      font-size: 17px;
+    }
+    .Book-your-drive-section .Book-Now-button a{
+      font-size: 17px;
+    }
   
+  }
+
+  @media (max-width: 500px) {
+    .Book-your-drive-section h2{
+      font-size: 25px;
+    }
+    .Book-your-drive-section p{
+      font-size: 15px;
+    }
+    .Book-your-drive-section .Book-Now-button a{
+      font-size: 15px;
+    }
   
-  
-  
-  
-  
-  
-  /* About-Hero-Section */
-  
+  }
+
+
+
+
+
+
   /*About-Heading*/
+  
+  
+  
   .About-Heading{
     margin: 100px 0;
   }
@@ -283,14 +412,23 @@
     color: var(--black-color);
     text-align: center;
   }
+  
+  
+  
+  
+  
+  
   /* About-Cards-Section */
   
-  .About-Cards .col-xl-4{
+
+
+
+ .About-Cards .col-xl-4{
     display: flex;
     justify-content: center;
   }
   
-  .About-Cards .container .About-card {
+  .About-Cards .container .card {
       position: relative;
       width: 400px;
       height: 600px;
@@ -303,8 +441,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    cursor: default;
   }
-  .About-Cards .container .About-card .About-content {
+  .About-Cards .container .card .content {
       position: absolute;
       bottom: -160px;
       width: 100%;
@@ -314,19 +453,19 @@
       align-items: center;
       z-index: 10;
       flex-direction: column;
-      backdrop-filter: blur(50px);
-      box-shadow: 0 -10 10px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(50px); /* Apply blur effect */
+      background-color: rgba(255, 255, 255, 0.3); /* White overlay with 50% opacity */
       border: 0;
-      transition: bottom 0.5s;
-      transition-delay: 0.8s;
+      transition: bottom 0.3s;
+      transition-delay: 0.4s;
   }
   
   
-  .About-Cards .container .About-card:hover .About-content {
+  .About-Cards .container .card:hover .content {
       bottom: 0px;
       transition-delay: 0s;
   }
-  .About-Cards .container .About-card .About-content .About-contentBox h3 {
+  .About-Cards .container .card .content .contentBox h3 {
       color: var(--black-color);
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -341,29 +480,30 @@
       transform: translate(20px, 30px);
       transition-delay: 0.6s;
   }
-  .About-Cards .container .About-card:hover .About-content .About-contentBox h3 {
+  .About-Cards .container .card:hover .content .contentBox h3 {
       opacity: 1;
       transform: translateY(0px);
+      text-transform: uppercase;
   }
-  .About-Cards .container .About-card .About-content .About-contentBox h3 span {
-    color: var(--white-color);
+  .About-Cards .container .card .content .contentBox h3 span {
+    color: var(--buttons-and-icons-color1);
     font-family: var(--secondary-font);
       font-size: 18px;
       font-weight: 400;
       text-transform: initial;
   }
-  .About-Cards .container .About-card .About-content .About-sci {
+  .About-Cards .container .card .content .sci {
       position: relative;
       bottom: 10px;
       display: flex;
   }
   
-  .About-Cards .container .About-card .About-content .About-sci ol, ul {
+  .About-Cards .container .card .content .sci ol, ul {
     padding-left: 0;
   }
   
   
-  .About-Cards .container .About-card .About-content .About-sci li {
+  .About-Cards .container .card .content .sci li {
       list-style: none;
       margin: 0 10px;
       transform: translateY(40px);
@@ -371,18 +511,54 @@
       opacity: 0;
       transition-delay: calc(0.2s * var(--i));
   }
-  .About-Cards .container .About-card:hover .About-content .About-sci li {
+  .About-Cards .container .card:hover .content .sci li {
       transform: translateY(0px);
       opacity: 1;
   }
   
-  .About-Cards .container .About-card .About-content .About-sci li a {
-      color: var(--black-color);
-      font-size: 25px;
-  }
-  
-  .About-Cards .container .About-card .About-content .About-sci li a:hover {
+  .About-Cards .container .card .content .sci li a {
       color: var(--white-color);
+      font-size: 20px;
+    border: 2px solid;
+    border-color: var(--white-color);
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Example size */
+    height: 40px; /* Example size */
+  }
+  
+  .About-Cards .container .card .content .sci li a:hover {
+      color: var(--buttons-and-icons-color1);
+    background-color: var(--white-color);
+  
+    
+  }
+  
+  .About-Cards .container .card .content .sci li a:hover i{
+    display: inline-block;
+    transition: transform 0.3s ease;
+    animation: bounce 0.2s ease forwards; /* Apply the bounce animation */
+  
+    
   }
   
   
+  
+  @keyframes bounce {
+    0% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    25% {
+        transform: translateY(10px); /* Move down */
+  
+    }
+    50% {
+        transform: translateY(-10px); /* Move back to the original position */
+  
+    }
+    100% {
+        transform: translateY(0); /* Move back to the original position */
+    }
+  }
