@@ -158,6 +158,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
     font-size: 28px;
     padding: 0 10px;
     color: white;
+
   }
 
   .logo img{
@@ -167,11 +168,6 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 
 
-  .nav-chlab:hover, #nav-check:checked ~ .nav-chlab {
-    color: #424DFFEB;
-
-
-  }
   .navbar-links, .navbar-links > a {
     display: block;
     width: 30%;
@@ -187,10 +183,13 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   #nav-check:not(:checked) ~ .navbar-links {
     height: 0px;
   }
+
   #nav-check:checked ~ .navbar-links {
     height: calc(100vh);
     overflow-y: hidden;
   }
+
+  
   .menu-button {
     display: none;
     
@@ -979,7 +978,8 @@ color: var(--black-color);
 
 /* WHY CHOOSE US SECTION */
 .why-choose-us-background-image{
-  background-image: url('/static/images/why-choose-us-section-background-img.png');
+  background-image: url('/static/images/Default-Hero-Section-Image.png');
+  background-color: var(--black-color);
 
 
 }

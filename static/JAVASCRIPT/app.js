@@ -26,6 +26,9 @@ window.addEventListener('scroll', function() {
 
 
 
+
+
+
 // 2) Navbar Side Navigation Animation
 function menuAnimation(x) {
     x.classList.toggle("change");
