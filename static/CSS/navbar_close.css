@@ -1,0 +1,51 @@
+:root {
+    /* Main-Colors */
+      --white-color: rgb(255, 255, 255);
+      --black-color: rgb(0, 0, 0);
+      --grey-color: rgb(105,105,105);
+      --button-color: rgba(85,107,253,255);
+      --footer-background-color-1: rgba(32,32,30,255);
+      --footer-background-color-2:    rgba(22,22,22,255);
+      --buttons-and-icons-color1:rgba(66,77,255,255);
+      --ratings-color: 	rgb(255,165,0) ;
+      --ratings-input-color:	  rgb(255,223,0) ;
+      --off-white-color:   rgba(235,235,235,255);
+    
+    /* Main-Fonts */
+      --main-font:"Axion RX 14 W01 Regular";
+      --secondary-font: "Roboto", sans-serif;
+    
+    
+    
+    }
+
+
+
+
+.Login-Button-Mobile-Screen a span{
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    font-family: var(--secondary-font);
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: var(--white-color);
+  }
+
+
+
+
+@media(max-width:1050px) {
+.side-navigation{
+    display: none;
+  }
+  .Login-Button-Mobile-Screen{
+    display: block!important;
+  }
+  .nav-chlab:hover{
+    color: var(--buttons-and-icons-color1);
+    transition: 0.3s ease-in-out;
+
+
+  }
+}

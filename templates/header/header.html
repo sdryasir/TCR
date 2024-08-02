@@ -10,10 +10,12 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-thin-straight/css/uicons-thin-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab:300'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css'>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
@@ -24,6 +26,7 @@
     <link rel="stylesheet" href="{% static 'CSS/Single_Post.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/Our_Team.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/About.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/navbar_close.css' %}">
 </head>
 <body>
     <div class="site-wrapper">
@@ -37,8 +40,8 @@
                   <nav class="top-navbar">
                     <input type="checkbox" id="nav-check">
                     <label for="nav-check" class="nav-chlab">☰</label>
-                    <div class="navbar-links">
-                      <img class="" src="{% static 'images/main-navbar-logo.png' %}" alt="">
+                    <div class="navbar-links" id="navbar">
+                        <img class="" src="{% static 'images/main-navbar-logo.png' %}" alt="">
                       <a class="left-padding" href="/">HOME</a>
                       <a href="{% url 'about' %}">ABOUT</a>                   
                       <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,11 +66,27 @@
                         <li><a class="dropdown-item" href="{% url 'single_post' %}">SINGLE POST</a></li>
                       </ul>
                       <a class="right-padding" href="{% url 'contact' %}">CONTACT</a>
+                      <!--Login and Username for Mobile  -Start-->
+                      <div class="Username" style="display: none;">
+                        <div class="dropdown Logout-button">
+                          <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, Username
+                          </a>             
+                          <ul class="dropdown-menu logout-dropdown">
+                            <li><a class="dropdown-item" href="#">Logout <span><i class="fi fi-rs-exit"></i></span></a></li>
+                          </ul>
+                        </div>
+                      </div><!-- /.Username -->
+                      <div class="Login-button Login-Button-Mobile-Screen" style="display: none;">
+                        <a href="{% url 'login' %}"><span>LOGIN</span></a>
+                      </div>
+                       <!--Login and Username for Mobile  -End-->
                     </div>
                   </nav>
                 </div><!-- /.nav-links -->
                 <div class="side-navigation main-navbar-item">
                   <div class="Login-button-and-side-navigation">
+                    <!--Login and Username for Desktop  -Start-->
                     <div class="Username" style="display: none;">
                       <div class="dropdown Logout-button">
                         <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,6 +100,7 @@
                     <div class="Login-button">
                       <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
                     </div>
+                    <!--Login and Username for Desktop  -End-->
                     <div class="menu-button" onclick="menuAnimation(this)">
                       <div class="bar1"></div>
                       <div class="bar2"></div>
