@@ -1,12 +1,32 @@
 from django.shortcuts import render
-
-
+from Main_Hero_Section.models import Main_Hero_Section
+from Main_Cars_Carousel.models import Main_Cars_Carousel
 
 
 
 
 def homePage(request):
-    return render(request, 'index.html')
+    Main_Hero_Section_Data = Main_Hero_Section.objects.all()
+    Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
+
+    Data= {
+        "Main_Hero_Section_Data":Main_Hero_Section_Data,
+        "Main_Cars_Carousel":Main_Cars_Carousel_Data
+    }
+
+
+    return render(request, 'index.html', Data)
+
+
+
+
+
+
+
+
+
+
+
 
 def aboutPage(request):
     return render(request, 'about.html') 
@@ -49,4 +69,8 @@ def blogPage(request):
 
 def Single_postPage(request):
     return render(request, 'Single_Post.html') 
+
+
+
+
 
