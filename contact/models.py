@@ -5,4 +5,3 @@ class Contact(models.Model):
     email = models.CharField(max_length=60)
     messagesubject = models.CharField(max_length=60)
     message = models.TextField()
-
