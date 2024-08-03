@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from contact.models import Contact
 
 
 
@@ -37,6 +37,22 @@ def Car_detailPage(request):
 
 def contactPage(request):
     return render(request, 'Contact.html') 
+
+def saveContact(request):
+     try:
+          
+        firstname=request.POST.get('firstname')
+        lastname=request.POST.get('lastname')
+        email=request.POST.get('email') 
+        messagesubject=request.POST.get('messagesubject')
+        message=request.POST.get('message')
+        if firstname == '' or lastname == '' or email == '' or messagesubject == '' or message == '' :
+            return render(request, 'Contact.html')
+        contact=Contact(firstname=firstname, lastname=lastname, email=email, messagesubject=messagesubject, message=message)
+        contact.save()
+     except:
+        print('error') 
+     return render(request, 'Contact.html')
 
 
 def Our_teamPage(request):

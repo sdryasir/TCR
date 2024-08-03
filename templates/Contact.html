@@ -23,35 +23,36 @@
         </div><!-- /.Contact-Form-Heading -->
         <div id="section">
             <section class="contact-wrap">
-              <form action="" class="contact-form">
+              <form method="post" action="{% url 'save-contact' %}" class="contact-form">
+                {% csrf_token %}
                 <div class="col-sm-12">
                   <div class="input-block">
-                    <label for="">First Name</label>
-                    <input type="text" class="form-control">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" class="form-control" id="firstname" value="{{request.POST.firstname}}">
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="input-block">
-                    <label for="">Last Name</label>
-                    <input type="text" class="form-control">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" class="form-control" id="lastname" value="{{request.POST.lastname}}">
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="input-block">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" id="email" value="{{request.POST.email}}">
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="input-block">
-                    <label for="">Message Subject</label>
-                    <input type="text" class="form-control">
+                    <label for="messagesubject">Message Subject</label>
+                    <input type="text" name="messagesubject" class="form-control" id="messagesubject" value="{{request.POST.messagesubject}}">
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="input-block textarea">
-                    <label for="">Drop your message here</label>
-                    <textarea rows="3" type="text" class="form-control"></textarea>
+                    <label for="message">Drop your message here</label>
+                    <textarea rows="3" type="text" name="message" class="form-control" id="message" value="{{request.POST.message}}"></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -61,6 +62,7 @@
             </section>
         </div>
     </div><!-- /.Contact-Form -->
+
     <div class="General-Questions-Section">
         <div class="container">
             <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
