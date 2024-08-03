@@ -473,12 +473,19 @@ a:hover {
 .Hero-Section-image {
   position: relative;
 
+
+
+
 }
 
 .Hero-Section-image img {
   width: 100%;
   object-fit: cover;
   height: 100%;
+  /*background-size:cover;
+  background-position: center;*/
+  
+  
 }
 
 .image-overlay {
@@ -1832,6 +1839,7 @@ color: var(--black-color);
   object-fit: cover;
   height: 100%;
   background-color: var(--black-color);
+  
 }
 
 .Login-image-overlay {
