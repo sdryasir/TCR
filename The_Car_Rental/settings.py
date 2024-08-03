@@ -25,10 +25,9 @@ SECRET_KEY = 'django-insecure-b86s0n^!i&n1%$(*3owf%$+5r&grdari4#zc@=3hsw)k+yp3+e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# '''ALLOWED_HOSTS = ['thecarrental.site']
-# '''
-
 ALLOWED_HOSTS = []
+
+
 
 # Application definition
 
@@ -40,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Main_Hero_Section',
+    'Main_Cars_Carousel',
+
 ]
 
 MIDDLEWARE = [
@@ -128,11 +130,16 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
-MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

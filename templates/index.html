@@ -3,16 +3,16 @@
 <main class="main-content">
     <section class="Main-Hero-Section">
         <div class="Hero-Section-image">
-            <img class="" src="{% static 'images/Hero-Section-Image.jpg' %}" alt="">
+            <img class="" src="media/{{Main_Hero_Section.image.}}">
             <div class="image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Hero-Section-Image-Content">
             <div class="container">
                 <div class="Hero-Section-Image-Content-Heading content">
-                    <h2>YOUR TRUSTED CAR<br>RENTAL COMPANION</h2>
+                    <h2>{{Main_Hero_Section.title_1}}<br>{{Main_Hero_Section.title_2}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="Hero-Section-Image-Content-Description content">
-                    <p>This hero title implies that the car rental website is your ultimate <br> guide and ally for lal your car rental needs.</p>
+                    <p>{{Main_Hero_Section.description}}</p>
                 </div><!-- /.Hero-Section-Image-Content-Description -->
                 <div class="Hero-Section-Image-Content-Modal-Box content">
                     <a href="" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
@@ -40,7 +40,7 @@
                         </div><!-- /.Booking-Schedule-Content-Form -->
                     </div><!-- /.Booking-Schedule-Content -->
                     <div class="Hero-Section-Image-Content-Price">
-                        <h5>Starting at <span>$40.00</span> / Hours</h5>
+                        <h5>Starting at <span>${{Main_Hero_Section.price}}.00</span> / Hours</h5>
                     </div><!-- /.Hero-Section-Image-Content-Price -->
                 </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
             </div><!-- /.container -->
@@ -49,27 +49,18 @@
     <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
         <div class="container-fluid">
             <div class="Driving-Excellence-Heading">
+
                 <h2>DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
             </div><!-- /.Driving-Excellence-Heading -->
             <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-1.jpg' %}');">
+                {% for carousel in Main_Cars_Carousel %}
+                <div class="carousel-cell" style="background-image: url('media/{{Main_Hero_Section.image}}');">
                   <div class="overlay-carousel-cell"></div>
                   <div class="inner">
                     <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
                   </div>
                 </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-2.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-3.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
+                {% endfor %}
               </div>
         </div><!-- /.container-fluid -->
     </div><!-- /.Driving-excellence-owl-carousel -->
