@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 from Main_Hero_Section.models import Main_Hero_Section
 from Main_Cars_Carousel.models import Main_Cars_Carousel
@@ -12,6 +11,7 @@ from Background_Video.models import Background_Video
 from Latest_Blog.models import Latest_Blog
 from General_Questions.models import General_Questions
 from Cars.models import Cars
+from contact.models import Contact
 from Blog.models import Blog
 
 
@@ -101,6 +101,22 @@ def Car_detailPage(request, id):
 
 def contactPage(request):
     return render(request, 'Contact.html') 
+
+def saveContact(request):
+     try:
+          
+        firstname=request.POST.get('firstname')
+        lastname=request.POST.get('lastname')
+        email=request.POST.get('email') 
+        messagesubject=request.POST.get('messagesubject')
+        message=request.POST.get('message')
+        if firstname == '' or lastname == '' or email == '' or messagesubject == '' or message == '' :
+            return render(request, 'Contact.html')
+        contact=Contact(firstname=firstname, lastname=lastname, email=email, messagesubject=messagesubject, message=message)
+        contact.save()
+     except:
+        print('error') 
+     return render(request, 'Contact.html')
 
 
 def Our_teamPage(request):
