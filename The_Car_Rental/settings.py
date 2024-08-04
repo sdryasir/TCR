@@ -39,9 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    'contact'
-=======
+    'contact',
     'Main_Hero_Section',
     'Choose_Car_Options',
     'Main_Cars_Carousel',
@@ -50,7 +48,7 @@ INSTALLED_APPS = [
     'Featured_Cars',
     'Cars',
 
->>>>>>> 56604223ab55d64d7456961a9b76aab034fbc813
+
 ]
 
 MIDDLEWARE = [

@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-from contact.models import Contact
-
-
-
-=======
 from django.shortcuts import render, redirect
+from contact.models import Contact
 from django.core.paginator import Paginator
 from Main_Hero_Section.models import Main_Hero_Section
 from Main_Cars_Carousel.models import Main_Cars_Carousel
@@ -14,7 +8,7 @@ from Why_Choose_Us_Section.models import Why_Choose_Us_Section
 from Choose_Car_Options.models import Choose_Car_Options
 from Featured_Cars.models import Featured_Cars
 from Cars.models import Cars
->>>>>>> 56604223ab55d64d7456961a9b76aab034fbc813
+
 
 
 def homePage(request):
