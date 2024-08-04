@@ -1,18 +1,19 @@
 {% load static %}
 {% include 'header/header.html' %}
 <main class="main-content">
+    {% for image in main_Hero_Section %}
     <section class="Main-Hero-Section">
         <div class="Hero-Section-image">
-            <img class="" src="{% static 'images/Hero-Section-Image.jpg' %}" alt="">
+            <img class="" src="/media/{{image.image}}">
             <div class="image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Hero-Section-Image-Content">
             <div class="container">
                 <div class="Hero-Section-Image-Content-Heading content">
-                    <h2>YOUR TRUSTED CAR<br>RENTAL COMPANION</h2>
+                    <h2>{{image.title_1}}<br>{{image.title_2}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="Hero-Section-Image-Content-Description content">
-                    <p>This hero title implies that the car rental website is your ultimate <br> guide and ally for lal your car rental needs.</p>
+                    <p>{{image.description_1}}<br>{{image.description_2}}</p>
                 </div><!-- /.Hero-Section-Image-Content-Description -->
                 <div class="Hero-Section-Image-Content-Modal-Box content">
                     <a href="" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
@@ -28,10 +29,9 @@
                                 <input type="text" name="car_name" placeholder="Your Name">
                                 <select name="car_name_dropdown" class="select-placeholder">
                                     <option value="" disabled selected>Choose a Car</option>
-                                    <option value="car1">SUV</option>                               
-                                    <option value="car2">Sedan</option>
-                                    <option value="car2">Sport</option>
-                                    <option value="car2">Van</option>
+                                    {% for option in choose_Car_Option %}
+                                    <option value="car1">{{option.car_option}}</option>                               
+                                    {% endfor %}
                                 </select>
                                 <input type="text" name="pickup_date" placeholder="Pickup Date" class="date-input" onclick="showDatepicker(this)">
                                 <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">
@@ -40,45 +40,38 @@
                         </div><!-- /.Booking-Schedule-Content-Form -->
                     </div><!-- /.Booking-Schedule-Content -->
                     <div class="Hero-Section-Image-Content-Price">
-                        <h5>Starting at <span>$40.00</span> / Hours</h5>
+                        <h5>Starting at <span>${{image.price}}.00</span> / Hours</h5>
                     </div><!-- /.Hero-Section-Image-Content-Price -->
                 </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->
+    {% endfor %}
     <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
         <div class="container-fluid">
             <div class="Driving-Excellence-Heading">
                 <h2>DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
             </div><!-- /.Driving-Excellence-Heading -->
             <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-1.jpg' %}');">
+                {% for carousel in main_Cars_Carousel %}
+                <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
                   <div class="overlay-carousel-cell"></div>
                   <div class="inner">
                     <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
                   </div>
                 </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-2.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-3.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
+                {% endfor %}
               </div>
         </div><!-- /.container-fluid -->
     </div><!-- /.Driving-excellence-owl-carousel -->
     <div class="driving-excellence-counter-section">
         <div class="container">
-            <div class="row">
+            <div class="row">  
                 <div class="col-sm-12	  col-md-12	  col-lg-12  col-xl-5">
                     <div class="content">
-                        <p>Quisque rutrum aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui etiam rhoncus. Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+                        {% for counter_app in counter_Section %}    
+                        <p>{{counter_app.description}}</p>
+                        {% endfor %}    
                         <div class="About-us-link">
                             <a href="{% url 'about' %}">ABOUT US <span><i class="fi fi-rs-arrow-right"></i></span></a>
                         </div>
@@ -86,67 +79,64 @@
                 </div><!-- /.col-5 -->
                 <div class="col-1"></div><!-- /.col-1 -->
                 <div class="col-sm-12	 col-md-12	  col-lg-12   col-xl-6 ">
-                    <div class="Counter-animation">        
+                    <div class="Counter-animation"> 
+                        {% for counter_app in counter_Section %}     
                         <div class=" counterapp-col counterapp-col-no-padding">
                             <div class="counter-box">
-                                <h2 class="counter">10</h2><span class="counterapp-span">+</span>
+                                <h2 class="counter">{{counter_app.number_of_feature}}</h2><span class="counterapp-span">{{counter_app.sign_of_feature}}</span>
                             </div>
-                            <h4>Years experience</h4>
+                            <h4>{{counter_app.feature}}</h4>
                         </div>
-                        <div class=" counterapp-col">
-                            <div class="counter-box">
-                                <h2 class="counter">62</h2><span class="counterapp-span">+</span>
-                            </div>
-                            <h4>Number of Cars</h4>
-                            </div>
-                        <div class="counterapp-col">
-                            <div class="counter-box">
-                                <h2 class="counter">97</h2><span class="counterapp-span">%</span>
-                            </div>
-                            <h4>Satisfaction Rate</h4>
-                        </div>                  
+                        {% endfor %}
                     </div><!-- /.Counter-animation -->
                 </div><!-- /.col-6 -->
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.driving-excellence-counter -->
-    <div class="why-choose-us-background-image" style="margin-top: 100px;">
+    {% for section in why_Choose_Us_Section %}    
+    <div class="why-choose-us-background-image" style="margin-top: 100px; background-image: url('/media/{{section.background_image}}');">
       <div class="container why-choose-us-container">
         <div class="row" style="display: flex; align-items: center;">
             <div class="col-sm-12	  col-md-12	  col-lg-5"> 
                 <div class="award-image">
-                    <img src="{% static 'images/why-choose-us-section-award-img.png' %}" alt="" >               
+                    <img src="/media/{{section.image}}" alt="" >               
                 </div>
             </div>    
             <div class="col-1 col-md-0"></div><!-- /.col-1 -->  
-            <div class="col-sm-12	  col-md-12  col-lg-6">        
-                <h2 class="padding-item">WHY CHOOSE US</h2>
-                <p class="padding-item">Nullam dictum felis eu pede mollis pretium. Integer tincidunt cras dapibus Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula porttitor eu consequat vitae.</p>
+            <div class="col-sm-12	  col-md-12  col-lg-6">     
+                <h2 class="padding-item">{{section.heading}}</h2>
+                <p class="padding-item">{{section.description}}</p>
                 <div class="features padding-item">
-                    <div class="feature"><i class="fi fi-rs-label why-choose-us-icons"></i><span>AFFORDABLE PRICE</span></div>
-                    <div class="feature"><i class="fi fi-rs-clock-five why-choose-us-icons"></i><span>24/7 SUPPORT</span></div>
-                    <div class="feature padding-top"><i class="fi fi-rs-calendar-lines-pen why-choose-us-icons"></i><span>EASY TO BOOKING</span></div>
-                    <div class="feature padding-top"><i class="fi fi-rs-shield-trust why-choose-us-icons"></i><span>TRUSTED</span></div>
+                    <div class="feature"><i class="{{section.icon_code_1}} why-choose-us-icons"></i><span>{{section.feature_1}}</span></div>
+                    <div class="feature"><i class="{{section.icon_code_2}} why-choose-us-icons"></i><span>{{section.feature_2}}</span></div>
+                    <div class="feature"><i class="{{section.icon_code_3}} why-choose-us-icons"></i><span>{{section.feature_3}}</span></div>
+                    <div class="feature"><i class="{{section.icon_code_4}} why-choose-us-icons"></i><span>{{section.feature_4}}</span></div>
                 </div>
             </div>
         </div>
       </div>
     </div><!-- /.why-choose-us-background-image -->
+    {% endfor %}
     <div class="Our-Featured-Cars-Section">
         <div class="container">
             <div class = "row">
                 <h3 class = "text-center Our-Featured-Cars-Heading">OUR FEATURED CARS</h3>
             </div>
-            <div class = "row owl-carousel-1 owl-carousel owl-theme">    
+            <div class = "row owl-carousel-1 owl-carousel owl-theme">  
+                {% for car in featured_cars_Section %}  
                 <div class = "col-4 product-item">
                     <div class = "product-img">
-                        <img src ="{% static 'images/Our-Featured-Cars-pic-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">NEW CAR</span>
+                        <img src ="/media/{{car.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                        {% if car.new_car %}
+                            <span class = "Save">{{car.new_car}}</span>
+                        {% else %}
+                            <span class = "Save" style="display: none;"></span>
+                        {% endif %}
                     </div>  
                     <div class = "product-info">
-                        <span class = "product-type"><h2>HONDA HYBRID SUV</h2></span>
-                        <span class = "product-type"><h6>4 Passengers</h6></span>
-                        <span class = "product-price">$35 <span class="light-font"> / Hours</span></span>
+                        <span class = "product-type"><h2>{{car.title}}</h2></span>
+                        <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                        <span class = "product-price">${{car.price}}.00<span class="light-font"> / Hours</span></span>
                         <div class = "rating d-flex mt-1">
                             <form class="rating">
                                 <label>
@@ -186,150 +176,7 @@
                         <a href=""  class = "col-6 py-2" >RENT NOW</a>
                     </div>     
                 </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Featured-Cars-pic-2.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save"></span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>HONDA CROSS OVER</h2></span>
-                        <span class = "product-type"><h6>4 Passengers</h6></span>
-                        <span class = "product-price">$40 <span class="light-font"> / Hours</span></span>
-                        <div class = "rating d-flex mt-1">
-                            <form class="rating">
-                                <label>
-                                  <input type="radio" name="stars" value="1" />
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="2" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="3" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>   
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="4" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="5" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                            </form>
-                        </div>
-                    </div> 
-                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Featured-Cars-pic-3.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save"></span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>LUXURY CROSSOVER</h2></span>
-                        <span class = "product-type"><h6>4 Passengers</h6></span>
-                        <span class = "product-price">$25 <span class="light-font"> / Hours</span></span>
-                        <div class = "rating d-flex mt-1">
-                            <form class="rating">
-                                <label>
-                                  <input type="radio" name="stars" value="1" />
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="2" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="3" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>   
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="4" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="5" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                            </form>
-                        </div>
-                    </div> 
-                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Featured-Cars-pic-4.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save"></span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>HONDA CIVIC</h2></span>
-                        <span class = "product-type"><h6>4 Passengers</h6></span>
-                        <span class = "product-price">$20 <span class="light-font"> / Hours</span></span>
-                        <div class = "rating d-flex mt-1">
-                            <form class="rating">
-                                <label>
-                                  <input type="radio" name="stars" value="1" />
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="2" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="3" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>   
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="4" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="5" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                            </form>
-                        </div>
-                    </div> 
-                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2">RENT NOW</a>
-                    </div>     
-                </div>
+                {% endfor %}
             </div>
         </div><!-- /.container -->
     </div><!-- /.Our-Featured-Cars-Section -->

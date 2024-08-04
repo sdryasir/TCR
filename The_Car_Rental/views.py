@@ -1,12 +1,52 @@
+<<<<<<< HEAD
 from django.shortcuts import render
 from contact.models import Contact
 
 
 
+=======
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+from Main_Hero_Section.models import Main_Hero_Section
+from Main_Cars_Carousel.models import Main_Cars_Carousel
+from Counter_Section.models import Counter_Section
+from Why_Choose_Us_Section.models import Why_Choose_Us_Section
+from Choose_Car_Options.models import Choose_Car_Options
+from Featured_Cars.models import Featured_Cars
+from Cars.models import Cars
+>>>>>>> 56604223ab55d64d7456961a9b76aab034fbc813
 
 
 def homePage(request):
-    return render(request, 'index.html')
+    Main_Hero_Section_Data = Main_Hero_Section.objects.all()
+    Choose_Car_Options_Data = Choose_Car_Options.objects.all()
+    Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
+    Counter_Section_Data= Counter_Section.objects.all()
+    Why_Choose_Us_Section_Data = Why_Choose_Us_Section.objects.all()
+    Featured_Cars_Data= Featured_Cars.objects.all()
+
+    Data= {
+        "main_Hero_Section":Main_Hero_Section_Data,
+        "choose_Car_Option":Choose_Car_Options_Data,
+        "main_Cars_Carousel":Main_Cars_Carousel_Data,
+        "counter_Section":Counter_Section_Data,
+        "why_Choose_Us_Section":Why_Choose_Us_Section_Data,
+        "featured_cars_Section":Featured_Cars_Data,
+    }
+
+
+    return render(request, 'index.html', Data)
+
+
+
+
+
+
+
+
+
+
+
 
 def aboutPage(request):
     return render(request, 'about.html') 
@@ -28,7 +68,28 @@ def faqPage(request):
 
 
 def Our_carsPage(request):
-    return render(request, 'Our_Cars.html') 
+    Cars_Data = Cars.objects.all()
+    Cars_Data= Paginator(Cars_Data, 6)
+    page = request.GET.get('page')
+    products = Cars_Data.get_page(page)
+    totalpages = [x+1 for x in range(Cars_Data.num_pages)]
+    Data= {
+        "cars_Section": products,
+        "total_Pages": totalpages,
+    }
+    return render(request, 'Our_Cars.html', Data) 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def Car_detailPage(request):
@@ -65,4 +126,8 @@ def blogPage(request):
 
 def Single_postPage(request):
     return render(request, 'Single_Post.html') 
+
+
+
+
 

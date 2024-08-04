@@ -3,7 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Main_Hero_Section(models.Model):
-    caption = models.CharField(max_length=60)
-    description = models.TextField(max_length=60)
-    price = models.CharField(max_length=60)
-    image= models.FileField(max_length=200 , upload_to="Main-Hero-Section/", null=True)
+    title_1 = models.CharField(max_length=60,blank=True)
+    title_2 = models.CharField(max_length=60,null=True,blank=True)
+    description_1 = models.TextField(max_length=300,blank=True)
+    description_2 = models.TextField(max_length=300,null=True,blank=True)   
+    price = models.CharField(max_length=60,blank=True)
+    image= models.FileField(max_length=200 , upload_to="Main_Hero_Section/", null=True,blank=True)

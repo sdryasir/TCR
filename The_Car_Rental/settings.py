@@ -25,10 +25,9 @@ SECRET_KEY = 'django-insecure-b86s0n^!i&n1%$(*3owf%$+5r&grdari4#zc@=3hsw)k+yp3+e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# '''ALLOWED_HOSTS = ['thecarrental.site']
-# '''
-
 ALLOWED_HOSTS = []
+
+
 
 # Application definition
 
@@ -40,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'contact'
+=======
+    'Main_Hero_Section',
+    'Choose_Car_Options',
+    'Main_Cars_Carousel',
+    'Counter_Section',
+    'Why_Choose_Us_Section',
+    'Featured_Cars',
+    'Cars',
+
+>>>>>>> 56604223ab55d64d7456961a9b76aab034fbc813
 ]
 
 MIDDLEWARE = [
@@ -81,8 +91,16 @@ WSGI_APPLICATION = 'The_Car_Rental.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'car_rental',
+        'USER': 'root',    # Replace with your MySQL username
+        'PASSWORD': '',# Replace with your MySQL password
+        'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
+        'PORT': '3306',
     }
 }
 
@@ -129,11 +147,17 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
 MEDIA_ROOT = BASE_DIR / 'media'
+
 MEDIA_URL = '/media/'
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
