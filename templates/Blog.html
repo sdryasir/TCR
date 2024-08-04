@@ -21,96 +21,23 @@
     <div class="Blog-Cards-Section" style="margin: 100px 0;">
         <div class="container">
             <div class="row">
+                {% for blog in Blog %}
                 <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
                     <div class = "product-item">
                         <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">Insight</span>
+                            <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                            <span class = "Save">{{blog.tag}}</span>
                         </div>  
                         <div class = "product-info">
-                            <span class = "product-type"><h2>SAVING ON WHEELS: HOW TO FIND THE BEST CAR RENTAL</h2></span>
+                            <span class = "product-type"><h2>{{blog.title}}</h2></span>
                             
                         </div> 
                         <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
+                            <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
                         </div>     
                     </div>
-                </div><!-- /.col-4 -->
-                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
-                    <div class = "product-item">
-                        <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-2.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">Insight</span>
-                        </div>  
-                        <div class = "product-info">
-                            <span class = "product-type"><h2>Road Trip Essentials: Choosing The Right Car Rental</h2></span>
-                            
-                        </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
-                        </div>     
-                    </div>
-                </div><!-- /.col-4 -->
-                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
-                    <div class = "product-item">
-                        <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-3.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">News</span>
-                        </div>  
-                        <div class = "product-info">
-                            <span class = "product-type"><h2>Car Rental Hacks: Maximizing Your Travel Experience</h2>
-                            </span>              
-                        </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
-                        </div>     
-                    </div>
-                </div><!-- /.col-4 -->
-                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
-                    <div class = "product-item">
-                        <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-4.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">Tips & Trick</span>
-                        </div>  
-                        <div class = "product-info">
-                            <span class = "product-type"><h2>Driven to Explore: The Joy of Renting And Roaming</h2></span>
-                            
-                        </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
-                        </div>     
-                    </div>
-                </div><!-- /.col-4 -->
-                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
-                    <div class = "product-item">
-                        <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-5.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">Insight</span>
-                        </div>  
-                        <div class = "product-info">
-                            <span class = "product-type"><h2>On The Go: Exploring The Benefits of Renting a Car</h2></span>
-                            
-                        </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
-                        </div>     
-                    </div>
-                </div><!-- /.col-4 -->
-                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
-                    <div class = "product-item">
-                        <div class = "product-img">
-                            <img src ="{% static 'images/Our-Latest-Blog-and-Articles-6.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                            <span class = "Save">News</span>
-                        </div>  
-                        <div class = "product-info">
-                            <span class = "product-type"><h2>The Art of Car Rental: Tips For a Smooth Journey</h2>
-                            </span>                 
-                        </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >READ MORE</a>
-                        </div>     
-                    </div>
-                </div><!-- /.col-4 -->
+                </div><!-- /.col-4 -->  
+                {% endfor %}      
             </div><!-- /.row -->
         </div><!-- /.container -->
         <div class="Blog-Pagination">
@@ -118,11 +45,15 @@
                 <div class="Pagination">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            {% if Blog.has_previous %}  
+                                <li class="page-item"><a class="page-link" href="?page={{Blog.previous_page_number}}">Previous</a></li>
+                            {% endif %}
+                            {% for p in total_Pages %}
+                                <li class="page-item {% if Blog.number == p %} active {% endif %}  "><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                            {% endfor %}
+                            {% if Blog.has_previous %}  
+                                <li class="page-item"><a class="page-link" href="?page={{Blog.next_page_number}}">Next</a></li>
+                            {% endif %}
                         </ul>
                       </nav>
                 </div><!-- /.Pagination -->

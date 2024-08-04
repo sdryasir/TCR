@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -30,6 +31,7 @@ class Cars(models.Model):
     class Meta:
         verbose_name = ""  # Singular name
         verbose_name_plural = "OUR CARS"  # Plural name (same as singular, to avoid pluralization)
+
 
 
 

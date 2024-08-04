@@ -1040,7 +1040,6 @@ color: var(--black-color);
 .feature {
   display: flex;
   align-items: center;
-
   width: 50%;
 
 }
