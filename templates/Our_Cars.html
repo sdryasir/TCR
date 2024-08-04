@@ -73,7 +73,7 @@
                             </div>
                         </div> 
                         <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href=""  class = "col-6 py-2" >RENT NOW</a>
+                            <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
                         </div>     
                     </div>
                 </div><!-- /.col-4 -->    
@@ -121,28 +121,30 @@
         </div>
     </div><!-- /Select-Cars-Booking-section -->
     <div class="Background-Video-Our-Car-Section">
+        {% for video in Background_Video %}
         <video id="background-video-Cars-Section" autoplay loop muted preload="none">
-            <source src="{% static 'videos/Background-Advertisment-Video-For-App-1.mp4' %}" type="video/mp4">
+            <source src="/media/{{video.video}}" type="video/mp4">
         </video>    
         <div class="text-overlay">
             <div class="container">
                 <div class="row" >
                     <div class="col-md-12 text-white">
-                        <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                        <p>Start your 30-day free trial today.</p>
-                        <a class="Get-now-button" href="">GET NOW</a>
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}</p>
+                        <a class="Get-now-button" href="">{{video.download_button}}</a>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div><!-- /Background-Video-Our-Car-Section --> 
     <div class="Mobile-Display-Video-Overlay">
         <div class="container">
             <div class="mobile-overlay">
                 <div class="text-white">
-                    <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                    <p>Start your 30-day free trial today.</p>
-                    <a class="Get-now-button" href="">GET NOW</a>
+                    <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                    <p>{{video.description}}</p>
+                    <a class="Get-now-button" href="">{{video.download_button}}</a>
                 </div>
             </div>
         </div><!-- /.container -->
@@ -152,60 +154,21 @@
             <div class = "row">
                 <h3 class = "text-center Our-Cars-And-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
             </div>
-            <div class = "row owl-carousel-6 owl-carousel owl-theme">    
+            <div class = "row owl-carousel-6 owl-carousel owl-theme"> 
+                {% for blog in Latest_Blog %}    
                 <div class = "col-4 product-item">
                     <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Insight</span>
+                        <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save">{{blog.tag}}</span>
                     </div>  
                     <div class = "product-info">
-                        <span class = "product-type"><h2>SAVING ON WHEELS: HOW TO FIND THE BEST CAR RENTAL</h2></span>
-                        
+                        <span class = "product-type"><h2>{{blog.title}}</h2></span>                   
                     </div> 
                     <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
+                        <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
                     </div>     
                 </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-2.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Insight</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>ROAD TRIP ESSENTIALS: CHOOSING THE RIGHT CAR RENTAL</h2></span>
-                       
-                    </div> 
-                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-3.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">News</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>CAR RENTAL HACKS: MAXIMIZING YOUR TRAVEL EXPERIENCE</h2></span>
-                       
-                    </div> 
-                    <div  class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-4.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Tips & Trick</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>Driven to Explore: The Joy of Renting And Roaming</h2></span>
-                       
-                    </div> 
-                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-              
+                {% endfor %}            
             </div>
         </div><!-- /.container -->
     </div><!-- /.Our-Latest-Blog-Articles-Section -->

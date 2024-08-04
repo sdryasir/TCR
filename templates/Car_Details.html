@@ -25,13 +25,13 @@
                     <h3 class=" Car-Detail-Heading ">CAR DETAILS</h3>
                     <div class="Car-Details-Rows">
                         <div class="first-row">
-                            <h4><i class="fi fi-rs-review"></i>Passengers 4</h4>
-                            <h4><i class="fi fi-rs-gas-pump-alt"></i>Petrol</h4>
+                            <h4><i class="fi fi-rs-review"></i>Passengers {{One_Car.passengers}}</h4>
+                            <h4><i class="fi fi-rs-gas-pump-alt"></i>{{One_Car.petrol_diesel}}</h4>
                         </div><!-- /.first-row -->
                         <div class="second-row">
-                            <h4><i class="fi fi-rs-exchange"></i>Manual</h4>
-                            <h4><i class="fi fi-rs-bolt"></i>AT/MT</h4>
-                        </div><!-- /.first-row -->               
+                            <h4><i class="fi fi-rs-exchange"></i>{{One_Car.automatic_manual}}</h4>
+                            <h4><i class="fi fi-rs-bolt"></i>{{One_Car.at_mt}}</h4>
+                        </div><!-- /.second-row -->     
                     </div><!-- /.Car-Details-Rows -->
                     <div class="More-Car-List" style="margin-top: 40px;">
                         <div class="Car-List">
@@ -48,53 +48,53 @@
                 </div><!-- /.col-3 -->
                 <div class="col-sm-12  col-md-12  col-lg-8 col-xl-8 ">
                     <div class="image-section">
-                        <img src="{% static 'images/Our-Featured-Cars-pic-1.jpg' %}" style="width: 100%;" alt="">
+                        <img src="/media/{{One_Car.image}}" style="width: 100%;" alt="">
                     </div><!-- /.image-section -->
                     <div class="Car-Inside-Carousel">
                         <div class = "row owl-carousel-7 owl-carousel owl-theme">    
                             <div class = "col-4 product-item">
                                 <div class = "product-img">
-                                    <img src ="{% static 'images/Car-Detail-Owl-Carousel-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                                    <img src ="/media/{{One_Car.car_image_1}}" alt = "" class = "img-fluid d-block mx-auto">
                                 </div>   
                             </div>
                             <div class = "col-4 product-item">
                                 <div class = "product-img">
-                                    <img src ="{% static 'images/Car-Detail-Owl-Carousel-2.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                                    <img src ="/media/{{One_Car.car_image_2}}" alt = "" class = "img-fluid d-block mx-auto">
                                 </div>   
                             </div>
                             <div class = "col-4 product-item">
                                 <div class = "product-img">
-                                    <img src ="{% static 'images/Car-Detail-Owl-Carousel-3.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                                    <img src ="/media/{{One_Car.car_image_3}}" alt = "" class = "img-fluid d-block mx-auto">
                                 </div>   
                             </div>
                             <div class = "col-4 product-item">
                                 <div class = "product-img">
-                                    <img src ="{% static 'images/Car-Detail-Owl-Carousel-4.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
+                                    <img src ="/media/{{One_Car.car_image_4}}" alt = "" class = "img-fluid d-block mx-auto">
                                 </div>   
                             </div>
                         </div>
                     </div><!-- /.Car-Inside-Carousel -->
                     <div class="Rating-Price" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="Rating"><h5>4.5<span class="padding-left">(50+ reviews)</span></h5></div><!-- /.Rating -->
-                        <div class="Price"><h3>$35.00<span class="light-font"> / Hours</span></h3></div><!-- /.Price -->
+                        <div class="Price"><h3>${{One_Car.price}}<span class="light-font"> / Hours</span></h3></div><!-- /.Price -->
                     </div><!-- /.Rating-Price -->
                     <div class="Car-Information">
                         <div class="Car-Name">
-                            <h3>HONDA HYBRID SUV</h3>
+                            <h3>{{One_Car.title}}</h3>
                         </div><!-- /.Car-Name -->
                         <div class="Car-Info">
-                            <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi nam eget dui. Etiam rhoncus. Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum. Nam quam nunc blandit vel luctus pulvinar hendrerit id lorem.</p>
+                            <p>{{One_Car.description}}</p>
                         </div><!-- /.Car-Info -->
                         <div class="Car-Features">
                             <div class="Left-Section">
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_1}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_2}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_3}}</p>
                             </div><!-- /.Left-Section -->
                             <div class="Right-Section">
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>
-                                <p><span class="material-symbols-outlined">check</span>Lorem ipsum dolor sit amet consectetur.</p>                       
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_4}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_5}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_6}}</p>                       
                             </div><!-- /.Right-Section -->
                         </div><!-- /.Car-Features -->
                         <div class="Book-Now-button">

@@ -173,7 +173,7 @@
                         </div>
                     </div> 
                     <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >RENT NOW</a>
+                        <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
                     </div>     
                 </div>
                 {% endfor %}
@@ -189,37 +189,21 @@
                 <div class="col-md-12">
                     <div class="testimonial-bg">
                         <div id="testimonial-slider" class="owl-carousel owl-carousel-2 owl-theme">
+                            {% for testimonial in Testimonial %}       
                             <div class="testimonial">
-                                <p class="description">
-                                    "Carent made my recent trip a breeze! The booking process was a snap, and I got an awesome car that was clean and ready to hit the road. Their customer service team was also incredibly helpful."
-                                </p>
+                                <p class="description">{{testimonial.description}}</p>
                                 <div class="pic">
-                                    <img src="{% static 'images/testimonial-pic-1.jpg' %}" alt="">
+                                    <img src="/media/{{testimonial.image}}" alt="">
                                 </div>
-                                <h3 class="title">KEVIN DOE</h3>
-                                <span class="post">Influencer</span>
+                                <h3 class="title">{{testimonial.name}}</h3>
+                                <span class="post">{{testimonial.post}}</span>
                                 <span class="rating-icon">★</span>
                                 <span class="rating-icon">★</span>
                                 <span class="rating-icon">★</span>
                                 <span class="rating-icon">★</span>
                                 <span class="rating-icon">★</span>
                             </div>
-         
-                            <div class="testimonial">
-                                <p class="description">
-                                    "I've rented cars from various companies, but Carent stands out. The cars are in fantastic condition, and their prices are unbeatable. Plus, the pickup and drop-off process couldn't be easier. Highly recommended!"
-                                </p>
-                                <div class="pic">
-                                    <img src="{% static 'images/testimonial-pic-2.jpg' %}" alt="">
-                                </div>
-                                <h3 class="title">MELLISA CHRIST</h3>
-                                <span class="post">Business Owner</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                                <span class="rating-icon">★</span>
-                            </div>
+                            {% endfor %}        
                         </div>
                     </div>
                 </div>
@@ -227,30 +211,34 @@
         </div>
     </div><!-- /.Testimonial-Section -->
     <div class="Background-Video-Section">
+        {% for video in Background_Video %} 
         <video id="background-video" autoplay loop muted preload="none">
-            <source src="{% static 'videos/Background-Advertisment-Video-For-App-1.mp4' %}" type="video/mp4">
+            <source src="/media/{{video.video}}" type="video/mp4">
         </video>    
         <div class="text-overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-white">
-                        <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                        <p>Start your 30-day free trial today.</p>
-                        <a class="Get-now-button" href="">GET NOW</a>
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}.</p>
+                        <a class="Get-now-button" href="">{{video.download_button}}</a>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %} 
     </div><!-- /.Background-Video-Section --> 
     <div class="Mobile-Display-Video-Overlay">
         <div class="container">
+            {% for video in Background_Video %} 
             <div class="mobile-overlay">
                 <div class="text-white">
-                    <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                    <p>Start your 30-day free trial today.</p>
-                    <a class="Get-now-button" href="">GET NOW</a>
+                    <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                    <p>{{video.description}}</p>
+                    <a class="Get-now-button" href="">{{video.download_button}}</a>
                 </div>
             </div>
+            {% endfor %} 
         </div><!-- /.container -->
     </div><!-- /.Mobile-Display-Video-Overlay -->
     <div class="Our-Latest-Blog-Articles-Section">
@@ -258,60 +246,22 @@
             <div class = "row">
                 <h3 class = "text-center Our-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
             </div>
-            <div class = "row owl-carousel-3 owl-carousel owl-theme">    
+            <div class = "row owl-carousel-3 owl-carousel owl-theme">
+                {% for blog in Latest_Blog %}       
                 <div class = "col-4 product-item">
                     <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-1.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Insight</span>
+                        <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                        <span class = "Save">{{blog.tag}}</span>
                     </div>  
                     <div class = "product-info">
-                        <span class = "product-type"><h2>SAVING ON WHEELS: HOW TO FIND THE BEST CAR RENTAL</h2></span>
+                        <span class = "product-type"><h2>{{blog.title}}</h2></span>
                         
                     </div> 
                     <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
+                        <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
                     </div>     
                 </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-2.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Insight</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>ROAD TRIP ESSENTIALS: CHOOSING THE RIGHT CAR RENTAL</h2></span>
-                       
-                    </div> 
-                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-3.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">News</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>CAR RENTAL HACKS: MAXIMIZING YOUR TRAVEL EXPERIENCE</h2></span>
-                       
-                    </div> 
-                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="{% static 'images/Our-Latest-Blog-and-Articles-4.jpg' %}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">Tips & Trick</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>Driven to Explore: The Joy of Renting And Roaming</h2></span>
-                       
-                    </div> 
-                    <div class = "row btns text-center"  style="display: flex; justify-content: center;">
-                        <a href=""  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
-              
+                {% endfor %}           
             </div>
         </div><!-- /.container -->
     </div><!-- /.Our-Latest-Blog-Articles-Section -->
@@ -319,30 +269,14 @@
         <div class="container">
             <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
             <div class="accordion">
-              <div class="accordion-item">
-                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">HOW OLD DO I NEED TO BE TO RENT A CAR?</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                {% for qa in General_Questions %} 
+                <div class="accordion-item">
+                  <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">{{qa.Question}}</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
+                  <div class="accordion-content">
+                    <p>{{qa.Answer}}</p>
+                  </div>
                 </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">WHAT DOCUMENTS DO I NEED TO RENT A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">DO I NEED INSURANCE WHEN RENTING A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">WHAT IS THE FUEL POLICY FOR RENTAL CARS?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
+                {% endfor %}  
             </div>
           </div>
     </div><!-- /.Frequently-Asked-Questions-Section -->

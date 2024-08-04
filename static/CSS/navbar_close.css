@@ -56,3 +56,57 @@
   background-color: var(--buttons-and-icons-color1); /* Custom background color */
   border-color: var(--buttons-and-icons-color1); /* Custom border color (if needed) */
 }
+
+
+
+/* Main-Hero-Section Title uppercase */
+.Hero-Section-Image-Content h2{
+  text-transform: uppercase;
+}
+
+
+/* Why Choose Us  uppercase */
+.why-choose-us-background-image h2{
+  text-transform: uppercase;
+}
+
+.feature {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+
+}
+
+
+/* Our-Featured-Cars-Section uppercase */
+
+.Our-Featured-Cars-Section .product-type h2{
+  text-transform: uppercase;
+}
+
+
+/* Testimonial uppercase */
+.testimonial h3{
+  text-transform: uppercase;
+}
+
+/* Background-Video uppercase */
+.Background-Video-Section .text-white h2{
+  text-transform: uppercase;
+}
+
+
+
+
+
+/* Latest Blog Title uppercase */
+.Our-Latest-Blog-Articles-Section .product-type h2{
+  font-size: 25px;
+  text-transform: uppercase;
+
+}
+
+
+/* Accordion Title uppercase */
+.accordion-item .accordion-title{
+  text-transform: uppercase;
+}
