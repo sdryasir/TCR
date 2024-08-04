@@ -11,6 +11,7 @@ from Background_Video.models import Background_Video
 from Latest_Blog.models import Latest_Blog
 from General_Questions.models import General_Questions
 from Cars.models import Cars
+from contact.models import Contact
 
 
 def homePage(request):
