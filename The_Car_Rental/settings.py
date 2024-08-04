@@ -46,7 +46,12 @@ INSTALLED_APPS = [
     'Counter_Section',
     'Why_Choose_Us_Section',
     'Featured_Cars',
+    'Testimonial',
+    'Background_Video',
+    'Latest_Blog',
+    'General_Questions',
     'Cars',
+    'Blog',
 
 
 ]

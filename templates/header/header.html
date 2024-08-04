@@ -43,14 +43,8 @@
                     <div class="navbar-links" id="navbar">
                         <img class="" src="{% static 'images/main-navbar-logo.png' %}" alt="">
                       <a class="left-padding" href="/">HOME</a>
-                      <a href="{% url 'about' %}">ABOUT</a>                   
-                      <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        OUR CARS
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'our_cars' %}">OUR CARS</a></li>
-                        <li><a class="dropdown-item" href="{% url 'car_detail' %}">CAR DETAIL</a></li>
-                      </ul>
+                      <a href="{% url 'about' %}">ABOUT</a> 
+                      <a href="{% url 'our_cars' %}">OUR CARS</a> 
                       <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         FEATURES
                       </a>
@@ -58,13 +52,7 @@
                         <li><a class="dropdown-item" href="{% url 'our_team' %}">OUR TEAM</a></li>
                         <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
                       </ul>
-                      <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        BLOG
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'blog' %}">BLOG</a></li>
-                        <li><a class="dropdown-item" href="{% url 'single_post' %}">SINGLE POST</a></li>
-                      </ul>
+                      <a class="" href="{% url 'blog' %}">BLOG</a>
                       <a class="right-padding" href="{% url 'contact' %}">CONTACT</a>
                       <!--Login and Username for Mobile  -Start-->
                       <div class="Username" style="display: none;">

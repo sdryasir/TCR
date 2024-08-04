@@ -32,13 +32,13 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('create-new-account/', views.Create_accountPage, name='create_account'),
     path('our-cars/', views.Our_carsPage, name='our_cars'),
-    path('car-detail/', views.Car_detailPage, name='car_detail'),
+    path('car-detail/<id>', views.Car_detailPage, name='car_detail'),
     path('faq/', views.faqPage, name='faq'),
     path('contact/', views.contactPage, name='contact'),
     path('save-contact/', views.saveContact, name='save-contact'),
     path('our-team/', views.Our_teamPage, name='our_team'),
     path('blog/', views.blogPage, name='blog'),
-    path('single-post/', views.Single_postPage, name='single_post'),
+    path('single-post/<id>', views.Single_postPage, name='single_post'),
 ]
 
 if settings.DEBUG:
