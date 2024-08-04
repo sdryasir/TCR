@@ -49,3 +49,10 @@
 
   }
 }
+
+
+
+.page-link.active {
+  background-color: var(--buttons-and-icons-color1); /* Custom background color */
+  border-color: var(--buttons-and-icons-color1); /* Custom border color (if needed) */
+}

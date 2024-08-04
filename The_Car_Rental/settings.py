@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Main_Hero_Section',
+    'Choose_Car_Options',
     'Main_Cars_Carousel',
+    'Counter_Section',
+    'Why_Choose_Us_Section',
+    'Featured_Cars',
+    'Cars',
 
 ]
 
@@ -130,8 +135,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = '/media/'
 
 
 
