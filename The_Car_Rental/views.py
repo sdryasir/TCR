@@ -71,9 +71,9 @@ def Create_accountPage(request):
 
 
 def Create_accountPageUser(request):
-    uname = request.POST.get('username')
-    uemail = request.POST.get('email')
-    upassword = request.POST.get('password')
+    uname = request.POST['username']
+    uemail = request.POST['email']
+    upassword = request.POST['password']
     
     user = User.objects.create_user(username=uname, email=uemail, password=upassword)
 
@@ -82,17 +82,21 @@ def Create_accountPageUser(request):
 
 def loginUser(request):
     
-    uemail = request.POST['email']
+    uname = request.POST['username']
     upassword = request.POST['password']
-    user = authenticate(request, email=uemail, password=upassword)
+
+    if uname == '' or upassword == ''  :
+        messages.error(request, "Please provide ther email and password")
+    
+    user = authenticate(request, username=uname, password=upassword)
   
     if user is not None:
          user_login(request, user)
-         request.session['email'] = user.email
+         request.session['username'] = user.username
          request.session['password'] = user.password
          return redirect('/')
     else:
-        print('user does not exit')
+        messages.error(request, "User does not exit")
     return render(request, 'login.html')
 
 
