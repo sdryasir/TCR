@@ -1048,9 +1048,6 @@ color: var(--black-color);
 }
 
 @media (max-width: 991px) {
-  .why-choose-us-background-image{
-    background-image: url('/static/images/why-choose-us-section-background-img-mobile.png'); 
-  }
   .features {
     display: block;
   }
