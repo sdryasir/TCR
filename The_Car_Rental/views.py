@@ -13,6 +13,10 @@ from General_Questions.models import General_Questions
 from Cars.models import Cars
 from contact.models import Contact
 from Blog.models import Blog
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate ,login as user_login ,logout
+
 
 
 def homePage(request):
@@ -62,9 +66,45 @@ def loginPage(request):
     return render(request, 'login.html') 
 
 
-
 def Create_accountPage(request):
     return render(request, 'create_account.html') 
+
+
+def Create_accountPageUser(request):
+    uname = request.POST['username']
+    uemail = request.POST['email']
+    upassword = request.POST['password']
+    
+    user = User.objects.create_user(username=uname, email=uemail, password=upassword)
+
+    return render(request, 'create_account.html')
+
+
+def loginUser(request):
+    
+    uname = request.POST['username']
+    upassword = request.POST['password']
+
+    if uname == '' or upassword == ''  :
+        messages.error(request, "Please provide ther email and password")
+    
+    user = authenticate(request, username=uname, password=upassword)
+  
+    if user is not None:
+         user_login(request, user)
+         request.session['username'] = user.username
+         request.session['password'] = user.password
+         return redirect('/')
+    else:
+        messages.error(request, "User does not exit")
+    return render(request, 'login.html')
+
+
+def logoutUser(request):
+    logout(request)
+
+    return render(request, 'login.html')
+
 
 
 
@@ -99,28 +139,71 @@ def Car_detailPage(request, id):
     return render(request, 'Car_Details.html', Data) 
 
 
+# def contactPage(request):
+#     return render(request, 'Contact.html') 
+
+# def saveContact(request):
+#      try:
+          
+#         firstname=request.POST.get('firstname')
+#         lastname=request.POST.get('lastname')
+#         email=request.POST.get('email') 
+#         messagesubject=request.POST.get('messagesubject')
+#         message=request.POST.get('message')
+#         if firstname == '' or lastname == '' or email == '' or messagesubject == '' or message == '' :
+#             messages.error(request, "Not found. Please fill all fields.") 
+#             return render(request, 'Contact.html')
+#         contact=Contact(firstname=firstname, lastname=lastname, email=email, messagesubject=messagesubject, message=message)
+#         messages.success(request, "Success! Your message has been sent.")
+#         contact.save()
+#      except:
+#         print('error') 
+#      return render(request, 'Contact.html')
+
+
 def contactPage(request):
+<<<<<<< HEAD
+    return render(request, 'Contact.html')
+=======
     General_Questions_Data = General_Questions.objects.all()
     Data={
         "General_Questions" : General_Questions_Data   
     }
     return render(request, 'Contact.html', Data) 
+>>>>>>> a3e4e8d0ac9ffc8ec80fcb47bda34bac6091366b
 
 def saveContact(request):
-     try:
-          
-        firstname=request.POST.get('firstname')
-        lastname=request.POST.get('lastname')
-        email=request.POST.get('email') 
-        messagesubject=request.POST.get('messagesubject')
-        message=request.POST.get('message')
-        if firstname == '' or lastname == '' or email == '' or messagesubject == '' or message == '' :
-            return render(request, 'Contact.html')
-        contact=Contact(firstname=firstname, lastname=lastname, email=email, messagesubject=messagesubject, message=message)
-        contact.save()
-     except:
-        print('error') 
-     return render(request, 'Contact.html')
+    if request.method == 'POST':
+        firstname = request.POST.get('firstname', '')
+        lastname = request.POST.get('lastname', '')
+        email = request.POST.get('email', '')
+        messagesubject = request.POST.get('messagesubject', '')
+        message = request.POST.get('message', '')
+
+        if not all([firstname, lastname, email, messagesubject, message]):
+            messages.error(request, "Not found. Please fill all fields.")
+            return redirect('contactPage')
+
+        try:
+            contact = Contact(
+                firstname=firstname,
+                lastname=lastname,
+                email=email,
+                messagesubject=messagesubject,
+                message=message
+            )
+            contact.save()
+            messages.success(request, "Success! Your message has been sent.")
+            return redirect('contactPage')
+
+        except Exception as e:
+            print(f"Error saving contact: {e}")
+            messages.error(request, "An error occurred. Please try again.")
+            return redirect('contactPage')
+            
+
+    return redirect('contactPage')
+
 
 
 def Our_teamPage(request):
