@@ -67,30 +67,14 @@
         <div class="container">
             <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
             <div class="accordion">
+              {% for qa in General_Questions %} 
               <div class="accordion-item">
-                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">HOW OLD DO I NEED TO BE TO RENT A CAR?</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
+                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">{{qa.Question}}</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
                 <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                  <p>{{qa.Answer}}</p>
                 </div>
               </div>
-              <div class="accordion-item">
-                <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">WHAT DOCUMENTS DO I NEED TO RENT A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">DO I NEED INSURANCE WHEN RENTING A CAR?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">WHAT IS THE FUEL POLICY FOR RENTAL CARS?</span><span class="icon" aria-hidden="true"></span></button>
-                <div class="accordion-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-                </div>
-              </div>
+              {% endfor %}              
             </div>
         </div>
     </div><!-- /.General-Questions-Section -->
