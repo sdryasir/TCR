@@ -170,7 +170,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
   .navbar-links, .navbar-links > a {
     display: block;
-    width: 30%;
+    width: 40%;
   }
   .navbar-links {
     position: absolute;
@@ -212,15 +212,15 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
   }
 }
 
-@media(max-width:750px){
+@media(max-width:700px){
   .navbar-links, .navbar-links > a {
     display: block;
-    width: 45%;
+    width: 50%;
   }
 }
 
 
-@media(max-width:490px){
+@media(max-width:450px){
   .navbar-links, .navbar-links > a {
     display: block;
     width: 60%;
@@ -481,9 +481,8 @@ a:hover {
 .Hero-Section-image img {
   width: 100%;
   object-fit: cover;
-  height: 100%;
-  /*background-size:cover;
-  background-position: center;*/
+  background-size:cover;
+  background-position: center;
   
   
 }
@@ -694,16 +693,11 @@ select.select-placeholder{
 
 }
 
-@media (max-width: 1585px) {
-  .Hero-Section-Image-Content{
-    top: 10%;
-    
-  }
-}
 
-@media (max-width: 1323px) {
+
+@media (max-width: 1400px) {
   .Hero-Section-Image-Content{
-    top: 10%;   
+    top: 15%;   
   }
   .Hero-Section-Image-Content h2{
     font-size: 40px;
@@ -733,15 +727,17 @@ select.select-placeholder{
   }
   .Hero-Section-Image-Content{
     position: relative;
+    background-color: var(--black-color);
+    padding: 50px 0;
     
   }
   .Hero-Section-Image-Content-Heading h2 {
     display: block;
-    color: black;
+    color: var(--white-color);
   }
   .Hero-Section-Image-Content-Description p{
     display: block;
-    color: black;
+    color: var(--white-color);
   }
 
   .Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box{
@@ -749,10 +745,10 @@ select.select-placeholder{
     align-items: center;
   }
   .Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box a{
-    color: black;
+    color: var(--white-color);
   }
   .Hero-Section-Image-Content .Hero-Section-Image-Content-Modal-Box a i{
-    color: black;
+    color: var(--white-color);
   }
   .car-rent-form{
     padding: 0;
@@ -1006,6 +1002,7 @@ color: var(--black-color);
 
 .why-choose-us-background-image h2{
   font-family: var(--main-font);
+
 }
 
 
@@ -1048,6 +1045,15 @@ color: var(--black-color);
 }
 
 @media (max-width: 991px) {
+  .why-choose-us-container{
+    padding-bottom: 0!important;
+     
+  }
+  .why-choose-us-container .col-lg-6 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+     
+  }
   .features {
     display: block;
   }
@@ -1058,6 +1064,15 @@ color: var(--black-color);
     padding-bottom: 30px;
   
   }
+  .feature-last{
+    padding: 0!important;
+    margin: 0!important;
+  }
+  .padding-item{
+    padding: 0!important;
+  }
+
+  
 
 }
 
