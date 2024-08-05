@@ -162,7 +162,15 @@ def Car_detailPage(request, id):
 
 
 def contactPage(request):
+<<<<<<< HEAD
     return render(request, 'Contact.html')
+=======
+    General_Questions_Data = General_Questions.objects.all()
+    Data={
+        "General_Questions" : General_Questions_Data   
+    }
+    return render(request, 'Contact.html', Data) 
+>>>>>>> a3e4e8d0ac9ffc8ec80fcb47bda34bac6091366b
 
 def saveContact(request):
     if request.method == 'POST':
@@ -199,7 +207,13 @@ def saveContact(request):
 
 
 def Our_teamPage(request):
-    return render(request, 'Our_Team.html') 
+    Background_Video_Data = Background_Video.objects.all()
+    Testimonial_Data = Testimonial.objects.all()
+    Data={
+        "Background_Video":Background_Video_Data,
+        "Testimonial": Testimonial_Data
+    }
+    return render(request, 'Our_Team.html',Data) 
 
 
 def blogPage(request):
@@ -221,8 +235,4 @@ def Single_postPage(request, id):
         "One_Blog": blog,
     }
     return render(request, 'Single_Post.html', Data) 
-
-
-
-
 

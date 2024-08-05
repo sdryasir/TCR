@@ -150,30 +150,34 @@
     </div><!-- /.Our-Team-Cards -->
     <section class="Background-Video">
         <div class="Background-Video-Our-Car-Section">
+            {% for video in Background_Video %} 
             <video id="background-video-Cars-Section" autoplay loop muted preload="none">
-                <source src="{% static 'videos/Background-Advertisment-Video-For-App-1.mp4' %}" type="video/mp4">
+                <source src="/media/{{video.video}}" type="video/mp4">
             </video>    
             <div class="text-overlay">
                 <div class="container">
                     <div class="row" >
                         <div class="col-md-12 text-white">
-                            <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                            <p>Start your 30-day free trial today.</p>
-                            <a class="Get-now-button" href="">GET NOW</a>
+                            <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                            <p>{{video.description}}</p>
+                            <a class="Get-now-button" href="">{{video.download_button}}</a>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %} 
         </div><!-- /Background-Video-Our-Car-Section --> 
         <div class="Mobile-Display-Video-Overlay">
             <div class="container">
+                {% for video in Background_Video %} 
                 <div class="mobile-overlay">
                     <div class="text-white">
-                        <h2>DOWNLOAD OUR <br>CARENT APP!</h2>
-                        <p>Start your 30-day free trial today.</p>
-                        <a class="Get-now-button" href="">GET NOW</a>
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}</p>
+                        <a class="Get-now-button" href="">{{video.download_button}}</a>
                     </div>
                 </div>
+                {% endfor %} 
             </div><!-- /.container -->
         </div><!-- /.Mobile-Display-Video-Overlay -->
     </section><!-- /.Background-Video -->
@@ -187,37 +191,21 @@
                     <div class="col-md-12">
                         <div class="testimonial-bg">
                             <div id="testimonial-slider" class="owl-carousel owl-carousel-2 owl-theme">
+                                {% for testimonial in Testimonial %} 
                                 <div class="testimonial">
-                                    <p class="description">
-                                        "Carent made my recent trip a breeze! The booking process was a snap, and I got an awesome car that was clean and ready to hit the road. Their customer service team was also incredibly helpful."
-                                    </p>
+                                    <p class="description">{{testimonial.description}}</p>
                                     <div class="pic">
-                                        <img src="{% static 'images/testimonial-pic-1.jpg' %}" alt="">
+                                        <img src="/media/{{testimonial.image}}" alt="">
                                     </div>
-                                    <h3 class="title">KEVIN DOE</h3>
-                                    <span class="post">Influencer</span>
+                                    <h3 class="title">{{testimonial.name}}</h3>
+                                    <span class="post">{{testimonial.post}}</span>
                                     <span class="rating-icon">★</span>
                                     <span class="rating-icon">★</span>
                                     <span class="rating-icon">★</span>
                                     <span class="rating-icon">★</span>
                                     <span class="rating-icon">★</span>
                                 </div>
-             
-                                <div class="testimonial">
-                                    <p class="description">
-                                        "I've rented cars from various companies, but Carent stands out. The cars are in fantastic condition, and their prices are unbeatable. Plus, the pickup and drop-off process couldn't be easier. Highly recommended!"
-                                    </p>
-                                    <div class="pic">
-                                        <img src="{% static 'images/testimonial-pic-2.jpg' %}" alt="">
-                                    </div>
-                                    <h3 class="title">MELLISA CHRIST</h3>
-                                    <span class="post">Business Owner</span>
-                                    <span class="rating-icon">★</span>
-                                    <span class="rating-icon">★</span>
-                                    <span class="rating-icon">★</span>
-                                    <span class="rating-icon">★</span>
-                                    <span class="rating-icon">★</span>
-                                </div>
+                                {% endfor %}                         
                             </div>
                         </div>
                     </div>

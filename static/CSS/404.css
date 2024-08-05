@@ -1,0 +1,166 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
+@import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
+
+
+:root {
+    /* Main-Colors */
+      --white-color: rgb(255, 255, 255);
+      --black-color: rgb(0, 0, 0);
+      --grey-color: rgb(105,105,105);
+      --button-color: rgba(85,107,253,255);
+      --footer-background-color-1: rgba(32,32,30,255);
+      --footer-background-color-2:    rgba(22,22,22,255);
+      --buttons-and-icons-color1:rgba(66,77,255,255);
+      --ratings-color: 	rgb(255,165,0) ;
+      --ratings-input-color:	  rgb(255,223,0) ;
+      --off-white-color:   rgba(235,235,235,255);
+    
+    /* Main-Fonts */
+      --main-font:"Axion RX 14 W01 Regular";
+      --secondary-font: "Roboto", sans-serif;
+    
+    
+    
+    }
+
+
+
+
+    body {
+        font-family: 'Roboto', sans-serif;
+      }
+      .tv-error-404-tm {
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+        background-size: cover; /* Make sure the image covers the entire container */
+        background-position: center center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent repeating the image */
+        position:relative;
+        display: flex;
+        align-items: center;
+      }
+      .tv-dark-background-tm {
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,.9);
+        top:0;
+        left:0;
+      }
+      .tv-error-content-tm {
+        position:relative;
+        color:var(--white-color);
+      }
+
+
+      .tv-error-content-tm h2 {
+        font-family: var(--main-font);
+        font-size:102px;
+        text-align:center;
+        font-weight:400;
+      }
+      .tv-error-content-tm h3 {
+        font-family: var(--secondary-font);
+        margin-top: 3%;
+        font-size:25px;
+        font-weight:100;
+        text-align:center;
+      }
+      .tv-error-content-tm h3.margin-top {
+        margin-top: 10px;
+      }
+      .tv-error-links-tm {
+        width:100%;
+        margin-top:5%;
+        text-align:center;
+      }
+      .tv-error-content-tm a {
+        color:var(--white-color) !important;
+        padding:5px 30px;
+        border:2px solid;
+        border-color: var(--buttons-and-icons-color1);
+        background-color: var(--buttons-and-icons-color1);
+        font-size:22px;
+        border-radius:5px;
+      }
+      .tv-error-content-tm a:hover,.tv-error-content-tm a:active,.tv-error-content-tm a:visited,.tv-error-content-tm a:focus {
+        color:var(--white-color) !important;
+      
+      }
+      @media (max-width: 992px)  { 
+          .tv-error-content-tm h1 {
+            font-size:62px;
+            text-align:center;
+            font-weight:400;
+          }
+          .tv-error-content-tm h3 {
+            font-size:26px;
+            font-weight:300;
+            text-align:center;
+          }
+          .tv-error-content-tm a {
+            color:#fff !important;
+            padding:5px 30px;
+            border:2px solid #fff;
+            font-size:22px;
+            border-radius:5px;
+          }
+      }
+      @media (max-width: 425px)  { 
+          .tv-error-content-tm h1 {
+              font-size: 49px;
+              text-align: center;
+              font-weight: 400;
+          }
+          .tv-error-content-tm h3 {
+            font-size:26px;
+            font-weight:300;
+            text-align:center;
+          }
+          .tv-error-content-tm a {
+              color: #fff !important;
+              padding: 5px 30px;
+              border: 2px solid #fff;
+              font-size: 19px;
+              border-radius: 5px;
+          }
+      }
+      @media (max-width: 375px)  { 
+         .tv-error-content-tm h1 {
+              font-size: 42px;
+              text-align: center;
+              font-weight: 400;
+          }
+          .tv-error-content-tm h3 {
+              font-size: 22px;
+              font-weight: 300;
+              text-align: center;
+          }
+          .tv-error-content-tm a {
+              color: #fff !important;
+              padding: 5px 30px;
+              border: 2px solid #fff;
+              font-size: 18px;
+              border-radius: 5px;
+          }
+      }
+      @media (max-width: 320px)  { 
+          .tv-error-content-tm h1 {
+            font-size:34px;
+            text-align:center;
+            font-weight:400;
+          }
+          .tv-error-content-tm h3 {
+            font-size:18px;
+            font-weight:300;
+            text-align:center;
+          }
+          .tv-error-content-tm a {
+              color: #fff !important;
+              padding: 5px 30px;
+              border: 2px solid #fff;
+              font-size: 18px;
+              border-radius: 5px;
+          }
+      }
