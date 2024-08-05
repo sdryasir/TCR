@@ -94,12 +94,23 @@
         </div><!-- /.container -->
     </div><!-- /.driving-excellence-counter -->
     {% for section in why_Choose_Us_Section %}    
-    <div class="why-choose-us-background-image" style="margin-top: 100px; background-image: url('/media/{{section.background_image}}');">
+    <div class="why-choose-us-background-image" style="margin-top: 100px;">
+        <style>
+            .why-choose-us-background-image{
+                background-image: url('/media/{{section.background_image}}');
+            }
+            @media (max-width: 991px) {
+            .why-choose-us-background-image {
+                /* Background image for smaller screens */
+                background-image: url('/media/{{section.mobile_background_image}}');
+            }
+        }
+        </style>
       <div class="container why-choose-us-container">
         <div class="row" style="display: flex; align-items: center;">
             <div class="col-sm-12	  col-md-12	  col-lg-5"> 
                 <div class="award-image">
-                    <img src="/media/{{section.image}}" alt="" >               
+                    <img class="" src="/media/{{section.image}}" alt="" >                            
                 </div>
             </div>    
             <div class="col-1 col-md-0"></div><!-- /.col-1 -->  
