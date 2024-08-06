@@ -10,7 +10,9 @@
       --ratings-color: 	rgb(255,165,0) ;
       --ratings-input-color:	  rgb(255,223,0) ;
       --off-white-color:   rgba(235,235,235,255);
-    
+
+      
+
     /* Main-Fonts */
       --main-font:"Axion RX 14 W01 Regular";
       --secondary-font: "Roboto", sans-serif;
@@ -45,8 +47,9 @@
   .nav-chlab:hover{
     color: var(--buttons-and-icons-color1);
     transition: 0.3s ease-in-out;
-
-
+  }
+  .Username-button-Mobile-Screen{
+    display: block!important;
   }
 }
 
@@ -100,7 +103,7 @@
 
 /* Latest Blog Title uppercase */
 .Our-Latest-Blog-Articles-Section .product-type h2{
-  font-size: 25px;
+  font-size: 20px;
   text-transform: uppercase;
 
 }
@@ -110,3 +113,14 @@
 .accordion-item .accordion-title{
   text-transform: uppercase;
 }
+
+.More-Car-List .Car-List .list-group-item.active {
+  background-color: var(--dark-gray);
+  color: var(--buttons-and-icons-color1);
+  font-weight: 700;
+
+
+
+
+}
+
