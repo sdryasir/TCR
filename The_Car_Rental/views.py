@@ -141,7 +141,6 @@ def Car_detailPage(request, id):
     return render(request, 'Car_Details.html', Data) 
 
 
-<<<<<<< HEAD
 
 
 def Featured_Car_detailPage(request, id):
@@ -163,7 +162,7 @@ def Featured_Car_detailPage(request, id):
 
 
 
-=======
+
 # def contactPage(request):
 #     return render(request, 'Contact.html') 
 
@@ -184,7 +183,6 @@ def Featured_Car_detailPage(request, id):
 #      except:
 #         print('error') 
 #      return render(request, 'Contact.html')
->>>>>>> eb17618021b18e347b24864f7575816d8ad2d8ba
 
 def contactPage(request):
     General_Questions_Data = General_Questions.objects.all()

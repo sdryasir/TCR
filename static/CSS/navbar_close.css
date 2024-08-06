@@ -47,8 +47,9 @@
   .nav-chlab:hover{
     color: var(--buttons-and-icons-color1);
     transition: 0.3s ease-in-out;
-
-
+  }
+  .Username-button-Mobile-Screen{
+    display: block!important;
   }
 }
 
