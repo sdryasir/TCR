@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{% static 'CSS/Our_Team.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/About.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/navbar_close.css' %}">
+    <style> .Login-colour{
+      color: white;
+    } </style>
 </head>
 <body>
     <div class="site-wrapper">
@@ -53,7 +56,7 @@
                         <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
                       </ul>
                       <a class="" href="{% url 'blog' %}">BLOG</a>
-                      <a class="right-padding" href="{% url 'contact' %}">CONTACT</a>
+                      <a class="right-padding" href="{% url 'contactPage' %}">CONTACT</a>
                       <!--Login and Username for Mobile  -Start-->
                       <div class="Username" style="display: none;">
                         <div class="dropdown Logout-button">
@@ -66,7 +69,11 @@
                         </div>
                       </div><!-- /.Username -->
                       <div class="Login-button Login-Button-Mobile-Screen" style="display: none;">
-                        <a href="{% url 'login' %}"><span>LOGIN</span></a>
+                        {% if user.is_authenticated %}
+                             <a href="{% url 'logout-user' %}"><span>LOGOUT</span></a>
+                        {% else %} 
+                             <a href="{% url 'login' %}"><span>LOGIN</span></a>
+                        {% endif %}    
                       </div>
                        <!--Login and Username for Mobile  -End-->
                     </div>
@@ -85,8 +92,15 @@
                         </ul>
                       </div>
                     </div><!-- /.Username -->
+                    {% if user.is_authenticated %}
+                    <div class="Login-colour"> Welcome: {{user.email}}</div>
+                    {% endif %}
                     <div class="Login-button">
-                      <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
+                      {% if user.is_authenticated %}
+                        <a href="{% url 'logout-user' %}"><i class="fi fi-ss-user"></i><span>LOGOUT</span></a>
+                      {% else %}  
+                        <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
+                      {% endif %}  
                     </div>
                     <!--Login and Username for Desktop  -End-->
                     <div class="menu-button" onclick="menuAnimation(this)">

@@ -20,12 +20,17 @@
         <div class="container">
             <div class="row" style="display: flex; justify-content: center;">
                 <div class="col-sm-12 col-lg-6">
-                    <form class="sign-up">
+                    <form  method="post" action="{% url 'Create_accountPage-user'%}" class="sign-up">
+                        {% csrf_token %}
                         <h2 class="sign-up-title">CREATE YOUR ACCOUNT</h2>
-                        <input type="text" class="sign-up-input" placeholder="Enter Username" autofocus>
-                        <input type="email" class="sign-up-input" placeholder="Enter Email" autofocus>
-                        <input type="password" class="sign-up-input" placeholder="Enter Password">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="username" name="username" class="sign-up-input" id="username"placeholder="Enter Username" autofocus>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="sign-up-input" id="email" placeholder="Enter Email" autofocus>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password"class="sign-up-input" id="password" placeholder="Enter Password">
                         <input type="submit" value="Create Account" class="sign-up-button">
+                        <span>Already have an account</span> <a class="nav-link" href="{% url 'login' %}">login</a>
                     </form>
                 </div><!-- /.col-6 -->
             </div><!-- /.row -->           
