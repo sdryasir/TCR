@@ -27,7 +27,6 @@ def homePage(request):
     Latest_Blog_Data = Latest_Blog.objects.all()
     General_Questions_Data = General_Questions.objects.all()
 
-
     Data= {
         "main_Hero_Section":Main_Hero_Section_Data,
         "choose_Car_Option":Choose_Car_Options_Data,
@@ -41,7 +40,6 @@ def homePage(request):
         "General_Questions" : General_Questions_Data     
     }
     return render(request, 'index.html', Data)
-
 
 
 
@@ -92,11 +90,36 @@ def Our_carsPage(request):
 
 
 def Car_detailPage(request, id):
+    Featured_Cars_List = Featured_Cars.objects.all()
     Car_1 = Cars.objects.get(id__exact=id)
     Data = {
+        "Feature_Cars_List": Featured_Cars_List,
         "One_Car": Car_1,
+        "current_id_2": int(id)
     }
     return render(request, 'Car_Details.html', Data) 
+
+
+
+
+def Featured_Car_detailPage(request, id):
+    Featured_Cars_List = Featured_Cars.objects.all()
+    Featured_Car_1 = Featured_Cars.objects.get(id__exact=id)
+    Data = {
+        "Feature_Cars_List": Featured_Cars_List,
+        "Featured_Car": Featured_Car_1,
+        "current_id": int(id) 
+    }
+    return render(request, 'Featured_Cars_Details.html', Data) 
+
+
+
+
+
+
+
+
+
 
 
 def contactPage(request):

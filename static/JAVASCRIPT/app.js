@@ -131,10 +131,10 @@ $('.counter').counterUp({
 
 
 $('.owl-carousel-1').owlCarousel({
-  loop: false,
+  loop: true,
   nav:false,
   margin:20,
-  autoplay: false,
+  autoplay: true,
   responsive:{
       0:{
           items:1
@@ -184,10 +184,10 @@ $('.owl-carousel-2').owlCarousel({
 // 9 OUR LATEST BLOG & ARTICLES)
 
 $('.owl-carousel-3').owlCarousel({
-  loop: false,
+  loop: true,
   nav:false,
   margin:20,
-  autoplay: false,
+  autoplay: true,
   responsive:{
       0:{
           items:1
@@ -235,10 +235,10 @@ items.forEach(item => item.addEventListener('click', toggleAccordion));
 
 
 $('.owl-carousel-6').owlCarousel({
-  loop: false,
+  loop: true,
   nav:false,
   margin:20,
-  autoplay: false,
+  autoplay: true,
   responsive:{
       0:{
           items:1
