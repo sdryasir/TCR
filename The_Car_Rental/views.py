@@ -63,6 +63,8 @@ def aboutPage(request):
 
 
 def loginPage(request):
+    if request.user.is_authenticated:
+       return redirect('home')
     return render(request, 'login.html') 
 
 
@@ -87,7 +89,7 @@ def loginUser(request):
 
     if uname == '' or upassword == ''  :
         messages.error(request, "Please provide ther email and password")
-    
+        return redirect('login')
     user = authenticate(request, username=uname, password=upassword)
   
     if user is not None:
@@ -102,8 +104,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-
-    return render(request, 'login.html')
+    return redirect('home')
 
 
 
@@ -160,17 +161,12 @@ def Car_detailPage(request, id):
 #         print('error') 
 #      return render(request, 'Contact.html')
 
-
 def contactPage(request):
-<<<<<<< HEAD
-    return render(request, 'Contact.html')
-=======
     General_Questions_Data = General_Questions.objects.all()
     Data={
         "General_Questions" : General_Questions_Data   
     }
     return render(request, 'Contact.html', Data) 
->>>>>>> a3e4e8d0ac9ffc8ec80fcb47bda34bac6091366b
 
 def saveContact(request):
     if request.method == 'POST':
