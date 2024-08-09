@@ -68,6 +68,36 @@
 }
 
 
+/* Main-Hero-Section Choose Car */
+select.select-placeholder {
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 400;
+
+}
+
+
+select.select-placeholder .option{
+color: var(--grey-color);
+
+
+
+}
+
+input::placeholder{
+  color: var(--grey-color);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-weight: 400;
+
+}
+
+
+
+
+
+
+
 /* Why Choose Us  uppercase */
 .why-choose-us-background-image h2{
   text-transform: uppercase;

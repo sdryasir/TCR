@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ChooseCarOptionsConfig(AppConfig):
+class OurTeamConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Choose_Car_Options'
+    name = 'Our_Team'

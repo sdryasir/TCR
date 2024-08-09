@@ -58,7 +58,7 @@
                       {% if user.is_authenticated %}
                       <div class="Username Username-button-Mobile-Screen" style="display: none;">
                         <div class="dropdown Logout-button">
-                          <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Hi, {{user.username}}
                           </a>             
                           <ul class="dropdown-menu logout-dropdown">
@@ -81,7 +81,7 @@
                     {% if user.is_authenticated %}
                     <div class="Username">
                       <div class="dropdown Logout-button">
-                        <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Hi, {{user.username}}
                         </a>             
                         <ul class="dropdown-menu logout-dropdown">
