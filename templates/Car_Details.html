@@ -36,17 +36,20 @@
                     <div class="More-Car-List" style="margin-top: 40px;">
                         <div class="Car-List">
                             <div class="list-group">
-                                <a class="list-group-item list-group-item-action disabled heading" aria-disabled="true">MORE CAR LIST</a>
-                                <a href="#" class="list-group-item list-group-item-action">Honda Cross Over</a>
-                                <a href="#" class="list-group-item list-group-item-action">Luxury Cross Over</a>
-                                <a href="#" class="list-group-item list-group-item-action">Honda Civic RS</a>
-                                <a href="#" class="list-group-item list-group-item-action">BMX 1 GTR</a>
-                                <a href="#" class="list-group-item list-group-item-action">Ford Raptor</a>
+                                <a class="list-group-item list-group-item-action disabled heading" aria-disabled="true">FEATURED CARS</a>
+                                {% for feature in Feature_Cars_List %}
+                                <a href="{% url 'featured_car_detail' feature.id %}" class="list-group-item list-group-item-action">{{feature.title}}</a>
+                                {% endfor %}                       
                               </div>
                         </div><!-- /.Car-List -->
                     </div><!-- /.More-Car-List -->
                 </div><!-- /.col-3 -->
                 <div class="col-sm-12  col-md-12  col-lg-8 col-xl-8 ">
+                    {% if One_Car.new_car %}
+                    <div class="Car-Tag">
+                        <h4>{{One_Car.new_car}}</h4>
+                    </div><!-- /.Car-Tag -->
+                    {% endif %}
                     <div class="image-section">
                         <img src="/media/{{One_Car.image}}" style="width: 100%;" alt="">
                     </div><!-- /.image-section -->

@@ -27,9 +27,6 @@
     <link rel="stylesheet" href="{% static 'CSS/Our_Team.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/About.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/navbar_close.css' %}">
-    <style> .Login-colour{
-      color: white;
-    } </style>
 </head>
 <body>
     <div class="site-wrapper">
@@ -58,23 +55,22 @@
                       <a class="" href="{% url 'blog' %}">BLOG</a>
                       <a class="right-padding" href="{% url 'contactPage' %}">CONTACT</a>
                       <!--Login and Username for Mobile  -Start-->
-                      <div class="Username" style="display: none;">
+                      {% if user.is_authenticated %}
+                      <div class="Username Username-button-Mobile-Screen" style="display: none;">
                         <div class="dropdown Logout-button">
-                          <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, Username
+                          <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, {{user.username}}
                           </a>             
                           <ul class="dropdown-menu logout-dropdown">
-                            <li><a class="dropdown-item" href="#">Logout <span><i class="fi fi-rs-exit"></i></span></a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                           </ul>
                         </div>
                       </div><!-- /.Username -->
+                      {% else %}
                       <div class="Login-button Login-Button-Mobile-Screen" style="display: none;">
-                        {% if user.is_authenticated %}
-                             <a href="{% url 'logout-user' %}"><span>LOGOUT</span></a>
-                        {% else %} 
-                             <a href="{% url 'login' %}"><span>LOGIN</span></a>
-                        {% endif %}    
+                        <a href="{% url 'login' %}"><span>LOGIN</span></a>    
                       </div>
+                      {% endif %}
                        <!--Login and Username for Mobile  -End-->
                     </div>
                   </nav>
@@ -82,26 +78,22 @@
                 <div class="side-navigation main-navbar-item">
                   <div class="Login-button-and-side-navigation">
                     <!--Login and Username for Desktop  -Start-->
-                    <div class="Username" style="display: none;">
+                    {% if user.is_authenticated %}
+                    <div class="Username">
                       <div class="dropdown Logout-button">
-                        <a class="btn dropdown-toggle Logout-button-title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Hi, Username
+                        <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Hi, {{user.username}}
                         </a>             
                         <ul class="dropdown-menu logout-dropdown">
-                          <li><a class="dropdown-item" href="#">Logout <span><i class="fi fi-rs-exit"></i></span></a></li>
+                          <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                         </ul>
                       </div>
                     </div><!-- /.Username -->
-                    {% if user.is_authenticated %}
-                    <div class="Login-colour"> Welcome: {{user.email}}</div>
-                    {% endif %}
+                    {% else %}  
                     <div class="Login-button">
-                      {% if user.is_authenticated %}
-                        <a href="{% url 'logout-user' %}"><i class="fi fi-ss-user"></i><span>LOGOUT</span></a>
-                      {% else %}  
-                        <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a>
-                      {% endif %}  
+                      <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a> 
                     </div>
+                    {% endif %} 
                     <!--Login and Username for Desktop  -End-->
                     <div class="menu-button" onclick="menuAnimation(this)">
                       <div class="bar1"></div>
