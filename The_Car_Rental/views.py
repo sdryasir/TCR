@@ -73,14 +73,17 @@ def Create_accountPage(request):
     return render(request, 'create_account.html') 
 
 
-def Create_accountPageUser(request):
+def Create_accountPageUser(request): 
     uname = request.POST['username']
     uemail = request.POST['email']
     upassword = request.POST['password']
-    
-    user = User.objects.create_user(username=uname, email=uemail, password=upassword)
 
-    return render(request, 'create_account.html')
+    if uname == '' or uemail == '' or upassword == ''  :
+        messages.error(request, "Not found. Please fill all fields.")
+        return redirect('create_account')
+        
+    user = User.objects.create_user(username=uname, email=uemail, password=upassword)
+    return render(request, 'login.html')
 
 
 def loginUser(request):
@@ -89,7 +92,7 @@ def loginUser(request):
     upassword = request.POST['password']
 
     if uname == '' or upassword == ''  :
-        messages.error(request, "Please provide ther email and password")
+        messages.error(request, "Please provide ther username and password")
         return redirect('login')
     user = authenticate(request, username=uname, password=upassword)
   
