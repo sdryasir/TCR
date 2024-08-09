@@ -4,10 +4,10 @@ from Main_Hero_Section.models import Main_Hero_Section
 from Main_Cars_Carousel.models import Main_Cars_Carousel
 from Counter_Section.models import Counter_Section
 from Why_Choose_Us_Section.models import Why_Choose_Us_Section
-from Choose_Car_Options.models import Choose_Car_Options
 from Featured_Cars.models import Featured_Cars
 from Testimonial.models import Testimonial
 from Background_Video.models import Background_Video
+from Our_Team.models import Our_Team
 from Latest_Blog.models import Latest_Blog
 from General_Questions.models import General_Questions
 from Cars.models import Cars
@@ -21,7 +21,7 @@ from django.contrib.auth import authenticate ,login as user_login ,logout
 
 def homePage(request):
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
-    Choose_Car_Options_Data = Choose_Car_Options.objects.all()
+    Cars_Data = Cars.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
     Why_Choose_Us_Section_Data = Why_Choose_Us_Section.objects.all()
@@ -33,7 +33,7 @@ def homePage(request):
 
     Data= {
         "main_Hero_Section":Main_Hero_Section_Data,
-        "choose_Car_Option":Choose_Car_Options_Data,
+        "Car_Data": Cars_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
         "why_Choose_Us_Section":Why_Choose_Us_Section_Data,
@@ -49,14 +49,17 @@ def homePage(request):
 
 
 
-
-
-
-
-
-
 def aboutPage(request):
-    return render(request, 'about.html') 
+    top_items = Our_Team.objects.all()[:3]    
+    Data={
+        'top_3_cards': top_items
+    }
+
+    return render(request, 'about.html', Data) 
+
+
+
+
 
 
 
@@ -226,9 +229,11 @@ def saveContact(request):
 
 
 def Our_teamPage(request):
+    Team_Cards = Our_Team.objects.all()
     Background_Video_Data = Background_Video.objects.all()
     Testimonial_Data = Testimonial.objects.all()
     Data={
+        "Team_Cards_Data":Team_Cards,
         "Background_Video":Background_Video_Data,
         "Testimonial": Testimonial_Data
     }
