@@ -1,23 +1,5 @@
 {% load static %}
 {% include 'header/header.html' %}
-<style>.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.alert-success {
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-}
-
-.alert-error {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}</style>
 <main class="main-content">
     <section class="Login-Main-Hero-Section">
         <div class="Login-Hero-Section-image">
@@ -38,6 +20,24 @@
           <div class="col-sm-12 col-lg-6">
             <div class="form-wrapper">
               <h2>SIGN IN</h2>
+              <style>.alert {
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+              }
+              
+              .alert-success {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d6e9c6;
+              }
+              
+              .alert-error {
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+              }</style>
                 {% if messages %}
                     <div class="alert-messages">
                         {% for message in messages %}
