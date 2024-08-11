@@ -274,7 +274,10 @@ $('.owl-carousel-7').owlCarousel({
           items:3
       }
   }
+  
 })
+  
+
 
 
 
@@ -313,3 +316,7 @@ $(document).ready(function(){
 	})
 	
 });
+
+
+//
+

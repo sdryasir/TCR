@@ -4,43 +4,42 @@ from Main_Hero_Section.models import Main_Hero_Section
 from Main_Cars_Carousel.models import Main_Cars_Carousel
 from Counter_Section.models import Counter_Section
 from Why_Choose_Us_Section.models import Why_Choose_Us_Section
-from Featured_Cars.models import Featured_Cars
 from Testimonial.models import Testimonial
 from Background_Video.models import Background_Video
 from Our_Team.models import Our_Team
-from Latest_Blog.models import Latest_Blog
 from General_Questions.models import General_Questions
-from Cars.models import Cars
+from CARS.models import CARS
 from contact.models import Contact
 from Blog.models import Blog
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login as user_login ,logout
+from About_Counter_Description.models import About_Counter_Description
+from Book_Your_Drive_Section.models import Book_Your_Drive
+from Questions_About_Payment.models import Payment_Questions
 
 
 
 def homePage(request):
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
-    Cars_Data = Cars.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
     Why_Choose_Us_Section_Data = Why_Choose_Us_Section.objects.all()
-    Featured_Cars_Data= Featured_Cars.objects.all()
+    Cars_Data = CARS.objects.all()
     Testimonial_Data = Testimonial.objects.all()
     Background_Video_Data = Background_Video.objects.all()
-    Latest_Blog_Data = Latest_Blog.objects.all()
+    Blog_Data = Blog.objects.all()
     General_Questions_Data = General_Questions.objects.all()
 
     Data= {
         "main_Hero_Section":Main_Hero_Section_Data,
-        "Car_Data": Cars_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
         "why_Choose_Us_Section":Why_Choose_Us_Section_Data,
-        "featured_cars_Section":Featured_Cars_Data,
+        "Car_Data": Cars_Data,
         "Testimonial": Testimonial_Data,
         "Background_Video": Background_Video_Data,
-        "Latest_Blog": Latest_Blog_Data,
+        "Latest_Blog": Blog_Data,
         "General_Questions" : General_Questions_Data     
     }
     return render(request, 'index.html', Data)
@@ -50,8 +49,16 @@ def homePage(request):
 
 
 def aboutPage(request):
+    Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
+    Counter_Section_Data= Counter_Section.objects.all()
+    Counter_Description_Data= About_Counter_Description.objects.all()
+    Book_your_drive = Book_Your_Drive.objects.all()
     top_items = Our_Team.objects.all()[:3]    
     Data={
+        "main_Cars_Carousel":Main_Cars_Carousel_Data,
+        "counter_Section":Counter_Section_Data,
+        "About_Description": Counter_Description_Data,
+        "Book_Your_Drive_Section": Book_your_drive,
         'top_3_cards': top_items
     }
 
@@ -81,6 +88,8 @@ def Create_accountPageUser(request):
     if uname == '' or uemail == '' or upassword == ''  :
         messages.error(request, "Not found. Please fill all fields.")
         return redirect('create_account')
+
+
         
     user = User.objects.create_user(username=uname, email=uemail, password=upassword)
     return render(request, 'login.html')
@@ -114,22 +123,28 @@ def logoutUser(request):
 
 
 def faqPage(request):
-    return render(request, 'faq.html') 
+    General_Questions_Data = General_Questions.objects.all()
+    Payment_Questions_Data = Payment_Questions.objects.all()
+    Data={
+        "General_Questions" : General_Questions_Data,
+        "Payment_questions" : Payment_Questions_Data  
+    }
+    return render(request, 'faq.html', Data) 
 
 
 def Our_carsPage(request):
-    Cars_Data = Cars.objects.all()
+    Cars_Data = CARS.objects.all()
     Cars_Data= Paginator(Cars_Data, 6)
     page = request.GET.get('page')
     products = Cars_Data.get_page(page)
     totalpages = [x+1 for x in range(Cars_Data.num_pages)]
     Background_Video_Data = Background_Video.objects.all()
-    Latest_Blog_Data = Latest_Blog.objects.all()
+    Blog_Data = Blog.objects.all()
     Data= {
         "cars_Section": products,
         "total_Pages": totalpages,
         "Background_Video":Background_Video_Data,
-        "Latest_Blog": Latest_Blog_Data,
+        "Latest_Blog": Blog_Data,
     }
     return render(request, 'Our_Cars.html', Data) 
 
@@ -137,33 +152,14 @@ def Our_carsPage(request):
 
 
 def Car_detailPage(request, id):
-    Featured_Cars_List = Featured_Cars.objects.all()
-    Car_1 = Cars.objects.get(id__exact=id)
+    Cars_Data = CARS.objects.all()
+    Car_1 = CARS.objects.get(id__exact=id)
     Data = {
-        "Feature_Cars_List": Featured_Cars_List,
+        "Car_Data": Cars_Data,
         "One_Car": Car_1,
-        "current_id_2": int(id)
+        "current_id": int(id)
     }
     return render(request, 'Car_Details.html', Data) 
-
-
-
-
-def Featured_Car_detailPage(request, id):
-    Featured_Cars_List = Featured_Cars.objects.all()
-    Featured_Car_1 = Featured_Cars.objects.get(id__exact=id)
-    Data = {
-        "Feature_Cars_List": Featured_Cars_List,
-        "Featured_Car": Featured_Car_1,
-        "current_id": int(id) 
-    }
-    return render(request, 'Featured_Cars_Details.html', Data) 
-
-
-
-
-
-
 
 
 
@@ -263,3 +259,6 @@ def Single_postPage(request, id):
     }
     return render(request, 'Single_Post.html', Data) 
 
+
+def reservationPage(request):
+    return render(request, 'Reservation.html') 

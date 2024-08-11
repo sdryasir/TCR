@@ -44,14 +44,15 @@ INSTALLED_APPS = [
     'Main_Cars_Carousel',
     'Counter_Section',
     'Why_Choose_Us_Section',
-    'Featured_Cars',
     'Testimonial',
     'Background_Video',
-    'Latest_Blog',
     'General_Questions',
-    'Cars',
+    'CARS',
     'Blog',
     'Our_Team',
+    'About_Counter_Description',
+    'Book_Your_Drive_Section',
+    'Questions_About_Payment',
 
 
 ]

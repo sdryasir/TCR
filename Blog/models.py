@@ -6,6 +6,8 @@ class Blog(models.Model):
     tag = models.CharField(max_length=20,null=True)
     image= models.FileField(max_length=200 , upload_to="Blog/", null=True)
 
+
+    category = models.CharField(max_length=150,null=True)
     Blog_details_heading_1 = models.CharField(max_length=150,null=True,blank=True)
     Blog_details_description_1 = models.CharField(max_length=700,null=True,blank=True)
     Blog_details_description_2 = models.CharField(max_length=700,null=True,blank=True)

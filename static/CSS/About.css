@@ -309,7 +309,6 @@
 
   .Book-your-drive-section{
     margin-top: 100px;
-    background-image: url('/static/images/Default-Hero-Section-Image.png');
     background-color: var(--black-color);
   }
   
@@ -352,13 +351,7 @@
     background-color: var(--white-color);
   }
   
-  
 
-  @media (max-width: 1120px) {
-    .Book-your-drive-section{
-      background-image: url('/static/images/why-choose-us-section-background-img-mobile.png');
-    }
-  }
 
   @media (max-width: 970px) {
     .Book-your-drive-section h2{

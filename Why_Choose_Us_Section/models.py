@@ -15,3 +15,7 @@ class Why_Choose_Us_Section(models.Model):
     image= models.FileField(max_length=200 , upload_to="Why_Choose_Us_Section/", null=True,blank=True)
     mobile_background_image= models.FileField(max_length=200 , upload_to="Why_Choose_Us_Section/", null=True,blank=True)
     background_image= models.FileField(max_length=200 , upload_to="Why_Choose_Us_Section/", null=True,blank=True)
+
+    class Meta:
+        verbose_name = ""  # Singular name
+        verbose_name_plural = "Why Choose Us Section"  # Plural name (same as singular, to avoid pluralization)
