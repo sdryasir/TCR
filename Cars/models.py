@@ -1,13 +1,11 @@
 from django.db import models
-from django.utils.text import slugify
 
 # Create your models here.
-
-
-class Cars(models.Model):
+class CARS(models.Model):
     title = models.CharField(max_length=60,null=True)
     image= models.FileField(max_length=200 , upload_to="Cars/", null=True)
     new_car = models.CharField(max_length=60,null=True,blank=True)
+    category = models.CharField(max_length=60,null=True,blank=True)
     passengers = models.CharField(max_length=60,null=True)
     price = models.CharField(max_length=60,null=True)  
     petrol_diesel = models.CharField(max_length=60,null=True,blank=True)
@@ -30,10 +28,4 @@ class Cars(models.Model):
 
     class Meta:
         verbose_name = ""  # Singular name
-        verbose_name_plural = "OUR CARS"  # Plural name (same as singular, to avoid pluralization)
-
-
-
-
-
-
+        verbose_name_plural = "Our Cars"  # Plural name (same as singular, to avoid pluralization)

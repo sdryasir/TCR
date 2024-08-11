@@ -134,59 +134,61 @@
                 <h3 class = "text-center Our-Featured-Cars-Heading">OUR FEATURED CARS</h3>
             </div>
             <div class = "row owl-carousel-1 owl-carousel owl-theme">  
-                {% for car in featured_cars_Section %}  
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="/media/{{car.image}}" alt = "" class = "img-fluid d-block mx-auto">
-                        {% if car.new_car %}
-                            <span class = "Save">{{car.new_car}}</span>
-                        {% else %}
-                            <span class = "Save" style="display: none;"></span>
-                        {% endif %}
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>{{car.title}}</h2></span>
-                        <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
-                        <span class = "product-price">${{car.price}}.00<span class="light-font"> / Hours</span></span>
-                        <div class = "rating d-flex mt-1">
-                            <form class="rating">
-                                <label>
-                                  <input type="radio" name="stars" value="1" />
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="2" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="3" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>   
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="4" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                                <label>
-                                  <input type="radio" name="stars" value="5" />
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                  <span class="icon">★</span>
-                                </label>
-                            </form>
-                        </div>
-                    </div> 
-                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href="{% url 'featured_car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
-                    </div>     
-                </div>
+                {% for car in Car_Data %}  
+                    {% if car.category == 'Featured' %}
+                    <div class = "col-4 product-item">
+                        <div class = "product-img">
+                            <img src ="/media/{{car.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                            {% if car.new_car %}
+                                <span class = "Save">{{car.new_car}}</span>
+                            {% else %}
+                                <span class = "Save" style="display: none;"></span>
+                            {% endif %}
+                        </div>  
+                        <div class = "product-info">
+                            <span class = "product-type"><h2>{{car.title}}</h2></span>
+                            <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                            <span class = "product-price">${{car.price}}.00<span class="light-font"> / Hours</span></span>
+                            <div class = "rating d-flex mt-1">
+                                <form class="rating">
+                                    <label>
+                                      <input type="radio" name="stars" value="1" />
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="2" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="3" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>   
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="4" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="5" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                </form>
+                            </div>
+                        </div> 
+                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                            <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                        </div>     
+                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div><!-- /.container -->
@@ -257,21 +259,23 @@
             <div class = "row">
                 <h3 class = "text-center Our-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
             </div>
-            <div class = "row owl-carousel-3 owl-carousel owl-theme">
-                {% for blog in Latest_Blog %}       
-                <div class = "col-4 product-item">
-                    <div class = "product-img">
-                        <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
-                        <span class = "Save">{{blog.tag}}</span>
-                    </div>  
-                    <div class = "product-info">
-                        <span class = "product-type"><h2>{{blog.title}}</h2></span>
-                        
-                    </div> 
-                    <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                        <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
-                    </div>     
-                </div>
+            <div class = "row owl-carousel-3 owl-carousel owl-theme"> 
+                {% for blog in Latest_Blog %}  
+                    {% if blog.category == 'Latest' %}   
+                        <div class = "col-4 product-item">
+                            <div class = "product-img">
+                                <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                                <span class = "Save">{{blog.tag}}</span>
+                            </div>  
+                            <div class = "product-info">
+                                <span class = "product-type"><h2>{{blog.title}}</h2></span>
+
+                            </div> 
+                            <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                                <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
+                            </div>     
+                        </div>
+                    {% endif %}
                 {% endfor %}           
             </div>
         </div><!-- /.container -->

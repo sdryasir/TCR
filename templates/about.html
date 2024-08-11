@@ -21,24 +21,14 @@
         <div class="container-fluid">
          
             <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-1.jpg' %}');">
+                {% for carousel in main_Cars_Carousel %}
+                <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
                   <div class="overlay-carousel-cell"></div>
                   <div class="inner">
                     <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
                   </div>
                 </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-2.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
-              <div class="carousel-cell" style="background-image: url('{% static 'images/driving-excellence-slide-3.jpg' %}');">
-                  <div class="overlay-carousel-cell"></div>
-                  <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
-                  </div>
-                </div>
+                {% endfor %}
               </div>
         </div><!-- /.container-fluid -->
     </div><!-- /.Driving-excellence-owl-carousel -->
@@ -47,8 +37,10 @@
             <div class="row">
                 <div class="col-sm-12	  col-md-12	  col-lg-12  col-xl-5">
                     <div class="content">
-                        <p class="Test-Size">"Renting a car is not just about getting from point A to point B, it's about the <b>journey and experiences</b> you create along the way. We're here to make every mile of your adventure exceptional."<br><br>
-                            Quisque rutrum aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui etiam rhoncus. Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+                        {% for des in About_Description %}
+                        <p class="Test-Size"><b>{{des.description_1}}</b></p>
+                        <p class="Test-Size">{{des.description_2}}</p>
+                        {% endfor %}
                             <div class="Our-Cars-link">
                                 <a href="{% url 'our_cars' %}">OUR CARS<span><i class="fi fi-rs-arrow-right"></i></span></a>
                             </div>
@@ -57,39 +49,41 @@
                 
                 <div class="col-1"></div><!-- /.col-1 -->
                 <div class="col-sm-12	 col-md-12	  col-lg-12   col-xl-6 ">
-                    <div class="About-Counter-animation">        
+                    <div class="About-Counter-animation"> 
+                        {% for counter_app in counter_Section %}         
                         <div class=" About-counterapp-col About-counterapp-col-no-padding">
                             <div class="About-counter-box">
-                                <h2 class="counter">10</h2><span class="About-counterapp-span">+</span>
+                                <h2 class="counter">{{counter_app.number_of_feature}}</h2><span class="About-counterapp-span">{{counter_app.sign_of_feature}}</span>
                             </div>
-                            <h4>Years experience</h4>
-                        </div>
-                        <div class=" About-counterapp-col">
-                            <div class="About-counter-box">
-                                <h2 class="counter">62</h2><span class="About-counterapp-span">+</span>
-                            </div>
-                            <h4>Number of Cars</h4>
-                            </div>
-                        <div class="About-counterapp-col">
-                            <div class="About-counter-box">
-                                <h2 class="counter">97</h2><span class="About-counterapp-span">%</span>
-                            </div>
-                            <h4>Satisfaction Rate</h4>
-                        </div>                  
+                            <h4>{{counter_app.feature}}</h4>
+                        </div> 
+                        {% endfor %}                
                     </div><!-- /.Counter-animation -->
                 </div><!-- /.col-6 -->
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.driving-excellence-counter -->
+    {% for sec in Book_Your_Drive_Section %}
     <div class="Book-your-drive-section">
+        <style>
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.background_image}}');
+            }
+            @media (max-width: 1120px) {
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.mobile_background_image}}');
+            }
+        }
+        </style>
         <div class="content">
-            <h2>Book Your Adventure<br>Today – Drive with Us!</h2>
-            <p>Start your adventure now by booking with us, and let<br>the road lead you to incredible destinations.</p>
+            <h2>{{sec.title_line_1}}<br>{{sec.title_line_2}}</h2>
+            <p>{{sec.des_line_1}}<br>{{sec.des_line_2}}</p>
             <div class="Book-Now-button">
-                <a href="">book now</a>
+                <a href="{% url 'our_cars' %}">{{sec.book_now_button}}</a>
             </div><!-- /.Book-Now-button -->
         </div><!-- /.content -->
     </div><!-- /.Book-your-drive-section -->
+    {% endfor %}
     <div class="About-Heading">
         <div class="container">
             <h2>MEET OUR TEAM</h2>

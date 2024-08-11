@@ -36,13 +36,13 @@ urlpatterns = [
     path('logout-user/', views.logoutUser, name='logout-user'),
     path('our-cars/', views.Our_carsPage, name='our_cars'),
     path('car-detail/<id>', views.Car_detailPage, name='car_detail'),
-    path('featured-car-detail/<id>', views.Featured_Car_detailPage, name='featured_car_detail'),
     path('faq/', views.faqPage, name='faq'),
     path('contact/', views.contactPage, name='contactPage'),
     path('save-contact/', views.saveContact, name='save-contact'),
     path('our-team/', views.Our_teamPage, name='our_team'),
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
+    path('reservation/', views.reservationPage, name='reservation'),
 ]
 
 if settings.DEBUG:
