@@ -162,6 +162,14 @@ def Car_detailPage(request, id):
     return render(request, 'Car_Details.html', Data) 
 
 
+def reservationPage(request):
+    Cars_Data = CARS.objects.all()
+    Data = {
+        "Car_Data": Cars_Data,
+    }
+    return render(request, 'Reservation.html', Data) 
+
+
 
 
 
@@ -260,5 +268,3 @@ def Single_postPage(request, id):
     return render(request, 'Single_Post.html', Data) 
 
 
-def reservationPage(request):
-    return render(request, 'Reservation.html') 
