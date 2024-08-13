@@ -3969,7 +3969,109 @@ textarea {
 
 
 
-/* 10) Single Post */
+/* 10) Reservation Page */
+
+.Booking_Cart section{
+  background-color: var(--footer-background-color-2); 
+  padding: 200px 0;
+
+}
+
+.Booking_Cart h2{
+  color: var(--black-color);
+  font-family: var(--main-font);
+
+}
+
+
+.Booking_Cart h4{
+  color: var(--black-color);
+  font-family: var(--main-font);
+
+}
+
+.Booking_Cart h6.car_type{
+  color: var(--buttons-and-icons-color1);
+}
+
+.Booking_Cart i.fi-rs-plus-small{
+  color: var(--black-color);
+  font-size: 20px;
+
+}
+
+
+
+.Booking_Cart i.fi-rs-minus-small{
+  color: var(--black-color);
+  font-size: 20px;
+
+}
+
+
+
+.Booking_Cart h6.price{
+  color: var(--black-color);
+  font-family: var(--secondary-font);
+  font-size: 20px;
+
+}
+
+
+
+
+
+
+
+.Booking_Cart i.fi-rs-circle-xmark{
+  color: red;
+  font-size: 20px;
+
+}
+
+
+
+.Booking_Cart h6.back-to-booking{
+  display: flex;
+  justify-content: center;
+
+
+
+}
+
+.Booking_Cart h6.back-to-booking a{
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  padding:20px;
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+}
+
+
+.Booking_Cart h3.Summary{
+  font-family: var(--main-font);
+}
+
+
+.Booking_Cart a.BOOK_Button{
+  display: flex;
+  justify-content: center;
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+}
+
+
+.Booking_Cart a.BOOK_Button:hover{
+  background-color: var(--black-color);
+}
+
+
+
+
+
+
+
 
 
 
@@ -4163,8 +4265,8 @@ textarea {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 50px; /* Example size */
-  height: 50px; /* Example size */
+  width: 50px!important; /* Example size */
+  height: 50px!important; /* Example size */
 }
 
 .footer-social-links:hover{

@@ -103,11 +103,11 @@
                             </div><!-- /.Right-Section -->
                         </div><!-- /.Car-Features -->
                         <div class="Book-Now-button">
-                            {% if user.is_authenticated %}
-                            <a href="{% url 'reservation' %}">BOOK NOW</a>
-                            {% else %}
-                            <a href="{% url 'login' %}">BOOK NOW</a>
-                            {% endif %}
+                                {% if user.is_authenticated %}
+                                        <a href="{% url 'reservation'%}">BOOK NOW</a>
+                                {% else %}
+                                    <a href="{% url 'login' %}">BOOK NOW</a>
+                                {% endif %}
                         </div><!-- /.Book-Now-button -->
                     </div><!-- /.Car-Information -->
                 </div><!-- /.col-8 -->
