@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CART_SESSION_ID = 'cart'
 
 
 # Application definition
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'About_Counter_Description',
     'Book_Your_Drive_Section',
     'Questions_About_Payment',
+    'cart',
 
 
 ]
@@ -79,6 +81,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'cart.context_processor.cart_total_amount',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
