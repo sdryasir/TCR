@@ -17,7 +17,7 @@ from django.contrib.auth import authenticate ,login as user_login ,logout
 from About_Counter_Description.models import About_Counter_Description
 from Book_Your_Drive_Section.models import Book_Your_Drive
 from Questions_About_Payment.models import Payment_Questions
-
+from cart.cart import Cart
 
 
 def homePage(request):
@@ -162,10 +162,16 @@ def Car_detailPage(request, id):
     return render(request, 'Car_Details.html', Data) 
 
 
-def reservationPage(request):
+def reservationPage(request, id):
     Cars_Data = CARS.objects.all()
+    Cars_Data= Paginator(Cars_Data, 6)
+    page = request.GET.get('page')
+    products = Cars_Data.get_page(page)
+    Car_1 = CARS.objects.get(id__exact=id)
     Data = {
-        "Car_Data": Cars_Data,
+        "cars_Section": products,
+        "One_Car": Car_1,
+        "current_id_2": int(id)
     }
     return render(request, 'Reservation.html', Data) 
 
@@ -268,3 +274,55 @@ def Single_postPage(request, id):
     return render(request, 'Single_Post.html', Data) 
 
 
+
+
+
+
+
+
+
+
+
+
+
+def cart_add(request, id):
+    cart = Cart(request)
+    product = CARS.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("reservation")
+
+
+
+def item_clear(request, id):
+    cart = Cart(request)
+    product = CARS.objects.get(id=id)
+    cart.remove(product)
+    return redirect("reservation")
+
+
+
+def item_increment(request, id):
+    cart = Cart(request)
+    product = CARS.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("reservation")
+
+
+
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = CARS.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("reservation")
+
+
+
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("reservation")
+
+
+
+def cart_detail(request):
+    return render(request, 'reservation.html')

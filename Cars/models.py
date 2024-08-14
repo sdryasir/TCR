@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class CARS(models.Model):
-    title = models.CharField(max_length=60,null=True)
+    name = models.CharField(max_length=60,null=True)
     image= models.FileField(max_length=200 , upload_to="Cars/", null=True)
     new_car = models.CharField(max_length=60,null=True,blank=True)
     category = models.CharField(max_length=60,null=True,blank=True)
