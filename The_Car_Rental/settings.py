@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,14 +26,17 @@ SECRET_KEY = 'django-insecure-b86s0n^!i&n1%$(*3owf%$+5r&grdari4#zc@=3hsw)k+yp3+e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thecarrental.site']
 
+# ALLOWED_HOSTS = []
+
+CART_SESSION_ID = 'cart'
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin', 
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +57,7 @@ INSTALLED_APPS = [
     'About_Counter_Description',
     'Book_Your_Drive_Section',
     'Questions_About_Payment',
+    'cart',
 
 
 ]
@@ -66,9 +71,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'The_Car_Rental.middleware.Custom404Middleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
 
 ROOT_URLCONF = 'The_Car_Rental.urls'
 
@@ -79,6 +84,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'cart.context_processor.cart_total_amount',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -99,14 +105,13 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
 
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'car_rental',     # Replace with your MySQL database name
-        'DATABASE': 'car_rental',
-        'USER': 'root',    # Replace with your MySQL username
-        'PASSWORD': '',# Replace with your MySQL password
-        'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
-        'PORT': '3306',
-
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'car_rental',     # Replace with your MySQL database name
+        # 'DATABASE': 'car_rental',
+        # 'USER': 'root',    # Replace with your MySQL username
+        # 'PASSWORD': '',# Replace with your MySQL password
+        # 'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
+        # 'PORT': '3306',
 
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'thecarre_car_rental',     # Replace with your MySQL database name
@@ -115,6 +120,17 @@ DATABASES = {
         # 'PASSWORD': 'u3kLBYGT@6Yv',# Replace with your MySQL password
         # 'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
         # 'PORT': '3306',
+
+
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'thecarre_car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'thecarre_car_rental',
+        'USER': 'thecarre_car_rental_test',    # Replace with your MySQL username
+        'PASSWORD': 'u3kLBYGT@6Yv',# Replace with your MySQL password
+        'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
+        'PORT': '3306',
+
         
     }
 }
@@ -154,18 +170,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
-STATIC_ROOT = BASE_DIR / 'productionfiles'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
+# if DEBUG:
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# else:
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
