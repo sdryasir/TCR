@@ -1,61 +1,65 @@
 {% load static %}
+{% load cart_tag %}
 {% include 'header/header.html' %}
 
 <main class="main-content">
     <div class="Booking_Cart">        
         <section class="h-100 h-custom">
-            <div class="container py-5 h-100">
+            <div class="container-fluid py-5 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
                   <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                     <div class="card-body p-0">
                       <div class="row g-0">
-                        <div class="col-lg-9">
+                        <div class="col-lg-8">
                           <div class="p-5">
                             <div class="d-flex justify-content-between align-items-center mb-5">
                               <h2 class="fw-bold mb-0">BOOKING SECTION</h2>
                               <h6 class="mb-0 text-muted">3 Bookings</h6>
                             </div>
+                            <div>
+                              <a href="{% url 'cart_clear' %}" class="btn btn-block btn-lg Clear_Cart_Button">Clear Bookings</a>  
+                            </div>
                             <hr class="my-4">
-                            {% for car in Car_Data %}
+                            {% for id,car in request.session.cart.items %}
                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                               <div class="col-md-12 col-lg-12 col-xl-4">
                                 <img
-                                  src="/media/{{car.image}}"
+                                  src="{{car.image}}"
                                   class="img-fluid rounded-3" alt="Cotton T-shirt">
                               </div>
-                              <div class="col-md-12 col-lg-6 col-xl-3">
-                                <h4 class="">{{car.title}}</h4>
-                                <h6 class="mb-0 car_type">{{car.automatic_manual}}</h6>
+                              <div class="col-md-9 col-lg-4 col-xl-3">
+                                <h4 class="">{{car.name}}</h4>
                               </div>
                               <div class="col-md-3 col-lg-3 col-xl-3 d-flex" style="margin: 25px 0;">
-                                <button data-mdb-button-init data-mdb-ripple-init class="btn px-2"
-                                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                  <i class="fi fi-rs-minus-small"></i>
-                                </button>       
-                                <input id="form1" min="1" name="quantity" value="1" type="number"
+                                {% if car.quantity == 1 %}
+                                  <a href="{% url 'item_decrement' id %}" class="btn px-2" style="display: none;"><i  class="fi fi-rs-minus-small"></i></a>
+                                  <input min-value="1" value="{{car.quantity}}" disabled="true" type="text"
                                   class="form-control form-control-sm" />       
-                                <button data-mdb-button-init data-mdb-ripple-init class="btn px-2"
-                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                  <i class="fi fi-rs-plus-small"></i>
-                                </button>
+                                  <a href="{% url 'item_increment' id %}" class="btn px-2"><i  class="fi fi-rs-plus-small"></i></a>     
+                                {% else %} 
+                                <a href="{% url 'item_decrement' id %}" class="btn px-2"><i  class="fi fi-rs-minus-small"></i></a>     
+                                <input min-value="1" value="{{car.quantity}}" disabled="true" type="text"
+                                  class="form-control form-control-sm" />       
+                                  <a href="{% url 'item_increment' id %}" class="btn px-2"><i  class="fi fi-rs-plus-small"></i></a>   
+                                {% endif %} 
                               </div>
-                              <div class="col-md-3 col-lg-1 col-xl-1 text-center"   style="margin: 20px 0;">
+                              <div class="col-md-3 col-lg-2 col-xl-1 text-center">
                                 <h6 class="mb-0 price">$ {{car.price}}</h6>
                               </div>
-                              <div class="col-md-12 col-lg-1 col-xl-1 text-center">
-                                <a href="#!" class="text-muted"><i class="fi fi-rs-circle-xmark"></i></a>
+                              <div class="col-md-1 col-lg-1 col-xl-1 text-center"  style="margin: 50px 0; ">
+                                <a href="{% url 'item_clear' id %}" class="text-muted"><i class="fi fi-rs-circle-xmark"></i></a>
                               </div>
                             </div>
-                            <hr class="my-4">
-                            {% endfor %}                       
+                            <hr class="my-4"> 
+                            {% endfor %}                   
                             <div class="pt-5">
                               <h6 class="mb-0 back-to-booking"><a href="{% url 'our_cars' %}" class=""><i
-                                    class=" me-2"></i>Back to Booking</a></h6>
+                                    class=" me-2"></i>Back to Our Cars</a></h6>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-3 bg-body-tertiary">
+                        <div class="col-lg-4 bg-body-tertiary">
                           <div class="p-5">
                             <h3 class="fw-bold mb-5 mt-2 pt-1 Summary">SUMMARY</h3>
                             <hr class="my-4">         
@@ -77,7 +81,9 @@
                             <hr class="my-4">         
                             <div class="d-flex justify-content-between mb-5">
                               <h5 class="text-uppercase">Total price</h5>
-                              <h5>$ 137.00</h5>
+                              {% for id,car in request.session.cart.items %}
+                              <h5>$ {{ car.price|multiply:car.quantity }}</h5>
+                              {% endfor %}  
                             </div> 
                             <a href="{% url 'our_cars' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
                           </div>

@@ -4041,7 +4041,7 @@ textarea {
 
 .Booking_Cart h6.back-to-booking a{
   font-family: var(--secondary-font);
-  font-size: 20px;
+  font-size: 15px;
   padding:20px;
   background-color: var(--buttons-and-icons-color1);
   color: var(--white-color);
@@ -4063,6 +4063,19 @@ textarea {
 
 
 .Booking_Cart a.BOOK_Button:hover{
+  background-color: var(--black-color);
+}
+
+
+.Booking_Cart a.Clear_Cart_Button{
+  background-color: var(--buttons-and-icons-color1);
+  color: var(--white-color);
+  font-family: var(--secondary-font);
+  font-size: 15px;
+}
+
+
+.Booking_Cart a.Clear_Cart_Button:hover{
   background-color: var(--black-color);
 }
 

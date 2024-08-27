@@ -42,7 +42,24 @@ urlpatterns = [
     path('our-team/', views.Our_teamPage, name='our_team'),
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
-    path('reservation/', views.reservationPage, name='reservation'),
+
+
+
+
+    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+    path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
+    path('cart/item_increment/<int:id>/',
+         views.item_increment, name='item_increment'),
+    path('cart/item_decrement/<int:id>/',
+         views.item_decrement, name='item_decrement'),
+    path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+    path('reservation/',views.cart_detail,name='reservation'),
+
+
+
+
+
+
 ]
 
 if settings.DEBUG:
