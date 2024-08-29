@@ -42,6 +42,7 @@ urlpatterns = [
     path('our-team/', views.Our_teamPage, name='our_team'),
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
+    path('checkout/', views.checkoutPage, name='checkout'),
 
 
 

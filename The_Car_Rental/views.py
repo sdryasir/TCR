@@ -175,7 +175,9 @@ def reservationPage(request, id):
     }
     return render(request, 'Reservation.html', Data) 
 
-
+def checkoutPage(request):
+    return render(request, 'Checkout.html') 
+    
 
 
 
