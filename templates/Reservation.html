@@ -82,10 +82,10 @@
                             <div class="d-flex justify-content-between mb-5">
                               <h5 class="text-uppercase">Total price</h5>
                               {% for id,car in request.session.cart.items %}
-                              <h5>$ {{ car.price|multiply:car.quantity }}</h5>
-                              {% endfor %}  
+                              <h5>$ {{ car.price|floatformat:2|multiply:car.quantity }}</h5> 
+                             {% endfor %}  
                             </div> 
-                            <a href="{% url 'our_cars' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
+                            <a href="{% url 'checkout' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
                           </div>
                         </div>
                       </div>
@@ -99,4 +99,4 @@
 </main><!-- /.main-content -->
 
 
-{% include 'footer/footer.html' %}     
+{% include 'footer/footer.html' %}  
