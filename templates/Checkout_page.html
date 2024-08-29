@@ -1,0 +1,100 @@
+{% load static %}
+{% include 'header/header.html' %}
+<div class="checkout-Page">
+<div class="checkout-container">
+    <!-- Shipping Information -->
+    <section class="shipping-info">
+        <h2>1. Shipping</h2>
+        <form id="shipping-form">
+            <div class="form-group">
+                <label for="first-name">First Name*</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name*</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="postal-code">Postal Code*</label>
+                <input type="text" id="postal-code" name="postal-code" required>
+            </div>
+            <div class="form-group">
+                <label for="address-line-1">Address Line 1*</label>
+                <input type="text" id="address-line-1" name="address-line-1" required>
+            </div>
+            <div class="form-group">
+                <label for="address-line-2">Address Line 2 (Optional)</label>
+                <input type="text" id="address-line-2" name="address-line-2">
+            </div>
+            <div class="form-group">
+                <label for="province">Province*</label>
+                <input type="text" id="province" name="province" required>
+            </div>
+
+            <!-- Pickup Date -->
+            <div class="form-group">
+                <label for="pickup-date">Pickup Date*</label>
+                <input type="date" id="pickup-date" name="pickup-date" required>
+            </div>
+
+            <!-- Return Date -->
+            <div class="form-group">
+                <label for="return-date">Return Date*</label>
+                <input type="date" id="return-date" name="return-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-method">Select Delivery Method</label>
+                <div>
+                    <input type="radio" id="standard" name="delivery-method" value="standard" checked>
+                    <label for="standard">Standard FREE</label>
+                </div>
+                <div>
+                    <input type="radio" id="express" name="delivery-method" value="express">
+                    <label for="express">Express CAD 40.00</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Shipping Phone*</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </form>
+    </section>
+
+    <!-- Order Summary -->
+    <section class="order-summary">
+        <h2>Summary</h2>
+        <div class="summary-item">
+            <p>Subtotal</p>
+            <p>CAD 210.00</p>
+        </div>
+        <div class="summary-item">
+            <p>Shipping & Handling</p>
+            <p>FREE</p>
+        </div>
+        <div class="summary-item">
+            <p>Taxes</p>
+            <p>CAD 31.50</p>
+        </div>
+        <div class="summary-total">
+            <p>Total</p>
+            <p>CAD 241.50</p>
+        </div>
+
+        <h3>In Your Cart (1)</h3>
+        <div class="cart-item">
+            <p>Jordan Mars 270 Men's Shoe</p>
+            <p>CAD 210.00</p>
+            <p>Size: US 12</p>
+            <p>Qty: 1</p>
+        </div>
+
+        <button type="submit" class="btn-continue">Continue to Billing</button>
+    </section>
+</div>
+</div>
+{% include 'footer/footer.html' %}
