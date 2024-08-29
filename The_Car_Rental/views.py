@@ -175,7 +175,9 @@ def reservationPage(request, id):
     }
     return render(request, 'Reservation.html', Data) 
 
-
+def checkoutPage(request):
+    return render(request, 'Checkout.html') 
+    
 
 
 
@@ -326,7 +328,7 @@ def cart_clear(request):
 
 
 def cart_detail(request):
-    return render(request, 'reservation.html')
+    return render(request, 'Reservation.html')
 
 
 

@@ -31,24 +31,22 @@
                               <div class="col-md-9 col-lg-4 col-xl-3">
                                 <h4 class="">{{car.name}}</h4>
                               </div>
-                              <div class="col-md-3 col-lg-3 col-xl-3 d-flex" style="margin: 25px 0;">
+                              <div class="col-md-3 col-lg-2 col-xl-2 d-flex" style="margin: 25px 0;">
                                 {% if car.quantity == 1 %}
-                                  <a href="{% url 'item_decrement' id %}" class="btn px-2" style="display: none;"><i  class="fi fi-rs-minus-small"></i></a>
-                                  <input min-value="1" value="{{car.quantity}}" disabled="true" type="text"
-                                  class="form-control form-control-sm" />       
-                                  <a href="{% url 'item_increment' id %}" class="btn px-2"><i  class="fi fi-rs-plus-small"></i></a>     
+                                  <a href="{% url 'item_decrement' id %}" class="px-2" style="display: none; margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a> 
+                                  <p class="px-2"  style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
+                                  <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>     
                                 {% else %} 
-                                <a href="{% url 'item_decrement' id %}" class="btn px-2"><i  class="fi fi-rs-minus-small"></i></a>     
-                                <input min-value="1" value="{{car.quantity}}" disabled="true" type="text"
-                                  class="form-control form-control-sm" />       
-                                  <a href="{% url 'item_increment' id %}" class="btn px-2"><i  class="fi fi-rs-plus-small"></i></a>   
+                                <a href="{% url 'item_decrement' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a>     
+                                <p class="px-2" style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
+                                <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>   
                                 {% endif %} 
                               </div>
-                              <div class="col-md-3 col-lg-2 col-xl-1 text-center">
+                              <div class="col-md-3 col-lg-4 col-xl-1 text-center">
                                 <h6 class="mb-0 price">$ {{car.price}}</h6>
                               </div>
                               <div class="col-md-1 col-lg-1 col-xl-1 text-center"  style="margin: 50px 0; ">
-                                <a href="{% url 'item_clear' id %}" class="text-muted"><i class="fi fi-rs-circle-xmark"></i></a>
+                                <a href="{% url 'item_clear' id %}" class="text-muted"><i class="fi fi-ss-trash-xmark"></i></a>
                               </div>
                             </div>
                             <hr class="my-4"> 
@@ -71,11 +69,11 @@
                             <div class="mb-4 pb-2">
                                 <p><b>Booking will take 2-3 active days.</b></p>
                             </div>          
-                            <h5 class="text-uppercase mb-3">Give code</h5>       
+                            <h5 class="text-uppercase mb-3">Coupon Code</h5>       
                             <div class="mb-5">
                               <div data-mdb-input-init class="form-outline">
                                 <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                <label class="form-label" for="form3Examplea2">Enter Coupon Coupon</label>
                               </div>
                             </div>         
                             <hr class="my-4">         

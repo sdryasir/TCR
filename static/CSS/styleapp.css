@@ -1,6 +1,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
 @import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css');
 
 
 :root {
@@ -4018,12 +4019,7 @@ textarea {
 }
 
 
-
-
-
-
-
-.Booking_Cart i.fi-rs-circle-xmark{
+.Booking_Cart i.fi-ss-trash-xmark{
   color: red;
   font-size: 20px;
 
