@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-b86s0n^!i&n1%$(*3owf%$+5r&grdari4#zc@=3hsw)k+yp3+e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
+
+
+# ALLOWED_HOSTS = []
+
 
 CART_SESSION_ID = 'cart'
 
@@ -33,7 +38,7 @@ CART_SESSION_ID = 'cart'
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin', 
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,10 +72,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'The_Car_Rental.middleware.Custom404Middleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
 
 ROOT_URLCONF = 'The_Car_Rental.urls'
 
@@ -110,6 +117,15 @@ DATABASES = {
         'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
         'PORT': '3306',
 
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'thecarre_car_rental',     # Replace with your MySQL database name
+        # 'DATABASE': 'thecarre_car_rental',
+        # 'USER': 'thecarre_car_rental_test',    # Replace with your MySQL username
+        # 'PASSWORD': 'u3kLBYGT@6Yv',# Replace with your MySQL password
+        # 'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
+        # 'PORT': '3306',
+
+
 
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'thecarre_car_rental',     # Replace with your MySQL database name
@@ -118,6 +134,7 @@ DATABASES = {
         # 'PASSWORD': 'u3kLBYGT@6Yv',# Replace with your MySQL password
         # 'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
         # 'PORT': '3306',
+
         
     }
 }
@@ -177,5 +194,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 
