@@ -276,9 +276,6 @@ def Single_postPage(request, id):
     return render(request, 'Single_Post.html', Data) 
 
 
-def Checkout_page(request):
-    return render(request, 'Checkout_page.html') 
-
 
 
 
