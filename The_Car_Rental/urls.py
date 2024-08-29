@@ -43,6 +43,8 @@ urlpatterns = [
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
     path('checkout/', views.checkoutPage, name='checkout'),
+    path('payment-success/', views.successPage, name='success'),
+    path('payment-failed/', views.cancelPage, name='cancel'),
 
 
 

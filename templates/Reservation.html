@@ -14,8 +14,8 @@
                         <div class="col-lg-8">
                           <div class="p-5">
                             <div class="d-flex justify-content-between align-items-center mb-5">
-                              <h2 class="fw-bold mb-0">BOOKING SECTION</h2>
-                              <h6 class="mb-0 text-muted">3 Bookings</h6>
+                              <h2 class="fw-bold mb-0">BOOKING SECTION</h2>        
+                              <h6 class="mb-0 text-muted">Bookings</h6>   
                             </div>
                             <div>
                               <a href="{% url 'cart_clear' %}" class="btn btn-block btn-lg Clear_Cart_Button">Clear Bookings</a>  
@@ -81,10 +81,10 @@
                               <h5 class="text-uppercase">Total price</h5>
                               {% for id,car in request.session.cart.items %}
                               <h5>$ {{ car.price|floatformat:2|multiply:car.quantity }}</h5> 
-                             {% endfor %}  
+                              {% endfor %} 
                             </div> 
-                            <a href="{% url 'checkout' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
-                          </div>
+                              <a href="{% url 'checkout' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
+                            </div>
                         </div>
                       </div>
                     </div>
