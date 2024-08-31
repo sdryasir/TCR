@@ -30,7 +30,7 @@
                                 <select name="car_name_dropdown" class="select-placeholder">
                                     <option value="" disabled selected>Choose a Car</option>
                                     {% for cars in Car_Data %}
-                                    <option value="car1">{{cars.title}}</option>
+                                    <option value="car1">{{cars.name}}</option>
                                     {% endfor %}
                                 </select>
                                 <input type="text" name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
