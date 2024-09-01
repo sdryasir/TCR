@@ -1,3 +1,4 @@
+{% load cart_tag %}
 {% load static %}
 {% include 'header/header.html' %}
 <main class="checkout-Page">
@@ -55,26 +56,25 @@
 
     <!-- Order Summary -->
     <section class="order-summary">
-        <h2>Summary</h2>
-        <div class="summary-item">
-            <p>Subtotal</p>
-            <p>$ 210.00</p>
-        </div>
-        <div class="summary-item">
-            <p>Taxes</p>
-            <p>$ 31.50</p>
-        </div>
-        <div class="summary-total">
-            <p>Total</p>
-            <p>$ 241.50</p>
-        </div>
-        <div style="padding-bottom: 30px;"><h4>Reservations</h4></div>
+        <div style="padding-bottom: 30px;"><h4>Bookings <span>({{bookings}})</span></h4></div>
         {% for id,car in request.session.cart.items %}
-        <h5>{{car.name}} ({{car.quantity}})</h5>
-        <div class="cart-item">
-            <p>Price: $ {{car.price}}</p>
+        <div>
+            <h5>Car: {{car.name}}</h5>
+            <h5>Price: $ {{car.price}}</h5>  
+            <h5>Qty: x {{car.quantity}}</h5>
+            <div class="cart-item">
+                <h5>Amount: $ {{ car.price|floatformat:2|multiply:car.quantity }}</h5>
+            </div>
         </div>
         {% endfor %}
+        <!--<div class="summary-item">
+            <p>Taxes</p>
+            <p>$ 31.50</p>
+        </div>-->
+        <div class="summary-total">
+            <p>Total</p>
+            <p>$ {{subtotal}}</p>
+        </div>
         <button type="submit" class="btn-continue">Checkout</button>
     </section>
 </div>
