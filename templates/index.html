@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_tag %}
 {% include 'header/header.html' %}
 <main class="main-content">
     {% for image in main_Hero_Section %}
@@ -35,7 +36,12 @@
                                 </select>
                                 <input type="text" name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
                                 <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">
-                                <button type="submit">BOOK NOW</button>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'reservation' %}">BOOK NOW</a>
+                                {% else %}
+                                    <a href="{% url 'login' %}">BOOK NOW</a>
+                                {% endif %}
+                                <!--<button type="submit">BOOK NOW</button>-->
                             </form>
                         </div><!-- /.Booking-Schedule-Content-Form -->
                     </div><!-- /.Booking-Schedule-Content -->
@@ -148,7 +154,7 @@
                         <div class = "product-info">
                             <span class = "product-type"><h2>{{car.name}}</h2></span>
                             <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
-                            <span class = "product-price">${{car.price}}.00<span class="light-font"> / Hours</span></span>
+                            <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
                             <div class = "rating d-flex mt-1">
                                 <form class="rating">
                                     <label>

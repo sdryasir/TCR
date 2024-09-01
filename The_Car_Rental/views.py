@@ -21,6 +21,7 @@ from cart.cart import Cart
 
 
 def homePage(request):
+    
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
@@ -175,8 +176,23 @@ def reservationPage(request, id):
     }
     return render(request, 'Reservation.html', Data) 
 
+
 def checkoutPage(request):
-    return render(request, 'Checkout.html') 
+    cart= Cart(request)
+    bookings_total = 0
+    bookings= list(cart.session.values())[5]
+    for book in bookings:
+        bookings_total = bookings_total + int(bookings[book]["quantity"])
+
+    items= list(cart.session.values())[5]
+    subtotal = 0
+    for item in items:
+        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+    Data = {
+        "subtotal": subtotal,
+        "bookings":bookings_total
+    }
+    return render(request, 'Checkout.html', Data) 
     
 
 
@@ -325,7 +341,21 @@ def cart_clear(request):
 
 
 def cart_detail(request):
-    return render(request, 'Reservation.html')
+    cart= Cart(request)
+    bookings_total = 0
+    bookings= list(cart.session.values())[5]
+    for book in bookings:
+        bookings_total = bookings_total + int(bookings[book]["quantity"])
+
+    items= list(cart.session.values())[5]
+    subtotal = 0
+    for item in items:
+        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+    Data = {
+        "subtotal": subtotal,
+        "bookings": bookings_total
+    }
+    return render(request, 'Reservation.html', Data)
 
 
 

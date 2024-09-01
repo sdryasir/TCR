@@ -151,6 +151,17 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 }
 
 
+div.Reservation a{
+  color: var(--white-color);
+  font-size: 25px;
+}
+
+
+
+
+
+
+
 
 
 /* Nav Links Media Query*/
@@ -282,7 +293,7 @@ a.nav-link:hover, a.nav-link:focus, a.nav-link:active{
 
 .side-navigation .Login-button a i{
   color: var(--white-color);
-  font-size: 25px; 
+  font-size: 20px; 
 }
 
 .side-navigation .Login-button a span{
@@ -592,7 +603,7 @@ a:hover {
 .car-rent-form input[type="text"],
 .car-rent-form select,
 .car-rent-form input[type="date"],
-.car-rent-form button {
+.car-rent-form a {
   flex: 1; /* Equal width distribution */
   width: 200px; /* Minimum width */
   min-width: 30px;
@@ -612,7 +623,7 @@ a:hover {
 
 
 
-.car-rent-form button {
+.car-rent-form a {
   line-height: 2;
   text-align: center;
   background: linear-gradient(79deg, rgba(78,96,254,1) 0%, rgba(89,113,254,1) 99%);
@@ -622,6 +633,13 @@ a:hover {
   border: none;
   flex: 0 0 auto; /* Let the button grow or shrink as needed */
   min-width: auto; /* Reset minimum width for button */
+  transition: ease-in 1s;
+
+}
+
+
+.car-rent-form a:hover {
+  background: var(--black-color);
 
 }
 
@@ -4169,11 +4187,23 @@ textarea {
 }
 
 .btn-continue:hover {
-    background-color: var(--black-color)!important;
+    background-color: var(--black-color);
 }
 
 
+/* Success Page */
 
+
+
+
+
+
+
+
+
+
+
+/* Cancel Page */
 
 
 
