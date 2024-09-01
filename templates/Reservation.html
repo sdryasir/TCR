@@ -14,12 +14,22 @@
                         <div class="col-lg-8">
                           <div class="p-5">
                             <div class="d-flex justify-content-between align-items-center mb-5">
-                              <h2 class="fw-bold mb-0">BOOKING SECTION</h2>        
-                              <h6 class="mb-0 text-muted">Bookings</h6>   
+                              <h2 class="fw-bold mb-0">BOOKING SECTION</h2>  
+                              {% if bookings == 0  %}
+                              <h6 class="mb-0 text-muted">No Bookings</h6>  
+                              {% elif bookings == 1 %} 
+                              <h6 class="mb-0 text-muted">{{bookings}} Booking</h6>          
+                              {% else %}
+                              <h6 class="mb-0 text-muted">{{bookings}} Bookings</h6>    
+                              {% endif %}       
                             </div>
+                            {% if bookings == 0 %}
+                            <h5>No Bookings right now, Booking Section Empty</h5>
+                            {% else %}
                             <div>
                               <a href="{% url 'cart_clear' %}" class="btn btn-block btn-lg Clear_Cart_Button">Clear Bookings</a>  
                             </div>
+                            {% endif %}
                             <hr class="my-4">
                             {% for id,car in request.session.cart.items %}
                             <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -43,7 +53,7 @@
                                 {% endif %} 
                               </div>
                               <div class="col-md-3 col-lg-4 col-xl-1 text-center">
-                                <h6 class="mb-0 price">$ {{car.price}}</h6>
+                                <h6 class="mb-0 price">$ {{ car.price|floatformat:2|multiply:car.quantity }}</h6>
                               </div>
                               <div class="col-md-1 col-lg-1 col-xl-1 text-center"  style="margin: 50px 0; ">
                                 <a href="{% url 'item_clear' id %}" class="text-muted"><i class="fi fi-ss-trash-xmark"></i></a>
@@ -62,28 +72,46 @@
                             <h3 class="fw-bold mb-5 mt-2 pt-1 Summary">SUMMARY</h3>
                             <hr class="my-4">         
                             <div class="d-flex justify-content-between mb-4">
-                              <h5 class="text-capitalize">Bookings 3</h5>
-                              <h5>$ 132.00</h5>
+                              {% if bookings == 0  %}
+                              <h5></h5>
+                              {% elif bookings == 1 %}
+                              <h5 class="text-capitalize">{{bookings}} Booking</h5>
+                              <h5>$ {{subtotal}}</h5>
+                              {% else %}
+                              <h5 class="text-capitalize">{{bookings}} Bookings</h5>
+                              <h5>$ {{subtotal}}</h5>  
+                              {% endif %}
                             </div>      
-                            <h5 class="text-uppercase mb-3">Shipping</h5>       
+                            <!--<div class="d-flex justify-content-between mb-4">
+                              <h6>Taxes</h6>
+                              <h5>$ 132.00</h5>
+                            </div>-->  
                             <div class="mb-4 pb-2">
                                 <p><b>Booking will take 2-3 active days.</b></p>
-                            </div>          
+                            </div>
+                            {% if bookings == 0 %} 
+                            {% else %}         
                             <h5 class="text-uppercase mb-3">Coupon Code</h5>       
                             <div class="mb-5">
                               <div data-mdb-input-init class="form-outline">
-                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                <label class="form-label" for="form3Examplea2">Enter Coupon Coupon</label>
+                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" placeholder="Enter Coupon Code"/>
                               </div>
-                            </div>         
-                            <hr class="my-4">         
+                            </div>
+                            {% endif %}        
+                            <hr class="my-4"> 
+                            {% if bookings == 0 %}
+                            <div></div>    
+                            {% else %}   
                             <div class="d-flex justify-content-between mb-5">
                               <h5 class="text-uppercase">Total price</h5>
-                              {% for id,car in request.session.cart.items %}
-                              <h5>$ {{ car.price|floatformat:2|multiply:car.quantity }}</h5> 
-                              {% endfor %} 
-                            </div> 
-                              <a href="{% url 'checkout' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a>  
+                              <h5>$ {{subtotal}} (tax inc.)</h5> 
+                            </div>
+                            {% endif %}
+                              {% if bookings == 0 %}
+                              <a href=""></a>
+                              {% else %}
+                              <a href="{% url 'checkout' %}" class="btn btn-block btn-lg BOOK_Button">BOOK</a> 
+                              {% endif %}
                             </div>
                         </div>
                       </div>
