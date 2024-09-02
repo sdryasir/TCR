@@ -157,6 +157,11 @@ div.Reservation a{
 }
 
 
+div.Reservation a span{
+  background-color: var(--buttons-and-icons-color1);
+  font-size: 12px;
+}
+
 
 
 
@@ -1195,6 +1200,16 @@ color: var(--black-color);
   font-size: 13px;
   opacity: 0.8;
 }
+
+.not-available h6{
+  color: red;
+}
+
+
+.available h6{
+  color: green;
+}
+
 
 
 .product-type h2{
@@ -4110,10 +4125,8 @@ textarea {
     align-items: center;
 }
 
-.checkout-container {
-    display: flex;
-    gap: 30px;
-    background: white;
+.checkout-container{
+    background: var(--white-color);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

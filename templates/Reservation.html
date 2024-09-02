@@ -15,8 +15,7 @@
                           <div class="p-5">
                             <div class="d-flex justify-content-between align-items-center mb-5">
                               <h2 class="fw-bold mb-0">BOOKING SECTION</h2>  
-                              {% if bookings == 0  %}
-                              <h6 class="mb-0 text-muted">No Bookings</h6>  
+                              {% if bookings == 0  %}  
                               {% elif bookings == 1 %} 
                               <h6 class="mb-0 text-muted">{{bookings}} Booking</h6>          
                               {% else %}
@@ -24,7 +23,7 @@
                               {% endif %}       
                             </div>
                             {% if bookings == 0 %}
-                            <h5>No Bookings right now, Booking Section Empty</h5>
+                            <h5>Booking section is empty</h5>
                             {% else %}
                             <div>
                               <a href="{% url 'cart_clear' %}" class="btn btn-block btn-lg Clear_Cart_Button">Clear Bookings</a>  
@@ -45,7 +44,7 @@
                                 {% if car.quantity == 1 %}
                                   <a href="{% url 'item_decrement' id %}" class="px-2" style="display: none; margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a> 
                                   <p class="px-2"  style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
-                                  <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>     
+                                  <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>   
                                 {% else %} 
                                 <a href="{% url 'item_decrement' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a>     
                                 <p class="px-2" style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
@@ -69,8 +68,11 @@
                         </div>
                         <div class="col-lg-4 bg-body-tertiary">
                           <div class="p-5">
-                            <h3 class="fw-bold mb-5 mt-2 pt-1 Summary">SUMMARY</h3>
-                            <hr class="my-4">         
+                            {% if bookings == 0  %}
+                            {% else %}
+                              <h3 class="fw-bold mb-5 mt-2 pt-1 Summary">SUMMARY</h3>
+                              <hr class="my-4">   
+                            {% endif %}      
                             <div class="d-flex justify-content-between mb-4">
                               {% if bookings == 0  %}
                               <h5></h5>
@@ -87,24 +89,24 @@
                               <h5>$ 132.00</h5>
                             </div>-->  
                             <div class="mb-4 pb-2">
+                              {% if bookings == 0 %} 
+                              {% else %}   
                                 <p><b>Booking will take 2-3 active days.</b></p>
-                            </div>
-                            {% if bookings == 0 %} 
-                            {% else %}         
+                            </div>      
                             <h5 class="text-uppercase mb-3">Coupon Code</h5>       
                             <div class="mb-5">
                               <div data-mdb-input-init class="form-outline">
                                 <input type="text" id="form3Examplea2" class="form-control form-control-lg" placeholder="Enter Coupon Code"/>
                               </div>
                             </div>
-                            {% endif %}        
                             <hr class="my-4"> 
+                            {% endif %}        
                             {% if bookings == 0 %}
                             <div></div>    
                             {% else %}   
                             <div class="d-flex justify-content-between mb-5">
                               <h5 class="text-uppercase">Total price</h5>
-                              <h5>$ {{subtotal}} (tax inc.)</h5> 
+                              <h5>$ {{subtotal}} (tax incl)</h5> 
                             </div>
                             {% endif %}
                               {% if bookings == 0 %}
