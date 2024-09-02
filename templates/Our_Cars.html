@@ -5,7 +5,9 @@
 <main class="main-content">
     <section class="Our-Cars-Main-Hero-Section">
         <div class="Our-Cars-Hero-Section-image">
-            <img class="" src="{% static 'images/Default-Hero-Section-Image.png' %}" alt="">
+            {% for img in default_background %}
+                <img class="" src="/media/{{img.image}}" alt="">
+            {% endfor %}
             <div class="Our-Cars-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Our-Cars-Hero-Section-Image-Content">
@@ -77,9 +79,9 @@
                                 </form>
                             </div>
                         </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                        <div class = "row btns text-center" style="display: flex; justify-content: center; letter-spacing: 1px;">
                             {% if car.stock == 0 %}
-                                <a href="" style="pointer-events: none;" class = "col-6 py-2">NOT AVAILABLE</a>
+                                <a href="{% url 'car_detail' car.id %}" class = "col-6 py-2">DETAILS</a>
                             {% else %}
                                 <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
                             {% endif %}

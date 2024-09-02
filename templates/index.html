@@ -32,7 +32,10 @@
                                     <option value="" disabled selected>Featured Cars</option>
                                     {% for cars in Car_Data %}
                                         {% if cars.category == 'Featured' %}
-                                            <option value="car1">{{cars.name}}</option>
+                                            {% if cars.stock == 0 %}
+                                            {% else %}
+                                                <option value="car1">{{cars.name}}</option>
+                                            {% endif %}
                                         {% endif %}
                                     {% endfor %}
                                 </select>
@@ -197,9 +200,9 @@
                                 </form>
                             </div>
                         </div> 
-                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                        <div class = "row btns text-center" style="display: flex; justify-content: center; letter-spacing: 1px;">
                             {% if car.stock == 0 %}
-                                <a href="" style="pointer-events: none;"  class = "col-6 py-2" >NOT AVAILABLE</a>
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >DETAILS</a>
                             {% else %}
                                 <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
                             {% endif %}

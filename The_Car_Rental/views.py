@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from Main_Hero_Section.models import Main_Hero_Section
+from Default_Background.models import Default_Background
 from Main_Cars_Carousel.models import Main_Cars_Carousel
 from Counter_Section.models import Counter_Section
 from Why_Choose_Us_Section.models import Why_Choose_Us_Section
@@ -50,12 +51,14 @@ def homePage(request):
 
 
 def aboutPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
     Counter_Description_Data= About_Counter_Description.objects.all()
     Book_your_drive = Book_Your_Drive.objects.all()
     top_items = Our_Team.objects.all()[:3]    
     Data={
+        "default_background":Default_Background_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
         "About_Description": Counter_Description_Data,
@@ -72,13 +75,21 @@ def aboutPage(request):
 
 
 def loginPage(request):
+    Default_Background_Data = Default_Background.objects.all()
+    Data={
+        "default_background":Default_Background_Data,
+    }
     if request.user.is_authenticated:
        return redirect('home')
-    return render(request, 'login.html') 
+    return render(request, 'login.html', Data) 
 
 
 def Create_accountPage(request):
-    return render(request, 'create_account.html') 
+    Default_Background_Data = Default_Background.objects.all()
+    Data={
+        "default_background":Default_Background_Data,
+    }
+    return render(request, 'create_account.html', Data) 
 
 
 def Create_accountPageUser(request): 
@@ -124,16 +135,19 @@ def logoutUser(request):
 
 
 def faqPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
     Payment_Questions_Data = Payment_Questions.objects.all()
     Data={
         "General_Questions" : General_Questions_Data,
-        "Payment_questions" : Payment_Questions_Data  
+        "Payment_questions" : Payment_Questions_Data,  
+        "default_background":Default_Background_Data,
     }
     return render(request, 'faq.html', Data) 
 
 
 def Our_carsPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     Cars_Data = CARS.objects.all()
     Cars_Data= Paginator(Cars_Data, 6)
     page = request.GET.get('page')
@@ -142,6 +156,7 @@ def Our_carsPage(request):
     Background_Video_Data = Background_Video.objects.all()
     Blog_Data = Blog.objects.all()
     Data= {
+        "default_background":Default_Background_Data,
         "cars_Section": products,
         "total_Pages": totalpages,
         "Background_Video":Background_Video_Data,
@@ -153,9 +168,11 @@ def Our_carsPage(request):
 
 
 def Car_detailPage(request, id):
+    Default_Background_Data = Default_Background.objects.all()
     Cars_Data = CARS.objects.all()
     Car_1 = CARS.objects.get(id__exact=id)
     Data = {
+        "default_background":Default_Background_Data,
         "Car_Data": Cars_Data,
         "One_Car": Car_1,
         "current_id": int(id)
@@ -219,8 +236,10 @@ def checkoutPage(request):
 #      return render(request, 'Contact.html')
 
 def contactPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
     Data={
+        "default_background":Default_Background_Data,
         "General_Questions" : General_Questions_Data   
     }
     return render(request, 'Contact.html', Data) 
@@ -260,10 +279,12 @@ def saveContact(request):
 
 
 def Our_teamPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     Team_Cards = Our_Team.objects.all()
     Background_Video_Data = Background_Video.objects.all()
     Testimonial_Data = Testimonial.objects.all()
     Data={
+        "default_background":Default_Background_Data,
         "Team_Cards_Data":Team_Cards,
         "Background_Video":Background_Video_Data,
         "Testimonial": Testimonial_Data
@@ -272,12 +293,14 @@ def Our_teamPage(request):
 
 
 def blogPage(request):
+    Default_Background_Data = Default_Background.objects.all()
     Blog_Data = Blog.objects.all()
     Blog_Data= Paginator(Blog_Data, 6)
     page = request.GET.get('page')
     products = Blog_Data.get_page(page)
     totalpages = [x+1 for x in range(Blog_Data.num_pages)]
     Data = {
+        "default_background":Default_Background_Data,
         "Blog":products,
         "total_Pages": totalpages,
     }
