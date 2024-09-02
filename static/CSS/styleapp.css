@@ -608,7 +608,7 @@ a:hover {
 .car-rent-form input[type="text"],
 .car-rent-form select,
 .car-rent-form input[type="date"],
-.car-rent-form a {
+.car-rent-form a{
   flex: 1; /* Equal width distribution */
   width: 200px; /* Minimum width */
   min-width: 30px;
@@ -641,6 +641,8 @@ a:hover {
   transition: ease-in 1s;
 
 }
+
+
 
 
 .car-rent-form a:hover {

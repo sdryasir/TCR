@@ -60,14 +60,17 @@
     <!-- Order Summary -->
         <div class="col-md-12 col-lg-6">
             <section class="order-summary">
-                <div style="padding-bottom: 30px;"><h4>Bookings <span>({{bookings}})</span></h4></div>
+                <div style="padding-bottom: 30px;">
+                    <h4>Bookings <span>({{bookings}})</span></h4>
+                    <h4>Return in: 1 Day</h4>
+                </div>
                 {% for id,car in request.session.cart.items %}
                 <div>
                     <h5>Car: {{car.name}}</h5>
-                    <h5>Price: $ {{car.price}}</h5>  
+                    <h5>Price: $ {{car.price}} /Day</h5>  
                     <h5>Qty: x {{car.quantity}}</h5>
                     <div class="cart-item">
-                        <h5>Amount: $ {{ car.price|floatformat:2|multiply:car.quantity }}</h5>
+                        <h5>Amount: $ {{ car.price|floatformat:2|multiply:car.quantity}}</h5>
                     </div>
                 </div>
                 {% endfor %}

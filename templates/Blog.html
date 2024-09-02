@@ -4,7 +4,9 @@
 <main class="main-content">
     <section class="Blog-Main-Hero-Section">
         <div class="Blog-Hero-Section-image">
-            <img class="" src="{% static 'images/Default-Hero-Section-Image.png' %}" alt="">
+            {% for img in default_background %}
+                <img class="" src="/media/{{img.image}}" alt="">
+            {% endfor %}
             <div class="Blog-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Blog-Hero-Section-Image-Content">
