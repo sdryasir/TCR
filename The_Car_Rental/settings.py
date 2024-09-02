@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'contact',
     'Main_Hero_Section',
+    'Default_Background',
     'Main_Cars_Carousel',
     'Counter_Section',
     'Why_Choose_Us_Section',

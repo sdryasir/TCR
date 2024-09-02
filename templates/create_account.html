@@ -5,7 +5,9 @@
 <main class="main-content">
     <section class="Create-Account-Main-Hero-Section">
         <div class="Create-Account-Hero-Section-image">
-            <img class="" src="{% static 'images/Default-Hero-Section-Image.png' %}" alt="">
+            {% for img in default_background %}
+                <img class="" src="/media/{{img.image}}" alt="">
+            {% endfor %}
             <div class="Create-Account-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Create-Account-Hero-Section-Image-Content">

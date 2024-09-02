@@ -81,7 +81,7 @@
                   <div class="Login-button-and-side-navigation">
                     {% if user.is_authenticated %}
                       <div class="Reservation">
-                        <a href="{% url 'reservation' %}"><i class="fi fi-rr-reservation-table"></i><span class="badge badge-danger" style="background-color: blue; font-size: 12px;">{{bookings}}</span></a>
+                        <a href="{% url 'reservation' %}"><i class="fi fi-rr-reservation-table"></i><span class="badge badge-danger">{{request.session.cart|length}}</span></a>
                       </div><!-- /.Reservation -->
                     {% else %}
                       <div class="Reservation" style="display: none;"></div><!-- /.Reservation -->
