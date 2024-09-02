@@ -29,12 +29,14 @@
                             <form class="car-rent-form">
                                 <input type="text" name="car_name" placeholder="Your Name">
                                 <select name="car_name_dropdown" class="select-placeholder">
-                                    <option value="" disabled selected>Choose a Car</option>
+                                    <option value="" disabled selected>Featured Cars</option>
                                     {% for cars in Car_Data %}
-                                    <option value="car1">{{cars.name}}</option>
+                                        {% if cars.category == 'Featured' %}
+                                            <option value="car1">{{cars.name}}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select>
-                                <input type="text" name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
+                                <input type="text"  name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
                                 <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">
                                 {% if user.is_authenticated %}
                                     <a href="{% url 'reservation' %}">BOOK NOW</a>
@@ -46,7 +48,7 @@
                         </div><!-- /.Booking-Schedule-Content-Form -->
                     </div><!-- /.Booking-Schedule-Content -->
                     <div class="Hero-Section-Image-Content-Price">
-                        <h5>Starting at <span>${{image.price}}.00</span> / Hours</h5>
+                        <h5>Starting at <span>${{image.price}}.00</span> / Day</h5>
                     </div><!-- /.Hero-Section-Image-Content-Price -->
                 </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
             </div><!-- /.container -->
@@ -154,6 +156,11 @@
                         <div class = "product-info">
                             <span class = "product-type"><h2>{{car.name}}</h2></span>
                             <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                            {% if car.stock == 0 %}
+                                <span class="product-type not-available"><h6>Not Available</h6></span>
+                            {% else %}
+                                <span class="product-type available"><h6>Available</h6></span>
+                            {% endif %}
                             <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
                             <div class = "rating d-flex mt-1">
                                 <form class="rating">
@@ -191,7 +198,11 @@
                             </div>
                         </div> 
                         <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% if car.stock == 0 %}
+                                <a href="" style="pointer-events: none;"  class = "col-6 py-2" >NOT AVAILABLE</a>
+                            {% else %}
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% endif %}
                         </div>     
                     </div>
                     {% endif %}

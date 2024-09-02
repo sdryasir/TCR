@@ -36,6 +36,11 @@
                         <div class = "product-info">
                             <span class = "product-type"><h2>{{car.name}}</h2></span>
                             <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                            {% if car.stock == 0 %}
+                                <span class="product-type not-available"><h6>Not Available</h6></span>
+                            {% else %}
+                                <span class="product-type available"><h6>Available</h6></span>
+                            {% endif %}
                             <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
                             <div class = "rating d-flex mt-1">
                                 <form class="rating">
@@ -73,7 +78,11 @@
                             </div>
                         </div> 
                         <div class = "row btns text-center" style="display: flex; justify-content: center;">
-                            <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% if car.stock == 0 %}
+                                <a href="" style="pointer-events: none;" class = "col-6 py-2">NOT AVAILABLE</a>
+                            {% else %}
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% endif %}
                         </div>     
                     </div>
                 </div><!-- /.col-4 -->    

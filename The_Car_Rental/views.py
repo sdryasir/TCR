@@ -21,7 +21,7 @@ from cart.cart import Cart
 
 
 def homePage(request):
-    
+
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
@@ -87,7 +87,7 @@ def Create_accountPageUser(request):
     upassword = request.POST['password']
 
     if uname == '' or uemail == '' or upassword == ''  :
-        messages.error(request, "Not found. Please fill all fields.")
+        messages.error(request, "Please fill all fields.")
         return redirect('create_account')
 
 
