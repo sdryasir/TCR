@@ -32,3 +32,4 @@ class CARS(models.Model):
         verbose_name_plural = "Our Cars"  # Plural name (same as singular, to avoid pluralization)
 
         
+        
