@@ -3,16 +3,16 @@
 <main class="main-content">
     <section class="Login-Main-Hero-Section">
         <div class="Login-Hero-Section-image">
-          {% for img in default_background %}
-            <img class="" src="/media/{{img.image}}" alt="">
-          {% endfor %}
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
             <div class="Login-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Login-Hero-Section-Image-Content">
             <div class="container">
                 <div class="Login-Hero-Section-Image-Content-Heading content">
-                    <h2>SECURELY SIGN IN TO MANAGE YOUR PROFILE</h2>
+                    <h2>{{data.Login_Page_Title_1}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
+          {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->

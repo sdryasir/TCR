@@ -45,11 +45,11 @@
                                   <a href="{% url 'item_decrement' id %}" class="px-2" style="display: none; margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a> 
                                   <p class="px-2"  style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
                                   <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>   
-                                {% else %} 
-                                <a href="{% url 'item_decrement' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a>     
-                                <p class="px-2" style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
-                                <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>   
-                                {% endif %} 
+                                {% else %}
+                                  <a href="{% url 'item_decrement' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-minus-small" style="font-size: 25px;"></i></a>     
+                                  <p class="px-2" style="margin: 0; font-size: 20px;">{{car.quantity}}</p>
+                                  <a href="{% url 'item_increment' id %}" class="px-2" style="margin: 0;"><i  class="fi fi-rs-plus-small" style="font-size: 25px;"></i></a>   
+                                {% endif %}
                               </div>
                               <div class="col-md-3 col-lg-4 col-xl-1 text-center">
                                 <h6 class="mb-0 price">$ {{ car.price|floatformat:2|multiply:car.quantity }}</h6>
