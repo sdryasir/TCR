@@ -16,3 +16,4 @@ class Migration(migrations.Migration):
             field=models.IntegerField(max_length=2, null=True),
         ),
     ]
+
