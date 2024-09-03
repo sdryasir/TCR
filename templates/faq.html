@@ -5,19 +5,19 @@
 <main class="main-content">
     <section class="FAQ-Main-Hero-Section">
         <div class="FAQ-Hero-Section-image">
-            {% for img in default_background %}
-                <img class="" src="/media/{{img.image}}" alt="">
-            {% endfor %}
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
             <div class="FAQ-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="FAQ-Hero-Section-Image-Content">
             <div class="container">
                 <div class="FAQ-Hero-Section-Image-Content-Heading content">
-                    <h2>EVERYTHING YOU NEED TO KNOW, RENT CAR FAQ</h2>
+                    <h2>{{data.Faq_Page_Title_1}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="FAQ-Hero-Section-Image-Content-Description content">
-                    <p>Have questions? We’re to here to help.</p>
+                    <p>{{data.Faq_Page_description_1}}</p>
                 </div>
+            {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->

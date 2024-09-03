@@ -4,19 +4,19 @@
 <main class="main-content">
     <section class="Blog-Main-Hero-Section">
         <div class="Blog-Hero-Section-image">
-            {% for img in default_background %}
-                <img class="" src="/media/{{img.image}}" alt="">
-            {% endfor %}
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
             <div class="Blog-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Blog-Hero-Section-Image-Content">
             <div class="container">
                 <div class="Blog-Hero-Section-Image-Content-Heading content">
-                    <h2>EXPLORE OUR BLOG<br>AND ARTICLES</h2>
+                    <h2>{{data.Blog_Page_Title_1}}<br>{{data.Blog_Page_Title_2}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="Blog-Hero-Section-Image-Content-Description content">
-                    <p>Get Subscribed to Stay Informed about us!</p>
+                    <p>{{data.Blog_Page_description_1}}</p>
                 </div>
+            {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->       
     </section><!-- /.Main-Hero-Section -->
