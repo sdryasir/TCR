@@ -47,7 +47,7 @@ def homePage(request):
     return render(request, 'index.html', Data)
 
 
-
+ 
 
 
 def aboutPage(request):
