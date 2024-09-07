@@ -4,19 +4,19 @@
 <main class="main-content" >
     <section class="Car-Detail-Main-Hero-Section">
         <div class="Car-Detail-Hero-Section-image">
-            {% for img in default_background %}
-                <img class="" src="/media/{{img.image}}"alt="">
-            {% endfor %}
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}"alt="">
             <div class="Car-Detail-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Car-Detail-Hero-Section-Image-Content">
             <div class="container">
                 <div class="Car-Detail-Hero-Section-Image-Content-Heading content">
-                    <h2>IN-DEPTH RENTAL<br>CAR DETAILS</h2>
+                    <h2>{{data.Car_Details_Page_Title_1}}<br>{{data.Car_Details_Page_Title_2}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="Car-Detail-Hero-Section-Image-Content-Description content">
-                    <p>We understand that choosing the ideal car is a crucial<br>part of your travel experience.</p>
-                </div>
+                    <p>{{data.Car_Details_Page_description_1}}<br>{{data.Car_Details_Page_description_2}}</p>
+                </div> 
+            {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->       
     </section><!-- /.Main-Hero-Section -->

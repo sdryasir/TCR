@@ -17,8 +17,8 @@
                     <p>{{image.description_1}}<br>{{image.description_2}}</p>
                 </div><!-- /.Hero-Section-Image-Content-Description -->
                 <div class="Hero-Section-Image-Content-Modal-Box content">
-                    <a href="" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
-                    <a href="">PLAY DEMO</a>
+                    <a href="{{image.video_link}}" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
+                    <a href="" style="pointer-events: none;">WATCH VIDEO</a>
                 </div><!-- /.Hero-Section-Image-Content-Modal-Box -->
                 <div class="Hero-Section-Image-Content-Book-A-Car">
                     <div class="heading">
@@ -254,7 +254,7 @@
                     <div class="col-md-12 text-white">
                         <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
                         <p>{{video.description}}</p>
-                        <a class="Get-now-button" href="">{{video.download_button}}</a>
+                        <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
                     </div>
                 </div>
             </div>
@@ -268,7 +268,7 @@
                 <div class="text-white">
                     <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
                     <p>{{video.description}}</p>
-                    <a class="Get-now-button" href="">{{video.download_button}}</a>
+                    <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
                 </div>
             </div>
             {% endfor %} 

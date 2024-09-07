@@ -5,16 +5,16 @@
 <main class="main-content">
     <section class="Create-Account-Main-Hero-Section">
         <div class="Create-Account-Hero-Section-image">
-            {% for img in default_background %}
-                <img class="" src="/media/{{img.image}}" alt="">
-            {% endfor %}
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
             <div class="Create-Account-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Create-Account-Hero-Section-Image-Content">
             <div class="container">
                 <div class="Create-Account-Hero-Section-Image-Content-Heading content">
-                    <h2>CREATE YOUR ACCOUNT</h2>
+                    <h2>{{data.Create_Account_Page_Title_1}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
+            {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->

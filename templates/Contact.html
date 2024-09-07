@@ -21,19 +21,19 @@
 <main class="main-content">
     <section class="Contact-Main-Hero-Section">
         <div class="Contact-Hero-Section-image">
-          {% for img in default_background %}
-            <img class="" src="/media/{{img.image}}" alt="">
-          {% endfor %}
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
             <div class="Contact-image-overlay"></div>
         </div><!-- /.Hero-Section-image -->
         <div class="Contact-Hero-Section-Image-Content">
             <div class="container">
                 <div class="Contact-Hero-Section-Image-Content-Heading content">
-                    <h2>GET IN TOUCH WITH US</h2>
+                    <h2>{{data.Contact_Page_Title_1}}</h2>
                 </div><!-- /.Hero-Section-Image-Content-Heading -->
                 <div class="Contact-Hero-Section-Image-Content-Description content">
-                    <p>Our friendly team would love to hear from you.</p>
+                    <p>{{data.Contact_Page_description_1}}</p>
                 </div>
+          {% endfor %}
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->       
     </section><!-- /.Main-Hero-Section -->

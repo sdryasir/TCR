@@ -7,6 +7,7 @@ class Background_Video(models.Model):
     title_line_2 = models.CharField(max_length=60,null=True)
     description = models.CharField(max_length=60,null=True)
     download_button = models.CharField(max_length=20,null=True)
+    download_link = models.CharField(max_length=300,null=True,blank=True)   
     video = models.FileField(upload_to='videos_uploaded',null=True,
     validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
 
