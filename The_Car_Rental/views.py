@@ -9,7 +9,7 @@ from Testimonial.models import Testimonial
 from Background_Video.models import Background_Video
 from Our_Team.models import Our_Team
 from General_Questions.models import General_Questions
-# from CARS.models import CARS
+from CARS.models import CARS
 from contact.models import Contact
 from Blog.models import Blog
 from django.contrib import messages
