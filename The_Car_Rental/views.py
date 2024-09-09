@@ -371,23 +371,56 @@ def cart_clear(request):
 
 
 
-def cart_detail(request):
-    cart= Cart(request)
-    bookings_total = 0
-    bookings= list(cart.session.values())[5]
-    for book in bookings:
-        bookings_total = bookings_total + int(bookings[book]["quantity"])
+# def cart_detail(request):
+#     cart= Cart(request)
+#     bookings_total = 0
+#     bookings= list(cart.session.values())[5]
+#     for book in bookings:
+#         bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    items= list(cart.session.values())[5]
+#     items= list(cart.session.values())[5]
+#     subtotal = 0
+#     for item in items:
+#         subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+#     Data = {
+#         "subtotal": subtotal,
+#         "bookings": bookings_total
+#     }
+#     return render(request, 'Reservation.html', Data)
+def cart_detail(request):
+    cart = Cart(request)
+    bookings_total = 0
+
+    session_values = list(cart.session.values())
+
+    # Check if there are enough items in session values
+    if len(session_values) > 5:
+        bookings = session_values[5]
+    else:
+        bookings = []  # Jab 6 items nahi milte, bookings ko empty list set karo
+
+    # Only calculate bookings_total if there are bookings
+    if bookings:
+        for book in bookings:
+            bookings_total = bookings_total + int(bookings[book]["quantity"])
+
+    # Check if there are enough items in session values for items as well
+    if len(session_values) > 5:
+        items = session_values[5]
+    else:
+        items = []  # Jab 6 items nahi milte, to items ko empty list set karo
+
     subtotal = 0
-    for item in items:
-        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+    if items:  # Only calculate if items exist
+        for item in items:
+            subtotal = subtotal + int(items[item]['price']) * items[item]['quantity']
+
     Data = {
         "subtotal": subtotal,
         "bookings": bookings_total
     }
-    return render(request, 'Reservation.html', Data)
 
+    return render(request, 'Reservation.html', Data)
 
 
 
