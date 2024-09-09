@@ -36,7 +36,6 @@
 
 
 
-
 @media(max-width:1050px) {
 .side-navigation{
     display: none;
@@ -50,6 +49,23 @@
   }
   .Username-button-Mobile-Screen{
     display: block!important;
+  }
+  div.Reservation{
+    display: block!important;
+
+
+  }
+  div.Reservation a{
+    text-decoration: none;
+    padding: 12px;
+    font-family: var(--secondary-font);
+    letter-spacing: 2px;
+    font-size: 15px;
+
+  }
+  div.Reservation a span{
+    font-size: 10px;
+
   }
 }
 
