@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'About_Counter_Description',
     'Book_Your_Drive_Section',
     'Questions_About_Payment',
+    'Quick_Book',
     'cart',
 
 

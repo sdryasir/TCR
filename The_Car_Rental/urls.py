@@ -39,6 +39,7 @@ urlpatterns = [
     path('faq/', views.faqPage, name='faq'),
     path('contact/', views.contactPage, name='contactPage'),
     path('save-contact/', views.saveContact, name='save-contact'),
+    path('quick-book/', views.quick_Book, name='quick-book'),
     path('our-team/', views.Our_teamPage, name='our_team'),
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),

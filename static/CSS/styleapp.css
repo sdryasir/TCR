@@ -608,7 +608,8 @@ a:hover {
 .car-rent-form input[type="text"],
 .car-rent-form select,
 .car-rent-form input[type="date"],
-.car-rent-form a{
+.car-rent-form a,
+.car-rent-form button{
   flex: 1; /* Equal width distribution */
   width: 200px; /* Minimum width */
   min-width: 30px;
@@ -638,7 +639,21 @@ a:hover {
   border: none;
   flex: 0 0 auto; /* Let the button grow or shrink as needed */
   min-width: auto; /* Reset minimum width for button */
-  transition: ease-in 1s;
+
+}
+
+
+
+.car-rent-form button {
+  line-height: 2;
+  text-align: center;
+  background: linear-gradient(79deg, rgba(78,96,254,1) 0%, rgba(89,113,254,1) 99%);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  color: var(--white-color);
+  border: none;
+  flex: 0 0 auto; /* Let the button grow or shrink as needed */
+  min-width: auto; /* Reset minimum width for button */
 
 }
 
@@ -646,6 +661,13 @@ a:hover {
 
 
 .car-rent-form a:hover {
+  background: var(--black-color);
+
+}
+
+
+
+.car-rent-form button:hover {
   background: var(--black-color);
 
 }
