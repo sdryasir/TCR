@@ -11,6 +11,7 @@ from Our_Team.models import Our_Team
 from General_Questions.models import General_Questions
 from CARS.models import CARS
 from contact.models import Contact
+from Quick_Book.models import Quick_Book
 from Blog.models import Blog
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -257,7 +258,7 @@ def saveContact(request):
         message = request.POST.get('message', '')
 
         if not all([firstname, lastname, email, messagesubject, message]):
-            messages.error(request, "Not found. Please fill all fields.")
+            messages.error(request, "Please fill all fields.")
             return redirect('contactPage')
 
         try:
@@ -436,3 +437,51 @@ def cancelPage(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def quick_Book(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        car = request.POST.get('car','')
+        phone = request.POST.get('phone', '')
+        email = request.POST.get('email', '')
+
+
+        '''if not all([name, car, phone, email]):
+            messages.error(request, "Not found. Please fill all fields.")
+            return redirect('cancel')'''
+
+        try:
+            contact = Quick_Book(
+                name=name,
+                car=car,
+                phone=phone,
+                email=email
+            )
+            contact.save()
+            messages.success(request, "Success! Your message has been sent.")
+            return redirect('home')
+
+        except Exception as e:
+            print(f"Error saving contact: {e}")
+            messages.error(request, "An error occurred. Please try again.")
+            return redirect('home')
+            
+
+    return redirect('home')

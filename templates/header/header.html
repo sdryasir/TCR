@@ -58,6 +58,13 @@
                       <a class="right-padding" href="{% url 'contactPage' %}">CONTACT</a>
                       <!--Login and Username for Mobile  -Start-->
                       {% if user.is_authenticated %}
+                      <div class="Reservation Reservation-button-Mobile-Screen" style="display: none;">
+                        <a href="{% url 'reservation' %}">RESERVATION<span class="badge badge-danger">{{request.session.cart|length}}</span></a>
+                      </div><!-- /.Reservation -->
+                    {% else %}
+                      <div class="Reservation" style="display: none;"></div><!-- /.Reservation -->
+                    {% endif %}
+                      {% if user.is_authenticated %}
                       <div class="Username Username-button-Mobile-Screen" style="display: none;">
                         <div class="dropdown Logout-button">
                           <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
