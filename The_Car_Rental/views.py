@@ -20,6 +20,10 @@ from About_Counter_Description.models import About_Counter_Description
 from Book_Your_Drive_Section.models import Book_Your_Drive
 from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
+from django.http import JsonResponse
+from django.urls import reverse
+from datetime import datetime
+
 
 
 def homePage(request):
@@ -194,23 +198,58 @@ def reservationPage(request, id):
     }
     return render(request, 'Reservation.html', Data) 
 
-def checkoutPage(request):
-    cart= Cart(request)
-    bookings_total = 0
-    bookings= list(cart.session.values())[5]
-    for book in bookings:
-        bookings_total = bookings_total + int(bookings[book]["quantity"])
+# def checkoutPage(request):
+#     cart= Cart(request)
+#     bookings_total = 0
+#     bookings= list(cart.session.values())[5]
+#     for book in bookings:
+#         bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    items= list(cart.session.values())[5]
-    subtotal = 0
-    for item in items:
-        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
-    Data = {
-        "subtotal": subtotal,
-        "bookings":bookings_total
-    }
-    return render(request, 'Checkout.html', Data) 
+#     items= list(cart.session.values())[5]
+#     subtotal = 0
+#     for item in items:
+#         subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+#     Data = {
+#         "subtotal": subtotal,
+#         "bookings":bookings_total
+#     }
+#     return render(request, 'Checkout.html', Data) 
+def checkout_view(request):
+    cart = request.session.get('cart', {})
+    subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
+    context = {
+        'subtotal': subtotal,
+        'rental_days': 1,  # You can dynamically calculate this
+    }
+    return render(request, 'checkout.html', context)
+
+def process_checkout(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        postal_code = request.POST.get('postal_code')
+        address_line_1 = request.POST.get('address_line_1')
+        address_line_2 = request.POST.get('address_line_2')
+        province = request.POST.get('province')
+        pickup_date = request.POST.get('pickup_date')
+        return_date = request.POST.get('return_date')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+
+        # Handle cart data and payment logic here
+        cart = request.session.get('cart', {})
+        if not cart:
+            return redirect('cart')  # Redirect if cart is empty
+
+        # Save order to database and process payment
+        # Clear session after processing order
+        request.session['cart'] = {}
+
+        return redirect('order_confirmation')
+
+    return redirect('checkout')
+
 
 
 
