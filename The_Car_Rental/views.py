@@ -20,9 +20,8 @@ from About_Counter_Description.models import About_Counter_Description
 from Book_Your_Drive_Section.models import Book_Your_Drive
 from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
-from django.http import JsonResponse
-from django.urls import reverse
 from datetime import datetime
+from users.models import UserProfile
 
 
 
@@ -214,18 +213,34 @@ def reservationPage(request, id):
 #         "bookings":bookings_total
 #     }
 #     return render(request, 'Checkout.html', Data) 
+
 def checkout_view(request):
     cart = request.session.get('cart', {})
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
+    rental_days = 1  # Default value
+    if request.method == 'POST':
+        pickup_date = request.POST.get('pickup_date')
+        return_date = request.POST.get('return_date')
+        if pickup_date and return_date:
+            pickup_date = datetime.strptime(pickup_date, '%Y-%m-%d')
+            return_date = datetime.strptime(return_date, '%Y-%m-%d')
+            rental_days = (return_date - pickup_date).days
+    
     context = {
         'subtotal': subtotal,
-        'rental_days': 1,  # You can dynamically calculate this
+        'rental_days': rental_days,
     }
     return render(request, 'checkout.html', context)
 
+
+
+
 def process_checkout(request):
     if request.method == 'POST':
+        user = request.user
+        
+
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         postal_code = request.POST.get('postal_code')
@@ -237,21 +252,35 @@ def process_checkout(request):
         phone = request.POST.get('phone')
         email = request.POST.get('email')
 
-        # Handle cart data and payment logic here
+
+        user.first_name = first_name
+        user.last_name = last_name
+        user.adress_line_1 = address_line_1
+        user.adress_line_2 = address_line_2
+        user.pickup_date = pickup_date
+        user._date = return_date
+        user.email = email
+        user.save()
+
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        profile.phone = phone
+        profile.address_line_1 = address_line_1
+        profile.address_line_2 = address_line_2
+        profile.postal_code = postal_code
+        profile.province = province
+        profile.pickup_date = pickup_date
+        profile.return_date = return_date
+        profile.save()
+
+        
         cart = request.session.get('cart', {})
         if not cart:
-            return redirect('cart')  # Redirect if cart is empty
-
-        # Save order to database and process payment
-        # Clear session after processing order
+            return redirect('cart')  
         request.session['cart'] = {}
 
         return redirect('order_confirmation')
 
     return redirect('checkout')
-
-
-
 
 
 

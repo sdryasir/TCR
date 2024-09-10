@@ -9,6 +9,7 @@
                 <section class="shipping-info">
                     <h2>Checkout</h2>
                     <form id="shipping-form" method="POST" action="{% url 'process_checkout' %}">
+                    <form id="shipping-form" method="POST" action="{% url 'order_confirmation' %}">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="first-name">First Name*</label>
