@@ -20,6 +20,8 @@ from About_Counter_Description.models import About_Counter_Description
 from Book_Your_Drive_Section.models import Book_Your_Drive
 from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
+from datetime import datetime
+from users.models import UserProfile
 
 
 def homePage(request):
@@ -194,26 +196,90 @@ def reservationPage(request, id):
     }
     return render(request, 'Reservation.html', Data) 
 
-def checkoutPage(request):
-    cart= Cart(request)
-    bookings_total = 0
-    bookings= list(cart.session.values())[5]
-    for book in bookings:
-        bookings_total = bookings_total + int(bookings[book]["quantity"])
+# def checkoutPage(request):
+#     cart= Cart(request)
+#     bookings_total = 0
+#     bookings= list(cart.session.values())[5]
+#     for book in bookings:
+#         bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    items= list(cart.session.values())[5]
-    subtotal = 0
-    for item in items:
-        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
-    Data = {
-        "subtotal": subtotal,
-        "bookings":bookings_total
-    }
-    return render(request, 'Checkout.html', Data) 
+#     items= list(cart.session.values())[5]
+#     subtotal = 0
+#     for item in items:
+#         subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+#     Data = {
+#         "subtotal": subtotal,
+#         "bookings":bookings_total
+#     }
+#     return render(request, 'Checkout.html', Data) 
+
+def checkout_view(request):
+    cart = request.session.get('cart', {})
+    subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
+    rental_days = 1  # Default value
+    if request.method == 'POST':
+        pickup_date = request.POST.get('pickup_date')
+        return_date = request.POST.get('return_date')
+        if pickup_date and return_date:
+            pickup_date = datetime.strptime(pickup_date, '%Y-%m-%d')
+            return_date = datetime.strptime(return_date, '%Y-%m-%d')
+            rental_days = (return_date - pickup_date).days
+    
+    context = {
+        'subtotal': subtotal,
+        'rental_days': rental_days,
+    }
+    return render(request, 'checkout.html', context)
 
 
 
+
+def process_checkout(request):
+    if request.method == 'POST':
+        user = request.user
+        
+
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        postal_code = request.POST.get('postal_code')
+        address_line_1 = request.POST.get('address_line_1')
+        address_line_2 = request.POST.get('address_line_2')
+        province = request.POST.get('province')
+        pickup_date = request.POST.get('pickup_date')
+        return_date = request.POST.get('return_date')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+
+
+        user.first_name = first_name
+        user.last_name = last_name
+        user.adress_line_1 = address_line_1
+        user.adress_line_2 = address_line_2
+        user.pickup_date = pickup_date
+        user._date = return_date
+        user.email = email
+        user.save()
+
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        profile.phone = phone
+        profile.address_line_1 = address_line_1
+        profile.address_line_2 = address_line_2
+        profile.postal_code = postal_code
+        profile.province = province
+        profile.pickup_date = pickup_date
+        profile.return_date = return_date
+        profile.save()
+
+        
+        cart = request.session.get('cart', {})
+        if not cart:
+            return redirect('cart')  
+        request.session['cart'] = {}
+
+        return redirect('order_confirmation')
+
+    return redirect('checkout')
 
 
 
@@ -372,23 +438,56 @@ def cart_clear(request):
 
 
 
-def cart_detail(request):
-    cart= Cart(request)
-    bookings_total = 0
-    bookings= list(cart.session.values())[5]
-    for book in bookings:
-        bookings_total = bookings_total + int(bookings[book]["quantity"])
+# def cart_detail(request):
+#     cart= Cart(request)
+#     bookings_total = 0
+#     bookings= list(cart.session.values())[5]
+#     for book in bookings:
+#         bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    items= list(cart.session.values())[5]
+#     items= list(cart.session.values())[5]
+#     subtotal = 0
+#     for item in items:
+#         subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+#     Data = {
+#         "subtotal": subtotal,
+#         "bookings": bookings_total
+#     }
+#     return render(request, 'Reservation.html', Data)
+def cart_detail(request):
+    cart = Cart(request)
+    bookings_total = 0
+
+    session_values = list(cart.session.values())
+
+    # Check if there are enough items in session values
+    if len(session_values) > 5:
+        bookings = session_values[5]
+    else:
+        bookings = []  # Jab 6 items nahi milte, bookings ko empty list set karo
+
+    # Only calculate bookings_total if there are bookings
+    if bookings:
+        for book in bookings:
+            bookings_total = bookings_total + int(bookings[book]["quantity"])
+
+    # Check if there are enough items in session values for items as well
+    if len(session_values) > 5:
+        items = session_values[5]
+    else:
+        items = []  # Jab 6 items nahi milte, to items ko empty list set karo
+
     subtotal = 0
-    for item in items:
-        subtotal = subtotal + int(items[item]['price'])*items[item]['quantity']
+    if items:  # Only calculate if items exist
+        for item in items:
+            subtotal = subtotal + int(items[item]['price']) * items[item]['quantity']
+
     Data = {
         "subtotal": subtotal,
         "bookings": bookings_total
     }
-    return render(request, 'Reservation.html', Data)
 
+    return render(request, 'Reservation.html', Data)
 
 
 
