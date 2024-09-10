@@ -2,90 +2,87 @@
 {% load static %}
 {% include 'header/header.html' %}
 <main class="checkout-Page">
-<div class="checkout-container">
-    <!-- Shipping Information -->
-    <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <section class="shipping-info">
-                <h2>Checkout</h2>
-                <form id="shipping-form">
-                    <div class="form-group">
-                        <label for="first-name">First Name*</label>
-                        <input type="text" id="first-name" name="first-name" required>
+    <div class="checkout-container">
+        <!-- Shipping Information -->
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <section class="shipping-info">
+                    <h2>Checkout</h2>
+                    <form id="shipping-form" method="POST" action="{% url 'order_confirmation' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="first-name">First Name*</label>
+                            <input type="text" id="first-name" name="first_name" value="{{ user.first_name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name*</label>
+                            <input type="text" id="last-name" name="last_name" value="{{ user.last_name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal-code">Postal Code*</label>
+                            <input type="text" id="postal-code" name="postal_code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address-line-1">Address Line 1*</label>
+                            <input type="text" id="address-line-1" name="address_line_1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address-line-2">Address Line 2 (Optional)</label>
+                            <input type="text" id="address-line-2" name="address_line_2">
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Province*</label>
+                            <input type="text" id="province" name="province" required>
+                        </div>
+    
+                        <!-- Pickup Date -->
+                        <div class="form-group">
+                            <label for="pickup-date">Pickup Date*</label>
+                            <input type="date" id="pickup-date" name="pickup_date" required>
+                        </div>
+    
+                        <!-- Return Date -->
+                        <div class="form-group">
+                            <label for="return-date">Return Date*</label>
+                            <input type="date" id="return-date" name="return_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <input type="text" id="phone" name="phone" value="{{ user.profile.phone }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+                    </form>
+                </section>
+            </div><!-- /.col-6 -->
+    
+        <!-- Order Summary -->
+            <div class="col-md-12 col-lg-6">
+                <section class="order-summary">
+                    <div style="padding-bottom: 30px;">
+                        <h4>Bookings <span>({{ request.session.cart|length }})</span></h4>
+                        <h4>Return in: {{ rental_days }} Day(s)</h4>
                     </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name*</label>
-                        <input type="text" id="last-name" name="last-name" required>
+                    {% for id, car in request.session.cart.items %}
+                    <div>
+                        <h5>Car: {{ car.name }}</h5>
+                        <h5>Price: $ {{ car.price }} / Day</h5>  
+                        <h5>Qty: x {{ car.quantity }}</h5>
+                        <div class="cart-item">
+                            <h5>Amount: $ {{ car.price|floatformat:2|multiply:car.quantity }}</h5>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="postal-code">Postal Code*</label>
-                        <input type="text" id="postal-code" name="postal-code" required>
+                    {% endfor %}
+                    <div class="summary-total">
+                        <p>Total</p>
+                        <p>$ {{ subtotal }}</p>
                     </div>
-                    <div class="form-group">
-                        <label for="address-line-1">Address Line 1*</label>
-                        <input type="text" id="address-line-1" name="address-line-1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address-line-2">Address Line 2 (Optional)</label>
-                        <input type="text" id="address-line-2" name="address-line-2">
-                    </div>
-                    <div class="form-group">
-                        <label for="province">Province*</label>
-                        <input type="text" id="province" name="province" required>
-                    </div>
-
-                    <!-- Pickup Date -->
-                    <div class="form-group">
-                        <label for="pickup-date">Pickup Date*</label>
-                        <input type="date" id="pickup-date" name="pickup-date" required>
-                    </div>
-
-                    <!-- Return Date -->
-                    <div class="form-group">
-                        <label for="return-date">Return Date*</label>
-                        <input type="date" id="return-date" name="return-date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number*</label>
-                        <input type="text" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </form>
-            </section>
-        </div><!-- /.col-6 -->
-
-    <!-- Order Summary -->
-        <div class="col-md-12 col-lg-6">
-            <section class="order-summary">
-                <div style="padding-bottom: 30px;">
-                    <h4>Bookings <span>({{bookings}})</span></h4>
-                    <h4>Return in: 1 Day</h4>
-                </div>
-                {% for id,car in request.session.cart.items %}
-                <div>
-                    <h5>Car: {{car.name}}</h5>
-                    <h5>Price: $ {{car.price}} /Day</h5>  
-                    <h5>Qty: x {{car.quantity}}</h5>
-                    <div class="cart-item">
-                        <h5>Amount: $ {{ car.price|floatformat:2|multiply:car.quantity}}</h5>
-                    </div>
-                </div>
-                {% endfor %}
-                <!--<div class="summary-item">
-                    <p>Taxes</p>
-                    <p>$ 31.50</p>
-                </div>-->
-                <div class="summary-total">
-                    <p>Total</p>
-                    <p>$ {{subtotal}}</p>
-                </div>
-                <button type="submit" class="btn-continue">Checkout</button>
-            </section>
-        </div><!-- /.col-6 -->
-    </div><!-- /.row -->
-</div>
-</main>
+                    <button type="submit" form="shipping-form" class="btn-continue">Checkout</button>
+                </section>
+            </div><!-- /.col-6 -->
+        </div><!-- /.row -->
+    </div>
+    </main>
 {% include 'footer/footer.html' %}
