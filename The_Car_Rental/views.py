@@ -22,7 +22,10 @@ from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
 from datetime import datetime
 from users.models import UserProfile
+<<<<<<< HEAD
 
+=======
+>>>>>>> a0ee3231e3195dbb9bcccc64a2e44a660ea7c0d6
 
 
 def homePage(request):
@@ -255,10 +258,13 @@ def process_checkout(request):
 
         user.first_name = first_name
         user.last_name = last_name
+<<<<<<< HEAD
         user.adress_line_1 = address_line_1
         user.adress_line_2 = address_line_2
         user.pickup_date = pickup_date
         user._date = return_date
+=======
+>>>>>>> a0ee3231e3195dbb9bcccc64a2e44a660ea7c0d6
         user.email = email
         user.save()
 
@@ -286,7 +292,10 @@ def process_checkout(request):
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a0ee3231e3195dbb9bcccc64a2e44a660ea7c0d6
 # def contactPage(request):
 #     return render(request, 'Contact.html') 
 
