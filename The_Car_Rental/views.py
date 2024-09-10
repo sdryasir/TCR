@@ -21,7 +21,7 @@ from Book_Your_Drive_Section.models import Book_Your_Drive
 from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
 from datetime import datetime
-from .models import UserProfile
+from users.models import UserProfile
 
 
 def homePage(request):
