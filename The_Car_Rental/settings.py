@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'Questions_About_Payment',
     'Quick_Book',
     'cart',
-
+    'users',
 
 ]
 
