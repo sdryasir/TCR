@@ -22,8 +22,8 @@ from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
 from datetime import datetime
 from users.models import UserProfile
-
-
+import stripe
+from django.conf import settings
 
 def homePage(request):
 
@@ -218,7 +218,7 @@ def checkout_view(request):
     cart = request.session.get('cart', {})
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
-    rental_days = 1  # Default value
+    rental_days = 1 # Default value
     if request.method == 'POST':
         pickup_date = request.POST.get('pickup_date')
         return_date = request.POST.get('return_date')
@@ -278,9 +278,37 @@ def process_checkout(request):
             return redirect('cart')  
         request.session['cart'] = {}
 
-        return redirect('order_confirmation')
+        return redirect('process_checkout')
 
     return redirect('checkout')
+
+
+
+
+def checkout_session(request):  
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[{
+                'price_data': {
+                    'currency': 'usd',
+                    'product_data': {
+                        'name': '1 car book',
+                    },
+                    'unit_amount': 100,
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url=settings.LOCAL_DOMAIN + 'Success.html',
+            cancel_url=settings.LOCAL_DOMAIN + 'Cancel.html',
+
+        )
+        print(checkout_session)
+    except Exception as e:
+        return str(e)
+
+    return redirect(checkout_session.url, code=303)
 
 
 
