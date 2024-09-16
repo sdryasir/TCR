@@ -34,7 +34,8 @@
             <div class="col-xs-	   col-sm-6	  col-md-6	  col-lg-6">
                 <div class="newsletter">
                     <h2 class="font-class" style="padding-bottom: 10px;">OUR NEWSLETTER!</h2>
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <input type="email" placeholder="Your Email Address">
                         <button type="submit">SUBSCRIBE NOW</button>
                     </form>
@@ -72,7 +73,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.pkgd.min.js'></script>
@@ -81,6 +81,7 @@
 <script src = "{% static 'JAVASCRIPT/owl.carousel.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
 <script src="{% static 'JAVASCRIPT/jquery.counterup.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"></script>
 
 <!-- Background Video -->
 

@@ -3,16 +3,16 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class CARS(models.Model):
-    name = models.CharField(max_length=60,null=True)
-    image= models.FileField(max_length=200 , upload_to="Cars/", null=True)
+    name = models.CharField(max_length=60,null=True,blank=True)
+    image= models.FileField(max_length=200 , upload_to="Cars/", null=True,blank=True)
     new_car = models.CharField(max_length=60,null=True,blank=True)
     category = models.CharField(max_length=60,null=True,blank=True)
-    passengers = models.CharField(max_length=60,null=True)
-    stock = models.IntegerField(null=True, validators=[
+    passengers = models.CharField(max_length=60,null=True,blank=True)
+    stock = models.IntegerField(null=True, blank=True, validators=[
             MinValueValidator(0),
             MaxValueValidator(15) 
         ])
-    price = models.CharField(max_length=60,null=True)  
+    price = models.CharField(max_length=60,null=True,blank=True)  
     petrol_diesel = models.CharField(max_length=60,null=True,blank=True)
     automatic_manual = models.CharField(max_length=60,null=True,blank=True)
     at_mt = models.CharField(max_length=60,null=True,blank=True)

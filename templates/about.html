@@ -21,17 +21,31 @@
     </section><!-- /.Main-Hero-Section -->
     <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
         <div class="container-fluid">
-         
-            <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                {% for carousel in main_Cars_Carousel %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                {% for carousel in main_Cars_Carousel %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="/media/{{carousel.image}}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-overlay"></div>
+                {% endfor %}
+                </div>
+              </div>
+            <!--<div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
                 {% for carousel in main_Cars_Carousel %}
                 <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
                   <div class="overlay-carousel-cell"></div>
                   <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
+                     <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
                   </div>
                 </div>
                 {% endfor %}
-              </div>
+              </div>-->
         </div><!-- /.container-fluid -->
     </div><!-- /.Driving-excellence-owl-carousel -->
     <div class="driving-excellence-About-counter-section">

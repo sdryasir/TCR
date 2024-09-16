@@ -22,10 +22,22 @@ from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
 from datetime import datetime
 from users.models import UserProfile
+from Header.models import Header
+from django.core.mail import send_mail
 
+
+
+
+
+def header(request):
+    Header_Data = Header.objects.all()
+    
+    Data= {
+        "Header_Section":Header_Data
+    }
+    return render(request, 'header.html', Data)
 
 def homePage(request):
-
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
@@ -48,6 +60,56 @@ def homePage(request):
         "General_Questions" : General_Questions_Data     
     }
     return render(request, 'index.html', Data)
+
+
+
+
+
+
+
+
+def addyourCarPage(request):
+    Default_Background_Data = Default_Background.objects.all()
+    Data= {
+            "default_background":Default_Background_Data,
+    }
+    return render(request, 'Add-Your-Car.html',Data)
+
+
+
+def addyourCar(request):
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        passengers = request.POST.get('passengers', '')
+        pod = request.POST.get('pod', '')
+        aom = request.POST.get('aom', '')
+        description = request.POST.get('description', '')
+
+        if not all([name, passengers, pod, aom, description]):
+            print("error")
+
+            return redirect('addyourcar')
+
+        try:
+            addcar = CARS(
+                name=name,
+                passengers=passengers,
+                pod=pod,
+                aom=aom,
+                description=description
+            )
+            addcar.save()
+            messages.success(request, "Success! Your message has been sent.")
+            return redirect('home')
+
+        except Exception as e:
+            print(f"Error saving contact: {e}")
+            print("ERROr")
+            return redirect('addyourcar')
+            
+    return redirect('addyourcar')
+
 
 
  
@@ -102,6 +164,10 @@ def Create_accountPageUser(request):
 
     if uname == '' or uemail == '' or upassword == ''  :
         messages.error(request, "Please fill all fields.")
+        return redirect('create_account')
+
+    if len(upassword) != 8:
+        messages.error(request, "Password must be exactly 8 characters long.")
         return redirect('create_account')
 
 
@@ -217,7 +283,7 @@ def checkout_view(request):
     cart = request.session.get('cart', {})
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
-    rental_days = 1  # Default value
+    rental_days = 1  
     if request.method == 'POST':
         pickup_date = request.POST.get('pickup_date')
         return_date = request.POST.get('return_date')
@@ -228,7 +294,7 @@ def checkout_view(request):
     
     context = {
         'subtotal': subtotal,
-        'rental_days': rental_days,
+        'Rental_days': rental_days,
     }
     return render(request, 'checkout.html', context)
 
@@ -504,6 +570,18 @@ def cancelPage(request):
 
 
 
+def Booking_Failed_Page(request):
+    return render(request, 'Booking_Failed.html')
+
+
+
+
+def Booking_Corfirmed_Page(request):
+    return render(request, 'Quick_Booking_Confirmed.html')
+
+
+
+
 
 
 
@@ -524,14 +602,12 @@ def cancelPage(request):
 def quick_Book(request):
     if request.method == 'POST':
         name = request.POST.get('name', '')
-        car = request.POST.get('car','')
+        car = request.POST.get('car_name_dropdown', '') 
         phone = request.POST.get('phone', '')
         email = request.POST.get('email', '')
 
-
-        '''if not all([name, car, phone, email]):
-            messages.error(request, "Not found. Please fill all fields.")
-            return redirect('cancel')'''
+        if not all([name, car, phone, email]):
+            return redirect('Booking-Failed')
 
         try:
             contact = Quick_Book(
@@ -541,13 +617,20 @@ def quick_Book(request):
                 email=email
             )
             contact.save()
-            messages.success(request, "Success! Your message has been sent.")
-            return redirect('home')
+            '''send_mail(
+                'Your Booking Confirmation',
+                f'Hello {Quick_Book.name},\n\nThank you for your booking.\n\nMessage: hi hi',
+                'malikqasim20051@gmail.com',  # Replace with your from email address
+                [Quick_Book.email],
+                fail_silently=False,
+            )'''
+            return redirect('Booking-Confirmed')
+
 
         except Exception as e:
-            print(f"Error saving contact: {e}")
-            messages.error(request, "An error occurred. Please try again.")
-            return redirect('home')
+            return redirect('Booking-Failed')
             
+
+
 
     return redirect('home')

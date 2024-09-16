@@ -28,6 +28,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homePage, name='home'),
+    path('add-your-car', views.addyourCarPage, name='addyourcar'),
+    path('car-added', views.addyourCar, name='caradded'),
     path('about/', views.aboutPage, name='about'),
     path('login/', views.loginPage, name='login'),
     path('create-new-account/', views.Create_accountPage, name='create_account'),
@@ -47,6 +49,9 @@ urlpatterns = [
     path('process_checkout/', views.process_checkout, name='order_confirmation'),
     path('payment-success/', views.successPage, name='success'),
     path('payment-failed/', views.cancelPage, name='cancel'),
+    path('booking-confirmed/', views.Booking_Corfirmed_Page, name='Booking-Confirmed'),
+    path('booking-failed/', views.Booking_Failed_Page, name='Booking-Failed'),
+
 
 
 

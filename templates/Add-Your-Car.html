@@ -1,0 +1,47 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content"></main>
+    <section class="Login-Main-Hero-Section">
+        <div class="Login-Hero-Section-image">
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Login-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Login-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Login-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Add_Your_Car_Page_Title}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+          {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="container">
+        <form action="{% url 'caradded' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first-name">Car Name*</label>
+                <input type="text" id="first-name" name="name" value="{{ request.POST.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Passengers*</label>
+                <input type="text" id="last-name" name="passengers" value="{{ request.POST.passengers }}" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Petrol or Diesel*</label>
+                <input type="text" id="last-name" name="pod" value="{{ request.POST.pod }}" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Automatic or Manual*</label>
+                <input type="text" id="last-name" name="aom" value="{{ request.POST.aom }}" required>
+            </div>
+            <div class="input-block textarea">
+                <label for="message">Description</label>
+                <textarea rows="3" name="message" class="form-control" name="description" id="message">{{ request.POST.description }}</textarea>
+            </div>
+            <div class="col-sm-12">
+                <button class="square-button">ADD CAR</button>
+            </div>
+        </form>
+    </div>
+{% include 'footer/footer.html' %}
