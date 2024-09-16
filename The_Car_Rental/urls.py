@@ -50,6 +50,7 @@ urlpatterns = [
 
     path('payment-success/', views.successPage, name='success'),
     path('payment-failed/', views.cancelPage, name='cancel'),
+    
 
 
 

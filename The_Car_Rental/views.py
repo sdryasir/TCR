@@ -24,6 +24,10 @@ from datetime import datetime
 from users.models import UserProfile
 import stripe
 from django.conf import settings
+from orders.models import Orders, OrderItem
+
+
+
 
 def homePage(request):
 
@@ -287,24 +291,31 @@ def process_checkout(request):
 
 def checkout_session(request):  
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    aftertax = 1.13
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[{
                 'price_data': {
                     'currency': 'usd',
                     'product_data': {
-                        'name': '1 car book',
+                        'name': 'Total Amount ',
                     },
-                    'unit_amount': 100,
+                    'unit_amount': int(aftertax*10000),
                 },
                 'quantity': 1,
             }],
             mode='payment',
-            success_url=settings.LOCAL_DOMAIN + 'Success.html',
-            cancel_url=settings.LOCAL_DOMAIN + 'Cancel.html',
+            success_url='http://127.0.0.1:8000/success',
+            cancel_url='http://127.0.0.1:8000/cancel',
 
         )
-        print(checkout_session)
+        if checkout_session:
+            order = Orders.objects.create(
+                user = request.user,
+                amount = checkout_session.amount_total,
+                payment_intent = checkout_session.payment_intent,
+
+            )
     except Exception as e:
         return str(e)
 
@@ -490,25 +501,21 @@ def cart_detail(request):
 
     session_values = list(cart.session.values())
 
-    # Check if there are enough items in session values
     if len(session_values) > 5:
         bookings = session_values[5]
     else:
-        bookings = []  # Jab 6 items nahi milte, bookings ko empty list set karo
-
-    # Only calculate bookings_total if there are bookings
+        bookings = []  
     if bookings:
         for book in bookings:
             bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    # Check if there are enough items in session values for items as well
     if len(session_values) > 5:
         items = session_values[5]
     else:
-        items = []  # Jab 6 items nahi milte, to items ko empty list set karo
+        items = []  
 
     subtotal = 0
-    if items:  # Only calculate if items exist
+    if items:  
         for item in items:
             subtotal = subtotal + int(items[item]['price']) * items[item]['quantity']
 
@@ -581,3 +588,54 @@ def quick_Book(request):
             
 
     return redirect('home')
+
+
+
+
+
+
+# def orderStatus(request):
+#     # Fetch all orders for the logged-in user, including their items
+#     orders = Orders.objects.filter(user=request.user).prefetch_related('orderitem_set')
+#     profile_picture = None
+#     city = None
+#     country = None
+#     address = None
+#     phone_no = None
+
+#     if request.user.is_authenticated:
+#         userdata, created = Userdata.objects.get_or_create(user=request.user)
+#         profile_picture = userdata.profile_picture.url if userdata.profile_picture else None
+#         city = userdata.city if userdata.city else None
+#         country = userdata.country if userdata.country else None
+#         address = userdata.address if userdata.address else None
+#         phone_no = userdata.phone_no if userdata.phone_no else None
+
+#     # If no orders exist, render with no_order flag
+#     if not orders.exists():
+#         shipping_date = timezone.now() + timedelta(days=7)  # Still calculate the general shipping date for display
+#         return render(request, 'order_status.html', {
+#             'no_order': True,
+#             'shipping_date': shipping_date,
+#             'profile_picture': profile_picture,
+#             'city': city,
+#             'country': country,
+#             'address': address,
+#             'phone_no': phone_no
+#         })
+
+#     for order in orders:
+#         order.expected_delivery = order.created_at + timedelta(days=7)
+
+#     return render(request, 'order_status.html', {
+#         'orders': orders,
+#         'profile_picture': profile_picture,
+#         'city': city,
+#         'country': country,
+#         'address': address,
+#         'phone_no': phone_no
+#     })
+
+
+
+
