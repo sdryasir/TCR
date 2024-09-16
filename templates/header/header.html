@@ -36,26 +36,30 @@
             <div class="main-navbar">
               <div class="container-fluid">
                 <div class="logo main-navbar-item">
-                  <img class="" src="{% static 'images/main-navbar-logo.png' %}" alt="">
+                  {% for data in header_data %}
+                  <img class="" src="/media/{{data.header_logo}}" alt="">
+                  {% endfor %}
                 </div><!-- /.logo -->
                 <div class="nav-links main-navbar-item">
                   <nav class="top-navbar">
                     <input type="checkbox" id="nav-check">
                     <label for="nav-check" class="nav-chlab">☰</label>
                     <div class="navbar-links" id="navbar">
-                        <img class="" src="{% static 'images/main-navbar-logo.png' %}" alt="">
-                      <a class="left-padding" href="/">HOME</a>
-                      <a href="{% url 'about' %}">ABOUT</a> 
-                      <a href="{% url 'our_cars' %}">OUR CARS</a> 
+                      {% for data in header_data %}
+                        <img class="" src="/media/{{data.header_logo}}" alt="">
+                      <a class="left-padding" href="{{data.link1}}">{{data.link1_name}}</a>
+                      <a href="{% url 'about' %}">{{data.link2_name}}</a> 
+                      <a href="{% url 'our_cars' %}">{{data.link3_name}}</a> 
                       <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        FEATURES
+                        {{data.dropdownlinks_name}}
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'our_team' %}">OUR TEAM</a></li>
-                        <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a class="dropdown-item" href="{% url 'our_team' %}">{{data.link4_name}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'faq' %}">{{data.link5_name}}</a></li>
                       </ul>
-                      <a class="" href="{% url 'blog' %}">BLOG</a>
-                      <a class="right-padding" href="{% url 'contactPage' %}">CONTACT</a>
+                      <a class="" href="{% url 'blog' %}">{{data.link6_name}}</a>
+                      <a class="right-padding" href="{% url 'contactPage' %}">{{data.link7_name}}</a>
+                      {% endfor %}
                       <!--Login and Username for Mobile  -Start-->
                       {% if user.is_authenticated %}
                       <div class="Reservation Reservation-button-Mobile-Screen" style="display: none;">
@@ -118,20 +122,22 @@
                     </div>
                     <div class="sidebar" id="slideNav">
                       <div class="nav-section" id="sideBarText">
-                        <div class="item"><img src="{% static 'images/side-navigation-logo.png' %}" alt="" style="width: 200px;"></div>
-                        <div class="item"><p><h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel risus imperdiet, gravida justo eu adipiscing elit.</h5></p></div>
-                        <div class="item font-text"><h4>INFORMATION</h4></div>
-                        <div class="Infomation-content"><i class="fi fi-rs-marker"></i><span style="margin-left: 20px;">Jl. Raya Puputan No 142, Denpasar - Bali</span></div>
-                        <div class="Infomation-content"><i class="fi fi-rs-envelope"></i><span style="margin-left: 20px;">support@domain.com</span></div>
-                        <div class="Infomation-content"><i class="fi fi-rs-phone-call"></i><span style="margin-left: 20px;">+62 478-2240-190</span></div>
-                        <div class="Infomation-content"><i class="fi fi-rs-clock-three"></i><span style="margin-left: 20px;">Everyday 24 Hours</span></div>
+                        {% for data in header_data %}
+                        <div class="item"><img src="/media/{{data.side_navigation_image}}" alt="" style="width: 200px;"></div>
+                        <div class="item"><p><h5>{{data.side_navigation_description}}</h5></p></div>
+                        <div class="item font-text"><h4>{{data.side_navigation_heading}}</h4></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-marker"></i><span style="margin-left: 20px;">{{data.side_navigation_location}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-envelope"></i><span style="margin-left: 20px;">{{data.side_navigation_email}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-phone-call"></i><span style="margin-left: 20px;">{{data.side_navigation_phone}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-clock-three"></i><span style="margin-left: 20px;">{{data.side_navigation_schedule}}</span></div>
                         <div class="Social-links">
-                          <div class="first-link"><a href="" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
-                          <div><a href="" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
-                          <div><a href="" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
-                          <div><a href="" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
+                          <div class="first-link"><a href="{{data.side_navigation_facebook_link}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_twitter_link}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_instagram_link}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_youtube_link}}" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
                         </div>
-                        <div><p><h5 class="copyright-content">Copyright © Carent 2023. All rights reserved.</h5></p></div>
+                        <div><p><h5 class="copyright-content">{{data.side_navigation_rights}}</h5></p></div>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>              

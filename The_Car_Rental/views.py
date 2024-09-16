@@ -24,20 +24,15 @@ from datetime import datetime
 from users.models import UserProfile
 from Header.models import Header
 from django.core.mail import send_mail
+from Header.models import Header
 
 
 
 
 
-def header(request):
-    Header_Data = Header.objects.all()
-    
-    Data= {
-        "Header_Section":Header_Data
-    }
-    return render(request, 'header.html', Data)
 
 def homePage(request):
+    header = Header.objects.all()
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
@@ -49,6 +44,7 @@ def homePage(request):
     General_Questions_Data = General_Questions.objects.all()
 
     Data= {
+        "header_data": header,
         "main_Hero_Section":Main_Hero_Section_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
@@ -60,10 +56,6 @@ def homePage(request):
         "General_Questions" : General_Questions_Data     
     }
     return render(request, 'index.html', Data)
-
-
-
-
 
 
 
@@ -116,6 +108,7 @@ def addyourCar(request):
 
 
 def aboutPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
@@ -123,6 +116,7 @@ def aboutPage(request):
     Book_your_drive = Book_Your_Drive.objects.all()
     top_items = Our_Team.objects.all()[:3]    
     Data={
+        "header_data": header,
         "default_background":Default_Background_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
@@ -140,8 +134,10 @@ def aboutPage(request):
 
 
 def loginPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Data={
+        "header_data": header,
         "default_background":Default_Background_Data,
     }
     if request.user.is_authenticated:
@@ -150,8 +146,10 @@ def loginPage(request):
 
 
 def Create_accountPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Data={
+        "header_data": header,
         "default_background":Default_Background_Data,
     }
     return render(request, 'create_account.html', Data) 
@@ -204,10 +202,12 @@ def logoutUser(request):
 
 
 def faqPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
     Payment_Questions_Data = Payment_Questions.objects.all()
     Data={
+        "header_data": header,
         "General_Questions" : General_Questions_Data,
         "Payment_questions" : Payment_Questions_Data,  
         "default_background":Default_Background_Data,
@@ -216,6 +216,7 @@ def faqPage(request):
 
 
 def Our_carsPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Cars_Data = CARS.objects.all()
     Cars_Data= Paginator(Cars_Data, 6)
@@ -225,6 +226,7 @@ def Our_carsPage(request):
     Background_Video_Data = Background_Video.objects.all()
     Blog_Data = Blog.objects.all()
     Data= {
+        "header_data": header,
         "default_background":Default_Background_Data,
         "cars_Section": products,
         "total_Pages": totalpages,
@@ -237,10 +239,12 @@ def Our_carsPage(request):
 
 
 def Car_detailPage(request, id):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Cars_Data = CARS.objects.all()
     Car_1 = CARS.objects.get(id__exact=id)
     Data = {
+        "header_data": header,
         "default_background":Default_Background_Data,
         "Car_Data": Cars_Data,
         "One_Car": Car_1,
@@ -250,12 +254,14 @@ def Car_detailPage(request, id):
 
 
 def reservationPage(request, id):
+    header = Header.objects.all()
     Cars_Data = CARS.objects.all()
     Cars_Data= Paginator(Cars_Data, 6)
     page = request.GET.get('page')
     products = Cars_Data.get_page(page)
     Car_1 = CARS.objects.get(id__exact=id)
     Data = {
+        "header_data": header,
         "cars_Section": products,
         "One_Car": Car_1,
         "current_id_2": int(id)
@@ -280,6 +286,7 @@ def reservationPage(request, id):
 #     return render(request, 'Checkout.html', Data) 
 
 def checkout_view(request):
+    header = Header.objects.all()
     cart = request.session.get('cart', {})
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
     
@@ -293,6 +300,7 @@ def checkout_view(request):
             rental_days = (return_date - pickup_date).days
     
     context = {
+        "header_data": header,
         'subtotal': subtotal,
         'Rental_days': rental_days,
     }
@@ -373,9 +381,11 @@ def process_checkout(request):
 #      return render(request, 'Contact.html')
 
 def contactPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
     Data={
+        "header_data": header,
         "default_background":Default_Background_Data,
         "General_Questions" : General_Questions_Data   
     }
@@ -416,11 +426,13 @@ def saveContact(request):
 
 
 def Our_teamPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Team_Cards = Our_Team.objects.all()
     Background_Video_Data = Background_Video.objects.all()
     Testimonial_Data = Testimonial.objects.all()
     Data={
+        "header_data": header,
         "default_background":Default_Background_Data,
         "Team_Cards_Data":Team_Cards,
         "Background_Video":Background_Video_Data,
@@ -430,6 +442,7 @@ def Our_teamPage(request):
 
 
 def blogPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     Blog_Data = Blog.objects.all()
     Blog_Data= Paginator(Blog_Data, 6)
@@ -437,6 +450,7 @@ def blogPage(request):
     products = Blog_Data.get_page(page)
     totalpages = [x+1 for x in range(Blog_Data.num_pages)]
     Data = {
+        "header_data": header,
         "default_background":Default_Background_Data,
         "Blog":products,
         "total_Pages": totalpages,
@@ -521,6 +535,7 @@ def cart_clear(request):
 #     }
 #     return render(request, 'Reservation.html', Data)
 def cart_detail(request):
+    header = Header.objects.all()
     cart = Cart(request)
     bookings_total = 0
 
@@ -549,11 +564,23 @@ def cart_detail(request):
             subtotal = subtotal + int(items[item]['price']) * items[item]['quantity']
 
     Data = {
+        "header_data": header,
         "subtotal": subtotal,
         "bookings": bookings_total
     }
 
     return render(request, 'Reservation.html', Data)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -634,3 +661,7 @@ def quick_Book(request):
 
 
     return redirect('home')
+
+
+
+
