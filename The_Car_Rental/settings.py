@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     'Quick_Book',
     'cart',
     'users',
-    'orders',
+
 
 ]
 

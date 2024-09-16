@@ -24,14 +24,11 @@ from datetime import datetime
 from users.models import UserProfile
 import stripe
 from django.conf import settings
-from orders.models import Order
 from datetime import timedelta
 from django.utils import timezone
 from users.models import UserProfile
 from django.http import JsonResponse
-from orders.forms import OrderForm
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.edit import CreateView
+
 
 
 def homePage(request):
@@ -296,6 +293,44 @@ def process_checkout(request):
 
 
 
+def checkout_session(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    base_amount = 1000  # Amount in PKR
+    tax_rate = 0.10
+    aftertax = base_amount + (base_amount * tax_rate)
+    
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[{
+                'price_data': {
+                    'currency': 'pkr',
+                    'product_data': {
+                        'name': 'Total Amount',
+                    },
+                    'unit_amount': int(aftertax * 100),  # Convert to paisa
+                },
+                'quantity': 1,
+            }],
+            
+            mode='payment',
+          
+            success_url='http://127.0.0.1:8000/success',
+            cancel_url='http://127.0.0.1:8000/cancel',
+        )
+        
+        # Redirect to the Stripe Checkout page
+        return redirect(checkout_session.url, code=303)
+
+    except Exception as e:
+        # Return a JSON response with the error message
+        return JsonResponse({'error': str(e)}, status=400)
+
+
+
+
+
+
+
 # def checkout_session(request):
 #     try:
 #         # Example: base amount before tax
@@ -336,72 +371,66 @@ def process_checkout(request):
 
 
 # def checkout_session(request):  
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    base_amount = 1000
-    tax_rate = 0.10
-    aftertax = base_amount + (base_amount * tax_rate)
-    try:
-        checkout_session = stripe.checkout.Session.create(
-            line_items=[{
-                'price_data': {
-                    'currency': 'pkr',
-                    'product_data': {
-                        'name': 'Total Amount ',
-                    },
-                    'unit_amount': int(aftertax* 100),
-                },
-                'quantity': 1,
-            }],
-            mode='payment',
-            success_url='http://127.0.0.1:8000/success',
-            cancel_url='http://127.0.0.1:8000/cancel',
+#     stripe.api_key = settings.STRIPE_SECRET_KEY
+#     base_amount = 1000
+#     tax_rate = 0.10
+#     aftertax = base_amount + (base_amount * tax_rate)
+#     try:
+#         checkout_session = stripe.checkout.Session.create(
+#             line_items=[{
+#                 'price_data': {
+#                     'currency': 'pkr',
+#                     'product_data': {
+#                         'name': 'Total Amount ',
+#                     },
+#                     'unit_amount': int(aftertax* 100),
+#                 },
+#                 'quantity': 1,
+#             }],
+#             mode='payment',
+#             success_url='http://127.0.0.1:8000/success',
+#             cancel_url='http://127.0.0.1:8000/cancel',
 
-        )
-        if checkout_session:
-            order = Orders.objects.create(
-                user = request.user,
-                amount = checkout_session.amount_total,
-                payment_intent = checkout_session.payment_intent,
+#         )
+   
+#     except Exception as e:
+#         return str(e)
 
-            )
-    except Exception as e:
-        return str(e)
-
-    return redirect(checkout_session.url, code=303)
+#     return redirect(checkout_session.url, code=303)
 
 
-def checkout_session(request, order_id):
-    # Get the order object
-    order = get_object_or_404(Order, id=order_id)
+# def checkout_session(request, order_id):
+#     # Get the order object
+#     order = get_object_or_404(Order, id=order_id)
 
-    try:
-        # Create the Stripe Checkout session
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price_data': {
-                    'currency': 'pkr',  # Pakistani Rupee
-                    'product_data': {
-                        'name': f'Order {order.id}',
-                    },
-                    'unit_amount': int(order.amount * 100),  # Convert to paisa
-                },
-                'quantity': 1,
-            }],
-            mode='payment',
-            success_url=f'http://127.0.0.1:8000/success/?session_id={{CHECKOUT_SESSION_ID}}',
-            cancel_url=f'http://127.0.0.1:8000/cancel/',
-        )
+#     try:
+#         # Create the Stripe Checkout session
+#         checkout_session = stripe.checkout.Session.create(
+#             payment_method_types=['card'],
+#             line_items=[{
+#                 'price_data': {
+#                     'currency': 'pkr',  # Pakistani Rupee
+#                     'product_data': {
+#                         'name': f'Order {order.id}',
+#                     },
+#                     'unit_amount': int(order.amount * 100),  # Convert to paisa
+#                 },
+#                 'quantity': 1,
+#             }],
+#             mode='payment',
+#             success_url=f'http://127.0.0.1:8000/success/?session_id={{CHECKOUT_SESSION_ID}}',
+#             cancel_url=f'http://127.0.0.1:8000/cancel/',
+#         )
 
-        # Save the Stripe session ID to the order
-        order.stripe_session_id = checkout_session.id
-        order.save()
+#         # Save the Stripe session ID to the order
+#         order.stripe_session_id = checkout_session.id
+#         order.save()
 
-        # Redirect the user to the Stripe checkout page
-        return redirect(checkout_session.url)
+#         # Redirect the user to the Stripe checkout page
+#         return redirect(checkout_session.url)
 
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=400)
 
 
 
@@ -722,57 +751,3 @@ def quick_Book(request):
 
 
 
-class OrderCreateView(CreateView):
-    model = Order
-    form_class = OrderForm
-    template_name = 'payments/order_form.html'
-    success_url = '/checkout/'
-
-    def form_valid(self, form):
-        self.object = form.save()
-        # Create Stripe Checkout Session
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price_data': {
-                    'currency': 'pkr',
-                    'product_data': {
-                        'name': 'Order Payment',
-                    },
-                    'unit_amount': int(self.object.amount * 100),  # Convert to paisa
-                },
-                'quantity': 1,
-            }],
-            mode='payment',
-            success_url=f'http://127.0.0.1:8000/success/?session_id={{CHECKOUT_SESSION_ID}}',
-            cancel_url='http://127.0.0.1:8000/cancel/',
-        )
-        # Save the Stripe session ID to the order
-        self.object.stripe_session_id = checkout_session.id
-        self.object.save()
-        return redirect(checkout_session.url)
-
-@csrf_exempt
-def stripe_webhook(request):
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
-
-    event = None
-
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
-    except ValueError as e:
-        return JsonResponse({'error': 'Invalid payload'}, status=400)
-    except stripe.error.SignatureVerificationError as e:
-        return JsonResponse({'error': 'Invalid signature'}, status=400)
-
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-        order = Order.objects.get(stripe_session_id=session['id'])
-        order.status = 'paid'
-        order.save()
-
-    return JsonResponse({'status': 'success'})
