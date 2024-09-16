@@ -7,3 +7,4 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ['id', 'stripe_session_id']
 
 admin.site.register(Order, OrderAdmin)
+
