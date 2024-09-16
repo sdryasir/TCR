@@ -48,8 +48,8 @@ urlpatterns = [
 
     path('process_checkout/', views.process_checkout, name='process_checkout'),
 
-    path('payment-success/', views.successPage, name='success'),
-    path('payment-failed/', views.cancelPage, name='cancel'),
+    path('success/', views.successPage, name='success'),
+    path('cancel/', views.cancelPage, name='cancel'),
     
 
     

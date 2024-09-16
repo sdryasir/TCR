@@ -24,14 +24,11 @@ from datetime import datetime
 from users.models import UserProfile
 import stripe
 from django.conf import settings
-from orders.models import Order
 from datetime import timedelta
 from django.utils import timezone
 from users.models import UserProfile
 from django.http import JsonResponse
-from orders.forms import OrderForm
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.edit import CreateView
+
 
 
 def homePage(request):
@@ -314,7 +311,9 @@ def checkout_session(request):
                 },
                 'quantity': 1,
             }],
+            
             mode='payment',
+          
             success_url='http://127.0.0.1:8000/success',
             cancel_url='http://127.0.0.1:8000/cancel',
         )
