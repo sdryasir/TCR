@@ -44,9 +44,16 @@ urlpatterns = [
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
     path('checkout/', views.checkout_view, name='checkout'),
-    path('process_checkout/', views.process_checkout, name='order_confirmation'),
+    path('create-checkout-session/', views.checkout_session, name='create-checkout-session'),
+
+    path('process_checkout/', views.process_checkout, name='process_checkout'),
+
     path('payment-success/', views.successPage, name='success'),
     path('payment-failed/', views.cancelPage, name='cancel'),
+    
+
+    path('webhook/', views.stripe_webhook, name='stripe_webhook'),
+    path('order/', views.OrderCreateView.as_view(), name='order_create'),
 
 
 
