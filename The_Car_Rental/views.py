@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.core.paginator import Paginator
 from Main_Hero_Section.models import Main_Hero_Section
 from Default_Background.models import Default_Background
@@ -24,9 +24,14 @@ from datetime import datetime
 from users.models import UserProfile
 import stripe
 from django.conf import settings
-from orders.models import Orders, OrderItem
-
-
+from orders.models import Order
+from datetime import timedelta
+from django.utils import timezone
+from users.models import UserProfile
+from django.http import JsonResponse
+from orders.forms import OrderForm
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic.edit import CreateView
 
 
 def homePage(request):
@@ -289,18 +294,61 @@ def process_checkout(request):
 
 
 
-def checkout_session(request):  
+
+
+# def checkout_session(request):
+#     try:
+#         # Example: base amount before tax
+#         base_amount = 1000  # 1000 PKR
+#         tax_rate = 0.10     # 10% tax rate
+
+#         # Calculating the final amount with tax
+#         aftertax = base_amount + (base_amount * tax_rate)
+
+#         # Creating the Stripe checkout session
+#         checkout_session = stripe.checkout.Session.create(
+#             payment_method_types=['card'],
+#             line_items=[{
+#                 'price_data': {
+#                     'currency': 'pkr',
+#                     'product_data': {
+#                         'name': 'Total Amount',
+#                     },
+#                     'unit_amount': int(aftertax * 100),  # Stripe expects paisa, hence * 100
+#                 },
+#                 'quantity': 1,
+#             }],
+#             mode='payment',
+#             success_url='http://127.0.0.1:8000/success/',
+#             cancel_url='http://127.0.0.1:8000/cancel/',
+#         )
+#         # Returning the session ID as JSON
+#         return JsonResponse({
+#             'sessionId': checkout_session.id
+#         })
+#     except Exception as e:
+#         return JsonResponse({
+#             'error': str(e)
+#         })
+
+
+
+
+
+# def checkout_session(request):  
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    aftertax = 1.13
+    base_amount = 1000
+    tax_rate = 0.10
+    aftertax = base_amount + (base_amount * tax_rate)
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[{
                 'price_data': {
-                    'currency': 'usd',
+                    'currency': 'pkr',
                     'product_data': {
                         'name': 'Total Amount ',
                     },
-                    'unit_amount': int(aftertax*10000),
+                    'unit_amount': int(aftertax* 100),
                 },
                 'quantity': 1,
             }],
@@ -322,7 +370,38 @@ def checkout_session(request):
     return redirect(checkout_session.url, code=303)
 
 
+def checkout_session(request, order_id):
+    # Get the order object
+    order = get_object_or_404(Order, id=order_id)
 
+    try:
+        # Create the Stripe Checkout session
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'pkr',  # Pakistani Rupee
+                    'product_data': {
+                        'name': f'Order {order.id}',
+                    },
+                    'unit_amount': int(order.amount * 100),  # Convert to paisa
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url=f'http://127.0.0.1:8000/success/?session_id={{CHECKOUT_SESSION_ID}}',
+            cancel_url=f'http://127.0.0.1:8000/cancel/',
+        )
+
+        # Save the Stripe session ID to the order
+        order.stripe_session_id = checkout_session.id
+        order.save()
+
+        # Redirect the user to the Stripe checkout page
+        return redirect(checkout_session.url)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
 
 
 
@@ -592,50 +671,108 @@ def quick_Book(request):
 
 
 
+    
+
+
+
 
 
 # def orderStatus(request):
-#     # Fetch all orders for the logged-in user, including their items
-#     orders = Orders.objects.filter(user=request.user).prefetch_related('orderitem_set')
-#     profile_picture = None
-#     city = None
-#     country = None
-#     address = None
-#     phone_no = None
+    # Fetch all orders for the logged-in user, including their items
+    orders = Orders.objects.filter(user=request.user).prefetch_related('orderitem_set')
+    profile_picture = None
+    city = None
+    country = None
+    address = None
+    phone_no = None
 
-#     if request.user.is_authenticated:
-#         userdata, created = Userdata.objects.get_or_create(user=request.user)
-#         profile_picture = userdata.profile_picture.url if userdata.profile_picture else None
-#         city = userdata.city if userdata.city else None
-#         country = userdata.country if userdata.country else None
-#         address = userdata.address if userdata.address else None
-#         phone_no = userdata.phone_no if userdata.phone_no else None
+    if request.user.is_authenticated:
+        userdata, created = UserProfile.objects.get_or_create(user=request.user)
+        profile_picture = userdata.profile_picture.url if userdata.profile_picture else None
+        city = userdata.city if userdata.city else None
+        country = userdata.country if userdata.country else None
+        address = userdata.address if userdata.address else None
+        phone_no = userdata.phone_no if userdata.phone_no else None
 
-#     # If no orders exist, render with no_order flag
-#     if not orders.exists():
-#         shipping_date = timezone.now() + timedelta(days=7)  # Still calculate the general shipping date for display
-#         return render(request, 'order_status.html', {
-#             'no_order': True,
-#             'shipping_date': shipping_date,
-#             'profile_picture': profile_picture,
-#             'city': city,
-#             'country': country,
-#             'address': address,
-#             'phone_no': phone_no
-#         })
+    # If no orders exist, render with no_order flag
+    if not orders.exists():
+        shipping_date = timezone.now() + timedelta(days=7)  # Still calculate the general shipping date for display
+        return render(request, 'order_status.html', {
+            'no_order': True,
+            'shipping_date': shipping_date,
+            'profile_picture': profile_picture,
+            'city': city,
+            'country': country,
+            'address': address,
+            'phone_no': phone_no
+        })
 
-#     for order in orders:
-#         order.expected_delivery = order.created_at + timedelta(days=7)
+    for order in orders:
+        order.expected_delivery = order.created_at + timedelta(days=7)
 
-#     return render(request, 'order_status.html', {
-#         'orders': orders,
-#         'profile_picture': profile_picture,
-#         'city': city,
-#         'country': country,
-#         'address': address,
-#         'phone_no': phone_no
-#     })
-
-
+    return render(request, 'order_status.html', {
+        'orders': orders,
+        'profile_picture': profile_picture,
+        'city': city,
+        'country': country,
+        'address': address,
+        'phone_no': phone_no
+    })
 
 
+
+
+class OrderCreateView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = 'payments/order_form.html'
+    success_url = '/checkout/'
+
+    def form_valid(self, form):
+        self.object = form.save()
+        # Create Stripe Checkout Session
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'pkr',
+                    'product_data': {
+                        'name': 'Order Payment',
+                    },
+                    'unit_amount': int(self.object.amount * 100),  # Convert to paisa
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url=f'http://127.0.0.1:8000/success/?session_id={{CHECKOUT_SESSION_ID}}',
+            cancel_url='http://127.0.0.1:8000/cancel/',
+        )
+        # Save the Stripe session ID to the order
+        self.object.stripe_session_id = checkout_session.id
+        self.object.save()
+        return redirect(checkout_session.url)
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        return JsonResponse({'error': 'Invalid payload'}, status=400)
+    except stripe.error.SignatureVerificationError as e:
+        return JsonResponse({'error': 'Invalid signature'}, status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        order = Order.objects.get(stripe_session_id=session['id'])
+        order.status = 'paid'
+        order.save()
+
+    return JsonResponse({'status': 'success'})
