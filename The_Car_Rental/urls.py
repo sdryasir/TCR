@@ -52,8 +52,7 @@ urlpatterns = [
     path('payment-failed/', views.cancelPage, name='cancel'),
     
 
-    path('webhook/', views.stripe_webhook, name='stripe_webhook'),
-    path('order/', views.OrderCreateView.as_view(), name='order_create'),
+    
 
 
 
