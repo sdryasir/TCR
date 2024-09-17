@@ -25,7 +25,7 @@ from users.models import UserProfile
 from Header.models import Header
 from django.core.mail import send_mail
 from Header.models import Header
-
+from Footer.models import Footer
 
 
 
@@ -42,6 +42,7 @@ def homePage(request):
     Background_Video_Data = Background_Video.objects.all()
     Blog_Data = Blog.objects.all()
     General_Questions_Data = General_Questions.objects.all()
+    footer= Footer.objects.all()
 
     Data= {
         "header_data": header,
@@ -53,7 +54,8 @@ def homePage(request):
         "Testimonial": Testimonial_Data,
         "Background_Video": Background_Video_Data,
         "Latest_Blog": Blog_Data,
-        "General_Questions" : General_Questions_Data     
+        "General_Questions" : General_Questions_Data,
+        "footer_data":footer,    
     }
     return render(request, 'index.html', Data)
 
@@ -114,7 +116,8 @@ def aboutPage(request):
     Counter_Section_Data= Counter_Section.objects.all()
     Counter_Description_Data= About_Counter_Description.objects.all()
     Book_your_drive = Book_Your_Drive.objects.all()
-    top_items = Our_Team.objects.all()[:3]    
+    top_items = Our_Team.objects.all()[:3] 
+    footer= Footer.objects.all()   
     Data={
         "header_data": header,
         "default_background":Default_Background_Data,
@@ -122,7 +125,8 @@ def aboutPage(request):
         "counter_Section":Counter_Section_Data,
         "About_Description": Counter_Description_Data,
         "Book_Your_Drive_Section": Book_your_drive,
-        'top_3_cards': top_items
+        'top_3_cards': top_items,
+        "footer_data":footer,   
     }
 
     return render(request, 'about.html', Data) 
@@ -136,9 +140,11 @@ def aboutPage(request):
 def loginPage(request):
     header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
+    footer= Footer.objects.all()  
     Data={
         "header_data": header,
         "default_background":Default_Background_Data,
+        "footer_data":footer,   
     }
     if request.user.is_authenticated:
        return redirect('home')
@@ -148,9 +154,11 @@ def loginPage(request):
 def Create_accountPage(request):
     header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
+    footer= Footer.objects.all() 
     Data={
         "header_data": header,
         "default_background":Default_Background_Data,
+        "footer_data":footer, 
     }
     return render(request, 'create_account.html', Data) 
 
@@ -206,11 +214,13 @@ def faqPage(request):
     Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
     Payment_Questions_Data = Payment_Questions.objects.all()
+    footer= Footer.objects.all()  
     Data={
         "header_data": header,
         "General_Questions" : General_Questions_Data,
         "Payment_questions" : Payment_Questions_Data,  
         "default_background":Default_Background_Data,
+        "footer_data":footer,   
     }
     return render(request, 'faq.html', Data) 
 
@@ -225,6 +235,7 @@ def Our_carsPage(request):
     totalpages = [x+1 for x in range(Cars_Data.num_pages)]
     Background_Video_Data = Background_Video.objects.all()
     Blog_Data = Blog.objects.all()
+    footer= Footer.objects.all()  
     Data= {
         "header_data": header,
         "default_background":Default_Background_Data,
@@ -232,6 +243,7 @@ def Our_carsPage(request):
         "total_Pages": totalpages,
         "Background_Video":Background_Video_Data,
         "Latest_Blog": Blog_Data,
+        "footer_data":footer,   
     }
     return render(request, 'Our_Cars.html', Data) 
 
@@ -243,12 +255,14 @@ def Car_detailPage(request, id):
     Default_Background_Data = Default_Background.objects.all()
     Cars_Data = CARS.objects.all()
     Car_1 = CARS.objects.get(id__exact=id)
+    footer= Footer.objects.all()  
     Data = {
         "header_data": header,
         "default_background":Default_Background_Data,
         "Car_Data": Cars_Data,
         "One_Car": Car_1,
-        "current_id": int(id)
+        "current_id": int(id),
+        "footer_data":footer,  
     }
     return render(request, 'Car_Details.html', Data) 
 
@@ -260,11 +274,13 @@ def reservationPage(request, id):
     page = request.GET.get('page')
     products = Cars_Data.get_page(page)
     Car_1 = CARS.objects.get(id__exact=id)
+    footer= Footer.objects.all()  
     Data = {
         "header_data": header,
         "cars_Section": products,
         "One_Car": Car_1,
-        "current_id_2": int(id)
+        "current_id_2": int(id),
+        "footer_data":footer,  
     }
     return render(request, 'Reservation.html', Data) 
 
@@ -287,8 +303,10 @@ def reservationPage(request, id):
 
 def checkout_view(request):
     header = Header.objects.all()
+    footer= Footer.objects.all()  
     cart = request.session.get('cart', {})
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
+
     
     rental_days = 1  
     if request.method == 'POST':
@@ -303,6 +321,7 @@ def checkout_view(request):
         "header_data": header,
         'subtotal': subtotal,
         'Rental_days': rental_days,
+        "footer_data":footer,  
     }
     return render(request, 'checkout.html', context)
 
@@ -384,10 +403,12 @@ def contactPage(request):
     header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
     General_Questions_Data = General_Questions.objects.all()
+    footer= Footer.objects.all()  
     Data={
         "header_data": header,
         "default_background":Default_Background_Data,
-        "General_Questions" : General_Questions_Data   
+        "General_Questions" : General_Questions_Data,
+        "footer_data":footer,     
     }
     return render(request, 'Contact.html', Data) 
 
@@ -431,12 +452,14 @@ def Our_teamPage(request):
     Team_Cards = Our_Team.objects.all()
     Background_Video_Data = Background_Video.objects.all()
     Testimonial_Data = Testimonial.objects.all()
+    footer= Footer.objects.all() 
     Data={
         "header_data": header,
         "default_background":Default_Background_Data,
         "Team_Cards_Data":Team_Cards,
         "Background_Video":Background_Video_Data,
-        "Testimonial": Testimonial_Data
+        "Testimonial": Testimonial_Data,
+        "footer_data":footer,  
     }
     return render(request, 'Our_Team.html',Data) 
 
@@ -444,6 +467,7 @@ def Our_teamPage(request):
 def blogPage(request):
     header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
+    footer= Footer.objects.all() 
     Blog_Data = Blog.objects.all()
     Blog_Data= Paginator(Blog_Data, 6)
     page = request.GET.get('page')
@@ -454,14 +478,19 @@ def blogPage(request):
         "default_background":Default_Background_Data,
         "Blog":products,
         "total_Pages": totalpages,
+        "footer_data":footer,  
     }
     return render(request, 'Blog.html',Data) 
 
 
 def Single_postPage(request, id):
+    header = Header.objects.all()
     blog = Blog.objects.get(id__exact=id)
+    footer= Footer.objects.all() 
     Data = {
+        "header_data": header,
         "One_Blog": blog,
+        "footer_data":footer, 
     }
     return render(request, 'Single_Post.html', Data) 
 
@@ -536,6 +565,7 @@ def cart_clear(request):
 #     return render(request, 'Reservation.html', Data)
 def cart_detail(request):
     header = Header.objects.all()
+    footer= Footer.objects.all() 
     cart = Cart(request)
     bookings_total = 0
 
@@ -566,7 +596,8 @@ def cart_detail(request):
     Data = {
         "header_data": header,
         "subtotal": subtotal,
-        "bookings": bookings_total
+        "bookings": bookings_total,
+        "footer_data":footer, 
     }
 
     return render(request, 'Reservation.html', Data)
