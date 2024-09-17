@@ -28,7 +28,7 @@ from datetime import timedelta
 from django.utils import timezone
 from users.models import UserProfile
 from django.http import JsonResponse
-
+from orders.models import Order, OrderItem
 
 
 def homePage(request):
@@ -294,7 +294,9 @@ def process_checkout(request):
 
 
 def checkout_session(request):
+    cart = Cart(request)
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    items = list(cart.session.values())[3]
     base_amount = 1000  # Amount in PKR
     tax_rate = 0.10
     aftertax = base_amount + (base_amount * tax_rate)
@@ -317,12 +319,17 @@ def checkout_session(request):
             success_url='http://127.0.0.1:8000/success',
             cancel_url='http://127.0.0.1:8000/cancel',
         )
-        
-        # Redirect to the Stripe Checkout page
+      
+        if checkout_session:
+            order = Order.objects.create(user=request.user, total_amount=aftertax, payment_id=checkout_session['id'], payment_status='Paid')
+            if order:
+                for item in items:
+                    OrderItem.objects.create(order=order, product=item['product'], quantity=item['quantity'], price=item['price'])
+        print(checkout_session)
         return redirect(checkout_session.url, code=303)
 
     except Exception as e:
-        # Return a JSON response with the error message
+       
         return JsonResponse({'error': str(e)}, status=400)
 
 
