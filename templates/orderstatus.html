@@ -1,8 +1,22 @@
 {% load static %}
 {% include 'header/header.html' %}
 
-<main class="pt-5">
-
+<main class="">
+    <section class="Login-Main-Hero-Section"></section>
+        <div class="Login-Hero-Section-image">
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Login-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Login-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Login-Hero-Section-Image-Content-Heading content">
+                    <h2>BOOKINGS</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+          {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
     <div class="order-status-wrapper" style=" text-align: center;">
         <div class="container">
             <h2 class="u-par-underline-2">Order Status</h2>
@@ -28,7 +42,7 @@
                     
                     {% if order.payment_status == "unpaid" %}
                         <div style="text-align: center;">
-                            <a href="{% url 'create_checkout_session' %}" style=" color: white; background-color: #f85606; border: 1px #f85606 solid; text-decoration: none; padding: 6px 20px; border-radius: 8px; margin: 4px 0; transition: .35s;">Pay Now</a>
+                            <a href="{% url 'create-checkout-session' %}" style=" color: white; background-color: #f85606; border: 1px #f85606 solid; text-decoration: none; padding: 6px 20px; border-radius: 8px; margin: 4px 0; transition: .35s;">Pay Now</a>
                         </div>
                     
     

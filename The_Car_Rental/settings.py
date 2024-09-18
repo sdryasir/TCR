@@ -73,6 +73,7 @@ INSTALLED_APPS = [
 
     'Header',
     'Footer',
+    'Newsletter',
 
 
 
@@ -124,8 +125,8 @@ DATABASES = {
         #'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'the_car_rental',     # Replace with your MySQL database name
-        'DATABASE': 'the_car_rental',
+        'NAME': 'car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'car_rental',
         'USER': 'root',    # Replace with your MySQL username
         'PASSWORD': '',# Replace with your MySQL password
         'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
@@ -178,7 +179,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+
+TIME_ZONE = "Asia/Karachi"
 
 USE_I18N = True
 
@@ -210,9 +212,16 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+
+
+
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'malikqasim20051@gmail.com'
-EMAIL_HOST_PASSWORD = 'Haiderammar123'
+EMAIL_HOST_PASSWORD = 'Haiderammar123'  # Use the app password here
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
