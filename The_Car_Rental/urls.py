@@ -46,6 +46,9 @@ urlpatterns = [
     path('blog/', views.blogPage, name='blog'),
     path('single-post/<id>', views.Single_postPage, name='single_post'),
     path('checkout/', views.checkout_view, name='checkout'),
+
+    path('create-checkout-session/', views.checkout_session, name='create-checkout-session'),
+
     path('process_checkout/', views.process_checkout, name='order_confirmation'),
     path('payment-success/', views.successPage, name='success'),
     path('payment-failed/', views.cancelPage, name='cancel'),
@@ -53,7 +56,16 @@ urlpatterns = [
     path('booking-failed/', views.Booking_Failed_Page, name='Booking-Failed'),
 
 
+    path('process_checkout/', views.process_checkout, name='process_checkout'),
 
+    path('success/', views.successPage, name='success'),
+    path('cancel/', views.cancelPage, name='cancel'),
+    
+
+    
+
+    path('order_status/', views.orderStatus, name='order_status'),
+    path('delete_order/<int:order_id>/', views.delete_order, name='delete_order'),
 
     path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
     path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),

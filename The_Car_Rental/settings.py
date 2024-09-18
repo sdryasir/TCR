@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+STRIPE_PUBLISHABLE_KEY=config('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY')
+LOCAL_DOMAIN=config('LOCAL_DOMAIN')
 
 
 # Quick-start development settings - unsuitable for production
@@ -63,9 +68,13 @@ INSTALLED_APPS = [
     'Quick_Book',
     'cart',
     'users',
+
+    'orders',
+
     'Header',
     'Footer',
     'Newsletter',
+
 
 
 ]
@@ -116,8 +125,8 @@ DATABASES = {
         #'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'car_rental',     # Replace with your MySQL database name
-        'DATABASE': 'car_rental',
+        'NAME': 'the_car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'the_car_rental',
         'USER': 'root',    # Replace with your MySQL username
         'PASSWORD': '',# Replace with your MySQL password
         'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on

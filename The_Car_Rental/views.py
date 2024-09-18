@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.core.paginator import Paginator
 from Main_Hero_Section.models import Main_Hero_Section
 from Default_Background.models import Default_Background
@@ -22,6 +22,13 @@ from Questions_About_Payment.models import Payment_Questions
 from cart.cart import Cart
 from datetime import datetime
 from users.models import UserProfile
+import stripe
+from django.conf import settings
+from datetime import timedelta
+from django.utils import timezone
+from users.models import UserProfile
+from django.http import JsonResponse
+from orders.models import Orders, OrderItem
 from Header.models import Header
 from django.core.mail import send_mail
 from Header.models import Header
@@ -29,6 +36,7 @@ from Footer.models import Footer
 from django.core.mail import send_mail
 from django.conf import settings
 from Newsletter.models import Subscriber
+
 
 
 
@@ -309,6 +317,9 @@ def checkout_view(request):
     subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
 
     
+
+    rental_days = 1 # Default value
+
     rental_days = 1  
     if request.method == 'POST':
         pickup_date = request.POST.get('pickup_date')
@@ -371,7 +382,7 @@ def process_checkout(request):
             return redirect('cart')  
         request.session['cart'] = {}
 
-        return redirect('order_confirmation')
+        return redirect('process_checkout')
 
     return redirect('checkout')
 
@@ -379,26 +390,208 @@ def process_checkout(request):
 
 
 
-# def contactPage(request):
-#     return render(request, 'Contact.html') 
 
-# def saveContact(request):
-#      try:
+def checkout_session(request):
+    cart = Cart(request)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    items = list(cart.session.values())[3]
+    base_amount = 1000  # Amount in PKR
+    tax_rate = 0.10
+    aftertax = base_amount + (base_amount * tax_rate)
+    
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[{
+                'price_data': {
+                    'currency': 'pkr',
+                    'product_data': {
+                        'name': 'Total Amount',
+                    },
+                    'unit_amount': int(aftertax * 100),  # Convert to paisa
+                },
+                'quantity': 1,
+            }],
+            
+            mode='payment',
           
-#         firstname=request.POST.get('firstname')
-#         lastname=request.POST.get('lastname')
-#         email=request.POST.get('email') 
-#         messagesubject=request.POST.get('messagesubject')
-#         message=request.POST.get('message')
-#         if firstname == '' or lastname == '' or email == '' or messagesubject == '' or message == '' :
-#             messages.error(request, "Not found. Please fill all fields.") 
-#             return render(request, 'Contact.html')
-#         contact=Contact(firstname=firstname, lastname=lastname, email=email, messagesubject=messagesubject, message=message)
-#         messages.success(request, "Success! Your message has been sent.")
-#         contact.save()
-#      except:
-#         print('error') 
-#      return render(request, 'Contact.html')
+            success_url='http://127.0.0.1:8000/success',
+            cancel_url='http://127.0.0.1:8000/cancel',
+        )
+      
+        # if checkout_session:
+        #     order = Orders.objects.create(user=request.user, total_amount=aftertax, payment_id=checkout_session['id'], payment_status='Paid')
+        #     if order:
+        #         for item in items:
+        #             OrderItem.objects.create(order=order, product=item['product'], quantity=item['quantity'], price=item['price'])
+        # print(checkout_session)
+        order = Orders.objects.create(
+        user=request.user,
+        total_price=aftertax / 100,  # Convert cents back to PKR
+        payment_status="unpaid",
+    )
+
+        return redirect(checkout_session.url, code=303)
+
+    except Exception as e:
+       
+        return JsonResponse({'error': str(e)}, status=400)
+
+
+
+
+
+
+
+
+
+
+
+
+# def checkout_session(request):
+#     cart = Cart(request)
+#     stripe.api_key = settings.STRIPE_SECRET_KEY
+#     subtotal = 0
+#     shipping_fee = 200 * 100  # Shipping fee in cents (200 PKR)
+#     total = 0
+
+#     line_items = []
+#     session_cart = cart.session.get("cart", {})
+
+#     if isinstance(session_cart, dict) and session_cart:
+#         for item in session_cart.values():
+#             try:
+#                 price = int(item["price"]) * 100  # Convert PKR to cents
+#                 quantity = int(item["quantity"])
+#                 subtotal += price * quantity
+
+#                 # Add each product as a line item for Stripe
+#                 line_items.append(
+#                     {
+#                         "price_data": {
+#                             "currency": "pkr",
+#                             "product_data": {
+#                                 "name": total,
+#                             },
+#                             "unit_amount": price,
+#                         },
+#                         "quantity": quantity,
+#                     }
+#                 )
+#             except (ValueError, KeyError) as e:
+#                 print(f"Error processing item: {e}")
+
+#         total = subtotal + shipping_fee
+
+#     # Create an order in your system
+#     order = Orders.objects.create(
+#         user=request.user,
+#         total_price=total / 100,  # Convert cents back to PKR
+#         payment_status="unpaid",
+#     )
+
+#     # Save each item in OrderItem model
+#     for item in session_cart.values():
+#         try:
+#             price = int(item["price"]) * 100  # Convert PKR to cents
+#             quantity = int(item["quantity"])
+#             OrderItem.objects.create(
+#                 order=order,
+#                 product_name=item["name"],
+#                 quantity=quantity,
+#                 price=price / 100,  # Convert cents back to PKR
+#             )
+#         except (ValueError, KeyError) as e:
+#             print(f"Error saving item: {e}")
+
+#     # Create a Stripe checkout session with client_reference_id as the order ID
+#     checkout_session = stripe.checkout.Session.create(
+#         line_items=line_items,
+#         mode="payment",
+#         success_url="https://nullxcoder.xyz/success",
+#         cancel_url="https://nullxcoder.xyz/cancel",
+#         client_reference_id=order.id,  # Pass the order ID for matching in webhook
+#         shipping_options=[
+#             {
+#                 "shipping_rate_data": {
+#                     "type": "fixed_amount",
+#                     "fixed_amount": {
+#                         "amount": shipping_fee,
+#                         "currency": "pkr",
+#                     },
+#                     "display_name": "Standard Shipping",
+#                     "delivery_estimate": {
+#                         "minimum": {"unit": "business_day", "value": "5"},
+#                         "maximum": {"unit": "business_day", "value": "7"},
+#                     },
+#                 }
+#             }
+#         ],
+#     )
+
+#     return redirect(checkout_session.url, code=303)
+
+
+
+
+
+
+
+
+
+
+
+def orderStatus(request):
+    # Fetch all orders for the logged-in user, including their items
+    orders = Orders.objects.filter(user=request.user).prefetch_related('orderitem_set')
+    profile_picture = None
+    city = None
+    country = None
+    address = None
+    phone_no = None
+
+    if request.user.is_authenticated:
+        userdata, created = UserProfile.objects.get_or_create(user=request.user)
+        profile_picture = userdata.profile_picture.url if userdata.profile_picture else None
+        city = userdata.city if userdata.city else None
+        country = userdata.country if userdata.country else None
+        address = userdata.address if userdata.address else None
+        phone_no = userdata.phone_no if userdata.phone_no else None
+
+    # If no orders exist, render with no_order flag
+    if not orders.exists():
+        shipping_date = timezone.now() + timedelta(days=7)  # Still calculate the general shipping date for display
+        return render(request, 'order_status.html', {
+            'no_order': True,
+            'shipping_date': shipping_date,
+            'profile_picture': profile_picture,
+            'city': city,
+            'country': country,
+            'address': address,
+            'phone_no': phone_no
+        })
+
+    for order in orders:
+        order.expected_delivery = order.created_at + timedelta(days=7)
+
+    return render(request, 'order_status.html', {
+        'orders': orders,
+        'profile_picture': profile_picture,
+        'city': city,
+        'country': country,
+        'address': address,
+        'phone_no': phone_no
+    })
+
+def delete_order(request, order_id):
+    order = get_object_or_404(Orders, id=order_id, user=request.user)
+    if request.method == 'POST':
+        order.delete()
+        return redirect('order_status') 
+
+
+
+
+
 
 def contactPage(request):
     header = Header.objects.all()
@@ -572,25 +765,21 @@ def cart_detail(request):
 
     session_values = list(cart.session.values())
 
-    # Check if there are enough items in session values
     if len(session_values) > 5:
         bookings = session_values[5]
     else:
-        bookings = []  # Jab 6 items nahi milte, bookings ko empty list set karo
-
-    # Only calculate bookings_total if there are bookings
+        bookings = []  
     if bookings:
         for book in bookings:
             bookings_total = bookings_total + int(bookings[book]["quantity"])
 
-    # Check if there are enough items in session values for items as well
     if len(session_values) > 5:
         items = session_values[5]
     else:
-        items = []  # Jab 6 items nahi milte, to items ko empty list set karo
+        items = []  
 
     subtotal = 0
-    if items:  # Only calculate if items exist
+    if items:  
         for item in items:
             subtotal = subtotal + int(items[item]['price']) * items[item]['quantity']
 
@@ -692,11 +881,15 @@ def quick_Book(request):
 
 
 
+
+
+
     return redirect('home')
 
 
 
 
+<<<<<<< HEAD
 ''' Newsletter '''
 
 def subscribe(request):
@@ -732,3 +925,15 @@ def send_confirmation_email(email):
         recipient_list,
         fail_silently=False,
     )
+=======
+
+
+
+
+
+
+
+
+
+
+>>>>>>> db98a06b1cabcc2de7e09e5b4512d4a00adcef6e
