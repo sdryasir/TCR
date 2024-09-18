@@ -57,7 +57,7 @@
   }
   div.Reservation a{
     text-decoration: none;
-    padding: 12px;
+    padding:12px;
     font-family: var(--secondary-font);
     letter-spacing: 2px;
     font-size: 15px;

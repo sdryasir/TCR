@@ -28,20 +28,20 @@
                         <div class="Booking-Schedule-Content-Form">
                             <form class="car-rent-form" action="{% url 'quick-book' %}" method="post">
                                 {% csrf_token %}
-                                <input type="text" name="name" placeholder="Your Name" value="{{ request.POST.name }}">
-                                <select name="car_name_dropdown" class="select-placeholder">
+                                <input type="text" required name="name" placeholder="Your Name" value="{{ request.POST.name }}">
+                                <select required  name="car_name_dropdown" class="select-placeholder">
                                     <option value="" disabled selected>Featured Cars</option>
                                     {% for cars in Car_Data %}
                                         {% if cars.category == 'Featured' %}
                                             {% if cars.stock == 0 %}
                                             {% else %}
-                                                <option name="car" value="">{{cars.name}}</option>
+                                                <option value="{{ cars.name }}">{{cars.name}}</option>
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
                                 </select>
-                                <input type="text" name="phone" placeholder="Your Phone no" value="{{ request.POST.phone }}">
-                                <input type="text" name="email" placeholder="Your Email" value="{{ request.POST.email }}">
+                                <input type="text" required title="Please enter your phone number in digits only" pattern="\d{11}" name="phone" placeholder="Your Phone no" value="{{ request.POST.phone }}">
+                                <input type="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"  name="email" placeholder="Your Email" value="{{ request.POST.email }}">
                                 <!--<input type="text"  name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
                                 <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">-->
                                 <button type="submit">BOOK NOW</button>
@@ -59,18 +59,35 @@
     <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
         <div class="container-fluid">
             <div class="Driving-Excellence-Heading">
-                <h2>DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
+                {% for carousel in main_Cars_Carousel %}
+                <h2>{{carousel.title_1}}<br>{{carousel.title_2}}</h2>
+                {% endfor %}
             </div><!-- /.Driving-Excellence-Heading -->
-            <div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                {% for carousel in main_Cars_Carousel %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                {% for carousel in main_Cars_Carousel %}
+                  <div class="carousel-item  {% if forloop.first %}active{% endif %}">
+                    <img src="/media/{{carousel.image}}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-overlay"></div>
+                {% endfor %}
+                </div>
+              </div>
+            <!--<div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
                 {% for carousel in main_Cars_Carousel %}
                 <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
                   <div class="overlay-carousel-cell"></div>
                   <div class="inner">
-                    <!-- <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2> -->
+                     <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
                   </div>
                 </div>
                 {% endfor %}
-              </div>
+            </div>-->
         </div><!-- /.container-fluid -->
     </div><!-- /.Driving-excellence-owl-carousel -->
     <div class="driving-excellence-counter-section">
@@ -163,7 +180,7 @@
                                 <span class="product-type available"><h6>Available</h6></span>
                             {% endif %}
                             <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
-                            <div class = "rating d-flex mt-1">
+                            <!--<div class = "rating d-flex mt-1">
                                 <form class="rating">
                                     <label>
                                       <input type="radio" name="stars" value="1" />
@@ -196,7 +213,7 @@
                                       <span class="icon">★</span>
                                     </label>
                                 </form>
-                            </div>
+                            </div>-->
                         </div> 
                         <div class = "row btns text-center" style="display: flex; justify-content: center; letter-spacing: 1px;">
                             {% if car.stock == 0 %}
@@ -209,6 +226,15 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            <!--{% if user.is_authenticated %}
+            <div class="ADD-YOUR-CAR">
+                <a href="{% url 'addyourcar' %}">ADD YOUR CAR</a>
+            </div>
+            {% else %}
+            <div class="ADD-YOUR-CAR">
+                <a href="{% url 'login' %}">ADD YOUR CAR</a>
+            </div>
+            {% endif %}-->
         </div><!-- /.container -->
     </div><!-- /.Our-Featured-Cars-Section -->
     <div class="Testimonial-Section-heading">

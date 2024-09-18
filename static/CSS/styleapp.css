@@ -1,6 +1,5 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
-@import url('https://db.onlinewebfonts.com/c/1b6eebb4270d7d02694b68fb7c5a94d9?family=Axion+RX+14+W01+Regular');
 @import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css');
 
 
@@ -606,6 +605,7 @@ a:hover {
 
 
 .car-rent-form input[type="text"],
+.car-rent-form input[type="email"],
 .car-rent-form select,
 .car-rent-form input[type="date"],
 .car-rent-form a,
@@ -689,6 +689,7 @@ select.select-placeholder{
   }
 
   .car-rent-form input[type="text"],
+  .car-rent-form input[type="email"],
   .car-rent-form select,
   .car-rent-form input[type="date"],
   .car-rent-form button {
@@ -830,7 +831,7 @@ color: var(--black-color);
 
 }
 
-
+/*
 
 .overlay-carousel-cell {
   position: absolute;
@@ -846,15 +847,20 @@ color: var(--black-color);
 
 .hero-slider {
   width: 100%;
-  height: 600px;
+  height: 700px;
   overflow: hidden;
+  position: relative;
 }
 .hero-slider .carousel-cell {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
+
+
+
 
 
 .hero-slider .carousel-cell .inner {
@@ -881,7 +887,7 @@ color: var(--black-color);
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 40px;
-}*/
+}
 .hero-slider .carousel-cell .inner .btn {
   border: 1px solid #fff;
   padding: 14px 18px;
@@ -923,9 +929,41 @@ color: var(--black-color);
 .hero-slider .flickity-page-dots .dot.is-selected {
   background: var(--buttons-and-icons-color1);
   border: 0 solid var(--buttons-and-icons-color1);
+}*/
+
+
+
+
+.carousel-indicators button {
+  border-radius: 50%; /* Make dots round */
+  width: 12px!important; /* Dot size */
+  height: 12px!important; /* Dot size */
+  border: none; /* Remove default border */
+  transition: background-color 0.6s ease;
+  padding: 0; /* Remove default padding */
+  margin: 0 10px!important; /* Space between dots */
+  margin-bottom: -18px!important;
+  display: inline-block; /* Ensure button does not take full width */
 }
 
 
+.carousel-overlay {
+  position: absolute; /* Position the overlay absolutely within the carousel-inner */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+  z-index: 1; /* Place overlay above carousel images */
+}
+
+
+
+
+
+.carousel-indicators .active {
+  background-color: var(--buttons-and-icons-color1); /* Active dot color */
+}
 
 
 /* Counter Section */
@@ -1350,7 +1388,26 @@ color: var(--black-color);
   text-shadow: 0 0 5px;
 }
 
+.Our-Featured-Cars-Section .ADD-YOUR-CAR{
+  display: flex;
+  justify-content: right;
+  margin-top: 50px;
+}
 
+
+.Our-Featured-Cars-Section .ADD-YOUR-CAR a{
+  font-family: var(--main-font);
+  padding: 10px ;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-size: 15px;
+}
+
+
+
+.Our-Featured-Cars-Section .ADD-YOUR-CAR a:hover{
+  background-color: var(--buttons-and-icons-color1);
+}
 
 
 
@@ -1539,6 +1596,10 @@ color: var(--black-color);
   height: 700px;
   width: 100%;
   object-fit: cover;
+  filter: brightness(60%) contrast(120%);
+
+
+
 
 }
 
@@ -1547,6 +1608,7 @@ color: var(--black-color);
   position: relative;
   height: 700px; /* Set the height of the section */
   margin-bottom: 100px;
+
 }
 
 #background-video {
@@ -1556,6 +1618,7 @@ color: var(--black-color);
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the video covers the entire container */
+
 }
 
 .text-overlay {
@@ -3004,6 +3067,7 @@ color: var(--black-color);
   margin-top: 150px;
   position: relative;
   height: 700px; /* Set the height of the section */
+  
 }
 
 #background-video-Cars-Section {
@@ -3013,6 +3077,7 @@ color: var(--black-color);
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the video covers the entire container */
+  filter: brightness(60%) contrast(120%);
 }
 
 .Background-Video-Our-Car-Section  .text-overlay {
