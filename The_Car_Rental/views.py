@@ -26,8 +26,9 @@ from Header.models import Header
 from django.core.mail import send_mail
 from Header.models import Header
 from Footer.models import Footer
-
-
+from django.core.mail import send_mail
+from django.conf import settings
+from Newsletter.models import Subscriber
 
 
 
@@ -696,3 +697,38 @@ def quick_Book(request):
 
 
 
+''' Newsletter '''
+
+def subscribe(request):
+    success_message = ''
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            # Check if the email already exists
+            if not Subscriber.objects.filter(email=email).exists():
+                # Create a new subscriber
+                Subscriber.objects.create(email=email)
+                
+                # Send a confirmation email to the subscriber
+                send_confirmation_email(email)
+                
+                success_message = 'Thank you for subscribing!'
+            else:
+                success_message = 'You are already subscribed.'
+    
+    # Render the page with the success message
+    return render(request, 'index.html', {'success_message': success_message})
+
+def send_confirmation_email(email):
+    subject = 'Subscription Confirmation'
+    message = 'Thank you for subscribing to our newsletter!'
+    from_email = settings.DEFAULT_FROM_EMAIL  # Make sure this is set in your settings
+    recipient_list = [email]
+    
+    send_mail(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+        fail_silently=False,
+    )

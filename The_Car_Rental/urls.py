@@ -65,6 +65,8 @@ urlpatterns = [
     path('reservation/',views.cart_detail,name='reservation'),
 
 
+    path('subscribe/', views.subscribe, name='subscribe'),
+    path('', views.subscribe, name='home'),  
 
 
 
