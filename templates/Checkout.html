@@ -94,7 +94,7 @@
                 <section class="order-summary">
                     <div style="padding-bottom: 30px;">
                         <h4>Bookings <span>({{ request.session.cart|length }})</span></h4>
-                        <h4>Return in: {{ rental_days }} Day(s)</h4>
+                        <h4>Return in: {{ Rental_days }} Day(s)</h4>
                     </div>
                     {% for id, car in request.session.cart.items %}
                     <div>

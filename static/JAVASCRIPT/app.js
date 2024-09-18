@@ -75,9 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
+// 4) Driving Excellence Slider
 
 
 

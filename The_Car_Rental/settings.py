@@ -69,6 +69,12 @@ INSTALLED_APPS = [
     'cart',
     'users',
 
+    'orders',
+
+    'Header',
+    'Footer',
+
+
 
 ]
 
@@ -118,8 +124,8 @@ DATABASES = {
         #'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'car_rental',     # Replace with your MySQL database name
-        'DATABASE': 'car_rental',
+        'NAME': 'the_car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'the_car_rental',
         'USER': 'root',    # Replace with your MySQL username
         'PASSWORD': '',# Replace with your MySQL password
         'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
@@ -204,3 +210,9 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'malikqasim20051@gmail.com'
+EMAIL_HOST_PASSWORD = 'Haiderammar123'

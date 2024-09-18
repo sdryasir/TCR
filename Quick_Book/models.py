@@ -19,7 +19,6 @@ class Quick_Book(models.Model):
     email = models.CharField(max_length=60, null=True,blank=True)
     
     
-    
     class Meta:
         verbose_name = ""  # Singular name
         verbose_name_plural = "Quick Booking"  # Plural name (same as singular, to avoid pluralization)
