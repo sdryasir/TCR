@@ -889,8 +889,7 @@ def quick_Book(request):
 
 
 
-<<<<<<< HEAD
-''' Newsletter '''
+
 
 def subscribe(request):
     success_message = ''
@@ -925,7 +924,6 @@ def send_confirmation_email(email):
         recipient_list,
         fail_silently=False,
     )
-=======
 
 
 
@@ -936,4 +934,4 @@ def send_confirmation_email(email):
 
 
 
->>>>>>> db98a06b1cabcc2de7e09e5b4512d4a00adcef6e
+
