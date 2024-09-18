@@ -119,8 +119,8 @@ DATABASES = {
         #'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'car_rental',     # Replace with your MySQL database name
-        'DATABASE': 'car_rental',
+        'NAME': 'the_car_rental',     # Replace with your MySQL database name
+        'DATABASE': 'the_car_rental',
         'USER': 'root',    # Replace with your MySQL username
         'PASSWORD': '',# Replace with your MySQL password
         'HOST': 'localhost',              # Or an IP Address that your MySQL is hosted on
