@@ -540,8 +540,13 @@ def checkout_session(request):
 
 
 
+
+
 def orderStatus(request):
     # Fetch all orders for the logged-in user, including their items
+    header = Header.objects.all()
+    Default_Background_Data = Default_Background.objects.all()
+    footer= Footer.objects.all()  
     orders = Orders.objects.filter(user=request.user).prefetch_related('orderitem_set')
     profile_picture = None
     city = None
@@ -551,35 +556,29 @@ def orderStatus(request):
 
     if request.user.is_authenticated:
         userdata, created = UserProfile.objects.get_or_create(user=request.user)
-        profile_picture = userdata.profile_picture.url if userdata.profile_picture else None
-        city = userdata.city if userdata.city else None
-        country = userdata.country if userdata.country else None
-        address = userdata.address if userdata.address else None
-        phone_no = userdata.phone_no if userdata.phone_no else None
+
 
     # If no orders exist, render with no_order flag
     if not orders.exists():
         shipping_date = timezone.now() + timedelta(days=7)  # Still calculate the general shipping date for display
-        return render(request, 'order_status.html', {
+        return render(request, 'orderstatus.html', {
             'no_order': True,
             'shipping_date': shipping_date,
-            'profile_picture': profile_picture,
-            'city': city,
-            'country': country,
-            'address': address,
-            'phone_no': phone_no
+            "header_data": header,
+            "default_background":Default_Background_Data,
+            "footer_data":footer,  
+
         })
 
     for order in orders:
         order.expected_delivery = order.created_at + timedelta(days=7)
 
-    return render(request, 'order_status.html', {
+    return render(request, 'orderstatus.html', {
         'orders': orders,
-        'profile_picture': profile_picture,
-        'city': city,
-        'country': country,
-        'address': address,
-        'phone_no': phone_no
+        "header_data": header,
+        "default_background":Default_Background_Data,
+        "footer_data":footer,  
+
     })
 
 def delete_order(request, order_id):

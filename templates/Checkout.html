@@ -7,10 +7,6 @@
         <div class="row">
             <div class="col-md-12 col-lg-6">
                 <section class="shipping-info">
-                    <form action="{% url 'create-checkout-session' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" id="checkout-button">PAYNOW</button>
-                      </form>
                     <h2>Checkout</h2>
                     <!-- <form id="shipping-form" method="POST" action="{% url 'process_checkout' %}"> -->
                     <form id="shipping-form" method="POST" action="{% url 'process_checkout' %}">
@@ -56,16 +52,15 @@
                             <input type="text" id="phone" name="phone" value="{{ user.profile.phone }}" required>
                         </div> -->
                         <!-- Pickup Date -->
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label for="pickup-date">Pickup Date*</label>
                             <input type="date" id="pickup_date" name="pickup_date" required>
                         </div>
 
-                        <!-- Return Date -->
                         <div class="form-group">
                             <label for="return-date">Return Date*</label>
                             <input type="date" id="return_date" name="return_date" required>
-                        </div>
+                        </div>-->
 
                         <!-- Phone Number -->
                         <div class="form-group">
@@ -94,7 +89,7 @@
                 <section class="order-summary">
                     <div style="padding-bottom: 30px;">
                         <h4>Bookings <span>({{ request.session.cart|length }})</span></h4>
-                        <h4>Return in: {{ Rental_days }} Day(s)</h4>
+                        <!--<h4>Return in: {{ Rental_days }} Day(s)</h4>-->
                     </div>
                     {% for id, car in request.session.cart.items %}
                     <div>
@@ -110,7 +105,10 @@
                         <p>Total</p>
                         <p>$ {{ subtotal }}</p>
                     </div>
-                    <button type="submit" form="shipping-form" class="btn-continue">Checkout</button>
+                    <form action="{% url 'create-checkout-session' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" id="checkout-button" class="btn-continue">PAY NOW</button>
+                    </form>
                 </section>
             </div><!-- /.col-6 -->
         </div><!-- /.row -->
