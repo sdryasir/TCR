@@ -36,6 +36,9 @@ from Footer.models import Footer
 from django.core.mail import send_mail
 from django.conf import settings
 from Newsletter.models import Subscriber
+from Add_Your_Car_Section.models import Add_Your_Car_Section
+
+
 
 
 
@@ -45,6 +48,7 @@ def homePage(request):
     Main_Hero_Section_Data = Main_Hero_Section.objects.all()
     Main_Cars_Carousel_Data = Main_Cars_Carousel.objects.all()
     Counter_Section_Data= Counter_Section.objects.all()
+    Add_Your_Car_Section_Data = Add_Your_Car_Section.objects.all()
     Why_Choose_Us_Section_Data = Why_Choose_Us_Section.objects.all()
     Cars_Data = CARS.objects.all()
     Testimonial_Data = Testimonial.objects.all()
@@ -58,6 +62,7 @@ def homePage(request):
         "main_Hero_Section":Main_Hero_Section_Data,
         "main_Cars_Carousel":Main_Cars_Carousel_Data,
         "counter_Section":Counter_Section_Data,
+        "add_your_car_section":Add_Your_Car_Section_Data,
         "why_Choose_Us_Section":Why_Choose_Us_Section_Data,
         "Car_Data": Cars_Data,
         "Testimonial": Testimonial_Data,
@@ -72,9 +77,13 @@ def homePage(request):
 
 
 def addyourCarPage(request):
+    header = Header.objects.all()
     Default_Background_Data = Default_Background.objects.all()
+    footer= Footer.objects.all() 
     Data= {
+            "header_data": header,
             "default_background":Default_Background_Data,
+            "footer_data":footer,    
     }
     return render(request, 'Add-Your-Car.html',Data)
 
@@ -85,37 +94,52 @@ def addyourCar(request):
     if request.method == 'POST':
         name = request.POST.get('name', '')
         passengers = request.POST.get('passengers', '')
-        pod = request.POST.get('pod', '')
-        aom = request.POST.get('aom', '')
+        petrol_diesel = request.POST.get('petrol_diesel', '')
+        automatic_manual = request.POST.get('automatic_manual', '')
+        price = request.POST.get('price', '')
         description = request.POST.get('description', '')
+        image = request.FILES.get('image') 
+        car_image_1 = request.FILES.get('car_image_1') 
+        car_image_2 = request.FILES.get('car_image_2') 
+        car_image_3 = request.FILES.get('car_image_3') 
+        car_image_4 = request.FILES.get('car_image_4') 
+        
 
-        if not all([name, passengers, pod, aom, description]):
-            print("error")
+        if not all([name, passengers, petrol_diesel, automatic_manual, price, description, image, car_image_1, car_image_2, car_image_3]):
 
-            return redirect('addyourcar')
+            return redirect('carfailed')
 
         try:
             addcar = CARS(
                 name=name,
                 passengers=passengers,
-                pod=pod,
-                aom=aom,
-                description=description
+                petrol_diesel=petrol_diesel,
+                automatic_manual=automatic_manual,
+                price=price,
+                description=description,
+                image=image,
+                car_image_1=car_image_1,
+                car_image_2=car_image_2,
+                car_image_3=car_image_3,
+                car_image_4=car_image_4
             )
             addcar.save()
-            messages.success(request, "Success! Your message has been sent.")
-            return redirect('home')
+            return redirect('caraddedsuccessfully')
 
-        except Exception as e:
-            print(f"Error saving contact: {e}")
-            print("ERROr")
-            return redirect('addyourcar')
+        except:
+            return redirect('carfailed')
             
-    return redirect('addyourcar')
+    return redirect('carfailed')
 
 
 
- 
+
+
+def car_added(request):
+    return render(request, 'car_added.html') 
+
+def car_failed(request):
+    return render(request, 'car_added_failed.html') 
 
 
 def aboutPage(request):
@@ -864,13 +888,8 @@ def quick_Book(request):
                 email=email
             )
             contact.save()
-            '''send_mail(
-                'Your Booking Confirmation',
-                f'Hello {Quick_Book.name},\n\nThank you for your booking.\n\nMessage: hi hi',
-                'malikqasim20051@gmail.com',  # Replace with your from email address
-                [Quick_Book.email],
-                fail_silently=False,
-            )'''
+            send_quick_booking_email(email)
+
             return redirect('Booking-Confirmed')
 
 
@@ -908,12 +927,12 @@ def subscribe(request):
                 success_message = 'You are already subscribed.'
     
     # Render the page with the success message
-    return render(request, 'index.html', {'success_message': success_message})
+    return render(request, 'Success.html', {'success_message': success_message})
 
 def send_confirmation_email(email):
     subject = 'Subscription Confirmation'
-    message = 'Thank you for subscribing to our newsletter!'
-    from_email = settings.DEFAULT_FROM_EMAIL  # Make sure this is set in your settings
+    message = 'Thank you for subscribing to CARENT newsletter!'
+    from_email = settings.EMAIL_HOST_USER  # Make sure this is set in your settings
     recipient_list = [email]
     
     send_mail(
@@ -926,11 +945,19 @@ def send_confirmation_email(email):
 
 
 
-
-
-
-
-
-
+def send_quick_booking_email(email):
+    subject = 'Your Booking has been confirmed'
+    message = 'You will shortly receiver call by CARENT'
+    from_email = settings.EMAIL_HOST_USER  # Make sure this is set in your settings
+    recipient_list = [email]
+    
+    send_mail(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+        fail_silently=False,
+    )
+    
 
 

@@ -56,6 +56,7 @@
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'our_team' %}">{{data.link4_name}}</a></li>
                         <li><a class="dropdown-item" href="{% url 'faq' %}">{{data.link5_name}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'addyourcar' %}">ADD YOUR CAR</a></li>
                       </ul>
                       <a class="" href="{% url 'blog' %}">{{data.link6_name}}</a>
                       <a class="right-padding" href="{% url 'contactPage' %}">{{data.link7_name}}</a>
@@ -75,8 +76,8 @@
                             Hi, {{user.username}}
                           </a>             
                           <ul class="dropdown-menu logout-dropdown">
-                            <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                             <li><a class="dropdown-item" href="{% url 'order_status' %}">Booking Details</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                           </ul>
                         </div>
                       </div><!-- /.Username -->
@@ -106,8 +107,8 @@
                           Hi, {{user.username}}
                         </a>             
                         <ul class="dropdown-menu logout-dropdown">
-                          <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                           <li><a class="dropdown-item" href="{% url 'order_status' %}">Booking Details</a></li>
+                          <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
                         </ul>
                       </div>
                     </div><!-- /.Username -->

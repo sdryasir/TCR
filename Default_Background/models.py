@@ -38,6 +38,7 @@ class Default_Background(models.Model):
     Create_Account_Page_Title_1 = models.CharField(max_length=60,null=True,blank=True)
     
     Add_Your_Car_Page_Title = models.CharField(max_length=60,null=True,blank=True)
+    Bookings_Page_Title = models.CharField(max_length=60,null=True,blank=True)
 
     
 

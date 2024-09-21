@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'header/Car_Failed_header.html' %}
+<section class="tv-error-404-tm" style="background-image: url('{% static 'images/404.jpg' %}');">
+    <div class="tv-dark-background-tm"></div>
+    <div class="container tv-error-content-tm" >
+      <div class="col-12" style="display: flex; justify-content: center;">
+        <div class="logo" style="position: fixed; top: -5%;">
+          <img src="{% static 'images/404-logo.png' %}" alt="">
+        </div><!-- /.logo -->
+      </div><!-- /.col-12 -->
+      <div class="col-md-12">
+        <h2 style="color: red; font-size: 35px;">SUBMISSION FAILED</h2>
+        <h3>Car Submission Failed!</h3>
+        <h3 class="margin-top ">We're unable to process your submission at this time. Please try again later.</h3>
+        <div class="tv-error-links-tm">
+          <a href="/" class="btn">BACK TO HOME</a> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>

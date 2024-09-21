@@ -226,17 +226,30 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <!--{% if user.is_authenticated %}
-            <div class="ADD-YOUR-CAR">
-                <a href="{% url 'addyourcar' %}">ADD YOUR CAR</a>
-            </div>
-            {% else %}
-            <div class="ADD-YOUR-CAR">
-                <a href="{% url 'login' %}">ADD YOUR CAR</a>
-            </div>
-            {% endif %}-->
         </div><!-- /.container -->
     </div><!-- /.Our-Featured-Cars-Section -->
+    {% for sec in add_your_car_section %}
+    <div class="Book-your-drive-section">
+        <style>
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.background_image}}');
+
+            }
+            @media (max-width: 1120px) {
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.mobile_background_image}}');
+            }
+        }
+        </style>
+        <div class="content">
+            <h2>{{sec.title_line_1}}<br>{{sec.title_line_2}}</h2>
+            <p>{{sec.des_line_1}}<br>{{sec.des_line_2}}</p>
+            <div class="Book-Now-button">
+                <a href="{% url 'addyourcar' %}">{{sec.add_car_button}}</a>
+            </div><!-- /.Book-Now-button -->
+        </div><!-- /.content -->
+    </div><!-- /.Book-your-drive-section -->
+    {% endfor %}
     <div class="Testimonial-Section-heading">
         <h2>WHAT CUSTOMER SAY <br>ABOUT CARENT</h2>
     </div><!-- /.Testimonial-Section-heading -->

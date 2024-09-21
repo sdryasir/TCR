@@ -42,8 +42,9 @@
                     {% for data in footer_data %}
                     <h2 class="font-class" style="padding-bottom: 10px;">{{data.news_letter_heading}}</h2>
                     {% endfor %}
-                    <form>
-                        <input type="email" name="email" placeholder="Your Email Address">
+                    <form method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
+                        <input type="email" name="email" placeholder="Your Email Address" required>
                         <button type="submit">SUBSCRIBE NOW</button>
                     </form>
                 </div>
