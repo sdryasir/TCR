@@ -30,6 +30,8 @@ urlpatterns = [
     path('', views.homePage, name='home'),
     path('add-your-car', views.addyourCarPage, name='addyourcar'),
     path('car-added', views.addyourCar, name='caradded'),
+    path('Car-Submission-Acknowledged', views.car_added, name='caraddedsuccessfully'),
+    path('submission-unsuccessful', views.car_failed, name='carfailed'),
     path('about/', views.aboutPage, name='about'),
     path('login/', views.loginPage, name='login'),
     path('create-new-account/', views.Create_accountPage, name='create_account'),
@@ -78,7 +80,7 @@ urlpatterns = [
 
 
     path('subscribe/', views.subscribe, name='subscribe'),
-    path('', views.subscribe, name='home'),  
+
 
 
 

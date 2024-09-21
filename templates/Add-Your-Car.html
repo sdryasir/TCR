@@ -16,31 +16,75 @@
             </div><!-- /.container -->
         </div><!-- /.Hero-Section-Image-Content -->
     </section><!-- /.Main-Hero-Section -->
-    <div class="container">
-        <form action="{% url 'caradded' %}" method="post">
+    <div class="container CAR-FORM">
+        <form class="add-car-form" action="{% url 'caradded' %}" method="post"  enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <label for="first-name">Car Name*</label>
-                <input type="text" id="first-name" name="name" value="{{ request.POST.name }}" required>
+                <input type="text" id="name" name="name" value="{{ request.POST.name }}" required>
             </div>
             <div class="form-group">
                 <label for="last-name">Passengers*</label>
-                <input type="text" id="last-name" name="passengers" value="{{ request.POST.passengers }}" required>
+                <input  type="number"  min="2" max="8" id="passengers" name="passengers" value="{{ request.POST.passengers }}" required>
             </div>
             <div class="form-group">
                 <label for="last-name">Petrol or Diesel*</label>
-                <input type="text" id="last-name" name="pod" value="{{ request.POST.pod }}" required>
+                <input type="text" id="petrol_diesel" name="petrol_diesel" value="{{ request.POST.petrol_diesel }}" required>
             </div>
             <div class="form-group">
                 <label for="last-name">Automatic or Manual*</label>
-                <input type="text" id="last-name" name="aom" value="{{ request.POST.aom }}" required>
+                <input type="text" id="automatic_manual" name="automatic_manual" value="{{ request.POST.automatic_manual }}" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Price*</label>
+                <input  type="number" min="15" id="price" name="price" value="{{ request.POST.price }}" required>
             </div>
             <div class="input-block textarea">
-                <label for="message">Description</label>
-                <textarea rows="3" name="message" class="form-control" name="description" id="message">{{ request.POST.description }}</textarea>
+                <label for="message">Description*</label>
+                <textarea rows="3" class="form-control" name="description" id="description" required>{{ request.POST.description }}</textarea>
             </div>
-            <div class="col-sm-12">
-                <button class="square-button">ADD CAR</button>
+            <div class="form-group" style="margin-top: 40px;" x-data="{ fileName: '' }">
+                <div class="input-group shadow">
+                  <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                  <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" id="image" name="image" class="d-none">
+                  <input type="text" class="form-control form-control-lg" placeholder="Main Car Image*" x-model="fileName" required>
+                  <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                </div>
+            </div>
+            <div class="form-group" x-data="{ fileName: '' }">
+                <div class="input-group shadow">
+                  <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                  <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="car_image_1" id="car_image_1" class="d-none">
+                  <input type="text" class="form-control form-control-lg" placeholder="Car Angle 1*" x-model="fileName" required>
+                  <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                </div>
+            </div>
+            <div class="form-group" x-data="{ fileName: '' }">
+                <div class="input-group shadow">
+                  <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                  <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="car_image_2" id="car_image_2" class="d-none">
+                  <input type="text" class="form-control form-control-lg" placeholder="Car Angle 2*" x-model="fileName" required>
+                  <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                </div>
+            </div>
+            <div class="form-group" x-data="{ fileName: '' }">
+                <div class="input-group shadow">
+                  <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                  <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="car_image_3" id="car_image_3" class="d-none">
+                  <input type="text" class="form-control form-control-lg" placeholder="Car Angle 3*" x-model="fileName" required >
+                  <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                </div>
+            </div>
+            <div class="form-group" x-data="{ fileName: '' }">
+                <div class="input-group shadow">
+                  <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+                  <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="car_image_4" id="car_image_4" class="d-none">
+                  <input type="text" class="form-control form-control-lg" placeholder="Car Angle 4 (Optional)" x-model="fileName">
+                  <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+                </div>
+            </div>
+            <div class="col-sm-12 add-car-button">
+                <button class="square-button" type="submit">ADD CAR</button>
             </div>
         </form>
     </div>

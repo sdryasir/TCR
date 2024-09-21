@@ -4295,11 +4295,60 @@ textarea {
 
 /* Success Page */
 
+/* Add Your Car Page */
+
+.CAR-FORM form.add-car-form{
+  margin: 100px 0px;
+}
 
 
+.add-car-form button{
+  background: var(--black-color);
+  border: none;
 
 
+}
 
+div.add-car-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+.add-car-form button[type="submit"]{
+  flex: 1; /* Equal width distribution */
+  width: 200px; /* Minimum width */
+  min-width: 30px;
+  height: 50px; /* Adjust height as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  cursor: pointer;
+
+
+}
+
+
+.add-car-form button[type="submit"] {
+  line-height: 2;
+  text-align: center;
+  background: var(--buttons-and-icons-color1);
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  color: var(--white-color);
+  border: none;
+  flex: 0 0 auto; /* Let the button grow or shrink as needed */
+  min-width: auto; /* Reset minimum width for button */
+
+}
+
+
+.add-car-form button[type="submit"]:hover {
+  background: var(--black-color);
+
+}
 
 
 
