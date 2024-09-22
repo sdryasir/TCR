@@ -20,27 +20,27 @@
         <form class="add-car-form" action="{% url 'caradded' %}" method="post"  enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="first-name">Car Name*</label>
+                <label for="name">Car Name*</label>
                 <input type="text" id="name" name="name" value="{{ request.POST.name }}" required>
             </div>
             <div class="form-group">
-                <label for="last-name">Passengers*</label>
+                <label for="passengers">Passengers*</label>
                 <input  type="number"  min="2" max="8" id="passengers" name="passengers" value="{{ request.POST.passengers }}" required>
             </div>
             <div class="form-group">
-                <label for="last-name">Petrol or Diesel*</label>
+                <label for="petrol_diesel">Petrol or Diesel*</label>
                 <input type="text" id="petrol_diesel" name="petrol_diesel" value="{{ request.POST.petrol_diesel }}" required>
             </div>
             <div class="form-group">
-                <label for="last-name">Automatic or Manual*</label>
+                <label for="automatic_manual">Automatic or Manual*</label>
                 <input type="text" id="automatic_manual" name="automatic_manual" value="{{ request.POST.automatic_manual }}" required>
             </div>
             <div class="form-group">
-                <label for="last-name">Price*</label>
+                <label for="price">Price*</label>
                 <input  type="number" min="15" id="price" name="price" value="{{ request.POST.price }}" required>
             </div>
             <div class="input-block textarea">
-                <label for="message">Description*</label>
+                <label for="description">Description*</label>
                 <textarea rows="3" class="form-control" name="description" id="description" required>{{ request.POST.description }}</textarea>
             </div>
             <div class="form-group" style="margin-top: 40px;" x-data="{ fileName: '' }">
