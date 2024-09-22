@@ -369,37 +369,44 @@ def process_checkout(request):
         user = request.user
         
 
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        postal_code = request.POST.get('postal_code')
-        address_line_1 = request.POST.get('address_line_1')
-        address_line_2 = request.POST.get('address_line_2')
-        province = request.POST.get('province')
-        pickup_date = request.POST.get('pickup_date')
-        return_date = request.POST.get('return_date')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
+        first_name = request.POST.get('first_name','')
+        last_name = request.POST.get('last_name','')
+        postal_code = request.POST.get('postal_code','')
+        address_line_1 = request.POST.get('address_line_1','')
+        address_line_2 = request.POST.get('address_line_2','')
+        province = request.POST.get('province','')
+        pickup_date = request.POST.get('pickup_date','')
+        return_date = request.POST.get('return_date','')
+        phone = request.POST.get('phone','')
+        email = request.POST.get('email','')
+        if not all([first_name, last_name, email, postal_code , address_line_1,address_line_2, province, pickup_date, return_date, phone]):
+            messages.error(request, "Please fill all fields.")
+            return redirect('checkout')
+        try:
+            user.first_name = first_name
+            user.last_name = last_name
+            user.adress_line_1 = address_line_1
+            user.adress_line_2 = address_line_2
+            user.pickup_date = pickup_date
+            user._date = return_date
+            user.email = email
+            user.save()
 
-
-        user.first_name = first_name
-        user.last_name = last_name
-        user.adress_line_1 = address_line_1
-        user.adress_line_2 = address_line_2
-        user.pickup_date = pickup_date
-        user._date = return_date
-        user.email = email
-        user.save()
-
-        profile, created = UserProfile.objects.get_or_create(user=user)
-        profile.phone = phone
-        profile.address_line_1 = address_line_1
-        profile.address_line_2 = address_line_2
-        profile.postal_code = postal_code
-        profile.province = province
-        profile.pickup_date = pickup_date
-        profile.return_date = return_date
-        profile.save()
-
+            profile, created = UserProfile.objects.get_or_create(user=user)
+            profile.phone = phone
+            profile.address_line_1 = address_line_1
+            profile.address_line_2 = address_line_2
+            profile.postal_code = postal_code
+            profile.province = province
+            profile.pickup_date = pickup_date
+            profile.return_date = return_date
+            profile.save()
+            messages.success(request, "Success! Your message has been sent.")
+            # return redirect('checkout')
+        except Exception as e:
+            messages.error(request, "An error occurred. Please try again.")
+           
+        
         
         cart = request.session.get('cart', {})
         if not cart:
