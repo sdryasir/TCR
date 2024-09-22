@@ -1,7 +1,7 @@
 {% load cart_tag %}
 {% load static %}
 {% include 'header/header.html' %}
-<style>.alert {
+<!-- <style>.alert {
     padding: 15px;
     margin-bottom: 20px;
     border: 1px solid transparent;
@@ -18,13 +18,22 @@
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
-  }</style>
+  }</style> -->
 <main class="checkout-Page">
     <div class="checkout-container">
         <!-- Shipping Information -->
         <div class="row">
             <div class="col-md-12 col-lg-6">
                 <section class="shipping-info">
+                    <!-- {% if messages %}
+                    <div class="alert-messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %} -->
                     <h2>Checkout</h2>
                     <!-- <form id="shipping-form" method="POST" action="{% url 'process_checkout' %}"> -->
                     <form id="shipping-form" method="POST" action="{% url 'process_checkout' %}">
