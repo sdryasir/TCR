@@ -1,0 +1,356 @@
+{% load static %}
+{% load cart_tag %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    {% for image in main_Hero_Section %}
+    <section class="Main-Hero-Section">
+        <div class="Hero-Section-image">
+            <img class="" src="/media/{{image.image}}">
+            <div class="image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Hero-Section-Image-Content-Heading content">
+                    <h2>{{image.title_1}}<br>{{image.title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Hero-Section-Image-Content-Description content">
+                    <p>{{image.description_1}}<br>{{image.description_2}}</p>
+                </div><!-- /.Hero-Section-Image-Content-Description -->
+                <div class="Hero-Section-Image-Content-Modal-Box content">
+                    <a href="{{image.video_link}}" class="play-button-no-margin"><i class="fi fi-ts-play-circle"></i></a>
+                    <a href="" style="pointer-events: none;">WATCH VIDEO</a>
+                </div><!-- /.Hero-Section-Image-Content-Modal-Box -->
+                <div class="Hero-Section-Image-Content-Book-A-Car">
+                    <div class="heading">
+                        <h4>BOOK A CAR</h4>
+                    </div><!-- /.heading -->
+                    <div class="Booking-Schedule-Content">
+                        <div class="Booking-Schedule-Content-Form">
+                            <form class="car-rent-form" action="{% url 'quick-book' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" required name="name" placeholder="Your Name" value="{{ request.POST.name }}">
+                                <select required  name="car_name_dropdown" class="select-placeholder">
+                                    <option value="" disabled selected>Featured Cars</option>
+                                    {% for cars in Car_Data %}
+                                        {% if cars.category == 'Featured' %}
+                                            {% if cars.stock == 0 %}
+                                            {% else %}
+                                                <option value="{{ cars.name }}">{{cars.name}}</option>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <input type="text" required title="Please enter your phone number in digits only" pattern="\d{11}" name="phone" placeholder="Your Phone no" value="{{ request.POST.phone }}">
+                                <input type="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"  name="email" placeholder="Your Email" value="{{ request.POST.email }}">
+                                <!--<input type="text"  name="pickup_date" placeholder="Pick-up Date" class="date-input" onclick="showDatepicker(this)">
+                                <input type="text" name="return_date" placeholder="Return Date" class="date-input" onclick="showDatepicker(this)">-->
+                                <button type="submit">BOOK NOW</button>
+                            </form>
+                        </div><!-- /.Booking-Schedule-Content-Form -->
+                    </div><!-- /.Booking-Schedule-Content -->
+                    <div class="Hero-Section-Image-Content-Price">
+                        <h5>Starting at <span>${{image.price}}.00</span> / Day</h5>
+                    </div><!-- /.Hero-Section-Image-Content-Price -->
+                </div><!-- /.Hero-Section-Image-Content-Book-A-Car -->
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    {% endfor %}
+    <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
+        <div class="container-fluid">
+            <div class="Driving-Excellence-Heading">
+                {% for carousel in main_Cars_Carousel %}
+                <h2>{{carousel.title_1}}<br>{{carousel.title_2}}</h2>
+                {% endfor %}
+            </div><!-- /.Driving-Excellence-Heading -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                {% for carousel in main_Cars_Carousel %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                {% for carousel in main_Cars_Carousel %}
+                  <div class="carousel-item  {% if forloop.first %}active{% endif %}">
+                    <img src="/media/{{carousel.image}}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-overlay"></div>
+                {% endfor %}
+                </div>
+              </div>
+            <!--<div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
+                {% for carousel in main_Cars_Carousel %}
+                <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
+                  <div class="overlay-carousel-cell"></div>
+                  <div class="inner">
+                     <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>-->
+        </div><!-- /.container-fluid -->
+    </div><!-- /.Driving-excellence-owl-carousel -->
+    <div class="driving-excellence-counter-section">
+        <div class="container">
+            <div class="row">  
+                <div class="col-sm-12	  col-md-12	  col-lg-12  col-xl-5">
+                    <div class="content">
+                        {% for counter_app in counter_Section %}    
+                        <p>{{counter_app.description}}</p>
+                        {% endfor %}    
+                        <div class="About-us-link">
+                            <a href="{% url 'about' %}">ABOUT US <span><i class="fi fi-rs-arrow-right"></i></span></a>
+                        </div>
+                    </div><!-- /.content -->
+                </div><!-- /.col-5 -->
+                <div class="col-1"></div><!-- /.col-1 -->
+                <div class="col-sm-12	 col-md-12	  col-lg-12   col-xl-6 ">
+                    <div class="Counter-animation"> 
+                        {% for counter_app in counter_Section %}     
+                        <div class=" counterapp-col counterapp-col-no-padding">
+                            <div class="counter-box">
+                                <h2 class="counter">{{counter_app.number_of_feature}}</h2><span class="counterapp-span">{{counter_app.sign_of_feature}}</span>
+                            </div>
+                            <h4>{{counter_app.feature}}</h4>
+                        </div>
+                        {% endfor %}
+                    </div><!-- /.Counter-animation -->
+                </div><!-- /.col-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.driving-excellence-counter -->
+    {% for section in why_Choose_Us_Section %}    
+    <div class="why-choose-us-background-image" style="margin-top: 100px;">
+        <style>
+            .why-choose-us-background-image{
+                background-image: url('/media/{{section.background_image}}');
+            }
+            @media (max-width: 991px) {
+            .why-choose-us-background-image {
+                /* Background image for smaller screens */
+                background-image: url('/media/{{section.mobile_background_image}}');
+            }
+        }
+        </style>
+      <div class="container why-choose-us-container">
+        <div class="row" style="display: flex; align-items: center;">
+            <div class="col-sm-12	  col-md-12	  col-lg-5"> 
+                <div class="award-image">
+                    <img class="" src="/media/{{section.image}}" alt="" >                            
+                </div>
+            </div>    
+            <div class="col-1 col-md-0"></div><!-- /.col-1 -->  
+            <div class="col-sm-12	  col-md-12  col-lg-6">     
+                <h2 class="padding-item">{{section.heading}}</h2>
+                <p class="padding-item">{{section.description}}</p>
+                <div class="features padding-item">
+                    <div class="feature"><i class="{{section.icon_code_1}} why-choose-us-icons"></i><span>{{section.feature_1}}</span></div>
+                    <div class="feature"><i class="{{section.icon_code_2}} why-choose-us-icons"></i><span>{{section.feature_2}}</span></div>
+                    <div class="feature"><i class="{{section.icon_code_3}} why-choose-us-icons"></i><span>{{section.feature_3}}</span></div>
+                    <div class="feature feature-last"><i class="{{section.icon_code_4}} why-choose-us-icons"></i><span>{{section.feature_4}}</span></div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div><!-- /.why-choose-us-background-image -->
+    {% endfor %}
+    <div class="Our-Featured-Cars-Section">
+        <div class="container">
+            <div class = "row">
+                <h3 class = "text-center Our-Featured-Cars-Heading">OUR FEATURED CARS</h3>
+            </div>
+            <div class = "row owl-carousel-1 owl-carousel owl-theme">  
+                {% for car in Car_Data %}  
+                    {% if car.category == 'Featured' %}
+                    <div class = "col-4 product-item">
+                        <div class = "product-img">
+                            <img src ="/media/{{car.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                            {% if car.new_car %}
+                                <span class = "Save">{{car.new_car}}</span>
+                            {% else %}
+                                <span class = "Save" style="display: none;"></span>
+                            {% endif %}
+                        </div>  
+                        <div class = "product-info">
+                            <span class = "product-type"><h2>{{car.name}}</h2></span>
+                            <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                            {% if car.stock == 0 %}
+                                <span class="product-type not-available"><h6>Not Available</h6></span>
+                            {% else %}
+                                <span class="product-type available"><h6>Available</h6></span>
+                            {% endif %}
+                            <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
+                            <!--<div class = "rating d-flex mt-1">
+                                <form class="rating">
+                                    <label>
+                                      <input type="radio" name="stars" value="1" />
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="2" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="3" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>   
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="4" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="5" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                </form>
+                            </div>-->
+                        </div> 
+                        <div class = "row btns text-center" style="display: flex; justify-content: center; letter-spacing: 1px;">
+                            {% if car.stock == 0 %}
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >DETAILS</a>
+                            {% else %}
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% endif %}
+                        </div>     
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div><!-- /.container -->
+    </div><!-- /.Our-Featured-Cars-Section -->
+    {% for sec in add_your_car_section %}
+    <div class="Book-your-drive-section">
+        <style>
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.background_image}}');
+
+            }
+            @media (max-width: 1120px) {
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.mobile_background_image}}');
+            }
+        }
+        </style>
+        <div class="content">
+            <h2>{{sec.title_line_1}}<br>{{sec.title_line_2}}</h2>
+            <p>{{sec.des_line_1}}<br>{{sec.des_line_2}}</p>
+            <div class="Book-Now-button">
+                <a href="{% url 'addyourcar' %}">{{sec.add_car_button}}</a>
+            </div><!-- /.Book-Now-button -->
+        </div><!-- /.content -->
+    </div><!-- /.Book-your-drive-section -->
+    {% endfor %}
+    <div class="Testimonial-Section-heading">
+        <h2>WHAT CUSTOMER SAY <br>ABOUT CARENT</h2>
+    </div><!-- /.Testimonial-Section-heading -->
+    <div class="Testimonial-Section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="testimonial-bg">
+                        <div id="testimonial-slider" class="owl-carousel owl-carousel-2 owl-theme">
+                            {% for testimonial in Testimonial %}       
+                            <div class="testimonial">
+                                <p class="description">{{testimonial.description}}</p>
+                                <div class="pic">
+                                    <img src="/media/{{testimonial.image}}" alt="">
+                                </div>
+                                <h3 class="title">{{testimonial.name}}</h3>
+                                <span class="post">{{testimonial.post}}</span>
+                                <span class="rating-icon">★</span>
+                                <span class="rating-icon">★</span>
+                                <span class="rating-icon">★</span>
+                                <span class="rating-icon">★</span>
+                                <span class="rating-icon">★</span>
+                            </div>
+                            {% endfor %}        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.Testimonial-Section -->
+    <div class="Background-Video-Section">
+        {% for video in Background_Video %} 
+        <video id="background-video" autoplay loop muted preload="none">
+            <source src="/media/{{video.video}}" type="video/mp4">
+        </video>    
+        <div class="text-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-white">
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}</p>
+                        <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %} 
+    </div><!-- /.Background-Video-Section --> 
+    <div class="Mobile-Display-Video-Overlay">
+        <div class="container">
+            {% for video in Background_Video %} 
+            <div class="mobile-overlay">
+                <div class="text-white">
+                    <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                    <p>{{video.description}}</p>
+                    <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                </div>
+            </div>
+            {% endfor %} 
+        </div><!-- /.container -->
+    </div><!-- /.Mobile-Display-Video-Overlay -->
+    <div class="Our-Latest-Blog-Articles-Section">
+        <div class="container">
+            <div class = "row">
+                <h3 class = "text-center Our-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
+            </div>
+            <div class = "row owl-carousel-3 owl-carousel owl-theme"> 
+                {% for blog in Latest_Blog %}  
+                    {% if blog.category == 'Latest' %}   
+                        <div class = "col-4 product-item">
+                            <div class = "product-img">
+                                <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                                <span class = "Save">{{blog.tag}}</span>
+                            </div>  
+                            <div class = "product-info">
+                                <span class = "product-type"><h2>{{blog.title}}</h2></span>
+
+                            </div> 
+                            <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                                <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
+                            </div>     
+                        </div>
+                    {% endif %}
+                {% endfor %}           
+            </div>
+        </div><!-- /.container -->
+    </div><!-- /.Our-Latest-Blog-Articles-Section -->
+    <div class="Frequently-Asked-Questions-Section">
+        <div class="container">
+            <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
+            <div class="accordion">
+                {% for qa in General_Questions %} 
+                <div class="accordion-item">
+                  <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">{{qa.Question}}</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
+                  <div class="accordion-content">
+                    <p>{{qa.Answer}}</p>
+                  </div>
+                </div>
+                {% endfor %}  
+            </div>
+          </div>
+    </div><!-- /.Frequently-Asked-Questions-Section -->
+</main><!-- /.main-content -->
+{% include 'footer/footer.html' %}

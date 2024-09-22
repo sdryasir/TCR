@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+
+<main class="main-content">
+    <section class="Create-Account-Main-Hero-Section">
+        <div class="Create-Account-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Create-Account-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Create-Account-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Create-Account-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Create_Account_Page_Title_1}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Create-your-account" style="margin: 100px 0;">
+        <div class="container">
+            <div class="row" style="display: flex; justify-content: center;">
+                <div class="col-sm-12 col-lg-6">
+                    <style>.alert {
+                        padding: 15px;
+                        margin-bottom: 20px;
+                        border: 1px solid transparent;
+                        border-radius: 4px;
+                      }
+                      
+                      .alert-success {
+                        color: #3c763d;
+                        background-color: #dff0d8;
+                        border-color: #d6e9c6;
+                      }
+                      
+                      .alert-error {
+                        color: #a94442;
+                        background-color: #f2dede;
+                        border-color: #ebccd1;
+                      }</style>
+                    {% if messages %}
+                    <div class="alert-messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form  method="post" action="{% url 'Create_accountPage-user' %}" class="sign-up">
+                        {% csrf_token %}
+                        <h2 class="sign-up-title">CREATE YOUR ACCOUNT</h2>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="username" name="username" class="sign-up-input" id="username"placeholder="Enter Username" autofocus>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="sign-up-input" id="email" placeholder="Enter Email" autofocus>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password"class="sign-up-input" id="password" placeholder="Enter Password">
+                        <input type="submit" value="Create Account" class="sign-up-button">
+                    </form>
+                </div><!-- /.col-6 -->
+            </div><!-- /.row -->           
+        </div><!-- /.container -->
+    </div><!-- /.Create-your-account -->
+</main><!-- /.main-content -->
+
+
+{% include 'footer/footer.html' %}

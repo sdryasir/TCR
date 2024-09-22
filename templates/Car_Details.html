@@ -1,0 +1,129 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+<main class="main-content" >
+    <section class="Car-Detail-Main-Hero-Section">
+        <div class="Car-Detail-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}"alt="">
+            <div class="Car-Detail-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Car-Detail-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Car-Detail-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Car_Details_Page_Title_1}}<br>{{data.Car_Details_Page_Title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Car-Detail-Hero-Section-Image-Content-Description content">
+                    <p>{{data.Car_Details_Page_description_1}}<br>{{data.Car_Details_Page_description_2}}</p>
+                </div> 
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Car-Detail-Section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12  col-md-12  col-lg-4 col-xl-4 ">
+                    <h3 class=" Car-Detail-Heading ">CAR DETAILS</h3>
+                    <div class="Car-Details-Rows">
+                        <div class="first-row">
+                            <h4><i class="fi fi-rs-review"></i>Passengers {{One_Car.passengers}}</h4>
+                            <h4><i class="fi fi-rs-gas-pump-alt"></i>{{One_Car.petrol_diesel}}</h4>
+                        </div><!-- /.first-row -->
+                        <div class="second-row">
+                            <h4><i class="fi fi-rs-exchange"></i>{{One_Car.automatic_manual}}</h4>
+                            <h4><i class="fi fi-rs-bolt"></i>{{One_Car.at_mt}}</h4>
+                        </div><!-- /.second-row -->     
+                    </div><!-- /.Car-Details-Rows -->
+                    <div class="More-Car-List" style="margin-top: 40px;">
+                        <div class="Car-List">
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action disabled heading" aria-disabled="true">FEATURED CARS</a>
+                                {% for car in Car_Data %}
+                                    {% if car.category == 'Featured' %}
+                                        <a href="{% url 'car_detail' car.id %}" class="list-group-item list-group-item-action {% if car.id == current_id %} active {% endif %} ">{{car.name}}</a>
+                                    {% endif %}
+                                {% endfor %}                       
+                              </div>
+                        </div><!-- /.Car-List -->
+                    </div><!-- /.More-Car-List -->
+                </div><!-- /.col-3 -->
+                <div class="col-sm-12  col-md-12  col-lg-8 col-xl-8 ">
+                    {% if One_Car.new_car %}
+                    <div class="Car-Tag">
+                        <h4>{{One_Car.new_car}}</h4>
+                    </div><!-- /.Car-Tag -->
+                    {% endif %}
+                    <div class="image-section">
+                        <img src="/media/{{One_Car.image}}" style="width: 100%;" alt="">
+                    </div><!-- /.image-section -->
+                    <div class="Car-Inside-Carousel">
+                        <div class = "row owl-carousel-7 owl-carousel owl-theme">    
+                            <div class = "col-4 product-item">
+                                <div class = "product-img">
+                                    <img src ="/media/{{One_Car.car_image_1}}" alt = "" class = "img-fluid d-block mx-auto">
+                                </div>   
+                            </div>
+                            <div class = "col-4 product-item">
+                                <div class = "product-img">
+                                    <img src ="/media/{{One_Car.car_image_2}}" alt = "" class = "img-fluid d-block mx-auto">
+                                </div>   
+                            </div>
+                            <div class = "col-4 product-item">
+                                <div class = "product-img">
+                                    <img src ="/media/{{One_Car.car_image_3}}" alt = "" class = "img-fluid d-block mx-auto">
+                                </div>   
+                            </div>
+                            <div class = "col-4 product-item">
+                                <div class = "product-img">
+                                    <img src ="/media/{{One_Car.car_image_4}}" alt = "" class = "img-fluid d-block mx-auto">
+                                </div>   
+                            </div>
+                        </div>
+                    </div><!-- /.Car-Inside-Carousel -->
+                    <div class="Rating-Price" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="Rating"><h5>4.5<span class="padding-left">(50+ reviews)</span></h5></div><!-- /.Rating -->
+                        <div class="Price"><h3>${{One_Car.price}}<span class="light-font"> / Day</span></h3></div><!-- /.Price -->
+                    </div><!-- /.Rating-Price -->
+                    <div class="Car-Information">
+                        <div class="Car-Name">
+                            <h3>{{One_Car.name}}</h3>
+                        </div><!-- /.Car-Name -->
+                        <div class="Car-Info">
+                            <p>{{One_Car.description}}</p>
+                        </div><!-- /.Car-Info -->
+                        <div class="Car-Features">
+                            <div class="Left-Section">
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_1}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_2}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_3}}</p>
+                            </div><!-- /.Left-Section -->
+                            <div class="Right-Section">
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_4}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_5}}</p>
+                                <p><span class="material-symbols-outlined">check</span>{{One_Car.feature_6}}</p>                       
+                            </div><!-- /.Right-Section -->
+                        </div><!-- /.Car-Features -->
+                        <div class="Book-Now-button">   
+                                {% if user.is_authenticated %}
+                                    {% if One_Car.stock == 0 %}
+                                        <a href="" style="pointer-events: none;">NOT AVAILABLE</a>
+                                    {% else %}
+                                        <a href="{% url 'cart_add' One_Car.id %}">BOOK NOW</a>
+                                    {% endif %}
+                                {% else %}
+                                    {% if One_Car.stock == 0 %}
+                                        <a href="" style="pointer-events: none;">NOT AVAILABLE</a>
+                                    {% else %}
+                                        <a href="{% url 'login' %}">BOOK NOW</a>
+                                    {% endif %}
+                                {% endif %}
+                        </div><!-- /.Book-Now-button -->
+                    </div><!-- /.Car-Information -->
+                </div><!-- /.col-8 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.Car-Detail-Section -->
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}

@@ -1,0 +1,68 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+<main class="main-content">
+    <section class="Blog-Main-Hero-Section">
+        <div class="Blog-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Blog-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Blog-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Blog-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Blog_Page_Title_1}}<br>{{data.Blog_Page_Title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Blog-Hero-Section-Image-Content-Description content">
+                    <p>{{data.Blog_Page_description_1}}</p>
+                </div>
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Blog-Cards-Section" style="margin: 100px 0;">
+        <div class="container">
+            <div class="row">
+                {% for blog in Blog %}
+                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4" style="margin-bottom: 50px;">
+                    <div class = "product-item">
+                        <div class = "product-img">
+                            <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                            <span class = "Save">{{blog.tag}}</span>
+                        </div>  
+                        <div class = "product-info">
+                            <span class = "product-type"><h2>{{blog.title}}</h2></span>
+                            
+                        </div> 
+                        <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                            <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
+                        </div>     
+                    </div>
+                </div><!-- /.col-4 -->  
+                {% endfor %}      
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+        <div class="Blog-Pagination">
+            <div class="container">
+                <div class="Pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if Blog.has_previous %}  
+                                <li class="page-item"><a class="page-link" href="?page={{Blog.previous_page_number}}">Previous</a></li>
+                            {% endif %}
+                            {% for p in total_Pages %}
+                                <li class="page-item {% if Blog.number == p %} active {% endif %}  "><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                            {% endfor %}
+                            {% if Blog.has_previous %}  
+                                <li class="page-item"><a class="page-link" href="?page={{Blog.next_page_number}}">Next</a></li>
+                            {% endif %}
+                        </ul>
+                      </nav>
+                </div><!-- /.Pagination -->
+            </div><!-- /.container -->
+        </div><!-- /.Blog-Pagination -->
+    </div><!-- /.Blog-Cards-Section -->
+</main><!-- /.main-content -->
+
+
+{% include 'footer/footer.html' %}

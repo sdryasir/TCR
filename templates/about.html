@@ -1,0 +1,138 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    <section class="About-Main-Hero-Section">
+        <div class="About-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
+            <div class="About-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="About-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="About-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.About_Page_Title_1}}<br>{{data.About_Page_Title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="About-Hero-Section-Image-Content-Description content">
+                    <p>{{data.About_Page_description_1}}<br>{{data.About_Page_description_2}}</p>
+                </div>
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Driving-excellence-owl-carousel" style="margin-top: 50px;">
+        <div class="container-fluid">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                {% for carousel in main_Cars_Carousel %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                {% for carousel in main_Cars_Carousel %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="/media/{{carousel.image}}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-overlay"></div>
+                {% endfor %}
+                </div>
+              </div>
+            <!--<div class="hero-slider" data-carousel class="carousel slide" data-bs-ride="carousel">
+                {% for carousel in main_Cars_Carousel %}
+                <div class="carousel-cell" style="background-image: url('/media/{{carousel.image}}');">
+                  <div class="overlay-carousel-cell"></div>
+                  <div class="inner">
+                     <h2 class="title">DRIVING EXCELLENCE,<br>ONE RENTAL AT A TIME</h2>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>-->
+        </div><!-- /.container-fluid -->
+    </div><!-- /.Driving-excellence-owl-carousel -->
+    <div class="driving-excellence-About-counter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12	  col-md-12	  col-lg-12  col-xl-5">
+                    <div class="content">
+                        {% for des in About_Description %}
+                        <p class="Test-Size"><b>{{des.description_1}}</b></p>
+                        <p class="Test-Size">{{des.description_2}}</p>
+                        {% endfor %}
+                            <div class="Our-Cars-link">
+                                <a href="{% url 'our_cars' %}">OUR CARS<span><i class="fi fi-rs-arrow-right"></i></span></a>
+                            </div>
+                        </div><!-- /.content -->
+                    </div><!-- /.col-5 -->
+                
+                <div class="col-1"></div><!-- /.col-1 -->
+                <div class="col-sm-12	 col-md-12	  col-lg-12   col-xl-6 ">
+                    <div class="About-Counter-animation"> 
+                        {% for counter_app in counter_Section %}         
+                        <div class=" About-counterapp-col About-counterapp-col-no-padding">
+                            <div class="About-counter-box">
+                                <h2 class="counter">{{counter_app.number_of_feature}}</h2><span class="About-counterapp-span">{{counter_app.sign_of_feature}}</span>
+                            </div>
+                            <h4>{{counter_app.feature}}</h4>
+                        </div> 
+                        {% endfor %}                
+                    </div><!-- /.Counter-animation -->
+                </div><!-- /.col-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.driving-excellence-counter -->
+    {% for sec in Book_Your_Drive_Section %}
+    <div class="Book-your-drive-section">
+        <style>
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.background_image}}');
+            }
+            @media (max-width: 1120px) {
+            .Book-your-drive-section{
+                background-image: url('/media/{{sec.mobile_background_image}}');
+            }
+        }
+        </style>
+        <div class="content">
+            <h2>{{sec.title_line_1}}<br>{{sec.title_line_2}}</h2>
+            <p>{{sec.des_line_1}}<br>{{sec.des_line_2}}</p>
+            <div class="Book-Now-button">
+                <a href="{% url 'our_cars' %}">{{sec.book_now_button}}</a>
+            </div><!-- /.Book-Now-button -->
+        </div><!-- /.content -->
+    </div><!-- /.Book-your-drive-section -->
+    {% endfor %}
+    <div class="About-Heading">
+        <div class="container">
+            <h2>MEET OUR TEAM</h2>
+        </div><!-- /.container -->
+    </div><!-- /.Our-Team-Heading -->
+    <div class="About-Cards">
+        <div class="container">
+            <div class="row">
+                {% for card in top_3_cards %}
+                <div class="col-xs-12	   col-sm-12	  col-md-12	  col-lg-6   col-xl-4">
+                    <div class="card">
+                        <div class="imgbox">
+                            <img src="/media/{{card.image}}" height="600px">
+                        </div>
+                        <div class="content">
+                            <div class="contentBox">
+                                <h3>{{card.name}}<br><span>{{card.profession}}</span></h3>
+                            </div>
+                            <ul class="sci">
+                                <li style="--i:1;"><a href="{{card.facebook_link}}"><i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a></li>
+                                <li style="--i:2;"><a href="{{card.twitter_link}}"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a></li>
+                                <li style="--i:3;"><a href="{{card.instagram_link}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.col-4 -->
+                {% endfor %}
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.Our-Team-Cards -->
+
+</main><!-- /.main-content -->
+{% include 'footer/footer.html' %}

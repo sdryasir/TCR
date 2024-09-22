@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carent – Car Rental Business &amp; Auto Dealer Elementor Template Kit Preview - ThemeForest</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/title_logo.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-thin-straight/css/uicons-thin-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab:300'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel = "stylesheet" type="text/css" href = "{% static 'CSS/owl.carousel.min.css' %}">
+    <link rel = "stylesheet" type="text/css" href = "{% static 'CSS/owl.theme.default.min.css' %}"> 
+    <link rel="stylesheet" href="{% static 'CSS/styleapp.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Single_Post.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Our_Team.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/About.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/navbar_close.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/form-group.css' %}">
+
+</head>
+<body>
+    <div class="site-wrapper">
+        <header class="header">
+            <div class="main-navbar">
+              <div class="container-fluid">
+                <div class="logo main-navbar-item">
+                  {% for data in header_data %}
+                  <img class="" src="/media/{{data.header_logo}}" alt="">
+                  {% endfor %}
+                </div><!-- /.logo -->
+                <div class="nav-links main-navbar-item">
+                  <nav class="top-navbar">
+                    <input type="checkbox" id="nav-check">
+                    <label for="nav-check" class="nav-chlab">☰</label>
+                    <div class="navbar-links" id="navbar">
+                      {% for data in header_data %}
+                        <img class="" src="/media/{{data.header_logo}}" alt="">
+                      <a class="left-padding" href="{{data.link1}}">{{data.link1_name}}</a>
+                      <a href="{% url 'about' %}">{{data.link2_name}}</a> 
+                      <a href="{% url 'our_cars' %}">{{data.link3_name}}</a> 
+                      <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{data.dropdownlinks_name}}
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'our_team' %}">{{data.link4_name}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'faq' %}">{{data.link5_name}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'addyourcar' %}">ADD YOUR CAR</a></li>
+                      </ul>
+                      <a class="" href="{% url 'blog' %}">{{data.link6_name}}</a>
+                      <a class="right-padding" href="{% url 'contactPage' %}">{{data.link7_name}}</a>
+                      {% endfor %}
+                      <!--Login and Username for Mobile  -Start-->
+                      {% if user.is_authenticated %}
+                      <div class="Reservation Reservation-button-Mobile-Screen" style="display: none;">
+                        <a href="{% url 'reservation' %}">RESERVATION<span class="badge badge-danger">{{request.session.cart|length}}</span></a>
+                      </div><!-- /.Reservation -->
+                    {% else %}
+                      <div class="Reservation" style="display: none;"></div><!-- /.Reservation -->
+                    {% endif %}
+                      {% if user.is_authenticated %}
+                      <div class="Username Username-button-Mobile-Screen" style="display: none;">
+                        <div class="dropdown Logout-button">
+                          <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, {{user.username}}
+                          </a>             
+                          <ul class="dropdown-menu logout-dropdown">
+                            <li><a class="dropdown-item" href="{% url 'order_status' %}">Booking Details</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
+                          </ul>
+                        </div>
+                      </div><!-- /.Username -->
+                      {% else %}
+                      <div class="Login-button Login-Button-Mobile-Screen" style="display: none;">
+                        <a href="{% url 'login' %}"><span>LOGIN</span></a>    
+                      </div>
+                      {% endif %}
+                       <!--Login and Username for Mobile  -End-->
+                    </div>
+                  </nav>
+                </div><!-- /.nav-links -->
+                <div class="side-navigation main-navbar-item">
+                  <div class="Login-button-and-side-navigation">
+                    {% if user.is_authenticated %}
+                      <div class="Reservation">
+                        <a href="{% url 'reservation' %}"><i class="fi fi-rr-reservation-table"></i><span class="badge badge-danger">{{request.session.cart|length}}</span></a>
+                      </div><!-- /.Reservation -->
+                    {% else %}
+                      <div class="Reservation" style="display: none;"></div><!-- /.Reservation -->
+                    {% endif %} 
+                    <!--Login and Username for Desktop  -Start-->
+                    {% if user.is_authenticated %}
+                    <div class="Username">
+                      <div class="dropdown Logout-button">
+                        <a class="btn dropdown-toggle Logout-button-title" style="text-transform: capitalize;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Hi, {{user.username}}
+                        </a>             
+                        <ul class="dropdown-menu logout-dropdown">
+                          <li><a class="dropdown-item" href="{% url 'order_status' %}">Booking Details</a></li>
+                          <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout<span><i class="fi fi-rs-exit"></i></span></a></li>
+                        </ul>
+                      </div>
+                    </div><!-- /.Username -->
+                    {% else %}  
+                    <div class="Login-button">
+                      <a href="{% url 'login' %}"><i class="fi fi-ss-user"></i><span>LOGIN</span></a> 
+                    </div>
+                    {% endif %} 
+                    <!--Login and Username for Desktop  -End-->
+                    <div class="menu-button" onclick="menuAnimation(this)">
+                      <div class="bar1"></div>
+                      <div class="bar2"></div>
+                      <div class="bar3"></div>
+                    </div>
+                    <div class="sidebar" id="slideNav">
+                      <div class="nav-section" id="sideBarText">
+                        {% for data in header_data %}
+                        <div class="item"><img src="/media/{{data.side_navigation_image}}" alt="" style="width: 200px;"></div>
+                        <div class="item"><p><h5>{{data.side_navigation_description}}</h5></p></div>
+                        <div class="item font-text"><h4>{{data.side_navigation_heading}}</h4></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-marker"></i><span style="margin-left: 20px;">{{data.side_navigation_location}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-envelope"></i><span style="margin-left: 20px;">{{data.side_navigation_email}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-phone-call"></i><span style="margin-left: 20px;">{{data.side_navigation_phone}}</span></div>
+                        <div class="Infomation-content"><i class="fi fi-rs-clock-three"></i><span style="margin-left: 20px;">{{data.side_navigation_schedule}}</span></div>
+                        <div class="Social-links">
+                          <div class="first-link"><a href="{{data.side_navigation_facebook_link}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_twitter_link}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_instagram_link}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+                          <div><a href="{{data.side_navigation_youtube_link}}" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
+                        </div>
+                        <div><p><h5 class="copyright-content">{{data.side_navigation_rights}}</h5></p></div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>              
+                </div><!-- /.side-navigation -->
+              </div><!-- /.container-fluid -->
+            </div><!-- /.main-navbar -->
+        </header><!-- /.header -->

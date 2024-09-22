@@ -1,0 +1,194 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+
+<main class="main-content">
+    <section class="Our-Cars-Main-Hero-Section">
+        <div class="Our-Cars-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Our-Cars-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Our-Cars-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Our-Cars-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Cars_Page_Title_1}}<br>{{data.Cars_Page_Title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Our-Cars-Hero-Section-Image-Content-Description content">
+                    <p>{{data.Cars_Page_description_1}}<br>{{data.Cars_Page_description_2}}</p>
+                </div>
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2">
+        <div class="container">
+            <div class = "row">
+                {% for car in cars_Section %}  
+                <div class="col-xs-12	   col-sm-12	  col-md-6	  col-lg-4">
+                    <div class = "product-item">
+                        <div class = "product-img">
+                            <img src ="/media/{{car.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                            {% if car.new_car %}
+                                <span class = "Save">{{car.new_car}}</span>
+                            {% else %}
+                                <span class = "Save" style="display: none;"></span>
+                            {% endif %}
+                        </div>  
+                        <div class = "product-info">
+                            <span class = "product-type"><h2>{{car.name}}</h2></span>
+                            <span class = "product-type"><h6>{{car.passengers}} Passengers</h6></span>
+                            {% if car.stock == 0 %}
+                                <span class="product-type not-available"><h6>Not Available</h6></span>
+                            {% else %}
+                                <span class="product-type available"><h6>Available</h6></span>
+                            {% endif %}
+                            <span class = "product-price">${{car.price}}.00<span class="light-font"> / Day</span></span>
+                            <div class = "rating d-flex mt-1">
+                                <form class="rating">
+                                    <label>
+                                      <input type="radio" name="stars" value="1" />
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="2" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="3" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>   
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="4" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="stars" value="5" />
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                      <span class="icon">★</span>
+                                    </label>
+                                </form>
+                            </div>
+                        </div> 
+                        <div class = "row btns text-center" style="display: flex; justify-content: center; letter-spacing: 1px;">
+                            {% if car.stock == 0 %}
+                                <a href="{% url 'car_detail' car.id %}" class = "col-6 py-2">DETAILS</a>
+                            {% else %}
+                                <a href="{% url 'car_detail' car.id %}"  class = "col-6 py-2" >RENT NOW</a>
+                            {% endif %}
+                        </div>     
+                    </div>
+                </div><!-- /.col-4 -->    
+                {% endfor %}                       
+            </div>
+        </div><!-- /.container -->
+        <div class="Our-Cars-Pagination">
+            <div class="container">
+                <div class="Pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if cars_Section.has_previous %}  
+                                <li class="page-item"><a class="page-link" href="?page={{cars_Section.previous_page_number}}">Previous</a></li>
+                            {% endif %}
+
+                            {% for p in total_Pages %}
+                            <li class="page-item"><a class="page-link {% if cars_Section.number == p %} active {% endif %} " href="?page={{p}}">{{p}}</a></li>
+                            {% endfor %}
+
+                            {% if cars_Section.has_next %} 
+                                <li class="page-item"><a class="page-link" href="?page={{cars_Section.next_page_number}}">Next</a></li>
+                            {% endif %}
+                        </ul>
+                      </nav>
+                </div><!-- /.Pagination -->
+            </div><!-- /.container -->
+        </div><!-- /.Our-Cars-Pagination -->
+    </div><!-- /.UNVEILING-EXCELLENCE-OUR-FEATURED-CAR-section-2 -->
+    <div class="Select-Cars-Booking-section">
+        <div class="container">
+            <div class="All-Step">
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-checkbox"></i><h3>SELECT YOUR CAR</h3></i></a>
+                <p class="Select-Cars-Booking-paragraph">Phasellus viverra nulla ut metus varius laoreet quisque rutrum.</p>
+            </div>
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-calendar-clock"></i><h3>DEFINE YOUR BOOKING</h3></a>
+                <p class="Select-Cars-Booking-paragraph">Maecenas tempus, tellus eget rhoncus sem quam semper libero.</p>
+            </div>
+            <div class="step">
+                <a class="Select-Cars-Booking-heading" href=""><i class="fi fi-rs-wallet-arrow"></i><h3>PAY THE PAYMENT</h3></a>
+                <p class="Select-Cars-Booking-paragraph">Donec vitae sapien ut libero faucibus nullam quis ante.</p>
+            </div>
+            </div>
+        </div>
+    </div><!-- /Select-Cars-Booking-section -->
+    <div class="Background-Video-Our-Car-Section">
+        {% for video in Background_Video %}
+        <video id="background-video-Cars-Section" autoplay loop muted preload="none">
+            <source src="/media/{{video.video}}" type="video/mp4">
+        </video>    
+        <div class="text-overlay">
+            <div class="container">
+                <div class="row" >
+                    <div class="col-md-12 text-white">
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}</p>
+                        <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div><!-- /Background-Video-Our-Car-Section --> 
+    <div class="Mobile-Display-Video-Overlay">
+        <div class="container">
+            {% for video in Background_Video %} 
+            <div class="mobile-overlay">
+                <div class="text-white">
+                    <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                    <p>{{video.description}}</p>
+                    <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                </div>
+            </div>
+            {% endfor %} 
+        </div><!-- /.container -->
+    </div><!-- /.Mobile-Display-Video-Overlay -->
+    <div class="Our-Cars-And-Latest-Blog-Articles-Section">
+        <div class="container">
+            <div class = "row">
+                <h3 class = "text-center Our-Cars-And-Latest-Blog-Articles-Heading">OUR LATEST BLOG<br>& ARTICLES</h3>
+            </div>
+            <div class = "row owl-carousel-6 owl-carousel owl-theme">  
+                {% for blog in Latest_Blog %} 
+                    {% if blog.category == 'Latest' %}    
+                        <div class = "col-4 product-item">
+                            <div class = "product-img">
+                                <img src ="/media/{{blog.image}}" alt = "" class = "img-fluid d-block mx-auto">
+                                <span class = "Save">{{blog.tag}}</span>
+                            </div>  
+                            <div class = "product-info">
+                                <span class = "product-type"><h2>{{blog.title}}</h2></span>                   
+                            </div> 
+                            <div class = "row btns text-center" style="display: flex; justify-content: center;">
+                                <a href="{% url 'single_post' blog.id %}"  class = "col-6 py-2" >READ MORE</a>
+                            </div>     
+                        </div>
+                    {% endif %}
+                {% endfor %}            
+            </div>
+        </div><!-- /.container -->
+    </div><!-- /.Our-Latest-Blog-Articles-Section -->
+
+
+
+
+    {% include 'footer/footer.html' %}

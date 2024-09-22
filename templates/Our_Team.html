@@ -1,0 +1,121 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    <section class="About-Main-Hero-Section">
+        <div class="About-Hero-Section-image">
+            {% for data in default_background %}
+                <img class="" src="/media/{{data.image}}" alt="">
+            <div class="About-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="About-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="About-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Team_Page_Title_1}}<br>{{data.Team_Page_Title_2}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="About-Hero-Section-Image-Content-Description content">
+                    <p>{{data.Team_Page_description_1}}<br>{{data.Team_Page_description_2}}</p>
+                </div>
+            {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Our-Team-Heading">
+        <div class="container">
+            <h2>MEET OUR TEAM</h2>
+        </div><!-- /.container -->
+    </div><!-- /.Our-Team-Heading -->
+    <div class="Our-Team-Cards">
+        <div class="container">
+            <div class="row">
+                {% for card in Team_Cards_Data %}
+                <div class="col-xs-12	   col-sm-12	  col-md-12	  col-lg-6   col-xl-4">
+                    <div class="card">
+                        <div class="imgbox">
+                            <img src="/media/{{card.image}}" height="600px">
+                        </div>
+                        <div class="content">
+                            <div class="contentBox">
+                                <h3>{{card.name}}<br><span>{{card.profession}}</span></h3>
+                            </div>
+                            <ul class="sci">
+                                <li style="--i:1;"><a href="{{card.facebook_link}}"><i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a></li>
+                                <li style="--i:2;"><a href="{{card.twitter_link}}"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a></li>
+                                <li style="--i:3;"><a href="{{card.instagram_link}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.col-4 -->
+                {% endfor %}
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.Our-Team-Cards -->
+    <section class="Background-Video">
+        <div class="Background-Video-Our-Car-Section">
+            {% for video in Background_Video %} 
+            <video id="background-video-Cars-Section" autoplay loop muted preload="none">
+                <source src="/media/{{video.video}}" type="video/mp4">
+            </video>    
+            <div class="text-overlay">
+                <div class="container">
+                    <div class="row" >
+                        <div class="col-md-12 text-white">
+                            <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                            <p>{{video.description}}</p>
+                            <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            {% endfor %} 
+        </div><!-- /Background-Video-Our-Car-Section --> 
+        <div class="Mobile-Display-Video-Overlay">
+            <div class="container">
+                {% for video in Background_Video %} 
+                <div class="mobile-overlay">
+                    <div class="text-white">
+                        <h2>{{video.title_line_1}}<br>{{video.title_line_2}}</h2>
+                        <p>{{video.description}}</p>
+                        <a class="Get-now-button" href="{{video.download_link}}">{{video.download_button}}</a>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div><!-- /.container -->
+        </div><!-- /.Mobile-Display-Video-Overlay -->
+    </section><!-- /.Background-Video -->
+    <div class="Testimonial-Section-heading">
+        <h2>WHAT CUSTOMER SAY <br>ABOUT CARENT</h2>
+    </div><!-- /.Testimonial-Section-heading -->
+    <section class="Customer-Testimonial">
+        <div class="Testimonial-Section">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="testimonial-bg">
+                            <div id="testimonial-slider" class="owl-carousel owl-carousel-2 owl-theme">
+                                {% for testimonial in Testimonial %} 
+                                <div class="testimonial">
+                                    <p class="description">{{testimonial.description}}</p>
+                                    <div class="pic">
+                                        <img src="/media/{{testimonial.image}}" alt="">
+                                    </div>
+                                    <h3 class="title">{{testimonial.name}}</h3>
+                                    <span class="post">{{testimonial.post}}</span>
+                                    <span class="rating-icon">★</span>
+                                    <span class="rating-icon">★</span>
+                                    <span class="rating-icon">★</span>
+                                    <span class="rating-icon">★</span>
+                                    <span class="rating-icon">★</span>
+                                </div>
+                                {% endfor %}                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.Testimonial-Section -->
+    </section><!-- /.Customer-Testimonial -->
+</main><!-- /.main-content -->
+{% include 'footer/footer.html' %}      

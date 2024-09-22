@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'header/header.html' %}
+<main class="main-content">
+    <section class="Login-Main-Hero-Section">
+        <div class="Login-Hero-Section-image">
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Login-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Login-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Login-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Login_Page_Title_1}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+          {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Sign-in-form" style="margin: 100px 0;">
+      <div class="container">
+        <div class="row" style="display: flex; justify-content: center;">
+          <div class="col-sm-12 col-lg-6">
+            <div class="form-wrapper">
+              <h2>SIGN IN</h2>
+              <style>.alert {
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+              }
+              
+              .alert-success {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d6e9c6;
+              }
+              
+              .alert-error {
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+              }</style>
+                {% if messages %}
+                    <div class="alert-messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+              <form method="post" action="{% url 'login-user' %}" >
+                {% csrf_token %}
+                <div class="form-item">
+                  <label for="username"></label>
+                  <input type="username" name="username" required="required"  id="username" placeholder="User Name"></input>
+                </div>
+                <div class="form-item">
+                  <label for="password"></label>
+                  <input type="password" name="password" required="required" id="password" placeholder="Password"></input>
+                </div>
+                <div class="button-panel">
+                  <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+                </div>
+              </form>
+              <div class="form-footer">
+                <p><a href="{% url 'create_account' %}">Create an account</a></p>
+                <p><a href="{% url 'logout-user' %}">Forgot password?</a></p>
+              </div>
+          </div>
+          </div><!-- /.col-6 -->
+        </div><!-- /.row -->
+      
+        
+      </div><!-- /.container -->
+    </div><!-- /.Sign-in-form -->
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}

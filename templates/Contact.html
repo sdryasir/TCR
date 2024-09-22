@@ -1,0 +1,159 @@
+{% load static %}
+{% include 'header/header.html' %}
+<style>.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}</style>
+<main class="main-content">
+    <section class="Contact-Main-Hero-Section">
+        <div class="Contact-Hero-Section-image">
+          {% for data in default_background %}
+            <img class="" src="/media/{{data.image}}" alt="">
+            <div class="Contact-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Contact-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Contact-Hero-Section-Image-Content-Heading content">
+                    <h2>{{data.Contact_Page_Title_1}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Contact-Hero-Section-Image-Content-Description content">
+                    <p>{{data.Contact_Page_description_1}}</p>
+                </div>
+          {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <!-- <div class="Contact-Form">
+        <div class="Contact-Form-Heading">
+            <h2>CONTACT US</h2>
+        </div>/.Contact-Form-Heading -->
+        <!-- <div id="section">
+            <section class="contact-wrap">
+              <form method="post" action="{% url 'save-contact' %}" class="contact-form">
+                {% csrf_token %}
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" class="form-control" id="firstname" value="{{request.POST.firstname}}">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" class="form-control" id="lastname" value="{{request.POST.lastname}}">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" id="email" value="{{request.POST.email}}">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block">
+                    <label for="messagesubject">Message Subject</label>
+                    <input type="text" name="messagesubject" class="form-control" id="messagesubject" value="{{request.POST.messagesubject}}">
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-block textarea">
+                    <label for="message">Drop your message here</label>
+                    <textarea rows="3" type="text" name="message" class="form-control" id="message" value="{{request.POST.message}}"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <button class="square-button">SEND MESSAGE</button>
+                </div>
+              </form>
+            </section>
+        </div>
+    </div>/.Contact-Form -->
+    <!-- Contact.html -->
+
+<div class="Contact-Form">
+  <div class="Contact-Form-Heading">
+      <h2>CONTACT US</h2>
+  </div>
+  <div id="section">
+      <section class="contact-wrap">
+          {% if messages %}
+              <div class="alert-messages">
+                  {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }}">
+                          {{ message }}
+                      </div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+          
+          <form method="post" action="{% url 'save-contact' %}" class="contact-form">
+              {% csrf_token %}
+              <div class="col-sm-12">
+                  <div class="input-block">
+                      <label for="firstname">First Name</label>
+                      <input type="text" name="firstname" class="form-control" id="firstname" value="{{ request.POST.firstname }}">
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="input-block">
+                      <label for="lastname">Last Name</label>
+                      <input type="text" name="lastname" class="form-control" id="lastname" value="{{ request.POST.lastname }}">
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="input-block">
+                      <label for="email">Email</label>
+                      <input type="email" name="email" class="form-control" id="email" value="{{ request.POST.email }}">
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="input-block">
+                      <label for="messagesubject">Message Subject</label>
+                      <input type="text" name="messagesubject" class="form-control" id="messagesubject" value="{{ request.POST.messagesubject }}">
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="input-block textarea">
+                      <label for="message">Drop your message here</label>
+                      <textarea rows="3" name="message" class="form-control" id="message">{{ request.POST.message }}</textarea>
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <button class="square-button">SEND MESSAGE</button>
+              </div>
+          </form>
+      </section>
+  </div>
+</div>
+    <div class="General-Questions-Section">
+        <div class="container">
+            <h2 class="general-questions-heading">GENERAL QUESTIONS</h2>
+            <div class="accordion">
+              {% for qa in General_Questions %} 
+              <div class="accordion-item">
+                <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">{{qa.Question}}</span><span class="icon general-questions-icon" aria-hidden="true"></span></button>
+                <div class="accordion-content">
+                  <p>{{qa.Answer}}</p>
+                </div>
+              </div>
+              {% endfor %}              
+            </div>
+        </div>
+    </div><!-- /.General-Questions-Section -->
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}

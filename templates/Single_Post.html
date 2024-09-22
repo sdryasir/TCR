@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'header/header.html' %}
+
+
+<main class="main-content">
+    <section class="Single-Post-Main-Hero-Section">
+        <div class="Single-Post-Hero-Section-image">
+            <img class="" src="{% static 'images/Default-Hero-Section-Image.png' %}" alt="">
+            <div class="Single-Post-image-overlay"></div>
+        </div><!-- /.Hero-Section-image -->
+        <div class="Single-Post-Hero-Section-Image-Content">
+            <div class="container">
+                <div class="Single-Post-Hero-Section-Image-Content-Heading content">
+                    <div class="Type-button">
+                        <a href=""><h4>{{One_Blog.tag}}</h4></a>
+                    </div><!-- /.Type-button -->
+                        <h2>{{One_Blog.title}}</h2>
+                </div><!-- /.Hero-Section-Image-Content-Heading -->
+                <div class="Single-Post-Hero-Section-Image-Content-Description content">
+                    <p></p>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.Hero-Section-Image-Content -->       
+    </section><!-- /.Main-Hero-Section -->
+    <div class="Single-Post-Section">
+        <div class="container">
+            <div class="Blog-Image">
+                <img src="/media/{{One_Blog.image}}" alt="">
+            </div><!-- /.Image -->
+            <div class="Feature1 Features">
+                <h2>{{One_Blog.Blog_details_heading_1}}</h2>
+            </div><!-- /.Feature1 -->
+            <div class="Feature1-paragraphs Feature-Paragraphs">
+                <p>{{One_Blog.Blog_details_description_1}}</p>
+                <p>{{One_Blog.Blog_details_description_2}}</p>
+            </div><!-- /.Feature1-paragraphs -->
+            <div class="Feature2 Features">
+                <h2>{{One_Blog.Blog_details_heading_2}}</h2>
+            </div><!-- /.Feature2 -->
+            <div class="Feature2-paragraphs Feature-Paragraphs">
+                <p>{{One_Blog.Blog_details_heading_2_description}}</p>
+                <div class="Features-list">
+                    <p><span class="material-symbols-outlined Features-list-icons">check</span>{{One_Blog.feature_1}}</p>
+                    <p><span class="material-symbols-outlined Features-list-icons">check</span>{{One_Blog.feature_2}}</p>
+                    <p><span class="material-symbols-outlined Features-list-icons">check</span>{{One_Blog.feature_3}}</p>
+                </div><!-- /.Features-list -->
+            </div><!-- /.Feature2-paragraphs -->
+            <div class="Blog-Section-Image">
+                <img src="/media/{{One_Blog.blog_details_image}}" alt="">
+            </div><!-- /.Blog-Section-Image -->
+            <div class="Tips">
+                <h3>{{One_Blog.tips_heading}}</h3>
+                <p>{{One_Blog.tips_description}}</p>
+            </div><!-- /.Tips -->
+            <div class="Share-Links">
+                <div class="heading Share-Links-content">
+                    <p>Share this:</p>
+                </div><!-- /.heading -->
+                <div class="Links Share-Links-content">
+                    <a href="" target="_blank"><i class="fa fa-facebook Share-Links-icons" aria-hidden="true"></i></a>
+                    <a href="" target="_blank"><i class="fa fa-twitter Share-Links-icons" aria-hidden="true"></i></a>
+                    <a href="" target="_blank"><i class="fa fa-whatsapp Share-Links-icons" aria-hidden="true"></i></a>
+                </div><!-- /.Links -->
+            </div><!-- /.Share-Links -->
+        </div><!-- /.container -->
+    </div><!-- /.Single-Post-Section -->
+</main><!-- /.main-content -->
+
+{% include 'footer/footer.html' %}
+
